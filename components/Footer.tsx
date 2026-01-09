@@ -90,7 +90,7 @@ const Footer = () => {
             <ul className="space-y-4 text-sm text-gray-400 font-light">
               <li>
                 <Link
-                  href="/about#council"
+                  href="/lawyers"
                   className="hover:text-white transition-colors"
                 >
                   The Council
@@ -98,7 +98,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/about"
+                  href="/careers"
                   className="hover:text-white transition-colors"
                 >
                   Careers

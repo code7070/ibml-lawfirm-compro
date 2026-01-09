@@ -122,6 +122,11 @@ h4 {
   font-weight: var(--h4-weight);
 }
 
+.font-primary {
+  font-family: var(--font-geometrica-sans), "Inter", "Segoe UI", -apple-system,
+    BlinkMacSystemFont, sans-serif;
+}
+
 /* Museo for serif/accents/quotes */
 .font-serif {
   font-family: var(--font-museo), "Merriweather", "Playfair Display", serif;
