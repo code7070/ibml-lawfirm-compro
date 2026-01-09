@@ -1,26 +1,215 @@
 @import "tailwindcss";
 
+@theme {
+  /* Primary: Geometrica Sans - headings, display */
+  --font-sans: var(--font-geometrica-sans);
+  /* Secondary: Museo 300 - accents, quotes */
+  --font-serif: var(--font-museo);
+  /* Alternative: Roboto - body text, forms */
+  --font-body: var(--font-roboto);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ========== COLOR PALETTE ========== */
+  /* Primary Colors */
+  --navy-darkest: #0b1b3b;
+  --navy-primary: #1a2f5a;
+  --navy-medium: #2e4472;
+  --navy-light: #4a639d;
+  --navy-accent: #76abff;
+
+  /* Gold/Brass Accent */
+  --gold-dark: #c0b181;
+  --gold-medium: #d4c5a0;
+  --gold-light: #e8dbbf;
+  --gold-pale: #fff0cc;
+
+  /* Supporting Colors */
+  --black-knight: #020814;
+  --white: #ffffff;
+  --gray-light: #f5f5f7;
+  --gray-medium: #e0e0e3;
+
+  /* ========== TYPOGRAPHY SCALE ========== */
+  /* Headings */
+  --h1-size: 3.5rem;
+  --h1-line-height: 4rem;
+  --h1-weight: 300;
+
+  --h2-size: 2.5rem;
+  --h2-line-height: 3rem;
+  --h2-weight: 400;
+
+  --h3-size: 2rem;
+  --h3-line-height: 2.25rem;
+  --h3-weight: 400;
+
+  --h4-size: 1.5rem;
+  --h4-line-height: 1.75rem;
+  --h4-weight: 500;
+
+  /* Body */
+  --body-large-size: 1.125rem;
+  --body-large-line-height: 1.7;
+
+  --body-regular-size: 1rem;
+  --body-regular-line-height: 1.6;
+
+  --body-small-size: 0.875rem;
+  --body-small-line-height: 1.5;
+
+  /* Special */
+  --caption-size: 0.75rem;
+  --caption-letter-spacing: 0.05em;
+
+  --quote-size: 1.25rem;
+
+  /* Section labels */
+  --section-label-letter-spacing: 0.1em;
+
+  /* ========== SPACING SCALE ========== */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 48px;
+  --space-xl: 72px;
+  --space-2xl: 120px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* ========== BASE TYPOGRAPHY ========== */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-roboto), "Segoe UI", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  font-size: var(--body-regular-size);
+  line-height: var(--body-regular-line-height);
+  background-color: var(--white);
+  color: var(--navy-darkest);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Headings use Geometrica Sans (primary font) */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-geometrica-sans), "Inter", "Segoe UI", -apple-system,
+    BlinkMacSystemFont, sans-serif;
+}
+
+h1 {
+  font-size: var(--h1-size);
+  line-height: var(--h1-line-height);
+  font-weight: var(--h1-weight);
+}
+
+h2 {
+  font-size: var(--h2-size);
+  line-height: var(--h2-line-height);
+  font-weight: var(--h2-weight);
+}
+
+h3 {
+  font-size: var(--h3-size);
+  line-height: var(--h3-line-height);
+  font-weight: var(--h3-weight);
+}
+
+h4 {
+  font-size: var(--h4-size);
+  line-height: var(--h4-line-height);
+  font-weight: var(--h4-weight);
+}
+
+/* Museo for serif/accents/quotes */
+.font-serif {
+  font-family: var(--font-museo), "Merriweather", "Playfair Display", serif;
+}
+
+/* Roboto for body text alternative */
+.font-body {
+  font-family: var(--font-roboto), "Segoe UI", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+}
+
+/* ========== TYPOGRAPHY UTILITIES ========== */
+.text-body-large {
+  font-size: var(--body-large-size);
+  line-height: var(--body-large-line-height);
+}
+
+.text-body-small {
+  font-size: var(--body-small-size);
+  line-height: var(--body-small-line-height);
+}
+
+.text-caption {
+  font-size: var(--caption-size);
+  letter-spacing: var(--caption-letter-spacing);
+}
+
+.text-quote {
+  font-size: var(--quote-size);
+  font-style: italic;
+  font-family: var(--font-museo), "Merriweather", serif;
+}
+
+/* Section labels - uppercase with letter spacing */
+.section-label {
+  text-transform: uppercase;
+  letter-spacing: var(--section-label-letter-spacing);
+  font-size: var(--body-small-size);
+}
+
+/* Custom Utilities */
+.bg-navy-darkest {
+  background-color: var(--navy-darkest);
+}
+.bg-navy-primary {
+  background-color: var(--navy-primary);
+}
+.text-navy-darkest {
+  color: var(--navy-darkest);
+}
+.text-gold {
+  color: var(--gold-medium);
+}
+.text-gold-dark {
+  color: var(--gold-dark);
+}
+.border-gold {
+  border-color: var(--gold-medium);
+}
+.bg-gold {
+  background-color: var(--gold-medium);
+}
+
+.pattern-grid {
+  background-image: linear-gradient(var(--navy-primary) 1px, transparent 1px),
+    linear-gradient(90deg, var(--navy-primary) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center center;
+}
+
+.pattern-diamond {
+  background-image: linear-gradient(
+      45deg,
+      #1a2f5a 25%,
+      transparent 25%,
+      transparent 75%,
+      #1a2f5a 75%,
+      #1a2f5a
+    ),
+    linear-gradient(
+      45deg,
+      #1a2f5a 25%,
+      transparent 25%,
+      transparent 75%,
+      #1a2f5a 75%,
+      #1a2f5a
+    );
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+  opacity: 0.05;
 }
