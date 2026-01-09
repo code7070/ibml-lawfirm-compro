@@ -1,7 +1,5 @@
-import Navbar from "../../../components/Navbar";
-import ArticleDetailPageComponent from "../../../components/ArticleDetailPage";
-import Footer from "../../../components/Footer";
-import { ARTICLE_DATA } from "../../../data/articles";
+import ArticleDetailPageComponent from "@/components/ArticleDetailPage";
+import { ARTICLE_DATA } from "@/data/articles";
 import { notFound } from "next/navigation";
 
 interface ArticleDetailPageProps {
@@ -21,16 +19,7 @@ export default async function ArticleDetailPage({
   }
 
   return (
-    <div className="min-h-screen bg-white text-[#0B1B3B] selection:bg-[#D4C5A0] selection:text-[#0B1B3B]">
-      <Navbar />
-      <main>
-        <ArticleDetailPageComponent
-          article={article}
-          allArticles={ARTICLE_DATA}
-        />
-      </main>
-      <Footer />
-    </div>
+    <ArticleDetailPageComponent article={article} allArticles={ARTICLE_DATA} />
   );
 }
 

@@ -8,6 +8,7 @@ export interface TeamMember {
   bio?: string;
   imageUrl: string;
   specialty: string;
+  email?: string;
 }
 
 export interface Service {

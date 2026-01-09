@@ -50,7 +50,7 @@ const Team = () => {
             <h2 className="text-5xl font-light text-[#0B1B3B]">The Council</h2>
           </div>
           <div className="hidden md:block">
-            <Button variant="secondary" href="/about#council">
+            <Button variant="secondary" href="/lawyers">
               View Full Roster
             </Button>
           </div>
@@ -100,7 +100,7 @@ const Team = () => {
         </div>
 
         <div className="mt-16 md:hidden text-center">
-          <Button variant="secondary" href="/about#council">
+          <Button variant="secondary" href="/lawyers">
             View Full Roster
           </Button>
         </div>
