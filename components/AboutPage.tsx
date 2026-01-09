@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import {
-  ArrowLeft,
   ArrowRight,
   Quote,
   Trophy,
@@ -17,46 +16,8 @@ import {
   FileText,
   Scale as ScaleLucide,
 } from "lucide-react";
-import Button from "./Button";
 import CTASection from "./CTASection";
-import Link from "next/link";
-
-// --- DATA ---
-
-const teamMembers = [
-  {
-    id: "1",
-    name: "Elena Vance",
-    role: "Managing Partner",
-    bio: "Former General Counsel at a major AAA studio. Elena specializes in high-stakes M&A and corporate structuring for game tech companies.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800",
-  },
-  {
-    id: "2",
-    name: "Marcus Thorne",
-    role: "Partner, IP Litigation",
-    bio: "A formidable litigator with a 98% success rate in copyright infringement cases involving digital assets and game mechanics.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800",
-  },
-  {
-    id: "3",
-    name: "Sarah Jenkins",
-    role: "Senior Counsel",
-    bio: "Expert in data privacy (GDPR/CCPA) and platform compliance. Sarah ensures your user data strategies are bulletproof.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=800",
-  },
-  {
-    id: "4",
-    name: "David Choi",
-    role: "Associate",
-    bio: "Deeply embedded in the eSports ecosystem. David handles player contracts, tournament licensing, and visa issues.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=800",
-  },
-];
+import Team from "./Team";
 
 const testimonials = [
   {
@@ -139,7 +100,6 @@ interface AboutPageProps {
 }
 
 const AboutPage = ({ targetId }: AboutPageProps) => {
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   useEffect(() => {
@@ -153,15 +113,6 @@ const AboutPage = ({ targetId }: AboutPageProps) => {
       return () => clearTimeout(timer);
     }
   }, [targetId]);
-
-  // Team Slider Logic
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev === teamMembers.length - 1 ? 0 : prev + 1));
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? teamMembers.length - 1 : prev - 1));
-  };
 
   // Testimonial Slider Logic
   const nextTestimonial = () => {
@@ -332,9 +283,8 @@ const AboutPage = ({ targetId }: AboutPageProps) => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service) => (
-              <Link
+              <div
                 key={service.id}
-                href="/practice-areas"
                 className="group relative bg-white border border-[#1A2F5A]/10 p-12 hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-xl cursor-pointer"
               >
                 <div className="absolute top-0 left-0 w-full h-1 bg-[#1A2F5A] group-hover:bg-[#D4C5A0] transition-colors duration-300" />
@@ -354,7 +304,7 @@ const AboutPage = ({ targetId }: AboutPageProps) => {
                   <span>Learn More</span>
                   <ArrowRight className="w-4 h-4" />
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
@@ -388,94 +338,10 @@ const AboutPage = ({ targetId }: AboutPageProps) => {
         </div>
       </section>
 
-      {/* 5. TEAM SLIDER SECTION */}
-      <section
-        id="council"
-        className="py-32 bg-[#0B1B3B] text-white overflow-hidden relative border-t border-white/10"
-      >
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5" />
-
-        <div className="max-w-[1400px] mx-auto px-6 relative z-10">
-          <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-8">
-            <h2 className="text-4xl md:text-5xl font-light text-center md:text-left">
-              Meet The{" "}
-              <span className="text-[#D4C5A0] font-serif italic">Council</span>
-            </h2>
-
-            <div className="flex gap-4">
-              <button
-                onClick={prevSlide}
-                className="w-12 h-12 border border-[#D4C5A0] flex items-center justify-center hover:bg-[#D4C5A0] hover:text-[#0B1B3B] transition-all rounded-full"
-              >
-                <ArrowLeft />
-              </button>
-              <button
-                onClick={nextSlide}
-                className="w-12 h-12 border border-[#D4C5A0] flex items-center justify-center hover:bg-[#D4C5A0] hover:text-[#0B1B3B] transition-all rounded-full"
-              >
-                <ArrowRight />
-              </button>
-            </div>
-          </div>
-
-          <div className="relative min-h-[1000px] lg:min-h-[600px]">
-            {teamMembers.map((member, index) => (
-              <div
-                key={member.id}
-                className={`absolute top-0 left-0 w-full transition-all duration-700 ease-in-out transform ${
-                  index === currentSlide
-                    ? "opacity-100 translate-x-0 z-10"
-                    : "opacity-0 translate-x-12 pointer-events-none z-0"
-                }`}
-              >
-                <div className="grid lg:grid-cols-2 gap-12 items-start lg:items-center">
-                  <div className="relative aspect-[4/5] lg:aspect-square w-full max-w-[500px] mx-auto lg:mx-0 border border-white/10 p-4">
-                    <div className="absolute inset-0 bg-[#D4C5A0] transform translate-x-2 translate-y-2 z-0" />
-                    <div className="relative w-full h-full overflow-hidden bg-[#1A2F5A] z-10">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={member.imageUrl}
-                        alt={member.name}
-                        className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-6 text-center lg:text-left bg-[#0B1B3B] lg:bg-transparent pb-8">
-                    <div className="inline-block border-b border-[#D4C5A0] pb-2">
-                      <p className="text-[#D4C5A0] font-bold tracking-[0.2em] text-sm uppercase">
-                        {member.role}
-                      </p>
-                    </div>
-                    <h3 className="text-5xl md:text-7xl font-light font-serif">
-                      {member.name}
-                    </h3>
-                    <p className="text-xl text-gray-300 font-light leading-relaxed max-w-lg mx-auto lg:mx-0">
-                      {member.bio}
-                    </p>
-
-                    <div className="pt-8 flex justify-center lg:justify-start">
-                      <Button variant="outline">View Full Profile</Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex gap-2 mt-0 lg:-mt-12 justify-center lg:justify-start relative z-20">
-            {teamMembers.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setCurrentSlide(idx)}
-                className={`h-1 transition-all duration-300 ${
-                  idx === currentSlide ? "w-12 bg-[#D4C5A0]" : "w-4 bg-white/20"
-                }`}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* 5. TEAM SUMMARY (Replaced Slider) */}
+      <div id="council">
+        <Team />
+      </div>
 
       {/* 6. TESTIMONIAL SECTION */}
       <section className="py-32 bg-white px-6">
