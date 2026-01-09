@@ -40,3 +40,16 @@ export interface Article {
   author: string;
   content: React.ReactNode; // HTML/JSX content
 }
+
+export interface Event {
+  id: string;
+  title: string;
+  date: string;
+  time?: string;
+  year: string; // Grouping key
+  image: string;
+  description: React.ReactNode;
+  location?: string;
+  contactEmail?: string;
+  externalLink?: string;
+}

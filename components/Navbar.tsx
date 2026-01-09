@@ -22,6 +22,7 @@ const Navbar = () => {
     { name: "The Firm", href: "/about" },
     { name: "Expertise", href: "/practice-areas" },
     { name: "The Council", href: "/lawyers" },
+    { name: "Events", href: "/events" },
     { name: "Results", href: "/#achievements" },
     { name: "Insights", href: "/articles" },
   ];
