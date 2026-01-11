@@ -1,0 +1,25 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "The Firm",
+    "practiceAreas": "Expertise",
+    "lawyers": "The Council",
+    "events": "Events",
+    "results": "Results",
+    "insights": "Insights",
+    "careers": "Careers",
+    "contact": "Book Consultation"
+  },
+  "home": {
+    "hero": {
+      "tags": "Game Industry · eSports · Digital Rights",
+      "title_1": "Legal Protection",
+      "title_2": "for the",
+      "title_3": "Digital Arena",
+      "description": "Where classical legal authority meets digital innovation. We provide sophisticated counsel for the future of entertainment.",
+      "cta_primary": "Start Your Quest",
+      "cta_secondary": "Explore Expertise",
+      "badge_text": "Global Legal Representation"
+    }
+  }
+}

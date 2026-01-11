@@ -1,18 +1,21 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import localFont from "next/font/local";
-import "./globals.css";
+import "@/app/globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { notFound } from "next/navigation";
+import { getDictionary, locales } from "@/lib/dictionary";
+import { TranslationProvider } from "@/components/TranslationProvider";
 
 const geometricaSans = localFont({
-  src: "../fonts/GeometricaSans-Regular.woff",
+  src: "../../fonts/GeometricaSans-Regular.woff",
   variable: "--font-geometrica-sans",
   display: "swap",
 });
 
 const museo = localFont({
-  src: "../fonts/Museo300-Regular.woff",
+  src: "../../fonts/Museo300-Regular.woff",
   variable: "--font-museo",
   display: "swap",
 });
@@ -30,19 +33,36 @@ export const metadata: Metadata = {
     "Nexus Legal Group - Specialized legal counsel for the gaming and esports industry.",
 };
 
-export default function RootLayout({
+export async function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
+  const { locale } = await params;
+
+  if (!locales.includes(locale)) {
+    notFound();
+  }
+
+  // Cast locale to valid type since we checked includes()
+  const messages = await getDictionary(locale as any);
+
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body
         className={`${geometricaSans.variable} ${museo.variable} ${roboto.variable} antialiased min-h-screen bg-white text-[#0B1B3B] selection:bg-[#D4C5A0] selection:text-[#0B1B3B]`}
       >
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <TranslationProvider locale={locale} messages={messages}>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </TranslationProvider>
       </body>
     </html>
   );

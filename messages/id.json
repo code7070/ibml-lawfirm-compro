@@ -1,0 +1,25 @@
+{
+  "nav": {
+    "home": "Beranda",
+    "about": "Tentang Firma",
+    "practiceAreas": "Keahlian",
+    "lawyers": "Tim Hukum",
+    "events": "Acara",
+    "results": "Hasil",
+    "insights": "Wawasan",
+    "careers": "Karir",
+    "contact": "Konsultasi"
+  },
+  "home": {
+    "hero": {
+      "tags": "Industri Game · eSports · Hak Digital",
+      "title_1": "Perlindungan Hukum",
+      "title_2": "untuk",
+      "title_3": "Arena Digital",
+      "description": "Dimana otoritas hukum klasik bertemu dengan inovasi digital. Kami menyediakan nasihat hukum canggih untuk masa depan hiburan.",
+      "cta_primary": "Mulai Perjalanan Anda",
+      "cta_secondary": "Jelajahi Keahlian",
+      "badge_text": "Representasi Hukum Global"
+    }
+  }
+}

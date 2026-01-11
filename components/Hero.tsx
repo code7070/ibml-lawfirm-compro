@@ -1,7 +1,11 @@
+"use client";
 import { ArrowDown } from "lucide-react";
 import Button from "./Button";
+import { useTranslations } from "@/hooks/useTranslations";
 
 const Hero = () => {
+  const t = useTranslations("home.hero");
+
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-[#0B1B3B]">
       {/* Background System */}
@@ -20,29 +24,28 @@ const Hero = () => {
         <div className="lg:col-span-7 space-y-10">
           <div className="inline-block border-l-2 border-[#D4C5A0] pl-6">
             <p className="text-[#D4C5A0] uppercase tracking-[0.2em] text-sm font-bold mb-4">
-              Game Industry · eSports · Digital Rights
+              {t("tags")}
             </p>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-light leading-[1.1] text-white">
-              Legal Protection <br />
+              {t("title_1")} <br />
               <span className="font-serif italic text-[#F5F5F7]">
-                for the
+                {t("title_2")}
               </span>{" "}
               <br />
-              Digital Arena
+              {t("title_3")}
             </h1>
           </div>
 
           <p className="text-xl text-gray-400 max-w-lg leading-[1.8] font-light pl-6 border-l border-white/10">
-            Where classical legal authority meets digital innovation. We provide
-            sophisticated counsel for the future of entertainment.
+            {t("description")}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 pl-6">
             <Button variant="primary" href="/contact">
-              Start Your Quest
+              {t("cta_primary")}
             </Button>
             <Button variant="outline" icon={false} href="/practice-areas">
-              Explore Expertise
+              {t("cta_secondary")}
             </Button>
           </div>
         </div>
@@ -70,9 +73,7 @@ const Hero = () => {
 
               <div className="absolute -bottom-10 -left-10 bg-[#D4C5A0] p-6 text-[#0B1B3B] max-w-[200px]">
                 <p className="text-xs font-bold uppercase tracking-widest leading-relaxed">
-                  Global Legal
-                  <br />
-                  Representation
+                  {t("badge_text")}
                 </p>
               </div>
             </div>

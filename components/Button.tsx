@@ -1,6 +1,6 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
+import { LangLink } from "./LangLink";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline" | "gold";
@@ -47,12 +47,12 @@ const Button: React.FC<ButtonProps> = ({
 
   if (href) {
     return (
-      <Link
+      <LangLink
         href={href}
         className={`${baseStyles} ${variants[variant]} ${className}`}
       >
         {content}
-      </Link>
+      </LangLink>
     );
   }
 

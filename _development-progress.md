@@ -70,13 +70,16 @@
 
 ### 2.1 Dual Language System 📋
 
-**Status:** ⏳ Not Started  
-**Priority:** High  
+**Status:** 🚧 In Progress
+**Priority:** High
 **Estimated Effort:** 3-4 days
 
 #### Current State
 
-- All pages are currently in single language (Indonesian)
+- ✅ Infrastructure implemented (Custom Proxy + Custom Hook)
+- ✅ Home page (Hero, Navbar) updated
+- 🚧 Other pages pending translation
+- 🚧 JSON dictionaries created for en/id
 - No language switching mechanism
 - No i18n library integrated
 
@@ -210,19 +213,12 @@ export default function Navbar() {
 
 ##### Step 5: Middleware Configuration (Day 3) ✅
 
-```tsx
-// middleware.ts
-import createMiddleware from "next-intl/middleware";
+```typescript
+// proxy.ts (renamed from middleware.ts for Next.js 16 compatibility)
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
-export default createMiddleware({
-  locales: ["id", "en"],
-  defaultLocale: "id",
-  localePrefix: "always", // Always show locale in URL
-});
-
-export const config = {
-  matcher: ["/((?!api|_next|.*\\..*).*)"],
-};
+// ... custom middleware implementation
 ```
 
 ##### Step 6: Update All Pages (Day 3-4)
