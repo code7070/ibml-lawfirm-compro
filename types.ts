@@ -1,6 +1,13 @@
 import { LucideIcon } from "lucide-react";
 import React from "react";
 
+export interface LogoItem {
+  id: string | number;
+  name: string;
+  icon?: React.ReactNode;
+  image?: string;
+}
+
 export interface TeamMember {
   id: string;
   name: string;
@@ -28,7 +35,8 @@ export type ArticleCategory =
   | "Intellectual Property"
   | "Esports"
   | "Social Media"
-  | "Corporate";
+  | "Corporate"
+  | "Research";
 
 export interface Article {
   id: string;

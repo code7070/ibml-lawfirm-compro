@@ -2,114 +2,151 @@
 
 import { useEffect } from "react";
 import {
-  Cpu,
+  Gamepad2,
   Users,
-  Shield,
-  Globe,
+  Cpu,
+  HeartPulse,
   Scale,
-  FileText,
-  CheckCircle2,
+  ShieldCheck,
+  ArrowRight,
+  Mic2,
+  Plane,
+  Baby,
+  Briefcase,
+  GraduationCap,
+  Wifi,
+  CreditCard,
 } from "lucide-react";
 import CTASection from "./CTASection";
+import LogoTicker from "./LogoTicker";
+import { LogoItem } from "@/types";
 
 interface PracticeAreaPageProps {
   targetId?: string | null;
+  clientLogos?: LogoItem[];
+  orgLogos?: LogoItem[];
 }
 
-const detailedPractices = [
+// Core Competencies
+const coreCompetencies = [
   {
-    id: "game-dev",
-    title: "Game Development Law",
-    icon: Cpu,
-    tagline: "From Concept to Gold Master",
+    title: "General Business & Company Law",
     description:
-      "We provide end-to-end legal support for game developers, understanding the unique lifecycle of software entertainment. Whether you are a solo indie dev or a AAA studio, we ensure your IP is secured and your commercial relationships are sound.",
-    capabilities: [
-      "Publisher & Distribution Agreements",
-      "Engine & Middleware Licensing (Unreal, Unity)",
-      "Contractor & Employee IP Assignment",
-      "Open Source License Compliance",
-      "Age Rating (ESRB/PEGI) & Consumer Protection",
+      "Comprehensive corporate governance, M&A, and entity structuring.",
+  },
+  {
+    title: "Consumer Protection Law",
+    description:
+      "Ensuring compliance with fair trade regulations and user safety standards.",
+  },
+  {
+    title: "Competition Law",
+    description:
+      "Navigating antitrust regulations in high-stakes market consolidations.",
+  },
+];
+
+// Practice Groups Data
+const practiceGroups = [
+  {
+    id: "entertainment",
+    title: "Entertainment Practice Group",
+    icon: Gamepad2,
+    description:
+      "Specialized counsel for the creators of digital worlds and modern entertainment experiences.",
+    areas: [
+      {
+        title: "Games",
+        icon: Gamepad2,
+        desc: "End-to-end support for studios: publisher agreements, IP clearance, and regulatory compliance for loot boxes/virtual currency.",
+      },
+      {
+        title: "MICE",
+        subtitle: "(Meetings, Incentives, Conferences, Exhibitions)",
+        icon: Plane,
+        desc: "Legal infrastructure for large-scale eSports tournaments, conventions, and international industry events.",
+      },
+      {
+        title: "KOL / Influencer",
+        icon: Mic2,
+        desc: "Representation for digital talent, including brand deals, agency contracts, and rights of publicity.",
+      },
     ],
   },
   {
-    id: "esports",
-    title: "eSports Representation",
+    id: "people",
+    title: "People & Labour Practice Group",
     icon: Users,
-    tagline: "For the Competitive Arena",
     description:
-      "The eSports landscape is a wild west of regulation. We bring order to the chaos by representing teams, tournament organizers, and individual talent. Our firm has structured some of the largest franchise league buy-ins in history.",
-    capabilities: [
-      "Player & Talent Agency Contracts",
-      "Franchise League Participation Agreements",
-      "Sponsorship & Brand Endorsements",
-      "Visa & Immigration for International Talent",
-      "Tournament Rules & Governance Structures",
+      "Protecting the human element behind the innovation. Private client services and workforce strategies.",
+    areas: [
+      {
+        title: "Family Law",
+        icon: Baby,
+        desc: "Discrete counsel for high-net-worth individuals regarding asset protection, marriage contracts, and succession.",
+      },
+      {
+        title: "Individual Legal Services",
+        icon: ShieldCheck,
+        desc: "Personal reputation management, privacy protection, and individual rights defense.",
+      },
+      {
+        title: "Employment & Immigration",
+        icon: Briefcase,
+        desc: "Cross-border talent mobility (O-1/P-1 Visas for eSports athletes) and executive compensation packages.",
+      },
     ],
   },
   {
-    id: "ip",
-    title: "Intellectual Property",
-    icon: Shield,
-    tagline: "Defending Digital Assets",
+    id: "tech",
+    title: "Tech Practice Group",
+    icon: Cpu,
     description:
-      "In the digital age, your code and your brand are your most valuable assets. We employ aggressive strategies to protect your trademarks, copyrights, and trade secrets across global jurisdictions.",
-    capabilities: [
-      "Trademark Search, Filing & Prosecution",
-      "Copyright Registration for Code & Art Assets",
-      "Trade Secret Protection Programs",
-      "DMCA Takedown Enforcement",
-      "Licensing & Merchandising Deals",
+      "Cutting-edge legal frameworks for emerging technologies and digital infrastructure.",
+    areas: [
+      {
+        title: "Data Protection",
+        icon: ShieldCheck,
+        desc: "GDPR/CCPA compliance, data breach response, and privacy-by-design consulting.",
+      },
+      {
+        title: "Financial Technology",
+        icon: CreditCard,
+        desc: "Crypto-asset regulation, payment gateway integration, and blockchain compliance.",
+      },
+      {
+        title: "Communication & Media",
+        icon: Wifi,
+        desc: "Telecommunications regulation, platform liability (Section 230), and content moderation policies.",
+      },
     ],
   },
   {
-    id: "creators",
-    title: "Content Creator Rights",
-    icon: Globe,
-    tagline: "Empowering Voices",
+    id: "health",
+    title: "Health & Education Practice Group",
+    icon: HeartPulse,
     description:
-      "Streamers and influencers are the new media powerhouses. We help creators professionalize their business, protecting them from predatory MCN contracts and ensuring they own the value they create.",
-    capabilities: [
-      "MCN (Multi-Channel Network) Contract Review",
-      "Brand Partnership & Sponsorship Agreements",
-      "Platform Exclusivity Negotiations",
-      "Rights of Publicity Management",
-      "Content Licensing & Syndication",
-    ],
-  },
-  {
-    id: "litigation",
-    title: "Platform Litigation",
-    icon: Scale,
-    tagline: "Restoring Access & Rights",
-    description:
-      "When platforms strike with bans or demonetization, your livelihood is at risk. We specialize in dispute resolution with major tech platforms, recovering accounts and digital assets for our clients.",
-    capabilities: [
-      "Terms of Service (ToS) Dispute Resolution",
-      "Account Ban Appeals & Recovery",
-      "Digital Asset & Skin Recovery",
-      "Defamation & Harassment Litigation",
-      "Arbitration & Mediation",
-    ],
-  },
-  {
-    id: "corporate",
-    title: "Corporate Structuring",
-    icon: FileText,
-    tagline: "Building the Foundation",
-    description:
-      "We help gaming and tech startups build a solid legal foundation that attracts investment. From incorporation to exit, we guide founders through the complexities of corporate finance and governance.",
-    capabilities: [
-      "Entity Formation (C-Corp, LLC)",
-      "Founder Agreements & Equity Vesting",
-      "Seed, Series A, & VC Financing",
-      "Mergers & Acquisitions (M&A)",
-      "Stock Option Plans (ESOP)",
+      "Navigating the complex regulatory landscape of institutional services and gamified health.",
+    areas: [
+      {
+        title: "Healthcare Legal Services",
+        icon: HeartPulse,
+        desc: "Compliance for MedTech apps, gamified therapy platforms, and health data privacy (HIPAA).",
+      },
+      {
+        title: "Education Law & Compliance",
+        icon: GraduationCap,
+        desc: "EdTech regulation, student data protection, and institutional governance.",
+      },
     ],
   },
 ];
 
-const PracticeAreaPage = ({ targetId }: PracticeAreaPageProps) => {
+const PracticeAreaPage = ({
+  targetId,
+  clientLogos,
+  orgLogos,
+}: PracticeAreaPageProps) => {
   useEffect(() => {
     if (targetId) {
       const timer = setTimeout(() => {
@@ -119,15 +156,10 @@ const PracticeAreaPage = ({ targetId }: PracticeAreaPageProps) => {
         }
       }, 100);
       return () => clearTimeout(timer);
+    } else {
+      window.scrollTo(0, 0);
     }
   }, [targetId]);
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <div className="pt-20 min-h-screen bg-white">
@@ -136,129 +168,125 @@ const PracticeAreaPage = ({ targetId }: PracticeAreaPageProps) => {
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5" />
         <div className="max-w-[1400px] mx-auto relative z-10 text-center">
           <span className="text-[#D4C5A0] font-bold tracking-[0.2em] text-xs uppercase mb-6 block">
-            Our Expertise
+            Practice Areas
           </span>
           <h1 className="text-5xl md:text-7xl font-light mb-8">
-            Architecture of{" "}
+            Specialized{" "}
             <span className="font-serif italic text-[#D4C5A0]">
-              Digital Defense
+              Legal Architectures
             </span>
           </h1>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light leading-relaxed">
-            Specialized legal counsel built for the speed and complexity of the
-            modern digital economy. We don&apos;t just know the law; we know the
-            industry.
+            We structure our expertise into focused practice groups, ensuring
+            deep industry knowledge tailored to specific sectors.
           </p>
         </div>
       </section>
 
-      {/* Main Content - Zig Zag Layout */}
+      {/* Client Ticker */}
+      {clientLogos && clientLogos.length > 0 && (
+        <LogoTicker
+          title="Trusted By Industry Leaders"
+          items={clientLogos}
+          theme="light"
+        />
+      )}
+
+      {/* Core Competencies */}
+      <section className="py-20 bg-white border-b border-[#F5F5F7]">
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-light text-[#0B1B3B]">
+              Foundational Expertise
+            </h2>
+            <div className="w-16 h-1 bg-[#D4C5A0] mx-auto mt-4"></div>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {coreCompetencies.map((core, idx) => (
+              <div
+                key={idx}
+                className="bg-[#F5F5F7] p-8 border-t-4 border-[#1A2F5A] text-center"
+              >
+                <Scale
+                  className="w-10 h-10 text-[#1A2F5A] mx-auto mb-6"
+                  strokeWidth={1.5}
+                />
+                <h3 className="text-xl font-serif text-[#0B1B3B] mb-4">
+                  {core.title}
+                </h3>
+                <p className="text-[#2E4472] font-light">{core.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Practice Groups */}
       <section className="py-24 px-6">
         <div className="max-w-[1400px] mx-auto space-y-32">
-          {detailedPractices.map((practice, index) => (
-            <div
-              key={practice.id}
-              id={practice.id}
-              className={`grid lg:grid-cols-2 gap-16 items-center ${
-                index % 2 === 1 ? "lg:grid-flow-dense" : ""
-              }`}
-            >
-              {/* Text Side */}
-              <div className={`${index % 2 === 1 ? "lg:col-start-2" : ""}`}>
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="p-3 bg-[#0B1B3B] border border-[#D4C5A0]">
-                    <practice.icon
-                      className="w-8 h-8 text-[#D4C5A0]"
-                      strokeWidth={1.5}
-                    />
-                  </div>
-                  <span className="text-[#2E4472] font-bold tracking-[0.2em] text-xs uppercase">
-                    {practice.tagline}
+          {practiceGroups.map((group) => (
+            <div key={group.id} id={group.id} className="scroll-mt-32">
+              {/* Group Header */}
+              <div className="flex flex-col md:flex-row items-start md:items-end gap-6 mb-12 border-b border-[#0B1B3B]/10 pb-8">
+                <div className="p-4 bg-[#0B1B3B] text-[#D4C5A0]">
+                  <group.icon size={40} strokeWidth={1.5} />
+                </div>
+                <div>
+                  <span className="text-[#D4C5A0] font-bold tracking-[0.2em] text-xs uppercase mb-2 block">
+                    Practice Group
                   </span>
+                  <h2 className="text-4xl md:text-5xl font-light text-[#0B1B3B]">
+                    {group.title}
+                  </h2>
                 </div>
-
-                <h2 className="text-4xl font-serif text-[#0B1B3B] mb-6">
-                  {practice.title}
-                </h2>
-
-                <p className="text-[#2E4472] text-lg font-light leading-relaxed mb-10">
-                  {practice.description}
+                <p className="md:ml-auto md:max-w-md text-[#2E4472] font-light text-right">
+                  {group.description}
                 </p>
-
-                <div className="bg-[#F5F5F7] p-8 border-l-4 border-[#D4C5A0]">
-                  <h4 className="text-[#0B1B3B] font-bold text-sm uppercase tracking-widest mb-6">
-                    Key Capabilities
-                  </h4>
-                  <ul className="space-y-4">
-                    {practice.capabilities.map((cap, idx) => (
-                      <li
-                        key={idx}
-                        className="flex items-start gap-3 text-[#2E4472] font-light"
-                      >
-                        <CheckCircle2 className="w-5 h-5 text-[#D4C5A0] shrink-0 mt-0.5" />
-                        <span>{cap}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
               </div>
 
-              {/* Visual Side */}
-              <div
-                className={`${
-                  index % 2 === 1 ? "lg:col-start-1" : ""
-                } relative group`}
-              >
-                <div className="absolute inset-0 bg-[#0B1B3B] transform translate-x-4 translate-y-4 transition-transform duration-500 group-hover:translate-x-6 group-hover:translate-y-6" />
-                <div className="relative aspect-[4/3] overflow-hidden border border-[#D4C5A0]/20 bg-[#1A2F5A]">
+              {/* Areas Grid */}
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {group.areas.map((area, idx) => (
                   <div
-                    className={`w-full h-full bg-gradient-to-br ${
-                      index % 2 === 0
-                        ? "from-[#0B1B3B] to-[#1A2F5A]"
-                        : "from-[#1A2F5A] to-[#0B1B3B]"
-                    } flex items-center justify-center relative overflow-hidden`}
+                    key={idx}
+                    className="group border border-[#0B1B3B]/10 p-8 hover:border-[#D4C5A0] hover:shadow-lg transition-all duration-300 bg-white"
                   >
-                    <div
-                      className="absolute inset-0 opacity-20"
-                      style={{
-                        backgroundImage:
-                          "url('https://www.transparenttextures.com/patterns/cubes.png')",
-                      }}
-                    ></div>
-                    <practice.icon className="w-48 h-48 text-white/5 absolute -bottom-10 -right-10" />
-
-                    <div className="text-center p-8 relative z-10">
-                      <span className="text-6xl font-serif text-[#D4C5A0]/20 font-bold block mb-4">
-                        0{index + 1}
-                      </span>
+                    <div className="flex items-center justify-between mb-6">
+                      <area.icon
+                        className="w-8 h-8 text-[#2E4472] group-hover:text-[#D4C5A0] transition-colors"
+                        strokeWidth={1.5}
+                      />
+                      <div className="w-8 h-8 rounded-full border border-[#0B1B3B]/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <ArrowRight className="w-4 h-4 text-[#0B1B3B]" />
+                      </div>
                     </div>
+                    <h3 className="text-xl font-bold text-[#0B1B3B] mb-1">
+                      {area.title}
+                    </h3>
+                    {area.subtitle && (
+                      <p className="text-xs text-gray-400 mb-3 uppercase tracking-wider">
+                        {area.subtitle}
+                      </p>
+                    )}
+                    <p className="text-[#2E4472] font-light text-sm leading-relaxed mt-4">
+                      {area.desc}
+                    </p>
                   </div>
-                </div>
+                ))}
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Quick Navigation / Summary */}
-      <section className="bg-[#F5F5F7] py-24 border-t border-[#0B1B3B]/5">
-        <div className="max-w-[1400px] mx-auto px-6 text-center">
-          <h3 className="text-3xl font-light text-[#0B1B3B] mb-12">
-            Not sure which area fits your needs?
-          </h3>
-          <div className="flex flex-wrap justify-center gap-4">
-            {detailedPractices.map((p) => (
-              <button
-                key={p.id}
-                onClick={() => scrollToSection(p.id)}
-                className="px-6 py-3 border border-[#0B1B3B]/20 text-[#0B1B3B] hover:bg-[#0B1B3B] hover:text-[#D4C5A0] transition-colors uppercase text-xs font-bold tracking-widest"
-              >
-                {p.title}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Org Ticker */}
+      {orgLogos && orgLogos.length > 0 && (
+        <LogoTicker
+          title="Member Organizations"
+          items={orgLogos}
+          theme="light"
+        />
+      )}
 
       <CTASection />
     </div>

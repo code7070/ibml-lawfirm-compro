@@ -218,3 +218,21 @@ h4 {
   background-position: 0 0, 10px 10px;
   opacity: 0.05;
 }
+
+/* ========== LOGO TICKER ANIMATION ========== */
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-ticker {
+  animation: ticker 30s linear infinite;
+}
+
+.animate-ticker:hover {
+  animation-play-state: paused;
+}

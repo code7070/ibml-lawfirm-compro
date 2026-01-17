@@ -26,9 +26,9 @@ const Navbar = () => {
   const navLinks = [
     { name: t("about"), href: "/about" },
     { name: t("practiceAreas"), href: "/practice-areas" },
+    { name: t("services"), href: "/services" },
     { name: t("lawyers"), href: "/lawyers" },
     { name: t("events"), href: "/events" },
-    { name: t("results"), href: "/#achievements" },
     { name: t("insights"), href: "/articles" },
   ];
 

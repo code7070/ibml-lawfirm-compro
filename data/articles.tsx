@@ -3,6 +3,77 @@ import React from "react";
 
 export const ARTICLE_DATA: Article[] = [
   {
+    id: "6",
+    title: "The Virtual Asset Paradox: Property Rights in Centralized Servers",
+    date: "Jan 15, 2024",
+    category: "Research",
+    image:
+      "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&q=80&w=800",
+    author: "Nexus Research Team",
+    summary:
+      "A comprehensive white paper analyzing the legal status of in-game items across EU, US, and Asian jurisdictions. We explore the tension between EULA definitions and emerging property law.",
+    content: (
+      <>
+        <p>
+          <strong>Abstract:</strong> This paper explores the tension between End
+          User License Agreements (EULAs) which traditionally define virtual
+          items as licensed services, and emerging case law that increasingly
+          treats them as personal property with tangible value.
+        </p>
+        <h3>The Shift in Judicial Sentiment</h3>
+        <p>
+          Our research indicates a shifting judicial sentiment in the EU
+          regarding the resale rights of digital goods. Following the precedent
+          set by <em>UsedSoft v. Oracle</em>, we argue that
+          &apos;tokenized&apos; items that can be traded on secondary markets
+          may soon be subject to the doctrine of exhaustion.
+        </p>
+        <h3>Implications for MMO Economies</h3>
+        <p>
+          We analyze three potential regulatory futures: status quo, strict
+          regulation (classifying loot boxes as gambling), and a middle ground
+          of &apos;digital consumer rights&apos; that guarantees ownership
+          portability. For studios, this means the current model of
+          &apos;revocable license&apos; may effectively be dead within 5 years.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "7",
+    title: "Algorithmic Fairness in Matchmaking Systems",
+    date: "Dec 05, 2023",
+    category: "Research",
+    image:
+      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800",
+    author: "Nexus Research Team",
+    summary:
+      "Investigating the legal implications of Engagement Optimized Matchmaking (EOMM) and potential consumer protection liabilities regarding transparency and manipulation.",
+    content: (
+      <>
+        <p>
+          As matchmaking algorithms move beyond pure skill-based ranking (SBMM)
+          to maximize player retention and spend (EOMM), new legal risks emerge
+          regarding transparency and deceptive practices.
+        </p>
+        <h3>The Black Box Problem</h3>
+        <p>
+          Players are increasingly aware that their multiplayer experience is
+          curated not just for fairness, but for psychological engagement. Our
+          paper dissects the potential liability under the FTC Act for &apos;dark
+          patterns&apos; if matchmaking is secretly weighted to encourage
+          microtransaction purchases (e.g., matching a player with a paid skin
+          against lower-skill opponents to showcase the item).
+        </p>
+        <p>
+          We propose a framework for &apos;Algorithmic Disclosure&apos; that
+          allows studios to maintain trade secrets while satisfying consumer
+          protection requirements.
+        </p>
+      </>
+    ),
+  },
+  {
     id: "1",
     title: "AI in Game Development: The New Copyright Frontier",
     date: "Oct 12, 2023",

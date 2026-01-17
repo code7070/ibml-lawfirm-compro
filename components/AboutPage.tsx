@@ -18,6 +18,9 @@ import {
 } from "lucide-react";
 import CTASection from "./CTASection";
 import Team from "./Team";
+import LogoTicker from "./LogoTicker";
+import { LogoItem } from "@/types";
+import { LangLink } from "./LangLink";
 
 const testimonials = [
   {
@@ -97,9 +100,11 @@ const services = [
 
 interface AboutPageProps {
   targetId?: string | null;
+  clientLogos?: LogoItem[];
+  orgLogos?: LogoItem[];
 }
 
-const AboutPage = ({ targetId }: AboutPageProps) => {
+const AboutPage = ({ targetId, clientLogos, orgLogos }: AboutPageProps) => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   useEffect(() => {
@@ -264,6 +269,11 @@ const AboutPage = ({ targetId }: AboutPageProps) => {
         </div>
       </section>
 
+      {/* Client Ticker */}
+      {clientLogos && clientLogos.length > 0 && (
+        <LogoTicker title="Representing" items={clientLogos} theme="dark" />
+      )}
+
       {/* 3. PRACTICE AREAS */}
       <section className="py-32 bg-[#F5F5F7]">
         <div className="max-w-[1400px] mx-auto px-6">
@@ -283,9 +293,10 @@ const AboutPage = ({ targetId }: AboutPageProps) => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service) => (
-              <div
+              <LangLink
                 key={service.id}
-                className="group relative bg-white border border-[#1A2F5A]/10 p-12 hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-xl cursor-pointer"
+                href="/practice-areas"
+                className="group relative bg-white border border-[#1A2F5A]/10 p-12 hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-xl cursor-pointer block"
               >
                 <div className="absolute top-0 left-0 w-full h-1 bg-[#1A2F5A] group-hover:bg-[#D4C5A0] transition-colors duration-300" />
                 <div className="mb-8">
@@ -304,7 +315,7 @@ const AboutPage = ({ targetId }: AboutPageProps) => {
                   <span>Learn More</span>
                   <ArrowRight className="w-4 h-4" />
                 </div>
-              </div>
+              </LangLink>
             ))}
           </div>
         </div>
@@ -342,6 +353,15 @@ const AboutPage = ({ targetId }: AboutPageProps) => {
       <div id="council">
         <Team />
       </div>
+
+      {/* Org Ticker */}
+      {orgLogos && orgLogos.length > 0 && (
+        <LogoTicker
+          title="Strategic Alliances"
+          items={orgLogos}
+          theme="light"
+        />
+      )}
 
       {/* 6. TESTIMONIAL SECTION */}
       <section className="py-32 bg-white px-6">
