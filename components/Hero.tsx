@@ -7,7 +7,7 @@ const Hero = () => {
   const t = useTranslations("home.hero");
 
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-[#0B1B3B]">
+    <section className="relative min-h-screen flex items-center pt-navbar overflow-hidden bg-[#0B1B3B]">
       {/* Background System */}
       <div className="absolute inset-0 z-0">
         {/* Gradient */}

@@ -5,9 +5,16 @@
   --font-sans: var(--font-primary);
   /* Secondary: Museo 300 - accents, quotes */
   --font-serif: var(--font-secondary);
+
+  /* Custom Spacing */
+  --spacing-navbar: var(--navbar-height);
+  --spacing-navbar-offset: calc(var(--navbar-height) + 2rem);
 }
 
 :root {
+  /* ========== DIMENSIONS ========== */
+  --navbar-height: 5rem; /* 80px */
+
   /* ========== COLOR PALETTE ========== */
   /* Primary Colors */
   --navy-darkest: #0b1b3b;
