@@ -156,9 +156,9 @@ const CareerPage = () => {
                 A Firm Where Tradition Meets Disruption
               </h2>
               <p className="text-gray-300 font-light leading-relaxed mb-8">
-                At Nexus, you won't just draft contracts; you'll shape the
-                regulatory frameworks for metaverses, eSports leagues, and AI
-                governance. We offer an environment that values intellectual
+                At Nexus, you won&apos;t just draft contracts; you&apos;ll shape
+                the regulatory frameworks for metaverses, eSports leagues, and
+                AI governance. We offer an environment that values intellectual
                 rigor and creative problem-solving equally.
               </p>
               <div className="grid grid-cols-2 gap-6">
@@ -175,8 +175,8 @@ const CareerPage = () => {
             <div className="hidden md:block">
               <div className="border border-[#D4C5A0] p-8 bg-[#0B1B3B]/50 backdrop-blur-sm">
                 <p className="font-serif italic text-2xl text-white mb-6">
-                  "The pace here is electric. We are dealing with legal
-                  questions that didn't exist six months ago."
+                  &quot;The pace here is electric. We are dealing with legal
+                  questions that didn&apos;t exist six months ago.&quot;
                 </p>
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 bg-[#D4C5A0] rounded-full flex items-center justify-center text-[#0B1B3B] font-bold">
