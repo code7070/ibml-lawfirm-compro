@@ -2,11 +2,9 @@
 
 @theme {
   /* Primary: Geometrica Sans - headings, display */
-  --font-sans: var(--font-geometrica-sans);
+  --font-sans: var(--font-primary);
   /* Secondary: Museo 300 - accents, quotes */
-  --font-serif: var(--font-museo);
-  /* Alternative: Roboto - body text, forms */
-  --font-body: var(--font-roboto);
+  --font-serif: var(--font-secondary);
 }
 
 :root {
@@ -78,8 +76,8 @@
 
 /* ========== BASE TYPOGRAPHY ========== */
 body {
-  font-family: var(--font-roboto), "Segoe UI", -apple-system, BlinkMacSystemFont,
-    sans-serif;
+  font-family: var(--font-body), "Inter", "Segoe UI", -apple-system,
+    BlinkMacSystemFont, sans-serif;
   font-size: var(--body-regular-size);
   line-height: var(--body-regular-line-height);
   background-color: var(--white);
@@ -94,8 +92,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-geometrica-sans), "Inter", "Segoe UI", -apple-system,
-    BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-primary), "Space Grotesk", "Inter", "Segoe UI",
+    -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 h1 {
@@ -123,19 +121,19 @@ h4 {
 }
 
 .font-primary {
-  font-family: var(--font-geometrica-sans), "Inter", "Segoe UI", -apple-system,
-    BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-primary), "Space Grotesk", "Inter", "Segoe UI",
+    -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* Museo for serif/accents/quotes */
 .font-serif {
-  font-family: var(--font-museo), "Merriweather", "Playfair Display", serif;
+  font-family: var(--font-secondary), "Merriweather", "Playfair Display", serif;
 }
 
-/* Roboto for body text alternative */
+/* Inter for body text alternative */
 .font-body {
-  font-family: var(--font-roboto), "Segoe UI", -apple-system, BlinkMacSystemFont,
-    sans-serif;
+  font-family: var(--font-body), "Inter", "Segoe UI", -apple-system,
+    BlinkMacSystemFont, sans-serif;
 }
 
 /* ========== TYPOGRAPHY UTILITIES ========== */

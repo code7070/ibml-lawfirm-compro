@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import {
   BookOpen,
   HandHeart,
+  Scale,
   CheckCircle2,
   ArrowRight,
   Building,
@@ -154,7 +155,7 @@ const ServicesPage = ({ articles = [] }: ServicesPageProps) => {
                 </p>
               </div>
               <div className="p-6 bg-[#F5F5F7] text-center border border-[#0B1B3B]/5">
-                <Shield className="w-10 h-10 text-[#1A2F5A] mx-auto mb-4" />
+                <Scale className="w-10 h-10 text-[#1A2F5A] mx-auto mb-4" />
                 <p className="text-sm font-bold text-[#0B1B3B]">
                   Policy Advisory
                 </p>

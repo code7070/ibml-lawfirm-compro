@@ -9,7 +9,7 @@ export const ARTICLE_DATA: Article[] = [
     category: "Research",
     image:
       "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&q=80&w=800",
-    author: "Nexus Research Team",
+    author: "IBLM Research Team",
     summary:
       "A comprehensive white paper analyzing the legal status of in-game items across EU, US, and Asian jurisdictions. We explore the tension between EULA definitions and emerging property law.",
     content: (
@@ -46,7 +46,7 @@ export const ARTICLE_DATA: Article[] = [
     category: "Research",
     image:
       "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800",
-    author: "Nexus Research Team",
+    author: "IBLM Research Team",
     summary:
       "Investigating the legal implications of Engagement Optimized Matchmaking (EOMM) and potential consumer protection liabilities regarding transparency and manipulation.",
     content: (

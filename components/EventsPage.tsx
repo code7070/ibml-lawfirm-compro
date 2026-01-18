@@ -43,7 +43,7 @@ const EventsPage: React.FC<EventsPageProps> = ({ events }) => {
             <span className="font-serif italic text-[#D4C5A0]">Events</span>
           </h1>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light leading-relaxed">
-            Join Nexus Legal at the forefront of the digital entertainment
+            Join IBLM Law Group at the forefront of the digital entertainment
             industry. Workshops, summits, and networking mixers.
           </p>
         </div>

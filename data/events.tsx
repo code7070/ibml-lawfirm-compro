@@ -4,14 +4,14 @@ import React from "react";
 export const EVENT_DATA: Event[] = [
   {
     id: "1",
-    title: "Nexus Legal Summit 2024: The Future of Virtual Assets",
+    title: "IBLM Legal Summit 2024: The Future of Virtual Assets",
     date: "November 15, 2024",
     time: "09:00 AM - 05:00 PM",
     year: "2024",
     image:
       "https://images.unsplash.com/photo-1544531696-dd9e31a98074?auto=format&fit=crop&q=80&w=800",
     location: "Convention Center, Los Angeles",
-    contactEmail: "events@nexus.legal",
+    contactEmail: "events@iblm.law",
     externalLink: "#",
     description: (
       <>
@@ -52,11 +52,11 @@ export const EVENT_DATA: Event[] = [
     image:
       "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80&w=800",
     location: "The W Hotel, San Francisco",
-    contactEmail: "rsvp@nexus.legal",
+    contactEmail: "rsvp@iblm.law",
     description: (
       <>
         <p>
-          Nexus Legal invites our clients and partners to an exclusive evening
+          IBLM Law Group invites our clients and partners to an exclusive evening
           of cocktails and conversation during GDC. Unwind after the conference
           and connect with fellow creators and innovators.
         </p>
@@ -74,7 +74,7 @@ export const EVENT_DATA: Event[] = [
     year: "2023",
     image:
       "https://images.unsplash.com/photo-1551818255-e6e10975bc17?auto=format&fit=crop&q=80&w=800",
-    location: "Nexus HQ, Los Angeles",
+    location: "IBLM HQ, Los Angeles",
     description: (
       <>
         <p>

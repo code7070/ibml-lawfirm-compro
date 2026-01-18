@@ -22,7 +22,7 @@ const Footer = () => {
             <Link href="/" className="flex items-center gap-3">
               <Scale className="w-8 h-8 text-[#D4C5A0]" />
               <span className="text-2xl font-light tracking-[0.2em] text-white">
-                NEXUS
+                IBLM
               </span>
             </Link>
             <p className="text-gray-500 text-sm leading-relaxed max-w-sm font-light">
@@ -137,7 +137,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-600 font-mono">
-          <p>&copy; {new Date().getFullYear()} Nexus Legal LLP. Est. 2024</p>
+          <p>&copy; {new Date().getFullYear()} IBLM Law Group LLP. Est. 2024</p>
           <div className="flex gap-8">
             <span className="hover:text-gray-400 cursor-pointer">Privacy</span>
             <span className="hover:text-gray-400 cursor-pointer">Terms</span>

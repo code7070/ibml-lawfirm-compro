@@ -1,59 +1,46 @@
 "use client";
 
 import {
-  Scale,
   Shield,
-  Globe,
   Cpu,
   Users,
   FileText,
   ArrowRight,
+  Gamepad2,
+  HeartPulse,
 } from "lucide-react";
 import Link from "next/link";
 import { Service } from "../types";
 
+// Updated to match Practice Area Groups
 const services: Service[] = [
   {
-    id: "game-dev",
-    title: "Game Development Law",
+    id: "entertainment",
+    title: "Entertainment Practice Group",
     description:
-      "Comprehensive counsel for indie studios and AAA publishers. From dev agreements to IP clearance.",
-    icon: Cpu,
+      "Specialized counsel for the creators of digital worlds and modern entertainment experiences. Covering Games, MICE events, and Influencers.",
+    icon: Gamepad2,
   },
   {
-    id: "esports",
-    title: "eSports Representation",
+    id: "people",
+    title: "People & Labour Practice Group",
     description:
-      "Player contracts, team franchising, and tournament regulation. Protecting talent and organizations.",
+      "Protecting the human element behind the innovation. Private client services, family law, and cross-border workforce strategies.",
     icon: Users,
   },
   {
-    id: "ip",
-    title: "Intellectual Property",
+    id: "tech",
+    title: "Tech Practice Group",
     description:
-      "Trademark, copyright, and trade secret protection for digital assets, code, and virtual goods.",
-    icon: Shield,
+      "Cutting-edge legal frameworks for emerging technologies. Expertise in Data Protection, FinTech, and Digital Communication infrastructure.",
+    icon: Cpu,
   },
   {
-    id: "creators",
-    title: "Content Creator Rights",
+    id: "health",
+    title: "Health & Education Practice Group",
     description:
-      "Negotiating brand deals, platform disputes, and MCN contracts for top-tier influencers.",
-    icon: Globe,
-  },
-  {
-    id: "litigation",
-    title: "Platform Litigation",
-    description:
-      "Dispute resolution for ToS violations, bans, and digital asset recovery.",
-    icon: Scale,
-  },
-  {
-    id: "corporate",
-    title: "Corporate Structuring",
-    description:
-      "Entity formation, M&A, and financing strategies for high-growth gaming tech startups.",
-    icon: FileText,
+      "Navigating the complex regulatory landscape of institutional services, EdTech regulations, and gamified healthcare systems.",
+    icon: HeartPulse,
   },
 ];
 
@@ -64,7 +51,7 @@ const Services = () => {
         <div className="flex flex-col md:flex-row justify-between items-end mb-20 border-b border-[#0B1B3B]/10 pb-12">
           <div className="max-w-2xl">
             <span className="text-[#0B1B3B] font-bold tracking-[0.2em] text-xs uppercase mb-4 block">
-              Our Practice Areas
+              Practice Groups
             </span>
             <h2 className="text-4xl md:text-5xl font-light text-[#0B1B3B]">
               Architecture of{" "}
@@ -81,12 +68,13 @@ const Services = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Updated Grid to 2 columns on large screens for 4 items */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {services.map((service) => (
             <Link
               key={service.id}
               href={`/practice-areas#${service.id}`}
-              className="group relative bg-white border border-[#1A2F5A] p-12 hover:-translate-y-2 transition-all duration-300 cursor-pointer"
+              className="group relative bg-white border border-[#1A2F5A] p-12 hover:-translate-y-2 transition-all duration-300 cursor-pointer flex flex-col"
             >
               {/* Gold Accent Line */}
               <div className="absolute top-0 left-0 w-full h-1 bg-[#1A2F5A] group-hover:bg-[#D4C5A0] transition-colors duration-300" />
@@ -102,7 +90,7 @@ const Services = () => {
                 {service.title}
               </h3>
 
-              <p className="text-[#2E4472] leading-[1.8] mb-8 font-light">
+              <p className="text-[#2E4472] leading-[1.8] mb-8 font-light flex-grow">
                 {service.description}
               </p>
 

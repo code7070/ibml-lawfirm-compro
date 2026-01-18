@@ -12,6 +12,7 @@ interface ArticleListPageProps {
 
 const categories = [
   "All",
+  "Research",
   "Intellectual Property",
   "Esports",
   "Social Media",
@@ -33,7 +34,7 @@ const ArticleListPage = ({ articles }: ArticleListPageProps) => {
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5" />
         <div className="max-w-[1400px] mx-auto relative z-10">
           <span className="text-[#D4C5A0] font-bold tracking-[0.2em] text-xs uppercase mb-4 block">
-            Nexus Intelligence
+            IBLM Intelligence
           </span>
           <h1 className="text-5xl md:text-7xl font-light mb-8">
             Insights &{" "}

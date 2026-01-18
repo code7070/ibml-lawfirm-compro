@@ -15,6 +15,8 @@ import {
   Users,
   FileText,
   Scale as ScaleLucide,
+  Gamepad2,
+  HeartPulse,
 } from "lucide-react";
 import CTASection from "./CTASection";
 import Team from "./Team";
@@ -26,7 +28,7 @@ const testimonials = [
   {
     id: 1,
     quote:
-      "Nexus Legal doesn't just understand the law; they understand the code, the culture, and the stakes of the gaming industry. They are the only firm I trust with our IP.",
+      "IBLM Law Group doesn't just understand the law; they understand the code, the culture, and the stakes of the gaming industry. They are the only firm I trust with our IP.",
     author: "Jonathan Reeve",
     role: "CTO, OmniVerse Games",
   },
@@ -53,48 +55,35 @@ const testimonials = [
   },
 ];
 
+// Updated to match Practice Area Groups
 const services = [
   {
-    id: "1",
-    title: "Game Development Law",
+    id: "entertainment",
+    title: "Entertainment Practice Group",
     description:
-      "Comprehensive counsel for indie studios and AAA publishers. From dev agreements to IP clearance.",
-    icon: Cpu,
+      "Specialized counsel for the creators of digital worlds and modern entertainment experiences. Covering Games, MICE events, and Influencers.",
+    icon: Gamepad2,
   },
   {
-    id: "2",
-    title: "eSports Representation",
+    id: "people",
+    title: "People & Labour Practice Group",
     description:
-      "Player contracts, team franchising, and tournament regulation. Protecting talent and organizations.",
+      "Protecting the human element behind the innovation. Private client services, family law, and cross-border workforce strategies.",
     icon: Users,
   },
   {
-    id: "3",
-    title: "Intellectual Property",
+    id: "tech",
+    title: "Tech Practice Group",
     description:
-      "Trademark, copyright, and trade secret protection for digital assets, code, and virtual goods.",
-    icon: Shield,
+      "Cutting-edge legal frameworks for emerging technologies. Expertise in Data Protection, FinTech, and Digital Communication infrastructure.",
+    icon: Cpu,
   },
   {
-    id: "4",
-    title: "Content Creator Rights",
+    id: "health",
+    title: "Health & Education Practice Group",
     description:
-      "Negotiating brand deals, platform disputes, and MCN contracts for top-tier influencers.",
-    icon: Globe,
-  },
-  {
-    id: "5",
-    title: "Platform Litigation",
-    description:
-      "Dispute resolution for ToS violations, bans, and digital asset recovery.",
-    icon: ScaleLucide,
-  },
-  {
-    id: "6",
-    title: "Corporate Structuring",
-    description:
-      "Entity formation, M&A, and financing strategies for high-growth gaming tech startups.",
-    icon: FileText,
+      "Navigating the complex regulatory landscape of institutional services, EdTech regulations, and gamified healthcare systems.",
+    icon: HeartPulse,
   },
 ];
 
@@ -159,7 +148,7 @@ const AboutPage = ({ targetId, clientLogos, orgLogos }: AboutPageProps) => {
                   community, and commerce.
                 </p>
                 <p>
-                  Nexus Legal Group was founded in 2024 to bridge the gap
+                  IBLM Law Group was founded in 2024 to bridge the gap
                   between classical legal authority and the rapid evolution of
                   digital entertainment. We believe that the creators of virtual
                   worlds deserve real-world protection that is as innovative as
@@ -291,12 +280,12 @@ const AboutPage = ({ targetId, clientLogos, orgLogos }: AboutPageProps) => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service) => (
               <LangLink
                 key={service.id}
-                href="/practice-areas"
-                className="group relative bg-white border border-[#1A2F5A]/10 p-12 hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-xl cursor-pointer block"
+                href={`/practice-areas#${service.id}`}
+                className="group relative bg-white border border-[#1A2F5A]/10 p-12 hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-xl cursor-pointer flex flex-col"
               >
                 <div className="absolute top-0 left-0 w-full h-1 bg-[#1A2F5A] group-hover:bg-[#D4C5A0] transition-colors duration-300" />
                 <div className="mb-8">
@@ -308,7 +297,7 @@ const AboutPage = ({ targetId, clientLogos, orgLogos }: AboutPageProps) => {
                 <h3 className="text-2xl font-normal text-[#0B1B3B] mb-4 font-serif">
                   {service.title}
                 </h3>
-                <p className="text-[#2E4472] leading-[1.8] mb-8 font-light">
+                <p className="text-[#2E4472] leading-[1.8] mb-8 font-light flex-grow">
                   {service.description}
                 </p>
                 <div className="flex items-center gap-2 text-[#D4C5A0] text-sm font-bold uppercase tracking-widest group-hover:text-[#0B1B3B] transition-colors cursor-pointer">
@@ -343,7 +332,7 @@ const AboutPage = ({ targetId, clientLogos, orgLogos }: AboutPageProps) => {
               is the ultimate weapon.&quot;
             </h2>
             <p className="text-white/60 text-sm tracking-[0.3em] uppercase">
-              Nexus Legal Group Philosophy
+              IBLM Law Group Philosophy
             </p>
           </div>
         </div>

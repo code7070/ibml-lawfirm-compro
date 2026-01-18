@@ -33,7 +33,7 @@ const ContactPage = () => {
               </h3>
 
               <a
-                href="mailto:counsel@nexus.legal"
+                href="mailto:counsel@iblm.law"
                 className="flex items-center gap-6 group p-6 border border-[#0B1B3B]/10 hover:border-[#D4C5A0] transition-all bg-[#F5F5F7] hover:bg-white"
               >
                 <div className="w-12 h-12 bg-[#0B1B3B] flex items-center justify-center text-[#D4C5A0]">
@@ -44,7 +44,7 @@ const ContactPage = () => {
                     Email Inquiry
                   </p>
                   <p className="text-[#2E4472] text-lg font-light group-hover:text-[#D4C5A0] transition-colors">
-                    counsel@nexus.legal
+                    counsel@iblm.law
                   </p>
                 </div>
               </a>
@@ -77,7 +77,7 @@ const ContactPage = () => {
               <div className="flex items-start gap-4 mb-6 text-[#2E4472]">
                 <MapPin className="text-[#D4C5A0] shrink-0 mt-1" />
                 <p className="leading-relaxed font-light">
-                  Nexus HQ, Innovation District
+                  IBLM HQ, Innovation District
                   <br />
                   101 Tech Blvd, Suite 404
                   <br />

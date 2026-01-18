@@ -78,7 +78,7 @@ const Achievements = () => {
               </div>
               <div className="col-span-2 border-t border-white/10 pt-12">
                 <p className="font-serif italic text-xl text-gray-300">
-                  &quot;Nexus Legal understood our business model better than
+                  &quot;IBLM Law Group understood our business model better than
                   our investors did. They are an essential part of our
                   stack.&quot;
                 </p>

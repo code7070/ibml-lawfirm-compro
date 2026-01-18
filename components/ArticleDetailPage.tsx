@@ -65,7 +65,7 @@ const ArticleDetailPage = ({
                 <p className="text-sm font-bold uppercase tracking-wider text-white">
                   By {article.author}
                 </p>
-                <p className="text-xs text-[#D4C5A0]">Nexus Legal Group</p>
+                <p className="text-xs text-[#D4C5A0]">IBLM Law Group</p>
               </div>
             </div>
           </div>

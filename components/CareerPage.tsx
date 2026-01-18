@@ -96,7 +96,7 @@ const CareerPage = () => {
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5" />
         <div className="max-w-[1400px] mx-auto relative z-10 text-center">
           <span className="text-[#D4C5A0] font-bold tracking-[0.2em] text-xs uppercase mb-6 block">
-            Careers at Nexus
+            Careers at IBLM
           </span>
           <h1 className="text-5xl md:text-7xl font-light mb-8">
             Join the{" "}
@@ -156,7 +156,7 @@ const CareerPage = () => {
                 A Firm Where Tradition Meets Disruption
               </h2>
               <p className="text-gray-300 font-light leading-relaxed mb-8">
-                At Nexus, you won&apos;t just draft contracts; you&apos;ll shape
+                At IBLM, you won&apos;t just draft contracts; you&apos;ll shape
                 the regulatory frameworks for metaverses, eSports leagues, and
                 AI governance. We offer an environment that values intellectual
                 rigor and creative problem-solving equally.
@@ -259,12 +259,12 @@ const CareerPage = () => {
                   </p>
                   <div className="flex items-center">
                     <a
-                      href="mailto:careers@nexus.legal"
+                      href="mailto:careers@iblm.law"
                       className="text-[#0B1B3B] font-bold hover:text-[#D4C5A0] transition-colors border-b border-[#D4C5A0] text-sm"
                     >
-                      careers@nexus.legal
+                      careers@iblm.law
                     </a>
-                    <CopyButton text="careers@nexus.legal" />
+                    <CopyButton text="careers@iblm.law" />
                   </div>
                 </div>
               </div>
@@ -282,12 +282,12 @@ const CareerPage = () => {
                   </p>
                   <div className="flex items-center">
                     <a
-                      href="mailto:internships@nexus.legal"
+                      href="mailto:internships@iblm.law"
                       className="text-[#0B1B3B] font-bold hover:text-[#D4C5A0] transition-colors border-b border-[#D4C5A0] text-sm"
                     >
-                      internships@nexus.legal
+                      internships@iblm.law
                     </a>
-                    <CopyButton text="internships@nexus.legal" />
+                    <CopyButton text="internships@iblm.law" />
                   </div>
                 </div>
               </div>

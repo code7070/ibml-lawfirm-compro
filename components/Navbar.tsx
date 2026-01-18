@@ -62,7 +62,7 @@ const Navbar = () => {
           </div>
           <div className="flex flex-col -space-y-1">
             <span className="text-xl font-light tracking-[0.2em] text-white">
-              NEXUS
+              IBLM
             </span>
             <span className="text-[0.66rem] font-bold tracking-[0.3em] text-[#D4C5A0] uppercase">
               Law Group
