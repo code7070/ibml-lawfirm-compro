@@ -3,7 +3,7 @@ import Button from "./Button";
 
 const ContactPage = () => {
   return (
-    <div className="pt-32 min-h-screen bg-white">
+    <div className="min-h-screen bg-white">
       {/* Header */}
       <section className="bg-[#0B1B3B] text-white py-20 px-6">
         <div className="max-w-[1400px] mx-auto text-center">

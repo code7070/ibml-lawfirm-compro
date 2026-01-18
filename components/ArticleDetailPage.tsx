@@ -24,7 +24,7 @@ const ArticleDetailPage = ({
       : allArticles.filter((a) => a.id !== article.id).slice(0, 3);
 
   return (
-    <div className="pt-20 min-h-screen bg-white">
+    <div className="min-h-screen bg-white">
       {/* Article Hero */}
       <div className="relative h-[60vh] min-h-[500px] w-full overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}

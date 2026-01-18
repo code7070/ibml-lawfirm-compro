@@ -90,7 +90,7 @@ const CareerPage = () => {
   ];
 
   return (
-    <div className="pt-20 min-h-screen bg-white">
+    <div className="min-h-screen bg-white">
       {/* Hero */}
       <section className="bg-[#0B1B3B] text-white py-24 px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5" />

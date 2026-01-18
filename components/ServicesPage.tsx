@@ -45,7 +45,7 @@ const ServicesPage = ({ articles = [] }: ServicesPageProps) => {
     .slice(0, 2);
 
   return (
-    <div className="pt-20 min-h-screen bg-white">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="bg-[#1A2F5A] text-white py-24 px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5" />
@@ -162,7 +162,9 @@ const ServicesPage = ({ articles = [] }: ServicesPageProps) => {
               </div>
               <div className="p-6 bg-[#F5F5F7] text-center border border-[#0B1B3B]/5">
                 <Building className="w-10 h-10 text-[#1A2F5A] mx-auto mb-4" />
-                <p className="text-sm font-bold text-[#0B1B3B]">Govt. Liaison</p>
+                <p className="text-sm font-bold text-[#0B1B3B]">
+                  Govt. Liaison
+                </p>
               </div>
             </div>
           </div>

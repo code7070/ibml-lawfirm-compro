@@ -11,7 +11,7 @@ import { CLIENT_LOGOS, ORG_LOGOS } from "@/data/logos";
 export default function HomePage() {
   return (
     <>
-      <div id="hero">
+      <div id="hero" className="-mt-[122px]">
         <Hero />
       </div>
       {/* Client Logo Ticker */}

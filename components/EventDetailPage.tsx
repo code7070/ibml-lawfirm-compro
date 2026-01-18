@@ -23,7 +23,7 @@ const EventDetailPage: React.FC<EventDetailPageProps> = ({ event }) => {
   }, []);
 
   return (
-    <div className="pt-20 min-h-screen bg-white">
+    <div className="min-h-screen bg-white">
       {/* Event Hero */}
       <div className="relative h-[60vh] min-h-[500px] w-full overflow-hidden">
         <img

@@ -16,21 +16,24 @@ const EventsPage: React.FC<EventsPageProps> = ({ events }) => {
   }, []);
 
   // Group events by year
-  const groupedEvents = events.reduce((acc, event) => {
-    if (!acc[event.year]) {
-      acc[event.year] = [];
-    }
-    acc[event.year].push(event);
-    return acc;
-  }, {} as Record<string, Event[]>);
+  const groupedEvents = events.reduce(
+    (acc, event) => {
+      if (!acc[event.year]) {
+        acc[event.year] = [];
+      }
+      acc[event.year].push(event);
+      return acc;
+    },
+    {} as Record<string, Event[]>,
+  );
 
   // Sort years descending
   const sortedYears = Object.keys(groupedEvents).sort(
-    (a, b) => Number(b) - Number(a)
+    (a, b) => Number(b) - Number(a),
   );
 
   return (
-    <div className="pt-20 min-h-screen bg-white">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="bg-[#0B1B3B] text-white py-24 px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5" />

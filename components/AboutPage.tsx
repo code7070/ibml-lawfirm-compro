@@ -111,18 +111,18 @@ const AboutPage = ({ targetId, clientLogos, orgLogos }: AboutPageProps) => {
   // Testimonial Slider Logic
   const nextTestimonial = () => {
     setCurrentTestimonial((prev) =>
-      prev === testimonials.length - 1 ? 0 : prev + 1
+      prev === testimonials.length - 1 ? 0 : prev + 1,
     );
   };
 
   const prevTestimonial = () => {
     setCurrentTestimonial((prev) =>
-      prev === 0 ? testimonials.length - 1 : prev - 1
+      prev === 0 ? testimonials.length - 1 : prev - 1,
     );
   };
 
   return (
-    <div className="pt-20 min-h-screen bg-white">
+    <div className=" min-h-screen bg-white">
       {/* 1. ARTISTIC STORY SECTION */}
       <section className="relative py-24 md:py-32 px-6 overflow-hidden">
         <div className="absolute inset-0 bg-[#F5F5F7]/30" />
@@ -148,11 +148,11 @@ const AboutPage = ({ targetId, clientLogos, orgLogos }: AboutPageProps) => {
                   community, and commerce.
                 </p>
                 <p>
-                  IBLM Law Group was founded in 2024 to bridge the gap
-                  between classical legal authority and the rapid evolution of
-                  digital entertainment. We believe that the creators of virtual
-                  worlds deserve real-world protection that is as innovative as
-                  the products they build.
+                  IBLM Law Group was founded in 2024 to bridge the gap between
+                  classical legal authority and the rapid evolution of digital
+                  entertainment. We believe that the creators of virtual worlds
+                  deserve real-world protection that is as innovative as the
+                  products they build.
                 </p>
                 <div className="py-6 border-t border-[#0B1B3B]/10 border-b my-6">
                   <p className="font-medium text-[#0B1B3B] text-2xl font-serif italic">
