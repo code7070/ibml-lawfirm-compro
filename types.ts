@@ -31,12 +31,7 @@ export interface Client {
   logo: string; // URL placeholder
 }
 
-export type ArticleCategory =
-  | "Intellectual Property"
-  | "Esports"
-  | "Social Media"
-  | "Corporate"
-  | "Research";
+export type ArticleCategory = string;
 
 export interface Article {
   id: string;

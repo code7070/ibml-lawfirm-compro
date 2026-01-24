@@ -10,6 +10,7 @@
 export { lawyersService } from './lawyers.service';
 export { lawyerPositionsService } from './lawyer-positions.service';
 export { articlesService } from './articles.service';
+export { articleCategoriesService } from './article-categories.service';
 export { eventsService } from './events.service';
 export { practiceAreasService } from './practice-areas.service';
 export { practiceGroupsService } from './practice-groups.service';

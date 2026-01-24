@@ -5,10 +5,9 @@ import Articles from "@/components/Articles";
 import CTASection from "@/components/CTASection";
 import LogoTicker from "@/components/LogoTicker";
 import PracticeAreasSection from "@/components/PracticeAreasSection";
-import { ARTICLE_DATA } from "@/data/articles";
-import { CLIENT_LOGOS, ORG_LOGOS } from "@/data/logos";
-import { lawyersService, practiceGroupsService } from "@/services";
+import { lawyersService, practiceGroupsService, clientsService } from "@/services";
 import { getDictionary, Locale } from "@/lib/dictionary";
+import { LogoItem } from "@/types";
 
 export default async function HomePage({
   params,
@@ -18,13 +17,32 @@ export default async function HomePage({
   const { locale } = await params;
 
   // Fetch data in parallel
-  const [lawyersResponse, practiceGroupsResponse, dict] = await Promise.all([
+  const [lawyersResponse, practiceGroupsResponse, clientsResponse, dict] = await Promise.all([
     lawyersService.getActiveWithPositionAndPracticeAreas(),
     practiceGroupsService.getActive(),
+    clientsService.getAllSorted(),
     getDictionary(locale as Locale),
   ]);
   const lawyers = lawyersResponse.data || [];
   const practiceGroups = practiceGroupsResponse.data || [];
+  const allClients = clientsResponse.data || [];
+
+  // Filter and map clients data
+  const clientLogos: LogoItem[] = allClients
+    .filter((c) => (c.type === "Client" || !c.type) && c.status === "Active")
+    .map((c) => ({
+      id: c.id,
+      name: c.name,
+      image: c.logo_url || undefined,
+    }));
+
+  const orgLogos: LogoItem[] = allClients
+    .filter((c) => c.type === "Organization" && c.status === "Active")
+    .map((c) => ({
+      id: c.id,
+      name: c.name,
+      image: c.logo_url || undefined,
+    }));
 
   // Build team translations from dictionary
   const teamTranslations = {
@@ -43,7 +61,7 @@ export default async function HomePage({
       {/* Client Logo Ticker */}
       <LogoTicker
         title="Trusted By Industry Leaders"
-        items={CLIENT_LOGOS}
+        items={clientLogos}
         theme="dark"
       />
       <div id="expertise">
@@ -65,7 +83,7 @@ export default async function HomePage({
       {/* Org Logo Ticker */}
       <LogoTicker
         title="Industry Affiliations"
-        items={ORG_LOGOS}
+        items={orgLogos}
         theme="light"
       />
       <div id="achievements">

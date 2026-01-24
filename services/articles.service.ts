@@ -121,6 +121,74 @@ class ArticlesService extends BaseService<Article, ArticleInsert, ArticleUpdate>
   }
 
   /**
+   * Get paginated articles for Admin (includes Drafts, with relations)
+   */
+  async getAdminPaginated(
+    page: number = 1,
+    pageSize: number = 10,
+    filters?: ArticleFilters
+  ): Promise<PaginatedResponse<ArticleWithCategory>> {
+    try {
+      let query = this.supabase
+        .from(this.tableName)
+        .select(
+          `
+          *,
+          category:article_categories(*),
+          author:lawyers(*)
+        `,
+          { count: 'exact' }
+        );
+
+      // Apply filters
+      if (filters?.category_id) {
+        query = query.eq('category_id', filters.category_id);
+      }
+
+      if (filters?.author_id) {
+        query = query.eq('author_id', filters.author_id);
+      }
+
+      if (filters?.search) {
+        query = query.or(
+          `title_id.ilike.%${filters.search}%,title_en.ilike.%${filters.search}%,excerpt_id.ilike.%${filters.search}%,excerpt_en.ilike.%${filters.search}%`
+        );
+      }
+
+      // Apply pagination
+      const from = (page - 1) * pageSize;
+      const to = from + pageSize - 1;
+
+      query = query
+        .order('created_at', { ascending: false })
+        .range(from, to);
+
+      const { data, error, count } = await query;
+
+      if (error) throw error;
+
+      return {
+        data: (data as ArticleWithCategory[]) || [],
+        count: count || 0,
+        page,
+        pageSize,
+        totalPages: Math.ceil((count || 0) / pageSize),
+        error: null,
+      };
+    } catch (error) {
+      console.error('Error fetching admin paginated articles:', error);
+      return {
+        data: [],
+        count: 0,
+        page,
+        pageSize,
+        totalPages: 0,
+        error: error instanceof Error ? error.message : 'Unknown error',
+      };
+    }
+  }
+
+  /**
    * Get article by slug with category and author
    */
   async getBySlugWithDetails(
