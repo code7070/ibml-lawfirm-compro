@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, Scale, ChevronDown, Check } from "lucide-react";
+import { Menu, X, ChevronDown, Check } from "lucide-react";
 import { LangLink } from "./LangLink";
+import Image from "next/image";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { useTranslations } from "@/hooks/useTranslations";
 
@@ -67,21 +68,15 @@ const Navbar = () => {
         {/* Logo */}
         <LangLink
           href="/"
-          className="flex items-center gap-3 group cursor-pointer"
+          className="flex items-center group cursor-pointer"
         >
-          <div className="relative p-1 border border-[#D4C5A0]/30 rounded-sm rotate-45">
-            <div className="p-1 border border-[#D4C5A0] bg-[#0B1B3B]">
-              <Scale className="w-5 h-5 text-[#D4C5A0] -rotate-45" />
-            </div>
-          </div>
-          <div className="flex flex-col -space-y-1">
-            <span className="text-xl font-light tracking-[0.2em] text-white">
-              IBLM
-            </span>
-            <span className="text-[0.66rem] font-bold tracking-[0.3em] text-[#D4C5A0] uppercase">
-              Law Group
-            </span>
-          </div>
+          <Image
+            src="/images/logo-white.svg"
+            alt="IBLM Law Group"
+            width={160}
+            height={45}
+            priority
+          />
         </LangLink>
 
         {/* 1. Full Desktop Nav (> 1240px) */}

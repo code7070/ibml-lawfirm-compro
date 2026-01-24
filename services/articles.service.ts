@@ -32,7 +32,7 @@ class ArticlesService extends BaseService<Article, ArticleInsert, ArticleUpdate>
           category:article_categories(*),
           author:lawyers(*)
         `)
-        .eq('status', 'published' as ArticleStatus)
+        .eq('is_published', true)
         .order('published_at', { ascending: false });
 
       if (error) throw error;
@@ -66,7 +66,7 @@ class ArticlesService extends BaseService<Article, ArticleInsert, ArticleUpdate>
         `,
           { count: 'exact' }
         )
-        .eq('status', 'published' as ArticleStatus);
+        .eq('is_published', true);
 
       // Apply filters
       if (filters?.category_id) {
@@ -105,6 +105,7 @@ class ArticlesService extends BaseService<Article, ArticleInsert, ArticleUpdate>
         page,
         pageSize,
         totalPages: Math.ceil((count || 0) / pageSize),
+        error: null,
       };
     } catch (error) {
       console.error('Error fetching paginated articles:', error);
@@ -114,6 +115,7 @@ class ArticlesService extends BaseService<Article, ArticleInsert, ArticleUpdate>
         page,
         pageSize,
         totalPages: 0,
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }
@@ -165,7 +167,7 @@ class ArticlesService extends BaseService<Article, ArticleInsert, ArticleUpdate>
           author:lawyers(*)
         `)
         .eq('category_id', categoryId)
-        .eq('status', 'published' as ArticleStatus)
+        .eq('is_published', true)
         .order('published_at', { ascending: false });
 
       if (error) throw error;
@@ -193,7 +195,7 @@ class ArticlesService extends BaseService<Article, ArticleInsert, ArticleUpdate>
           author:lawyers(*)
         `)
         .contains('tags', [tag])
-        .eq('status', 'published' as ArticleStatus)
+        .eq('is_published', true)
         .order('published_at', { ascending: false });
 
       if (error) throw error;
@@ -220,7 +222,7 @@ class ArticlesService extends BaseService<Article, ArticleInsert, ArticleUpdate>
           category:article_categories(*),
           author:lawyers(*)
         `)
-        .eq('status', 'published' as ArticleStatus)
+        .eq('is_published', true)
         .order('published_at', { ascending: false })
         .limit(limit);
 
@@ -264,7 +266,7 @@ class ArticlesService extends BaseService<Article, ArticleInsert, ArticleUpdate>
           author:lawyers(*)
         `)
         .eq('category_id', currentArticle.category_id)
-        .eq('status', 'published' as ArticleStatus)
+        .eq('is_published', true)
         .neq('id', articleId)
         .order('published_at', { ascending: false })
         .limit(limit);
@@ -296,7 +298,7 @@ class ArticlesService extends BaseService<Article, ArticleInsert, ArticleUpdate>
         .or(
           `title_id.ilike.%${query}%,title_en.ilike.%${query}%,content_id.ilike.%${query}%,content_en.ilike.%${query}%`
         )
-        .eq('status', 'published' as ArticleStatus)
+        .eq('is_published', true)
         .order('published_at', { ascending: false });
 
       if (error) throw error;
@@ -334,7 +336,7 @@ class ArticlesService extends BaseService<Article, ArticleInsert, ArticleUpdate>
       const { data, error } = await this.supabase
         .from(this.tableName)
         .select('tags')
-        .eq('status', 'published' as ArticleStatus);
+        .eq('is_published', true);
 
       if (error) throw error;
 

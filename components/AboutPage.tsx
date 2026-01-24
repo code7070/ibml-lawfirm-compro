@@ -9,81 +9,98 @@ import {
   History,
   ChevronLeft,
   ChevronRight,
-  Shield,
-  Globe,
-  Cpu,
-  Users,
-  FileText,
   Scale as ScaleLucide,
-  Gamepad2,
+  Sparkles,
+  Users,
+  Cpu,
   HeartPulse,
+  Heart,
+  Shield,
+  Handshake,
 } from "lucide-react";
 import CTASection from "./CTASection";
 import Team from "./Team";
 import LogoTicker from "./LogoTicker";
 import { LogoItem } from "@/types";
 import { LangLink } from "./LangLink";
+import Image from "next/image";
 
+// [DYNAMIC] - Will be replaced with Supabase testimonials table in Phase B
 const testimonials = [
   {
     id: 1,
     quote:
-      "IBLM Law Group doesn't just understand the law; they understand the code, the culture, and the stakes of the gaming industry. They are the only firm I trust with our IP.",
-    author: "Jonathan Reeve",
-    role: "CTO, OmniVerse Games",
+      "IBLM Law Group provides exceptional legal counsel with deep industry expertise. Their understanding of both legal frameworks and business needs is unmatched.",
+    author: "[Client Name]",
+    role: "[Position], [Company]",
   },
   {
     id: 2,
     quote:
-      "When we faced a platform takedown notice, their team mobilized instantly. We were back online in 24 hours. Absolute lifesavers for our streaming revenue.",
-    author: "Maria Gonzalez",
-    role: "Founder, StreamSync",
+      "Working with IBLM has been transformative for our business. They provide strategic guidance that goes beyond traditional legal services.",
+    author: "[Client Name]",
+    role: "[Position], [Company]",
   },
   {
     id: 3,
     quote:
-      "The most sophisticated counsel we've worked with. They structured our Series B with a level of detail that impressed our lead investors and secured our future.",
-    author: "Alexei Volkov",
-    role: "Managing Director, BlueHorizon VC",
-  },
-  {
-    id: 4,
-    quote:
-      "Finally, a law firm that speaks our language. They navigated the complex web of international eSports regulations so we could focus on winning championships.",
-    author: "Sarah Chen",
-    role: "Owner, Vertex eSports",
+      "The sophisticated approach to complex legal matters and genuine care for client success sets IBLM apart from other law firms.",
+    author: "[Client Name]",
+    role: "[Position], [Company]",
   },
 ];
 
-// Updated to match Practice Area Groups
-const services = [
+// Updated to match IBLM LEG Structure
+const practiceGroups = [
   {
     id: "entertainment",
-    title: "Entertainment Practice Group",
+    title: "LEG-1: Entertainment Expert Group",
     description:
-      "Specialized counsel for the creators of digital worlds and modern entertainment experiences. Covering Games, MICE events, and Influencers.",
-    icon: Gamepad2,
+      "Specialized counsel for entertainment industry including Video Games, E-Sports, Film & Digital Content, Artists & KOL, Tourism & MICE, and IP Management.",
+    icon: Sparkles,
   },
   {
     id: "people",
-    title: "People & Labour Practice Group",
+    title: "LEG-2: People & Labor Expert Group",
     description:
-      "Protecting the human element behind the innovation. Private client services, family law, and cross-border workforce strategies.",
+      "Comprehensive services for Personal & Family Law, Employment & Industrial Relations, and Immigration matters.",
     icon: Users,
   },
   {
     id: "tech",
-    title: "Tech Practice Group",
+    title: "LEG-3: Technology Expert Group",
     description:
-      "Cutting-edge legal frameworks for emerging technologies. Expertise in Data Protection, FinTech, and Digital Communication infrastructure.",
+      "Cutting-edge legal frameworks for Data Protection & Privacy, E-Commerce, FinTech, Communication & IT, and Artificial Intelligence.",
     icon: Cpu,
   },
   {
     id: "health",
-    title: "Health & Education Practice Group",
+    title: "LEG-4: Education & Health Expert Group",
     description:
-      "Navigating the complex regulatory landscape of institutional services, EdTech regulations, and gamified healthcare systems.",
+      "Expert guidance for Educational Institutions, Medical Device & Pharma, and Healthy Lifestyle industries.",
     icon: HeartPulse,
+  },
+];
+
+// IBLM Core Values
+const coreValues = [
+  {
+    id: "professionalism",
+    title: "Professionalism",
+    description: "Excellence and integrity in every engagement. We uphold the highest standards of legal practice and ethical conduct.",
+    icon: Shield,
+  },
+  {
+    id: "empathy",
+    title: "Empathy",
+    description: "Understanding client needs deeply. We listen first, then provide tailored solutions that address your unique challenges.",
+    icon: Heart,
+  },
+  {
+    id: "loyalty",
+    title: "Loyalty",
+    description: "Long-term partnership commitment. Your success is our priority, and we stand by you through every challenge.",
+    icon: Handshake,
   },
 ];
 
@@ -123,7 +140,7 @@ const AboutPage = ({ targetId, clientLogos, orgLogos }: AboutPageProps) => {
 
   return (
     <div className=" min-h-screen bg-white">
-      {/* 1. ARTISTIC STORY SECTION */}
+      {/* 1. ORIGIN STORY SECTION */}
       <section className="relative py-24 md:py-32 px-6 overflow-hidden">
         <div className="absolute inset-0 bg-[#F5F5F7]/30" />
         <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-[#0B1B3B]/5 to-transparent" />
@@ -132,43 +149,35 @@ const AboutPage = ({ targetId, clientLogos, orgLogos }: AboutPageProps) => {
           <div className="grid lg:grid-cols-12 gap-16 items-center">
             <div className="lg:col-span-6 space-y-10 text-center lg:text-left">
               <span className="text-[#D4C5A0] font-bold tracking-[0.3em] text-sm uppercase block">
-                The Origin
+                About IBLM Law Group
               </span>
               <h1 className="text-6xl md:text-7xl lg:text-8xl font-light text-[#0B1B3B] leading-[1.1]">
-                Forged in the <br />
+                The Sophisticated <br />
                 <span className="font-serif italic text-[#2E4472]">
-                  Digital Fire
+                  Guardian
                 </span>
               </h1>
 
               <div className="space-y-6 text-lg md:text-xl text-[#2E4472] font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 <p>
-                  Traditional law firms look at a video game and see a product.
-                  We see a complex ecosystem of intellectual property, code,
-                  community, and commerce.
+                  IBLM Law Group was founded with a clear vision: to provide 
+                  sophisticated legal services that combine classical jurisprudence 
+                  with modern business strategy.
                 </p>
                 <p>
-                  IBLM Law Group was founded in 2024 to bridge the gap between
-                  classical legal authority and the rapid evolution of digital
-                  entertainment. We believe that the creators of virtual worlds
-                  deserve real-world protection that is as innovative as the
-                  products they build.
+                  We believe in building long-term partnerships with our clients, 
+                  understanding their unique needs, and delivering unshakeable 
+                  legal standing. Our approach bridges the gap between traditional 
+                  legal excellence and the dynamic demands of modern industries.
                 </p>
                 <div className="py-6 border-t border-[#0B1B3B]/10 border-b my-6">
                   <p className="font-medium text-[#0B1B3B] text-2xl font-serif italic">
-                    &quot;We are not just attorneys; we are strategists for the
-                    digital age.&quot;
+                    &quot;Unshakeable Legal Standing&quot;
+                  </p>
+                  <p className="text-sm text-[#D4C5A0] mt-2 uppercase tracking-wider">
+                    Our Brand Promise
                   </p>
                 </div>
-              </div>
-
-              <div className="pt-4 flex justify-center lg:justify-start">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Sig_J_H_Hancocks.png"
-                  alt="Signature"
-                  className="h-16 opacity-60"
-                />
               </div>
             </div>
 
@@ -177,11 +186,11 @@ const AboutPage = ({ targetId, clientLogos, orgLogos }: AboutPageProps) => {
               <div className="relative h-[600px] w-full max-w-lg mx-auto lg:max-w-none">
                 <div className="absolute top-0 right-0 w-[90%] h-[90%] bg-[#0B1B3B] z-0 hidden lg:block"></div>
                 <div className="absolute bottom-0 left-0 w-full lg:w-[90%] h-full lg:h-[90%] z-10 overflow-hidden border-4 border-white shadow-2xl">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1200"
-                    alt="Office Abstract"
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+                    alt="IBLM Law Group Office"
+                    fill
+                    className="object-cover grayscale hover:grayscale-0 transition-all duration-1000"
                   />
                   <div className="absolute inset-0 bg-[#0B1B3B]/20 mix-blend-multiply"></div>
                 </div>
@@ -196,62 +205,103 @@ const AboutPage = ({ targetId, clientLogos, orgLogos }: AboutPageProps) => {
         </div>
       </section>
 
-      {/* 2. RESULTS / DETAILS SECTION */}
-      <section className="bg-[#0B1B3B] py-32 border-y border-[#D4C5A0]/20 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5" />
+      {/* 2. CORE VALUES SECTION */}
+      <section id="values" className="bg-[#0B1B3B] py-32 border-y border-[#D4C5A0]/20 text-white relative overflow-hidden">
+        <div 
+          className="absolute inset-0 opacity-5"
+          style={{
+            backgroundImage: `linear-gradient(45deg, #1A2F5A 25%, transparent 25%, transparent 75%, #1A2F5A 75%, #1A2F5A), 
+               linear-gradient(45deg, #1A2F5A 25%, transparent 25%, transparent 75%, #1A2F5A 75%, #1A2F5A)`,
+            backgroundSize: "30px 30px",
+            backgroundPosition: "0 0, 15px 15px",
+          }}
+        />
 
         <div className="max-w-[1400px] mx-auto px-6 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-20">
             <h2 className="text-4xl md:text-5xl font-light text-white mb-6">
-              Defined by{" "}
-              <span className="font-serif italic text-[#D4C5A0]">Victory</span>
+              Our{" "}
+              <span className="font-serif italic text-[#D4C5A0]">Values</span>
             </h2>
             <p className="text-gray-400 font-light">
-              Our history is written in the success of our clients. We measure
-              our achievements not in billable hours, but in studios protected,
-              deals closed, and precedents set.
+              Built on three pillars that define our approach to legal practice 
+              and client relationships.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-[#1A2F5A]/50 p-10 border border-[#D4C5A0]/20 hover:border-[#D4C5A0] transition-all group backdrop-blur-sm">
+            {coreValues.map((value) => (
+              <div 
+                key={value.id}
+                className="bg-[#1A2F5A]/50 p-10 border border-[#D4C5A0]/20 hover:border-[#D4C5A0] transition-all group backdrop-blur-sm"
+              >
+                <value.icon
+                  className="w-10 h-10 text-[#D4C5A0] mb-6 group-hover:scale-110 transition-transform"
+                  strokeWidth={1.5}
+                />
+                <h3 className="text-xl font-bold text-white mb-4">
+                  {value.title}
+                </h3>
+                <p className="text-gray-300 font-light leading-relaxed">
+                  {value.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3. ACHIEVEMENTS SECTION */}
+      <section className="py-32 bg-[#F5F5F7]">
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <h2 className="text-4xl md:text-5xl font-light text-[#0B1B3B] mb-6">
+              Why Choose{" "}
+              <span className="font-serif italic text-[#2E4472]">IBLM</span>
+            </h2>
+            <p className="text-[#2E4472] font-light">
+              Our commitment to excellence and client success drives everything we do.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white p-10 border border-[#1A2F5A]/10 hover:border-[#D4C5A0] transition-all group shadow-sm">
               <History
                 className="w-10 h-10 text-[#D4C5A0] mb-6 group-hover:scale-110 transition-transform"
                 strokeWidth={1.5}
               />
-              <h3 className="text-xl font-bold text-white mb-4">
-                Legacy of Innovation
+              <h3 className="text-xl font-bold text-[#0B1B3B] mb-4">
+                Strategic Partnership
               </h3>
-              <p className="text-gray-300 font-light leading-relaxed">
-                Though our brand is modern, our partners bring over 40 years of
-                combined experience from top-tier &quot;Big Law&quot; firms.
+              <p className="text-[#2E4472] font-light leading-relaxed">
+                We go beyond traditional legal services to become your trusted 
+                strategic partner, understanding your business goals and challenges.
               </p>
             </div>
-            <div className="bg-[#1A2F5A]/50 p-10 border border-[#D4C5A0]/20 hover:border-[#D4C5A0] transition-all group backdrop-blur-sm">
+            <div className="bg-white p-10 border border-[#1A2F5A]/10 hover:border-[#D4C5A0] transition-all group shadow-sm">
               <Trophy
                 className="w-10 h-10 text-[#D4C5A0] mb-6 group-hover:scale-110 transition-transform"
                 strokeWidth={1.5}
               />
-              <h3 className="text-xl font-bold text-white mb-4">
-                Industry Recognition
+              <h3 className="text-xl font-bold text-[#0B1B3B] mb-4">
+                Industry Expertise
               </h3>
-              <p className="text-gray-300 font-light leading-relaxed">
-                Consistently ranked in the &quot;Legal 500&quot; for Media,
-                Technology, and Telecoms. Winners of the &quot;Digital
-                Frontier&quot; Award.
+              <p className="text-[#2E4472] font-light leading-relaxed">
+                Deep expertise across Entertainment, Technology, Health & Education, 
+                and People & Labor practice areas through our specialized LEGs.
               </p>
             </div>
-            <div className="bg-[#1A2F5A]/50 p-10 border border-[#D4C5A0]/20 hover:border-[#D4C5A0] transition-all group backdrop-blur-sm">
+            <div className="bg-white p-10 border border-[#1A2F5A]/10 hover:border-[#D4C5A0] transition-all group shadow-sm">
               <Target
                 className="w-10 h-10 text-[#D4C5A0] mb-6 group-hover:scale-110 transition-transform"
                 strokeWidth={1.5}
               />
-              <h3 className="text-xl font-bold text-white mb-4">
-                Global Reach
+              <h3 className="text-xl font-bold text-[#0B1B3B] mb-4">
+                Modern Approach
               </h3>
-              <p className="text-gray-300 font-light leading-relaxed">
-                Operating out of Los Angeles with strategic partnerships in
-                Tokyo, Seoul, and London to protect your IP everywhere.
+              <p className="text-[#2E4472] font-light leading-relaxed">
+                Combining classical jurisprudence with modern strategy to deliver 
+                innovative solutions for today&apos;s complex legal challenges.
               </p>
             </div>
           </div>
@@ -260,45 +310,45 @@ const AboutPage = ({ targetId, clientLogos, orgLogos }: AboutPageProps) => {
 
       {/* Client Ticker */}
       {clientLogos && clientLogos.length > 0 && (
-        <LogoTicker title="Representing" items={clientLogos} theme="dark" />
+        <LogoTicker title="Our Clients" items={clientLogos} theme="dark" />
       )}
 
-      {/* 3. PRACTICE AREAS */}
-      <section className="py-32 bg-[#F5F5F7]">
+      {/* 4. PRACTICE AREAS */}
+      <section className="py-32 bg-white">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-end mb-20 border-b border-[#0B1B3B]/10 pb-12">
             <div className="max-w-2xl">
               <span className="text-[#0B1B3B] font-bold tracking-[0.2em] text-xs uppercase mb-4 block">
-                Expertise
+                Legal Expertise Groups
               </span>
               <h2 className="text-4xl md:text-5xl font-light text-[#0B1B3B]">
-                Areas of{" "}
+                Practice{" "}
                 <span className="font-serif italic text-[#2E4472]">
-                  Practice
+                  Areas
                 </span>
               </h2>
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {services.map((service) => (
+            {practiceGroups.map((group) => (
               <LangLink
-                key={service.id}
-                href={`/practice-areas#${service.id}`}
-                className="group relative bg-white border border-[#1A2F5A]/10 p-12 hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-xl cursor-pointer flex flex-col"
+                key={group.id}
+                href={`/practice-areas#${group.id}`}
+                className="group relative bg-[#F5F5F7] border border-[#1A2F5A]/10 p-12 hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-xl cursor-pointer flex flex-col"
               >
                 <div className="absolute top-0 left-0 w-full h-1 bg-[#1A2F5A] group-hover:bg-[#D4C5A0] transition-colors duration-300" />
                 <div className="mb-8">
-                  <service.icon
+                  <group.icon
                     className="w-10 h-10 text-[#D4C5A0] group-hover:text-[#1A2F5A] transition-colors duration-300"
                     strokeWidth={1.5}
                   />
                 </div>
                 <h3 className="text-2xl font-normal text-[#0B1B3B] mb-4 font-serif">
-                  {service.title}
+                  {group.title}
                 </h3>
                 <p className="text-[#2E4472] leading-[1.8] mb-8 font-light flex-grow">
-                  {service.description}
+                  {group.description}
                 </p>
                 <div className="flex items-center gap-2 text-[#D4C5A0] text-sm font-bold uppercase tracking-widest group-hover:text-[#0B1B3B] transition-colors cursor-pointer">
                   <span>Learn More</span>
@@ -310,13 +360,13 @@ const AboutPage = ({ targetId, clientLogos, orgLogos }: AboutPageProps) => {
         </div>
       </section>
 
-      {/* 4. FULL WIDTH PHOTO SECTION */}
+      {/* 5. BRAND PROMISE SECTION */}
       <section className="w-full h-[600px] relative overflow-hidden">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000"
-          alt="Nexus Headquarters"
-          className="w-full h-full object-cover fixed-bg"
+          alt="IBLM Law Group"
+          fill
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-[#0B1B3B]/80 mix-blend-multiply"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-[#0B1B3B] via-transparent to-transparent"></div>
@@ -325,11 +375,11 @@ const AboutPage = ({ targetId, clientLogos, orgLogos }: AboutPageProps) => {
           <div className="max-w-4xl space-y-8">
             <div className="w-20 h-1 bg-[#D4C5A0] mx-auto"></div>
             <h2 className="text-4xl md:text-6xl font-light text-white leading-tight">
-              &quot;In the digital arena, <br />
+              &quot;Where classical jurisprudence meets <br />
               <span className="font-serif italic text-[#D4C5A0]">
-                protection
-              </span>{" "}
-              is the ultimate weapon.&quot;
+                modern strategy
+              </span>
+              .&quot;
             </h2>
             <p className="text-white/60 text-sm tracking-[0.3em] uppercase">
               IBLM Law Group Philosophy
@@ -338,25 +388,25 @@ const AboutPage = ({ targetId, clientLogos, orgLogos }: AboutPageProps) => {
         </div>
       </section>
 
-      {/* 5. TEAM SUMMARY (Replaced Slider) */}
-      <div id="council">
+      {/* 6. TEAM SUMMARY */}
+      <div id="team">
         <Team />
       </div>
 
       {/* Org Ticker */}
       {orgLogos && orgLogos.length > 0 && (
         <LogoTicker
-          title="Strategic Alliances"
+          title="Strategic Partners"
           items={orgLogos}
           theme="light"
         />
       )}
 
-      {/* 6. TESTIMONIAL SECTION */}
+      {/* 7. TESTIMONIAL SECTION */}
       <section className="py-32 bg-white px-6">
         <div className="max-w-[1400px] mx-auto">
           <span className="text-[#0B1B3B] font-bold tracking-[0.2em] text-xs uppercase block text-center mb-12">
-            Client Intelligence
+            Client Testimonials
           </span>
 
           <div className="relative max-w-5xl mx-auto">
@@ -377,7 +427,7 @@ const AboutPage = ({ targetId, clientLogos, orgLogos }: AboutPageProps) => {
 
                   <div className="flex flex-col items-center">
                     <div className="w-14 h-14 bg-[#0B1B3B] text-[#D4C5A0] border border-[#D4C5A0] flex items-center justify-center font-bold text-xl mb-4">
-                      {item.author.charAt(0)}
+                      {item.author.charAt(0) === "[" ? "?" : item.author.charAt(0)}
                     </div>
                     <p className="text-sm font-bold text-[#0B1B3B] uppercase tracking-[0.15em] mb-1">
                       {item.author}
@@ -421,7 +471,7 @@ const AboutPage = ({ targetId, clientLogos, orgLogos }: AboutPageProps) => {
         </div>
       </section>
 
-      {/* 7. CTA SECTION */}
+      {/* 8. CTA SECTION */}
       <CTASection />
     </div>
   );

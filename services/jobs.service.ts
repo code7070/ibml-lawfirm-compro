@@ -27,7 +27,7 @@ class JobsService extends BaseService<JobOpening, JobOpeningInsert, JobOpeningUp
       const { data, error } = await this.supabase
         .from(this.tableName)
         .select('*')
-        .eq('status', 'open' as JobStatus)
+        .eq('is_active', true)
         .order('sort_order', { ascending: true });
 
       if (error) throw error;
@@ -50,17 +50,13 @@ class JobsService extends BaseService<JobOpening, JobOpeningInsert, JobOpeningUp
       let query = this.supabase.from(this.tableName).select('*');
 
       // Apply filters
-      if (filters.status) {
-        query = query.eq('status', filters.status);
-      }
-
-      if (filters.job_type) {
-        query = query.eq('job_type', filters.job_type);
+      if (filters.is_active !== undefined) {
+        query = query.eq('is_active', filters.is_active);
       }
 
       if (filters.department) {
         query = query.or(
-          `department_id.ilike.%${filters.department}%,department_en.ilike.%${filters.department}%`
+          `department.ilike.%${filters.department}%`
         );
       }
 
@@ -94,8 +90,8 @@ class JobsService extends BaseService<JobOpening, JobOpeningInsert, JobOpeningUp
       const { data, error } = await this.supabase
         .from(this.tableName)
         .select('*')
-        .eq('job_type', jobType)
-        .eq('status', 'open' as JobStatus)
+        .eq('employment_type', jobType)
+        .eq('is_active', true)
         .order('sort_order', { ascending: true });
 
       if (error) throw error;
@@ -118,8 +114,8 @@ class JobsService extends BaseService<JobOpening, JobOpeningInsert, JobOpeningUp
       const { data, error } = await this.supabase
         .from(this.tableName)
         .select('*')
-        .or(`department_id.ilike.%${department}%,department_en.ilike.%${department}%`)
-        .eq('status', 'open' as JobStatus)
+        .or(`department.ilike.%${department}%`)
+        .eq('is_active', true)
         .order('sort_order', { ascending: true });
 
       if (error) throw error;
@@ -143,7 +139,7 @@ class JobsService extends BaseService<JobOpening, JobOpeningInsert, JobOpeningUp
         .from(this.tableName)
         .select('*')
         .or(`location_id.ilike.%${location}%,location_en.ilike.%${location}%`)
-        .eq('status', 'open' as JobStatus)
+        .eq('is_active', true)
         .order('sort_order', { ascending: true });
 
       if (error) throw error;
@@ -169,7 +165,7 @@ class JobsService extends BaseService<JobOpening, JobOpeningInsert, JobOpeningUp
       const { data, error } = await this.supabase
         .from(this.tableName)
         .select('*')
-        .eq('status', 'open' as JobStatus)
+        .eq('is_active', true)
         .not('application_deadline', 'is', null)
         .lte('application_deadline', futureDate.toISOString())
         .order('application_deadline', { ascending: true });
@@ -195,9 +191,9 @@ class JobsService extends BaseService<JobOpening, JobOpeningInsert, JobOpeningUp
         .from(this.tableName)
         .select('*')
         .or(
-          `title_id.ilike.%${query}%,title_en.ilike.%${query}%,description_id.ilike.%${query}%,description_en.ilike.%${query}%,requirements_id.ilike.%${query}%,requirements_en.ilike.%${query}%`
+          `title_id.ilike.%${query}%,title_en.ilike.%${query}%,description_id.ilike.%${query}%,description_en.ilike.%${query}%`
         )
-        .eq('status', 'open' as JobStatus)
+        .eq('is_active', true)
         .order('sort_order', { ascending: true });
 
       if (error) throw error;
@@ -219,8 +215,8 @@ class JobsService extends BaseService<JobOpening, JobOpeningInsert, JobOpeningUp
     try {
       const { data, error } = await this.supabase
         .from(this.tableName)
-        .select('department_en')
-        .eq('status', 'open' as JobStatus);
+        .select('department')
+        .eq('is_active', true);
 
       if (error) throw error;
 
@@ -228,7 +224,7 @@ class JobsService extends BaseService<JobOpening, JobOpeningInsert, JobOpeningUp
       const departments = [
         ...new Set(
           data
-            .map((job: { department_en: string | null }) => job.department_en)
+            .map((job: { department: string | null }) => job.department)
             .filter((dept): dept is string => dept !== null)
         ),
       ].sort();
@@ -251,7 +247,7 @@ class JobsService extends BaseService<JobOpening, JobOpeningInsert, JobOpeningUp
       const { data, error } = await this.supabase
         .from(this.tableName)
         .select('location_en')
-        .eq('status', 'open' as JobStatus);
+        .eq('is_active', true);
 
       if (error) throw error;
 
@@ -310,8 +306,8 @@ class JobsService extends BaseService<JobOpening, JobOpeningInsert, JobOpeningUp
 
       await this.supabase
         .from(this.tableName)
-        .update({ status: 'closed' as JobStatus })
-        .eq('status', 'open' as JobStatus)
+        .update({ is_active: false })
+        .eq('is_active', true)
         .not('application_deadline', 'is', null)
         .lt('application_deadline', now);
 

@@ -161,7 +161,7 @@ class ContactSubmissionsService extends BaseService<
     try {
       const updateData: Partial<ContactSubmission> = { status };
       if (notes) {
-        updateData.notes = notes;
+        updateData.admin_notes = notes;
       }
 
       const { data, error } = await this.supabase

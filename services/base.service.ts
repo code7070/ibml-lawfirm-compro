@@ -106,6 +106,7 @@ export abstract class BaseService<T, TInsert = Partial<T>, TUpdate = Partial<T>>
         page,
         pageSize,
         totalPages: Math.ceil((count || 0) / pageSize),
+        error: null,
       };
     } catch (error) {
       console.error(`Error fetching paginated ${this.tableName}:`, error);
@@ -115,6 +116,7 @@ export abstract class BaseService<T, TInsert = Partial<T>, TUpdate = Partial<T>>
         page,
         pageSize,
         totalPages: 0,
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   }

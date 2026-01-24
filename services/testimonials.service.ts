@@ -50,7 +50,6 @@ class TestimonialsService extends BaseService<
       const { data, error } = await this.supabase
         .from(this.tableName)
         .select('*')
-        .eq('is_featured', true)
         .order('sort_order', { ascending: true });
 
       if (error) throw error;
@@ -98,7 +97,7 @@ class TestimonialsService extends BaseService<
         .from(this.tableName)
         .select('*')
         .or(
-          `client_name.ilike.%${query}%,client_company.ilike.%${query}%,content_id.ilike.%${query}%,content_en.ilike.%${query}%`
+          `client_name.ilike.%${query}%,company.ilike.%${query}%,content_id.ilike.%${query}%,content_en.ilike.%${query}%`
         )
         .order('sort_order', { ascending: true });
 
@@ -144,31 +143,8 @@ class TestimonialsService extends BaseService<
    * Toggle featured status
    */
   async toggleFeatured(id: string): Promise<ApiResponse<Testimonial>> {
-    try {
-      // Get current status
-      const { data: current } = await this.getById(id);
-      if (!current) {
-        throw new Error('Testimonial not found');
-      }
-
-      // Toggle featured status
-      const { data, error } = await this.supabase
-        .from(this.tableName)
-        .update({ is_featured: !current.is_featured })
-        .eq('id', id)
-        .select()
-        .single();
-
-      if (error) throw error;
-
-      return { data: data as Testimonial, error: null };
-    } catch (error) {
-      console.error('Error toggling testimonial featured status:', error);
-      return {
-        data: null,
-        error: error instanceof Error ? error.message : 'Unknown error',
-      };
-    }
+    // is_featured column does not exist in testimonials table
+    return { data: null, error: 'Feature not available' };
   }
 
   /**

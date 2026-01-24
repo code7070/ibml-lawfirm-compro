@@ -4,7 +4,7 @@
     "about": "Tentang Firma",
     "practiceAreas": "Area Praktik",
     "services": "Layanan",
-    "lawyers": "Tim Hukum",
+    "lawyers": "Tim Kami",
     "events": "Acara",
     "results": "Hasil",
     "insights": "Wawasan",
@@ -13,14 +13,209 @@
   },
   "home": {
     "hero": {
-      "tags": "Industri Game · eSports · Hak Digital",
-      "title_1": "Perlindungan Hukum",
-      "title_2": "untuk",
-      "title_3": "Arena Digital",
-      "description": "Dimana otoritas hukum klasik bertemu dengan inovasi digital. Kami menyediakan nasihat hukum canggih untuk masa depan hiburan.",
-      "cta_primary": "Mulai Perjalanan Anda",
-      "cta_secondary": "Jelajahi Keahlian",
-      "badge_text": "Representasi Hukum Global"
+      "tags": "Hiburan · Teknologi · Kesehatan & Pendidikan · Ketenagakerjaan",
+      "title_1": "Kedudukan",
+      "title_2": "Hukum",
+      "title_3": "Tak Tergoyahkan",
+      "description": "Penjaga Sophisticated untuk bisnis Anda. Kami menggabungkan yurisprudensi klasik dengan strategi modern untuk memberikan solusi hukum yang komprehensif.",
+      "cta_primary": "Jadwalkan Konsultasi",
+      "cta_secondary": "Area Praktik Kami",
+      "badge_text": "Kemitraan Hukum Strategis"
+    },
+    "services": {
+      "title": "Layanan Kami",
+      "subtitle": "Solusi hukum komprehensif yang disesuaikan dengan kebutuhan Anda",
+      "cta": "Lihat Semua Layanan"
+    },
+    "team": {
+      "title": "Tim Kami",
+      "subtitle": "Kenali para profesional hukum berpengalaman kami",
+      "cta": "Lihat Semua Pengacara"
+    },
+    "testimonials": {
+      "title": "Testimoni Klien",
+      "subtitle": "Apa kata klien kami tentang kami"
+    },
+    "cta": {
+      "title": "Siap mendiskusikan kebutuhan hukum Anda?",
+      "subtitle": "Tim kami siap memberikan konsultasi strategis untuk bisnis Anda",
+      "button": "Jadwalkan Konsultasi"
     }
+  },
+  "about": {
+    "hero": {
+      "tags": "Tentang IBLM Law Group",
+      "title": "The Sophisticated Guardian",
+      "subtitle": "Kemitraan hukum strategis yang dibangun di atas profesionalisme, empati, dan loyalitas"
+    },
+    "story": {
+      "title": "Kisah Kami",
+      "content": "IBLM Law Group didirikan dengan visi yang jelas: menyediakan layanan hukum sophisticated yang menggabungkan yurisprudensi klasik dengan strategi bisnis modern. Kami percaya dalam membangun kemitraan jangka panjang dengan klien kami, memahami kebutuhan unik mereka, dan memberikan kedudukan hukum yang tak tergoyahkan."
+    },
+    "values": {
+      "title": "Nilai-Nilai Kami",
+      "professionalism": {
+        "title": "Profesionalisme",
+        "description": "Keunggulan dan integritas dalam setiap keterlibatan. Kami menegakkan standar tertinggi dalam praktik hukum."
+      },
+      "empathy": {
+        "title": "Empati",
+        "description": "Memahami kebutuhan klien secara mendalam. Kami mendengarkan terlebih dahulu, kemudian memberikan solusi yang disesuaikan."
+      },
+      "loyalty": {
+        "title": "Loyalitas",
+        "description": "Komitmen kemitraan jangka panjang. Kesuksesan Anda adalah prioritas kami."
+      }
+    },
+    "mission": {
+      "title": "Misi Kami",
+      "content": "Memberikan nasihat hukum strategis yang memberdayakan bisnis dan individu untuk mencapai tujuan mereka dengan kepercayaan dan kepastian hukum."
+    }
+  },
+  "lawyers": {
+    "hero": {
+      "tags": "Tim Hukum Kami",
+      "title": "Tim Kami",
+      "subtitle": "Profesional berpengalaman yang berdedikasi untuk kesuksesan Anda"
+    },
+    "filters": {
+      "all": "Semua",
+      "partners": "Partner",
+      "counsel": "Senior Counsel",
+      "associates": "Associates"
+    }
+  },
+  "practice": {
+    "hero": {
+      "tags": "Area Praktik",
+      "title": "Grup Keahlian Hukum",
+      "subtitle": "Area praktik khusus yang diorganisir ke dalam empat grup ahli"
+    },
+    "groups": {
+      "leg1": "LEG-1: Grup Ahli Hiburan",
+      "leg2": "LEG-2: Grup Ahli Ketenagakerjaan",
+      "leg3": "LEG-3: Grup Ahli Teknologi",
+      "leg4": "LEG-4: Grup Ahli Pendidikan & Kesehatan"
+    }
+  },
+  "services": {
+    "hero": {
+      "tags": "Layanan Kami",
+      "title": "Layanan Hukum",
+      "subtitle": "Solusi komprehensif untuk kebutuhan hukum Anda"
+    },
+    "categories": {
+      "advisory": "Konsultasi & Penasihat Hukum",
+      "litigation": "Litigasi & Penyelesaian Sengketa",
+      "corporate": "Korporasi & Komersial",
+      "probono": "Layanan Pro Bono"
+    }
+  },
+  "contact": {
+    "hero": {
+      "tags": "Hubungi Kami",
+      "title": "Kontak",
+      "subtitle": "Kami siap membantu kebutuhan hukum Anda"
+    },
+    "form": {
+      "title": "Hubungi Kami",
+      "name": "Nama Lengkap",
+      "email": "Alamat Email",
+      "phone": "Nomor Telepon",
+      "company": "Nama Perusahaan",
+      "subject": "Subjek",
+      "message": "Pesan Anda",
+      "submit": "Kirim Pesan",
+      "sending": "Mengirim...",
+      "success": "Terima kasih! Pesan Anda telah terkirim.",
+      "error": "Terjadi kesalahan. Silakan coba lagi."
+    },
+    "office": {
+      "title": "Kantor Kami",
+      "address": "[Alamat Kantor]",
+      "phone": "[Nomor Telepon]",
+      "email": "[Alamat Email]"
+    },
+    "hours": {
+      "title": "Jam Kerja",
+      "weekdays": "Senin - Jumat: 09.00 - 18.00",
+      "weekend": "Sabtu - Minggu: Dengan Perjanjian"
+    }
+  },
+  "career": {
+    "hero": {
+      "tags": "Bergabung dengan Kami",
+      "title": "Karir",
+      "subtitle": "Bangun karir Anda bersama IBLM Law Group"
+    },
+    "values": {
+      "title": "Nilai-Nilai Kami",
+      "professionalism": {
+        "title": "Profesionalisme",
+        "description": "Kami menjaga standar tertinggi dalam praktik dan etika hukum"
+      },
+      "empathy": {
+        "title": "Empati",
+        "description": "Kami menghargai pemahaman dan kasih sayang di tempat kerja"
+      },
+      "loyalty": {
+        "title": "Loyalitas",
+        "description": "Kami membangun hubungan jangka panjang dengan anggota tim kami"
+      }
+    },
+    "openings": {
+      "title": "Posisi Terbuka",
+      "apply": "Lamar Sekarang",
+      "noOpenings": "Tidak ada lowongan saat ini. Silakan periksa kembali!"
+    }
+  },
+  "events": {
+    "hero": {
+      "tags": "Acara & Seminar",
+      "title": "Acara",
+      "subtitle": "Tetap terinformasi dengan acara dan seminar hukum terbaru kami"
+    },
+    "upcoming": "Acara Mendatang",
+    "past": "Acara Sebelumnya",
+    "register": "Daftar Sekarang",
+    "details": "Lihat Detail"
+  },
+  "articles": {
+    "hero": {
+      "tags": "Wawasan Hukum",
+      "title": "Wawasan",
+      "subtitle": "Analisis ahli dan perspektif hukum dari tim kami"
+    },
+    "readMore": "Baca Selengkapnya",
+    "categories": "Kategori",
+    "all": "Semua Artikel"
+  },
+  "footer": {
+    "practice": "Praktik",
+    "firm": "Firma",
+    "newsletter": {
+      "title": "Berlangganan",
+      "description": "Dapatkan update wawasan hukum terbaru kami",
+      "placeholder": "Alamat Email",
+      "button": "Berlangganan"
+    },
+    "links": {
+      "team": "Tim Kami",
+      "careers": "Karir",
+      "contact": "Kontak"
+    },
+    "legal": {
+      "privacy": "Privasi",
+      "terms": "Ketentuan",
+      "sitemap": "Peta Situs"
+    },
+    "copyright": "IBLM Law Group. Hak cipta dilindungi."
+  },
+  "common": {
+    "learnMore": "Pelajari Lebih Lanjut",
+    "viewAll": "Lihat Semua",
+    "back": "Kembali",
+    "loading": "Memuat...",
+    "error": "Terjadi kesalahan"
   }
 }

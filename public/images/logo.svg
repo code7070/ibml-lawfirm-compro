@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 50">
+  <defs>
+    <style>
+      .logo-text { font-family: 'Georgia', serif; }
+      .logo-subtext { font-family: 'Arial', sans-serif; }
+    </style>
+  </defs>
+  <!-- Scale Icon -->
+  <g transform="translate(5, 10)">
+    <path d="M15 0L15 25M5 5L25 5M2 8L8 8L5 15L8 15M22 8L28 8L25 15L22 15" 
+          stroke="#D4C5A0" stroke-width="1.5" fill="none"/>
+    <circle cx="5" cy="15" r="4" fill="none" stroke="#D4C5A0" stroke-width="1"/>
+    <circle cx="25" cy="15" r="4" fill="none" stroke="#D4C5A0" stroke-width="1"/>
+    <rect x="10" y="23" width="10" height="3" fill="#D4C5A0"/>
+  </g>
+  <!-- IBLM Text -->
+  <text x="45" y="28" class="logo-text" fill="#0B1B3B" font-size="22" font-weight="300" letter-spacing="0.15em">IBLM</text>
+  <!-- Law Group Text -->
+  <text x="45" y="42" class="logo-subtext" fill="#0B1B3B" font-size="8" font-weight="700" letter-spacing="0.2em">LAW GROUP</text>
+</svg>

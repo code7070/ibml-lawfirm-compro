@@ -2,6 +2,7 @@
 import { ArrowDown } from "lucide-react";
 import Button from "./Button";
 import { useTranslations } from "@/hooks/useTranslations";
+import Image from "next/image";
 
 const Hero = () => {
   const t = useTranslations("home.hero");
@@ -13,8 +14,16 @@ const Hero = () => {
         {/* Gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#0B1B3B] via-[#1A2F5A] to-[#020814]" />
 
-        {/* Abstract Pattern overlay */}
-        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-overlay" />
+        {/* Professional Pattern overlay */}
+        <div 
+          className="absolute inset-0 opacity-5 mix-blend-overlay"
+          style={{
+            backgroundImage: `linear-gradient(45deg, #1A2F5A 25%, transparent 25%, transparent 75%, #1A2F5A 75%, #1A2F5A), 
+               linear-gradient(45deg, #1A2F5A 25%, transparent 25%, transparent 75%, #1A2F5A 75%, #1A2F5A)`,
+            backgroundSize: "30px 30px",
+            backgroundPosition: "0 0, 15px 15px",
+          }}
+        />
 
         {/* Gold Glow */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#D4C5A0] rounded-full blur-[180px] opacity-10 -translate-y-1/2 translate-x-1/3" />
@@ -50,27 +59,29 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Abstract Visual */}
+        {/* Professional Visual */}
         <div className="lg:col-span-5 relative hidden lg:block h-[600px]">
-          {/* Decorative geometrical elements representing 'Structure' and 'Digital' */}
+          {/* Decorative geometrical elements representing 'Structure' and 'Sophistication' */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-[400px] h-[500px] border border-[#D4C5A0]/20 relative">
-              {/* Image Placeholder with Duotone effect */}
+              {/* Image Placeholder with Professional effect */}
               <div className="absolute inset-4 bg-[#1A2F5A] overflow-hidden">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?auto=format&fit=crop&q=80&w=900"
-                  alt="Gaming Law"
-                  className="w-full h-full object-cover opacity-40 mix-blend-luminosity hover:scale-105 transition-transform duration-1000"
+                <Image
+                  src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=900"
+                  alt="Professional Legal Services"
+                  fill
+                  className="object-cover opacity-40 mix-blend-luminosity hover:scale-105 transition-transform duration-1000"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0B1B3B] to-transparent opacity-80" />
               </div>
 
-              {/* Floating Elements */}
-              <div className="absolute -top-6 -right-6 w-24 h-24 border border-[#D4C5A0] bg-[#0B1B3B] flex items-center justify-center">
-                <span className="text-3xl font-light text-white">24</span>
+              {/* Years of Excellence Badge */}
+              <div className="absolute -top-6 -right-6 w-24 h-24 border border-[#D4C5A0] bg-[#0B1B3B] flex flex-col items-center justify-center">
+                <span className="text-3xl font-light text-white">4</span>
+                <span className="text-[0.6rem] text-[#D4C5A0] uppercase tracking-wider">LEGs</span>
               </div>
 
+              {/* Brand Promise Badge */}
               <div className="absolute -bottom-10 -left-10 bg-[#D4C5A0] p-6 text-[#0B1B3B] max-w-[200px]">
                 <p className="text-xs font-bold uppercase tracking-widest leading-relaxed">
                   {t("badge_text")}

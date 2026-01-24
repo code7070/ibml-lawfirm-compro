@@ -4,23 +4,218 @@
     "about": "The Firm",
     "practiceAreas": "Practice Areas",
     "services": "Services",
-    "lawyers": "The Council",
+    "lawyers": "Our Team",
     "events": "Events",
     "results": "Results",
     "insights": "Insights",
     "careers": "Careers",
-    "contact": "Book Consultation"
+    "contact": "Consult Now"
   },
   "home": {
     "hero": {
-      "tags": "Game Industry · eSports · Digital Rights",
-      "title_1": "Legal Protection",
-      "title_2": "for the",
-      "title_3": "Digital Arena",
-      "description": "Where classical legal authority meets digital innovation. We provide sophisticated counsel for the future of entertainment.",
-      "cta_primary": "Start Your Quest",
-      "cta_secondary": "Explore Expertise",
-      "badge_text": "Global Legal Representation"
+      "tags": "Entertainment · Technology · Health & Education · People",
+      "title_1": "Unshakeable",
+      "title_2": "Legal",
+      "title_3": "Standing",
+      "description": "The Sophisticated Guardian for your business. We combine classical jurisprudence with modern strategy to deliver comprehensive legal solutions.",
+      "cta_primary": "Schedule Consultation",
+      "cta_secondary": "Our Practice Areas",
+      "badge_text": "Strategic Legal Partnership"
+    },
+    "services": {
+      "title": "Our Services",
+      "subtitle": "Comprehensive legal solutions tailored to your needs",
+      "cta": "View All Services"
+    },
+    "team": {
+      "title": "Our Team",
+      "subtitle": "Meet our experienced legal professionals",
+      "cta": "View All Lawyers"
+    },
+    "testimonials": {
+      "title": "Client Testimonials",
+      "subtitle": "What our clients say about us"
+    },
+    "cta": {
+      "title": "Ready to discuss your legal needs?",
+      "subtitle": "Our team is here to provide strategic counsel for your business",
+      "button": "Schedule Consultation"
     }
+  },
+  "about": {
+    "hero": {
+      "tags": "About IBLM Law Group",
+      "title": "The Sophisticated Guardian",
+      "subtitle": "Strategic legal partnership built on professionalism, empathy, and loyalty"
+    },
+    "story": {
+      "title": "Our Story",
+      "content": "IBLM Law Group was founded with a clear vision: to provide sophisticated legal services that combine classical jurisprudence with modern business strategy. We believe in building long-term partnerships with our clients, understanding their unique needs, and delivering unshakeable legal standing."
+    },
+    "values": {
+      "title": "Our Values",
+      "professionalism": {
+        "title": "Professionalism",
+        "description": "Excellence and integrity in every engagement. We uphold the highest standards of legal practice."
+      },
+      "empathy": {
+        "title": "Empathy",
+        "description": "Understanding client needs deeply. We listen first, then provide tailored solutions."
+      },
+      "loyalty": {
+        "title": "Loyalty",
+        "description": "Long-term partnership commitment. Your success is our priority."
+      }
+    },
+    "mission": {
+      "title": "Our Mission",
+      "content": "To provide strategic legal counsel that empowers businesses and individuals to achieve their goals with confidence and legal certainty."
+    }
+  },
+  "lawyers": {
+    "hero": {
+      "tags": "Our Legal Team",
+      "title": "Our Team",
+      "subtitle": "Experienced professionals dedicated to your success"
+    },
+    "filters": {
+      "all": "All",
+      "partners": "Partners",
+      "counsel": "Senior Counsel",
+      "associates": "Associates"
+    }
+  },
+  "practice": {
+    "hero": {
+      "tags": "Practice Areas",
+      "title": "Legal Expertise Groups",
+      "subtitle": "Specialized practice areas organized into four expert groups"
+    },
+    "groups": {
+      "leg1": "LEG-1: Entertainment Expert Group",
+      "leg2": "LEG-2: People & Labor Expert Group",
+      "leg3": "LEG-3: Technology Expert Group",
+      "leg4": "LEG-4: Education & Health Expert Group"
+    }
+  },
+  "services": {
+    "hero": {
+      "tags": "Our Services",
+      "title": "Legal Services",
+      "subtitle": "Comprehensive solutions for your legal needs"
+    },
+    "categories": {
+      "advisory": "Legal Advisory & Consulting",
+      "litigation": "Litigation & Dispute Resolution",
+      "corporate": "Corporate & Commercial",
+      "probono": "Pro Bono Services"
+    }
+  },
+  "contact": {
+    "hero": {
+      "tags": "Get in Touch",
+      "title": "Contact Us",
+      "subtitle": "We're here to help with your legal needs"
+    },
+    "form": {
+      "title": "Get in Touch",
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "company": "Company Name",
+      "subject": "Subject",
+      "message": "Your Message",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Thank you! Your message has been sent.",
+      "error": "Something went wrong. Please try again."
+    },
+    "office": {
+      "title": "Our Office",
+      "address": "[Office Address]",
+      "phone": "[Phone Number]",
+      "email": "[Email Address]"
+    },
+    "hours": {
+      "title": "Office Hours",
+      "weekdays": "Monday - Friday: 9:00 AM - 6:00 PM",
+      "weekend": "Saturday - Sunday: By Appointment"
+    }
+  },
+  "career": {
+    "hero": {
+      "tags": "Join Our Team",
+      "title": "Careers",
+      "subtitle": "Build your career with IBLM Law Group"
+    },
+    "values": {
+      "title": "Our Values",
+      "professionalism": {
+        "title": "Professionalism",
+        "description": "We maintain the highest standards of legal practice and ethics"
+      },
+      "empathy": {
+        "title": "Empathy",
+        "description": "We value understanding and compassion in our workplace"
+      },
+      "loyalty": {
+        "title": "Loyalty",
+        "description": "We build lasting relationships with our team members"
+      }
+    },
+    "openings": {
+      "title": "Open Positions",
+      "apply": "Apply Now",
+      "noOpenings": "No current openings. Check back soon!"
+    }
+  },
+  "events": {
+    "hero": {
+      "tags": "Events & Seminars",
+      "title": "Events",
+      "subtitle": "Stay updated with our latest events and legal seminars"
+    },
+    "upcoming": "Upcoming Events",
+    "past": "Past Events",
+    "register": "Register Now",
+    "details": "View Details"
+  },
+  "articles": {
+    "hero": {
+      "tags": "Legal Insights",
+      "title": "Insights",
+      "subtitle": "Expert analysis and legal perspectives from our team"
+    },
+    "readMore": "Read More",
+    "categories": "Categories",
+    "all": "All Articles"
+  },
+  "footer": {
+    "practice": "Practice",
+    "firm": "Firm",
+    "newsletter": {
+      "title": "Subscribe",
+      "description": "Stay updated with our latest legal insights",
+      "placeholder": "Email Address",
+      "button": "Subscribe"
+    },
+    "links": {
+      "team": "Our Team",
+      "careers": "Careers",
+      "contact": "Contact"
+    },
+    "legal": {
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "sitemap": "Sitemap"
+    },
+    "copyright": "IBLM Law Group. All rights reserved."
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "viewAll": "View All",
+    "back": "Back",
+    "loading": "Loading...",
+    "error": "An error occurred"
   }
 }

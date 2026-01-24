@@ -1,5 +1,5 @@
-import { Scale } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Footer = () => {
   return (
@@ -19,29 +19,40 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
           {/* Brand Column */}
           <div className="md:col-span-4 space-y-8">
-            <Link href="/" className="flex items-center gap-3">
-              <Scale className="w-8 h-8 text-[#D4C5A0]" />
-              <span className="text-2xl font-light tracking-[0.2em] text-white">
-                IBLM
-              </span>
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/images/logo-white.svg"
+                alt="IBLM Law Group"
+                width={160}
+                height={45}
+              />
             </Link>
             <p className="text-gray-500 text-sm leading-relaxed max-w-sm font-light">
-              We stand at the intersection of technology and justice. Providing
-              uncompromising legal defense for the architects of the digital
-              future.
+              The Sophisticated Guardian for your business. We combine classical
+              jurisprudence with modern strategy to deliver unshakeable legal standing.
             </p>
             <div className="flex gap-4">
-              {/* Social placeholders using simple circles for sophistication */}
-              <div className="w-10 h-10 rounded-full border border-white/20 hover:border-[#D4C5A0] hover:bg-[#D4C5A0] hover:text-[#020814] flex items-center justify-center transition-all cursor-pointer text-white">
+              {/* Social Links */}
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-white/20 hover:border-[#D4C5A0] hover:bg-[#D4C5A0] hover:text-[#020814] flex items-center justify-center transition-all cursor-pointer text-white text-xs font-bold"
+              >
                 IN
-              </div>
-              <div className="w-10 h-10 rounded-full border border-white/20 hover:border-[#D4C5A0] hover:bg-[#D4C5A0] hover:text-[#020814] flex items-center justify-center transition-all cursor-pointer text-white">
-                X
-              </div>
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-white/20 hover:border-[#D4C5A0] hover:bg-[#D4C5A0] hover:text-[#020814] flex items-center justify-center transition-all cursor-pointer text-white text-xs font-bold"
+              >
+                IG
+              </a>
             </div>
           </div>
 
-          {/* Links 1 */}
+          {/* Practice Areas */}
           <div className="md:col-span-2 md:col-start-6">
             <h4 className="text-[#D4C5A0] font-bold text-xs uppercase tracking-widest mb-8">
               Practice
@@ -49,40 +60,40 @@ const Footer = () => {
             <ul className="space-y-4 text-sm text-gray-400 font-light">
               <li>
                 <Link
-                  href="/practice-areas#game-dev"
+                  href="/practice-areas#entertainment"
                   className="hover:text-white transition-colors"
                 >
-                  Game Dev Law
+                  Entertainment
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/practice-areas#esports"
+                  href="/practice-areas#technology"
                   className="hover:text-white transition-colors"
                 >
-                  eSports
+                  Technology
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/practice-areas#ip"
+                  href="/practice-areas#labor"
                   className="hover:text-white transition-colors"
                 >
-                  IP Litigation
+                  People & Labor
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/practice-areas#corporate"
+                  href="/practice-areas#health"
                   className="hover:text-white transition-colors"
                 >
-                  Corporate
+                  Health & Education
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Links 2 */}
+          {/* Firm Links */}
           <div className="md:col-span-2">
             <h4 className="text-[#D4C5A0] font-bold text-xs uppercase tracking-widest mb-8">
               Firm
@@ -93,7 +104,15 @@ const Footer = () => {
                   href="/lawyers"
                   className="hover:text-white transition-colors"
                 >
-                  The Council
+                  Our Team
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about"
+                  className="hover:text-white transition-colors"
+                >
+                  About Us
                 </Link>
               </li>
               <li>
@@ -118,10 +137,10 @@ const Footer = () => {
           {/* Newsletter */}
           <div className="md:col-span-3">
             <h4 className="text-[#D4C5A0] font-bold text-xs uppercase tracking-widest mb-8">
-              Join the League
+              Subscribe
             </h4>
             <p className="text-xs text-gray-500 mb-4">
-              Latest legal updates from the frontlines.
+              Stay updated with our latest legal insights and news.
             </p>
             <div className="flex border-b border-white/20 pb-2">
               <input
@@ -130,18 +149,18 @@ const Footer = () => {
                 className="bg-transparent w-full outline-none text-white text-sm placeholder-gray-600"
               />
               <button className="text-[#D4C5A0] hover:text-white uppercase text-xs font-bold tracking-widest">
-                Join
+                Subscribe
               </button>
             </div>
           </div>
         </div>
 
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-600 font-mono">
-          <p>&copy; {new Date().getFullYear()} IBLM Law Group LLP. Est. 2024</p>
+          <p>&copy; {new Date().getFullYear()} IBLM Law Group. All rights reserved.</p>
           <div className="flex gap-8">
-            <span className="hover:text-gray-400 cursor-pointer">Privacy</span>
-            <span className="hover:text-gray-400 cursor-pointer">Terms</span>
-            <span className="hover:text-gray-400 cursor-pointer">Sitemap</span>
+            <Link href="/privacy" className="hover:text-gray-400 cursor-pointer">Privacy</Link>
+            <Link href="/terms" className="hover:text-gray-400 cursor-pointer">Terms</Link>
+            <Link href="/sitemap" className="hover:text-gray-400 cursor-pointer">Sitemap</Link>
           </div>
         </div>
       </div>

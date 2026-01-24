@@ -8,6 +8,7 @@
 
 // Export all service instances
 export { lawyersService } from './lawyers.service';
+export { lawyerPositionsService } from './lawyer-positions.service';
 export { articlesService } from './articles.service';
 export { eventsService } from './events.service';
 export { practiceAreasService } from './practice-areas.service';
@@ -20,6 +21,14 @@ export { jobsService } from './jobs.service';
 // Export base service for extension (if needed)
 export { BaseService } from './base.service';
 
+// Re-export LawyerPosition types from service (until database.ts is synced)
+export type {
+  LawyerPosition,
+  LawyerPositionInsert,
+  LawyerPositionUpdate,
+  LawyerPositionWithCount,
+} from './lawyer-positions.service';
+
 // Re-export types for convenience
 export type {
   ApiResponse,
@@ -29,6 +38,7 @@ export type {
   LawyerInsert,
   LawyerUpdate,
   LawyerWithPracticeAreas,
+  LawyerWithPositionAndPracticeAreas,
   LawyerFilters,
   LawyerStatus,
   LawyerSeniority,

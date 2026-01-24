@@ -9,9 +9,9 @@ import {
   LawyerInsert,
   LawyerUpdate,
   LawyerWithPracticeAreas,
+  LawyerWithPositionAndPracticeAreas,
   LawyerFilters,
   ApiResponse,
-  LawyerStatus,
   LawyerSeniority,
 } from "@/lib/types/database";
 
@@ -28,7 +28,7 @@ class LawyersService extends BaseService<Lawyer, LawyerInsert, LawyerUpdate> {
       const { data, error } = await this.supabase
         .from(this.tableName)
         .select("*")
-        .eq("status", "active" as LawyerStatus)
+        .eq("is_active", true)
         .order("sort_order", { ascending: true });
 
       if (error) throw error;
@@ -54,14 +54,13 @@ class LawyersService extends BaseService<Lawyer, LawyerInsert, LawyerUpdate> {
           *,
           practice_areas:lawyer_practice_areas(
             practice_area_id,
-            is_primary,
             practice_areas(*)
           )
         `);
 
       // Apply filters
-      if (filters?.status) {
-        query = query.eq("status", filters.status);
+      if (filters?.status === 'active') {
+        query = query.eq("is_active", true);
       }
 
       if (filters?.seniority) {
@@ -91,6 +90,37 @@ class LawyersService extends BaseService<Lawyer, LawyerInsert, LawyerUpdate> {
   }
 
   /**
+   * Get lawyers with their position and practice areas (for lawyers listing page)
+   * This includes the lawyer_positions relationship for proper categorization
+   */
+  async getActiveWithPositionAndPracticeAreas(): Promise<ApiResponse<LawyerWithPositionAndPracticeAreas[]>> {
+    try {
+      const { data, error } = await this.supabase
+        .from(this.tableName)
+        .select(`
+          *,
+          lawyer_positions(*),
+          practice_areas:lawyer_practice_areas(
+            practice_area_id,
+            practice_areas(*)
+          )
+        `)
+        .eq("is_active", true)
+        .order("sort_order", { ascending: true });
+
+      if (error) throw error;
+
+      return { data: data as LawyerWithPositionAndPracticeAreas[], error: null };
+    } catch (error) {
+      console.error("Error fetching lawyers with position and practice areas:", error);
+      return {
+        data: null,
+        error: error instanceof Error ? error.message : "Unknown error",
+      };
+    }
+  }
+
+  /**
    * Get lawyer by slug with practice areas
    */
   async getBySlugWithPracticeAreas(
@@ -104,7 +134,6 @@ class LawyersService extends BaseService<Lawyer, LawyerInsert, LawyerUpdate> {
           *,
           practice_areas:lawyer_practice_areas(
             practice_area_id,
-            is_primary,
             practice_areas(*)
           )
         `,
@@ -135,7 +164,7 @@ class LawyersService extends BaseService<Lawyer, LawyerInsert, LawyerUpdate> {
         .or(
           `name_id.ilike.%${query}%,name_en.ilike.%${query}%,email.ilike.%${query}%`,
         )
-        .eq("status", "active" as LawyerStatus)
+        .eq("is_active", true)
         .order("sort_order", { ascending: true });
 
       if (error) throw error;
@@ -161,7 +190,7 @@ class LawyersService extends BaseService<Lawyer, LawyerInsert, LawyerUpdate> {
         .from(this.tableName)
         .select("*")
         .eq("seniority", seniority)
-        .eq("status", "active" as LawyerStatus)
+        .eq("is_active", true)
         .order("sort_order", { ascending: true });
 
       if (error) throw error;
@@ -198,7 +227,7 @@ class LawyersService extends BaseService<Lawyer, LawyerInsert, LawyerUpdate> {
         `,
         )
         .eq("practice_area_id", practiceAreaId)
-        .eq("lawyers.status", "active");
+        .eq("lawyers.is_active", true);
 
       if (error) throw error;
 
@@ -268,7 +297,6 @@ class LawyersService extends BaseService<Lawyer, LawyerInsert, LawyerUpdate> {
       const assignments = practiceAreaIds.map((areaId) => ({
         lawyer_id: lawyerId,
         practice_area_id: areaId,
-        is_primary: areaId === primaryAreaId,
       }));
 
       const { error } = await this.supabase

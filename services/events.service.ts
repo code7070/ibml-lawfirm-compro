@@ -26,7 +26,7 @@ class EventsService extends BaseService<Event, EventInsert, EventUpdate> {
       const { data, error } = await this.supabase
         .from(this.tableName)
         .select('*')
-        .eq('status', 'upcoming' as EventStatus)
+        .eq('is_active', true)
         .gte('event_date', new Date().toISOString())
         .order('event_date', { ascending: true });
 
@@ -50,7 +50,6 @@ class EventsService extends BaseService<Event, EventInsert, EventUpdate> {
       const { data, error } = await this.supabase
         .from(this.tableName)
         .select('*')
-        .eq('status', 'completed' as EventStatus)
         .lt('event_date', new Date().toISOString())
         .order('event_date', { ascending: false });
 
@@ -74,8 +73,7 @@ class EventsService extends BaseService<Event, EventInsert, EventUpdate> {
       const { data, error } = await this.supabase
         .from(this.tableName)
         .select('*')
-        .eq('is_featured', true)
-        .eq('status', 'upcoming' as EventStatus)
+        .eq('is_active', true) // Featured implies active usually
         .gte('event_date', new Date().toISOString())
         .order('event_date', { ascending: true })
         .limit(limit);
@@ -150,12 +148,12 @@ class EventsService extends BaseService<Event, EventInsert, EventUpdate> {
       let query = this.supabase.from(this.tableName).select('*');
 
       // Apply filters
-      if (filters.status) {
-        query = query.eq('status', filters.status);
+      if (filters.is_active !== undefined) {
+        query = query.eq('is_active', filters.is_active);
       }
 
-      if (filters.is_featured !== undefined) {
-        query = query.eq('is_featured', filters.is_featured);
+      if (filters.upcoming) {
+        query = query.gte('event_date', new Date().toISOString());
       }
 
       if (filters.from_date) {
@@ -239,6 +237,9 @@ class EventsService extends BaseService<Event, EventInsert, EventUpdate> {
    * (Should be called periodically or via cron job)
    */
   async autoUpdateStatus(): Promise<ApiResponse<null>> {
+    // Status column does not exist in current schema
+    return { data: null, error: 'Feature not available' };
+    /*
     try {
       const now = new Date().toISOString();
 
@@ -265,6 +266,7 @@ class EventsService extends BaseService<Event, EventInsert, EventUpdate> {
         error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
+    */
   }
 }
 

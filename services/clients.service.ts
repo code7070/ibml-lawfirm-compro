@@ -46,7 +46,6 @@ class ClientsService extends BaseService<Client, ClientInsert, ClientUpdate> {
       const { data, error } = await this.supabase
         .from(this.tableName)
         .select('*')
-        .eq('is_featured', true)
         .order('sort_order', { ascending: true });
 
       if (error) throw error;
@@ -62,21 +61,21 @@ class ClientsService extends BaseService<Client, ClientInsert, ClientUpdate> {
   }
 
   /**
-   * Get clients by industry
+   * Get clients by type
    */
-  async getByIndustry(industry: string): Promise<ApiResponse<Client[]>> {
+  async getByIndustry(type: string): Promise<ApiResponse<Client[]>> {
     try {
       const { data, error } = await this.supabase
         .from(this.tableName)
         .select('*')
-        .eq('industry', industry)
+        .eq('type', type)
         .order('sort_order', { ascending: true });
 
       if (error) throw error;
 
       return { data: data as Client[], error: null };
     } catch (error) {
-      console.error('Error fetching clients by industry:', error);
+      console.error('Error fetching clients by type:', error);
       return {
         data: null,
         error: error instanceof Error ? error.message : 'Unknown error',
@@ -91,7 +90,7 @@ class ClientsService extends BaseService<Client, ClientInsert, ClientUpdate> {
     try {
       const { data, error } = await this.supabase
         .from(this.tableName)
-        .select('industry');
+        .select('type');
 
       if (error) throw error;
 
@@ -99,8 +98,8 @@ class ClientsService extends BaseService<Client, ClientInsert, ClientUpdate> {
       const industries = [
         ...new Set(
           data
-            .map((client: { industry: string | null }) => client.industry)
-            .filter((industry): industry is string => industry !== null)
+            .map((client: { type: string | null }) => client.type)
+            .filter((type): type is string => type !== null)
         ),
       ].sort();
 
@@ -115,14 +114,14 @@ class ClientsService extends BaseService<Client, ClientInsert, ClientUpdate> {
   }
 
   /**
-   * Search clients by name or industry
+   * Search clients by name or type
    */
   async search(query: string): Promise<ApiResponse<Client[]>> {
     try {
       const { data, error } = await this.supabase
         .from(this.tableName)
         .select('*')
-        .or(`name.ilike.%${query}%,industry.ilike.%${query}%`)
+        .or(`name.ilike.%${query}%,type.ilike.%${query}%`)
         .order('sort_order', { ascending: true });
 
       if (error) throw error;
@@ -167,31 +166,8 @@ class ClientsService extends BaseService<Client, ClientInsert, ClientUpdate> {
    * Toggle featured status
    */
   async toggleFeatured(id: string): Promise<ApiResponse<Client>> {
-    try {
-      // Get current status
-      const { data: current } = await this.getById(id);
-      if (!current) {
-        throw new Error('Client not found');
-      }
-
-      // Toggle featured status
-      const { data, error } = await this.supabase
-        .from(this.tableName)
-        .update({ is_featured: !current.is_featured })
-        .eq('id', id)
-        .select()
-        .single();
-
-      if (error) throw error;
-
-      return { data: data as Client, error: null };
-    } catch (error) {
-      console.error('Error toggling client featured status:', error);
-      return {
-        data: null,
-        error: error instanceof Error ? error.message : 'Unknown error',
-      };
-    }
+    // is_featured column does not exist in clients table
+    return { data: null, error: 'Feature not available' };
   }
 }
 
