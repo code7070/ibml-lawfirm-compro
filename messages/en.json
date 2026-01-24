@@ -30,11 +30,18 @@
     "team": {
       "title": "Our Team",
       "subtitle": "Meet our experienced legal professionals",
-      "cta": "View All Lawyers"
+      "cta": "View All Lawyers",
+      "noTeam": "No team members available at the moment."
     },
     "testimonials": {
       "title": "Client Testimonials",
       "subtitle": "What our clients say about us"
+    },
+    "practice_section": {
+      "label": "Practice Groups",
+      "title_prefix": "Architecture of",
+      "title_suffix": "Digital Defense",
+      "description": "Tailored legal strategies for the fast-paced ecosystem of gaming and entertainment."
     },
     "cta": {
       "title": "Ready to discuss your legal needs?",
@@ -70,6 +77,11 @@
     "mission": {
       "title": "Our Mission",
       "content": "To provide strategic legal counsel that empowers businesses and individuals to achieve their goals with confidence and legal certainty."
+    },
+    "practice_section": {
+      "label": "Legal Expertise Groups",
+      "title_prefix": "Practice",
+      "title_suffix": "Areas"
     }
   },
   "lawyers": {
@@ -83,7 +95,27 @@
       "partners": "Partners",
       "counsel": "Senior Counsel",
       "associates": "Associates"
-    }
+    },
+    "detail": {
+      "overview": "Overview",
+      "experience": "Professional Experience",
+      "education": "Education",
+      "certifications": "Admissions & Associations",
+      "languages": "Languages",
+      "practiceAreas": "Practice Areas",
+      "contactInfo": "Contact Information",
+      "socialLinks": "Connect",
+      "viewProfile": "View Profile",
+      "close": "Close",
+      "email": "Email",
+      "phone": "Phone",
+      "linkedin": "LinkedIn",
+      "linkedinProfile": "LinkedIn Profile",
+      "instagram": "Instagram",
+      "twitter": "Twitter",
+      "noBio": "No biography available."
+    },
+    "viewAll": "View All Lawyers"
   },
   "practice": {
     "hero": {

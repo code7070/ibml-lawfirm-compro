@@ -4,7 +4,7 @@
  */
 
 import { BaseService } from './base.service';
-import {
+import type {
   PracticeGroup,
   PracticeGroupInsert,
   PracticeGroupUpdate,
@@ -79,6 +79,29 @@ class PracticeGroupsService extends BaseService<
   }
 
   /**
+   * Get active practice groups
+   */
+  async getActive(): Promise<ApiResponse<PracticeGroup[]>> {
+    try {
+      const { data, error } = await this.supabase
+        .from(this.tableName)
+        .select('*')
+        .eq('status', 'Active')
+        .order('sort_order', { ascending: true });
+
+      if (error) throw error;
+
+      return { data: data as PracticeGroup[], error: null };
+    } catch (error) {
+      console.error('Error fetching active practice groups:', error);
+      return {
+        data: null,
+        error: error instanceof Error ? error.message : 'Unknown error',
+      };
+    }
+  }
+
+  /**
    * Update sort order (for drag-and-drop reordering)
    */
   async updateSortOrder(
@@ -116,7 +139,7 @@ class PracticeGroupsService extends BaseService<
           practice_areas(*)
         `)
         .or(
-          `name_id.ilike.%${query}%,name_en.ilike.%${query}%,description_id.ilike.%${query}%,description_en.ilike.%${query}%`
+          `name_id.ilike.%${query}%,name_en.ilike.%${query}%,description_id.ilike.%${query}%,description_en.ilike.%${query}%,subtitle_id.ilike.%${query}%,subtitle_en.ilike.%${query}%`
         )
         .order('sort_order', { ascending: true });
 

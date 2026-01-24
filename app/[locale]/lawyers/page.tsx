@@ -1,22 +1,34 @@
 import LawyersPage from "@/components/LawyersPage";
 import { lawyersService, lawyerPositionsService } from "@/services";
+import { getDictionary, Locale } from "@/lib/dictionary";
 
 export default async function Lawyers({
-  params: { locale },
+  params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  // Fetch lawyers with positions and practice areas, and all active positions
-  const [lawyersResponse, positionsResponse] = await Promise.all([
+  const { locale } = await params;
+  
+  // Fetch lawyers, positions, and translations in parallel
+  const [lawyersResponse, positionsResponse, dict] = await Promise.all([
     lawyersService.getActiveWithPositionAndPracticeAreas(),
     lawyerPositionsService.getActive(),
+    getDictionary(locale as Locale),
   ]);
+
+  // Build translations for LawyersPage
+  const lawyersPageTranslations = {
+    hero: dict.lawyers.hero,
+    fallbackTeamTitle: dict.lawyers.hero.title,
+    detail: dict.lawyers.detail,
+  };
 
   return (
     <LawyersPage
       initialLawyers={lawyersResponse.data || []}
       positions={positionsResponse.data || []}
       locale={locale}
+      translations={lawyersPageTranslations}
     />
   );
 }

@@ -779,6 +779,8 @@ export type Database = {
           slug: string;
           sort_order: number | null;
           status: string | null;
+          subtitle_en: string | null;
+          subtitle_id: string | null;
           updated_at: string | null;
           updated_by: string | null;
         };
@@ -794,6 +796,8 @@ export type Database = {
           slug: string;
           sort_order?: number | null;
           status?: string | null;
+          subtitle_en?: string | null;
+          subtitle_id?: string | null;
           updated_at?: string | null;
           updated_by?: string | null;
         };
@@ -809,6 +813,8 @@ export type Database = {
           slug?: string;
           sort_order?: number | null;
           status?: string | null;
+          subtitle_en?: string | null;
+          subtitle_id?: string | null;
           updated_at?: string | null;
           updated_by?: string | null;
         };
@@ -882,6 +888,126 @@ export type Database = {
   };
 };
 
+type DatabaseWithoutInternals = Omit<Database, "__InternalSupabase">;
+
+type DefaultSchema = DatabaseWithoutInternals[Extract<
+  keyof Database,
+  "public"
+>];
+
+export type Tables<
+  DefaultSchemaTableNameOrOptions extends
+    | keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
+    | { schema: keyof DatabaseWithoutInternals },
+  TableName extends DefaultSchemaTableNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals;
+  }
+    ? keyof (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+        DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
+    : never = never,
+> = DefaultSchemaTableNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals;
+}
+  ? (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+      DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])[TableName] extends {
+      Row: infer R;
+    }
+    ? R
+    : never
+  : DefaultSchemaTableNameOrOptions extends keyof (DefaultSchema["Tables"] &
+        DefaultSchema["Views"])
+    ? (DefaultSchema["Tables"] &
+        DefaultSchema["Views"])[DefaultSchemaTableNameOrOptions] extends {
+        Row: infer R;
+      }
+      ? R
+      : never
+    : never;
+
+export type TablesInsert<
+  DefaultSchemaTableNameOrOptions extends
+    | keyof DefaultSchema["Tables"]
+    | { schema: keyof DatabaseWithoutInternals },
+  TableName extends DefaultSchemaTableNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals;
+  }
+    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
+    : never = never,
+> = DefaultSchemaTableNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals;
+}
+  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+      Insert: infer I;
+    }
+    ? I
+    : never
+  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
+    ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
+        Insert: infer I;
+      }
+      ? I
+      : never
+    : never;
+
+export type TablesUpdate<
+  DefaultSchemaTableNameOrOptions extends
+    | keyof DefaultSchema["Tables"]
+    | { schema: keyof DatabaseWithoutInternals },
+  TableName extends DefaultSchemaTableNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals;
+  }
+    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
+    : never = never,
+> = DefaultSchemaTableNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals;
+}
+  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+      Update: infer U;
+    }
+    ? U
+    : never
+  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
+    ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
+        Update: infer U;
+      }
+      ? U
+      : never
+    : never;
+
+export type Enums<
+  DefaultSchemaEnumNameOrOptions extends
+    | keyof DefaultSchema["Enums"]
+    | { schema: keyof DatabaseWithoutInternals },
+  EnumName extends DefaultSchemaEnumNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals;
+  }
+    ? keyof DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
+    : never = never,
+> = DefaultSchemaEnumNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals;
+}
+  ? DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"][EnumName]
+  : DefaultSchemaEnumNameOrOptions extends keyof DefaultSchema["Enums"]
+    ? DefaultSchema["Enums"][DefaultSchemaEnumNameOrOptions]
+    : never;
+
+export type CompositeTypes<
+  PublicCompositeTypeNameOrOptions extends
+    | keyof DefaultSchema["CompositeTypes"]
+    | { schema: keyof DatabaseWithoutInternals },
+  CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals;
+  }
+    ? keyof DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
+    : never = never,
+> = PublicCompositeTypeNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals;
+}
+  ? DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
+  : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema["CompositeTypes"]
+    ? DefaultSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
+    : never;
+
 export const Constants = {
   graphql_public: {
     Enums: {},
@@ -890,147 +1016,3 @@ export const Constants = {
     Enums: {},
   },
 } as const;
-
-
-// --- Helper Types ---
-
-export type Tables<T extends keyof Database['public']['Tables']> = Database['public']['Tables'][T]['Row'];
-export type Enums<T extends keyof Database['public']['Enums']> = Database['public']['Enums'][T];
-export type Insertable<T extends keyof Database['public']['Tables']> = Database['public']['Tables'][T]['Insert'];
-export type Updateable<T extends keyof Database['public']['Tables']> = Database['public']['Tables'][T]['Update'];
-
-export type ApiResponse<T> = {
-  data: T | null;
-  error: string | null;
-};
-
-export type PaginatedResponse<T> = {
-  data: T[];
-  count: number | null;
-  error: string | null;
-  page?: number;
-  pageSize?: number;
-  totalPages?: number;
-};
-
-// Lawyers
-export type Lawyer = Tables<'lawyers'>;
-export type LawyerInsert = Insertable<'lawyers'>;
-export type LawyerUpdate = Updateable<'lawyers'>;
-export type LawyerStatus = 'active' | 'inactive' | string;
-export type LawyerSeniority = string;
-
-export interface LawyerFilters {
-  status?: string;
-  seniority?: string;
-  practice_area_id?: string;
-  search?: string;
-}
-
-// Lawyer Positions
-export type LawyerPosition = Tables<'lawyer_positions'>;
-export type LawyerPositionInsert = Insertable<'lawyer_positions'>;
-export type LawyerPositionUpdate = Updateable<'lawyer_positions'>;
-
-export type LawyerWithPosition = Lawyer & {
-  lawyer_positions: LawyerPosition | null;
-};
-
-// Practice Areas
-export type PracticeArea = Tables<'practice_areas'>;
-export type PracticeAreaInsert = Insertable<'practice_areas'>;
-export type PracticeAreaUpdate = Updateable<'practice_areas'>;
-
-export type PracticeGroup = Tables<'practice_groups'>;
-export type PracticeGroupInsert = Insertable<'practice_groups'>;
-export type PracticeGroupUpdate = Updateable<'practice_groups'>;
-
-export type PracticeAreaWithGroup = PracticeArea & {
-  practice_groups: PracticeGroup | null;
-};
-
-// Extended types for joins
-export type LawyerWithPracticeAreas = Lawyer & {
-  practice_areas: {
-    practice_area_id: string;
-    practice_areas: PracticeArea | null; // Joined
-  }[];
-};
-
-// Lawyer with both position and practice areas (for lawyers listing page)
-export type LawyerWithPositionAndPracticeAreas = Lawyer & {
-  lawyer_positions: LawyerPosition | null;
-  practice_areas: {
-    practice_area_id: string;
-    practice_areas: PracticeArea | null;
-  }[];
-};
-
-// Articles
-export type Article = Tables<'articles'>;
-export type ArticleInsert = Insertable<'articles'>;
-export type ArticleUpdate = Updateable<'articles'>;
-export type ArticleStatus = boolean; // is_published
-
-export type ArticleCategory = Tables<'article_categories'>;
-export type ArticleCategoryInsert = Insertable<'article_categories'>;
-export type ArticleCategoryUpdate = Updateable<'article_categories'>;
-
-export type ArticleWithCategory = Article & {
-  article_categories: ArticleCategory | null;
-  lawyers: Lawyer | null;
-};
-
-export interface ArticleFilters {
-  category_id?: string;
-  author_id?: string;
-  is_published?: boolean;
-  search?: string;
-  tag?: string;
-}
-
-// Events
-export type Event = Tables<'events'>;
-export type EventInsert = Insertable<'events'>;
-export type EventUpdate = Updateable<'events'>;
-export type EventStatus = boolean; // is_active
-
-export interface EventFilters {
-  is_active?: boolean;
-  upcoming?: boolean;
-  from_date?: string;
-  to_date?: string;
-}
-
-// Testimonials
-export type Testimonial = Tables<'testimonials'>;
-export type TestimonialInsert = Insertable<'testimonials'>;
-export type TestimonialUpdate = Updateable<'testimonials'>;
-
-// Clients
-export type Client = Tables<'clients'>;
-export type ClientInsert = Insertable<'clients'>;
-export type ClientUpdate = Updateable<'clients'>;
-
-// Contact
-export type ContactSettings = Tables<'contact_settings'>;
-export type ContactSettingsInsert = Insertable<'contact_settings'>;
-export type ContactSettingsUpdate = Updateable<'contact_settings'>;
-
-export type ContactSubmission = Tables<'contact_submissions'>;
-export type ContactSubmissionInsert = Insertable<'contact_submissions'>;
-export type ContactSubmissionUpdate = Updateable<'contact_submissions'>;
-export type ContactSubmissionStatus = string;
-
-// Jobs
-export type JobOpening = Tables<'job_openings'>;
-export type JobOpeningInsert = Insertable<'job_openings'>;
-export type JobOpeningUpdate = Updateable<'job_openings'>;
-export type JobStatus = boolean; // is_active
-export type JobType = string;
-
-export interface JobFilters {
-  is_active?: boolean;
-  department?: string;
-  location?: string;
-}

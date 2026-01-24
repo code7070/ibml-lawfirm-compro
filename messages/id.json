@@ -29,12 +29,19 @@
     },
     "team": {
       "title": "Tim Kami",
-      "subtitle": "Kenali para profesional hukum berpengalaman kami",
-      "cta": "Lihat Semua Pengacara"
+      "subtitle": "Profesional hukum berpengalaman",
+      "cta": "Lihat Semua Pengacara",
+      "noTeam": "Belum ada anggota tim yang tersedia saat ini."
     },
     "testimonials": {
       "title": "Testimoni Klien",
       "subtitle": "Apa kata klien kami tentang kami"
+    },
+    "practice_section": {
+      "label": "Grup Praktik",
+      "title_prefix": "Arsitektur",
+      "title_suffix": "Pertahanan Digital",
+      "description": "Strategi hukum yang disesuaikan untuk ekosistem game dan hiburan yang bergerak cepat."
     },
     "cta": {
       "title": "Siap mendiskusikan kebutuhan hukum Anda?",
@@ -70,6 +77,11 @@
     "mission": {
       "title": "Misi Kami",
       "content": "Memberikan nasihat hukum strategis yang memberdayakan bisnis dan individu untuk mencapai tujuan mereka dengan kepercayaan dan kepastian hukum."
+    },
+    "practice_section": {
+      "label": "Grup Keahlian Hukum",
+      "title_prefix": "Area",
+      "title_suffix": "Praktik"
     }
   },
   "lawyers": {
@@ -83,7 +95,27 @@
       "partners": "Partner",
       "counsel": "Senior Counsel",
       "associates": "Associates"
-    }
+    },
+    "detail": {
+      "overview": "Profil",
+      "experience": "Pengalaman Profesional",
+      "education": "Pendidikan",
+      "certifications": "Lisensi & Asosiasi",
+      "languages": "Bahasa",
+      "practiceAreas": "Area Praktik",
+      "contactInfo": "Informasi Kontak",
+      "socialLinks": "Terhubung",
+      "viewProfile": "Lihat Profil",
+      "close": "Tutup",
+      "email": "Email",
+      "phone": "Telepon",
+      "linkedin": "LinkedIn",
+      "linkedinProfile": "Profil LinkedIn",
+      "instagram": "Instagram",
+      "twitter": "Twitter",
+      "noBio": "Biografi belum tersedia."
+    },
+    "viewAll": "Lihat Semua Pengacara"
   },
   "practice": {
     "hero": {

@@ -4,7 +4,7 @@
  */
 
 import { BaseService } from './base.service';
-import {
+import type {
   PracticeArea,
   PracticeAreaInsert,
   PracticeAreaUpdate,
@@ -30,7 +30,7 @@ class PracticeAreasService extends BaseService<
         .from(this.tableName)
         .select(`
           *,
-          practice_group:practice_groups(*)
+          practice_groups(*)
         `)
         .order('sort_order', { ascending: true });
 
@@ -82,7 +82,7 @@ class PracticeAreasService extends BaseService<
         .from(this.tableName)
         .select(`
           *,
-          practice_group:practice_groups(*)
+          practice_groups(*)
         `)
         .eq('slug', slug)
         .single();
@@ -92,6 +92,29 @@ class PracticeAreasService extends BaseService<
       return { data: data as PracticeAreaWithGroup, error: null };
     } catch (error) {
       console.error('Error fetching practice area by slug:', error);
+      return {
+        data: null,
+        error: error instanceof Error ? error.message : 'Unknown error',
+      };
+    }
+  }
+
+  /**
+   * Get active practice areas
+   */
+  async getActive(): Promise<ApiResponse<PracticeArea[]>> {
+    try {
+      const { data, error } = await this.supabase
+        .from(this.tableName)
+        .select('*')
+        .eq('status', 'Active')
+        .order('sort_order', { ascending: true });
+
+      if (error) throw error;
+
+      return { data: data as PracticeArea[], error: null };
+    } catch (error) {
+      console.error('Error fetching active practice areas:', error);
       return {
         data: null,
         error: error instanceof Error ? error.message : 'Unknown error',
@@ -134,7 +157,7 @@ class PracticeAreasService extends BaseService<
         .from(this.tableName)
         .select(`
           *,
-          practice_group:practice_groups(*)
+          practice_groups(*)
         `)
         .or(
           `name_id.ilike.%${query}%,name_en.ilike.%${query}%,description_id.ilike.%${query}%,description_en.ilike.%${query}%`

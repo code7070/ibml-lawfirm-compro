@@ -1,20 +1,34 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState, useCallback } from "react";
 import { LinkedinIcon, Mail } from "lucide-react";
 import CTASection from "./CTASection";
+import LawyerDetailPopup, { LawyerDetailTranslations } from "./LawyerDetailPopup";
 import { LawyerWithPositionAndPracticeAreas, LawyerPosition } from "@/lib/types/database";
+
+// Translation keys for Lawyers page
+export interface LawyersPageTranslations {
+  hero: {
+    tags: string;
+    title: string;
+    subtitle: string;
+  };
+  fallbackTeamTitle?: string;
+  detail: LawyerDetailTranslations;
+}
 
 interface LawyersPageProps {
   initialLawyers: LawyerWithPositionAndPracticeAreas[];
   positions: LawyerPosition[];
   locale: string;
+  translations: LawyersPageTranslations;
 }
 
 const LawyerCard: React.FC<{
   member: LawyerWithPositionAndPracticeAreas;
   locale: string;
-}> = ({ member, locale }) => {
+  onClick: () => void;
+}> = ({ member, locale, onClick }) => {
   const name = locale === "id" ? member.name_id : member.name_en;
   // Use lawyer_positions relationship if available, fallback to position_en/position_id
   const role = member.lawyer_positions
@@ -35,7 +49,11 @@ const LawyerCard: React.FC<{
     : "";
 
   return (
-    <div className="group cursor-pointer">
+    <div
+      id={member.slug || member.id}
+      className="group cursor-pointer scroll-mt-24"
+      onClick={onClick}
+    >
       {/* Image Container */}
       <div className="relative aspect-3/4 mb-6 overflow-hidden bg-[#F5F5F7]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -96,10 +114,54 @@ const LawyerCard: React.FC<{
   );
 };
 
-const LawyersPage = ({ initialLawyers, positions, locale }: LawyersPageProps) => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
+const LawyersPage = ({ initialLawyers, positions, locale, translations }: LawyersPageProps) => {
+  // Popup state
+  const [selectedLawyer, setSelectedLawyer] = useState<LawyerWithPositionAndPracticeAreas | null>(null);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  // Open popup with selected lawyer
+  const handleLawyerClick = useCallback((lawyer: LawyerWithPositionAndPracticeAreas) => {
+    setSelectedLawyer(lawyer);
+    setIsPopupOpen(true);
   }, []);
+
+  // Close popup
+  const handleClosePopup = useCallback(() => {
+    setIsPopupOpen(false);
+    setSelectedLawyer(null);
+  }, []);
+
+  // Handle hash navigation and scroll to lawyer on page load
+  useEffect(() => {
+    const hash = window.location.hash.slice(1); // Remove # prefix
+
+    if (hash) {
+      // Find the lawyer by slug
+      const lawyer = initialLawyers.find(
+        (l) => l.slug === hash || l.id === hash
+      );
+
+      if (lawyer) {
+        // Small delay to ensure DOM is ready
+        setTimeout(() => {
+          const element = document.getElementById(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "center" });
+            // Highlight the card briefly
+            element.classList.add("ring-2", "ring-[#D4C5A0]", "ring-offset-4");
+            setTimeout(() => {
+              element.classList.remove("ring-2", "ring-[#D4C5A0]", "ring-offset-4");
+              // Open popup after scroll
+              handleLawyerClick(lawyer);
+            }, 800);
+          }
+        }, 300);
+      }
+    } else {
+      // No hash, scroll to top
+      window.scrollTo(0, 0);
+    }
+  }, [initialLawyers, handleLawyerClick]);
 
   // Group lawyers by their position using lawyer_positions relationship
   const groupedByPosition = useMemo(() => {
@@ -146,15 +208,13 @@ const LawyersPage = ({ initialLawyers, positions, locale }: LawyersPageProps) =>
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5" />
         <div className="max-w-[1400px] mx-auto relative z-10 text-center">
           <span className="text-[#D4C5A0] font-bold tracking-[0.2em] text-xs uppercase mb-6 block">
-            The Council
+            {translations.hero.tags}
           </span>
           <h1 className="text-5xl md:text-7xl font-light mb-8">
-            Architects of{" "}
-            <span className="font-serif italic text-[#D4C5A0]">Strategy</span>
+            {translations.hero.title}
           </h1>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light leading-relaxed">
-            A coalition of veterans from big law, in-house counsel at AAA
-            studios, and policy advisors.
+            {translations.hero.subtitle}
           </p>
         </div>
       </section>
@@ -195,7 +255,12 @@ const LawyersPage = ({ initialLawyers, positions, locale }: LawyersPageProps) =>
                 }`}
               >
                 {group.lawyers.map((member) => (
-                  <LawyerCard key={member.id} member={member} locale={locale} />
+                  <LawyerCard
+                    key={member.id}
+                    member={member}
+                    locale={locale}
+                    onClick={() => handleLawyerClick(member)}
+                  />
                 ))}
               </div>
             </div>
@@ -209,12 +274,17 @@ const LawyersPage = ({ initialLawyers, positions, locale }: LawyersPageProps) =>
           <div className="max-w-[1400px] mx-auto">
             <div className="mb-16 border-b border-[#0B1B3B]/10 pb-8">
               <h2 className="text-4xl font-light text-[#0B1B3B]">
-                {locale === "id" ? "Tim Hukum" : "Legal Team"}
+                {translations.fallbackTeamTitle || (locale === "id" ? "Tim Hukum" : "Legal Team")}
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
               {groupedByPosition.otherLawyers.map((member) => (
-                <LawyerCard key={member.id} member={member} locale={locale} />
+                <LawyerCard
+                  key={member.id}
+                  member={member}
+                  locale={locale}
+                  onClick={() => handleLawyerClick(member)}
+                />
               ))}
             </div>
           </div>
@@ -222,6 +292,15 @@ const LawyersPage = ({ initialLawyers, positions, locale }: LawyersPageProps) =>
       )}
 
       <CTASection />
+
+      {/* Lawyer Detail Popup */}
+      <LawyerDetailPopup
+        lawyer={selectedLawyer}
+        locale={locale}
+        isOpen={isPopupOpen}
+        onClose={handleClosePopup}
+        translations={translations.detail}
+      />
     </div>
   );
 };

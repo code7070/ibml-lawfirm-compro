@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import {
-  ArrowRight,
   Quote,
   Trophy,
   Target,
@@ -10,20 +9,17 @@ import {
   ChevronLeft,
   ChevronRight,
   Scale as ScaleLucide,
-  Sparkles,
-  Users,
-  Cpu,
-  HeartPulse,
   Heart,
   Shield,
   Handshake,
 } from "lucide-react";
 import CTASection from "./CTASection";
-import Team from "./Team";
+import Team, { TeamTranslations } from "./Team";
 import LogoTicker from "./LogoTicker";
 import { LogoItem } from "@/types";
-import { LangLink } from "./LangLink";
 import Image from "next/image";
+import { LawyerWithPositionAndPracticeAreas, PracticeGroup } from "@/lib/types/database";
+import PracticeAreasSection from "./PracticeAreasSection";
 
 // [DYNAMIC] - Will be replaced with Supabase testimonials table in Phase B
 const testimonials = [
@@ -47,38 +43,6 @@ const testimonials = [
       "The sophisticated approach to complex legal matters and genuine care for client success sets IBLM apart from other law firms.",
     author: "[Client Name]",
     role: "[Position], [Company]",
-  },
-];
-
-// Updated to match IBLM LEG Structure
-const practiceGroups = [
-  {
-    id: "entertainment",
-    title: "LEG-1: Entertainment Expert Group",
-    description:
-      "Specialized counsel for entertainment industry including Video Games, E-Sports, Film & Digital Content, Artists & KOL, Tourism & MICE, and IP Management.",
-    icon: Sparkles,
-  },
-  {
-    id: "people",
-    title: "LEG-2: People & Labor Expert Group",
-    description:
-      "Comprehensive services for Personal & Family Law, Employment & Industrial Relations, and Immigration matters.",
-    icon: Users,
-  },
-  {
-    id: "tech",
-    title: "LEG-3: Technology Expert Group",
-    description:
-      "Cutting-edge legal frameworks for Data Protection & Privacy, E-Commerce, FinTech, Communication & IT, and Artificial Intelligence.",
-    icon: Cpu,
-  },
-  {
-    id: "health",
-    title: "LEG-4: Education & Health Expert Group",
-    description:
-      "Expert guidance for Educational Institutions, Medical Device & Pharma, and Healthy Lifestyle industries.",
-    icon: HeartPulse,
   },
 ];
 
@@ -108,9 +72,18 @@ interface AboutPageProps {
   targetId?: string | null;
   clientLogos?: LogoItem[];
   orgLogos?: LogoItem[];
+  lawyers: LawyerWithPositionAndPracticeAreas[];
+  locale: string;
+  teamTranslations: TeamTranslations;
+  practiceGroups: PracticeGroup[];
+  practiceSectionTranslations: {
+    label: string;
+    title_prefix: string;
+    title_suffix: string;
+  };
 }
 
-const AboutPage = ({ targetId, clientLogos, orgLogos }: AboutPageProps) => {
+const AboutPage = ({ targetId, clientLogos, orgLogos, lawyers, locale, teamTranslations, practiceGroups, practiceSectionTranslations }: AboutPageProps) => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   useEffect(() => {
@@ -314,51 +287,20 @@ const AboutPage = ({ targetId, clientLogos, orgLogos }: AboutPageProps) => {
       )}
 
       {/* 4. PRACTICE AREAS */}
-      <section className="py-32 bg-white">
-        <div className="max-w-[1400px] mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-20 border-b border-[#0B1B3B]/10 pb-12">
-            <div className="max-w-2xl">
-              <span className="text-[#0B1B3B] font-bold tracking-[0.2em] text-xs uppercase mb-4 block">
-                Legal Expertise Groups
-              </span>
-              <h2 className="text-4xl md:text-5xl font-light text-[#0B1B3B]">
-                Practice{" "}
-                <span className="font-serif italic text-[#2E4472]">
-                  Areas
-                </span>
-              </h2>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {practiceGroups.map((group) => (
-              <LangLink
-                key={group.id}
-                href={`/practice-areas#${group.id}`}
-                className="group relative bg-[#F5F5F7] border border-[#1A2F5A]/10 p-12 hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-xl cursor-pointer flex flex-col"
-              >
-                <div className="absolute top-0 left-0 w-full h-1 bg-[#1A2F5A] group-hover:bg-[#D4C5A0] transition-colors duration-300" />
-                <div className="mb-8">
-                  <group.icon
-                    className="w-10 h-10 text-[#D4C5A0] group-hover:text-[#1A2F5A] transition-colors duration-300"
-                    strokeWidth={1.5}
-                  />
-                </div>
-                <h3 className="text-2xl font-normal text-[#0B1B3B] mb-4 font-serif">
-                  {group.title}
-                </h3>
-                <p className="text-[#2E4472] leading-[1.8] mb-8 font-light flex-grow">
-                  {group.description}
-                </p>
-                <div className="flex items-center gap-2 text-[#D4C5A0] text-sm font-bold uppercase tracking-widest group-hover:text-[#0B1B3B] transition-colors cursor-pointer">
-                  <span>Learn More</span>
-                  <ArrowRight className="w-4 h-4" />
-                </div>
-              </LangLink>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PracticeAreasSection 
+        practiceGroups={practiceGroups}
+        locale={locale}
+        className="bg-white"
+        label={practiceSectionTranslations.label}
+        title={
+          <>
+            {practiceSectionTranslations.title_prefix}{" "}
+            <span className="font-serif italic text-[#2E4472]">
+              {practiceSectionTranslations.title_suffix}
+            </span>
+          </>
+        }
+      />
 
       {/* 5. BRAND PROMISE SECTION */}
       <section className="w-full h-[600px] relative overflow-hidden">
@@ -390,7 +332,7 @@ const AboutPage = ({ targetId, clientLogos, orgLogos }: AboutPageProps) => {
 
       {/* 6. TEAM SUMMARY */}
       <div id="team">
-        <Team />
+        <Team lawyers={lawyers} locale={locale} translations={teamTranslations} />
       </div>
 
       {/* Org Ticker */}
