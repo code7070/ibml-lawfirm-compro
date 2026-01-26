@@ -17,7 +17,7 @@ export default async function ArticlesPage({
   const viewArticles: ViewArticle[] = articles.map(article => ({
     id: article.slug || article.id,
     title: isId ? article.title_id : article.title_en,
-    date: new Date(article.published_at || article.created_at || Date.now()).toLocaleDateString(isId ? 'id-ID' : 'en-US', {
+    date: new Date(article.published_at || article.created_at || '2024-01-01').toLocaleDateString(isId ? 'id-ID' : 'en-US', {
       year: 'numeric',
       month: 'long',
       day: 'numeric'

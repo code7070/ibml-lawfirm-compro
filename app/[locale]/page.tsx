@@ -6,6 +6,7 @@ import CTASection from "@/components/CTASection";
 import LogoTicker from "@/components/LogoTicker";
 import PracticeAreasSection from "@/components/PracticeAreasSection";
 import { lawyersService, practiceGroupsService, clientsService } from "@/services";
+import { ARTICLE_DATA } from "@/data/articles";
 import { getDictionary, Locale } from "@/lib/dictionary";
 import { LogoItem } from "@/types";
 

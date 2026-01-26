@@ -1,7 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
+import { contactSettingsService } from "@/services/contact.service";
 
-const Footer = () => {
+const Footer = async () => {
+  const { data: settings } = await contactSettingsService.getMain();
+
   return (
     <footer className="bg-[#020814] text-white pt-24 pb-12 relative overflow-hidden">
       {/* Pattern Overlay */}
@@ -33,22 +36,46 @@ const Footer = () => {
             </p>
             <div className="flex gap-4">
               {/* Social Links */}
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-white/20 hover:border-[#D4C5A0] hover:bg-[#D4C5A0] hover:text-[#020814] flex items-center justify-center transition-all cursor-pointer text-white text-xs font-bold"
-              >
-                IN
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-white/20 hover:border-[#D4C5A0] hover:bg-[#D4C5A0] hover:text-[#020814] flex items-center justify-center transition-all cursor-pointer text-white text-xs font-bold"
-              >
-                IG
-              </a>
+              {settings?.linkedin_url && (
+                <a
+                  href={settings.linkedin_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full border border-white/20 hover:border-[#D4C5A0] hover:bg-[#D4C5A0] hover:text-[#020814] flex items-center justify-center transition-all cursor-pointer text-white text-xs font-bold"
+                >
+                  IN
+                </a>
+              )}
+              {settings?.instagram_url && (
+                <a
+                  href={settings.instagram_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full border border-white/20 hover:border-[#D4C5A0] hover:bg-[#D4C5A0] hover:text-[#020814] flex items-center justify-center transition-all cursor-pointer text-white text-xs font-bold"
+                >
+                  IG
+                </a>
+              )}
+              {settings?.twitter_url && (
+                <a
+                  href={settings.twitter_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full border border-white/20 hover:border-[#D4C5A0] hover:bg-[#D4C5A0] hover:text-[#020814] flex items-center justify-center transition-all cursor-pointer text-white text-xs font-bold"
+                >
+                  X
+                </a>
+              )}
+              {settings?.youtube_url && (
+                <a
+                  href={settings.youtube_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full border border-white/20 hover:border-[#D4C5A0] hover:bg-[#D4C5A0] hover:text-[#020814] flex items-center justify-center transition-all cursor-pointer text-white text-xs font-bold"
+                >
+                  YT
+                </a>
+              )}
             </div>
           </div>
 
@@ -169,3 +196,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

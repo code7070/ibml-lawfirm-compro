@@ -19,6 +19,11 @@ function getNestedValue(obj: any, path: string): string {
   return path;
 }
 
+export function useLocale() {
+  const { locale } = useTranslationContext();
+  return locale;
+}
+
 export function useTranslations(namespace?: string) {
   const { messages } = useTranslationContext();
 

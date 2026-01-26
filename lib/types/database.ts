@@ -246,6 +246,42 @@ export type Database = {
         };
         Relationships: [];
       };
+      cms_users: {
+        Row: {
+          created_at: string | null;
+          email: string;
+          id: string;
+          is_active: boolean | null;
+          last_login_at: string | null;
+          name: string | null;
+          password_hash: string;
+          role: string;
+          updated_at: string | null;
+        };
+        Insert: {
+          created_at?: string | null;
+          email: string;
+          id?: string;
+          is_active?: boolean | null;
+          last_login_at?: string | null;
+          name?: string | null;
+          password_hash: string;
+          role?: string;
+          updated_at?: string | null;
+        };
+        Update: {
+          created_at?: string | null;
+          email?: string;
+          id?: string;
+          is_active?: boolean | null;
+          last_login_at?: string | null;
+          name?: string | null;
+          password_hash?: string;
+          role?: string;
+          updated_at?: string | null;
+        };
+        Relationships: [];
+      };
       contact_settings: {
         Row: {
           address_map_link: string | null;
@@ -871,11 +907,67 @@ export type Database = {
         };
         Relationships: [];
       };
+      user_roles: {
+        Row: {
+          created_at: string | null;
+          email: string;
+          id: string;
+          role: string;
+          updated_at: string | null;
+        };
+        Insert: {
+          created_at?: string | null;
+          email: string;
+          id: string;
+          role: string;
+          updated_at?: string | null;
+        };
+        Update: {
+          created_at?: string | null;
+          email?: string;
+          id?: string;
+          role?: string;
+          updated_at?: string | null;
+        };
+        Relationships: [];
+      };
     };
     Views: {
       [_ in never]: never;
     };
     Functions: {
+      cms_create_user: {
+        Args: {
+          p_email: string;
+          p_name?: string;
+          p_password: string;
+          p_role?: string;
+        };
+        Returns: string;
+      };
+      cms_delete_user: { Args: { p_user_id: string }; Returns: boolean };
+      cms_login: {
+        Args: { p_email: string; p_password: string };
+        Returns: {
+          email: string;
+          id: string;
+          is_active: boolean;
+          name: string;
+          role: string;
+        }[];
+      };
+      cms_update_password: {
+        Args: { p_new_password: string; p_user_id: string };
+        Returns: boolean;
+      };
+      create_cms_user: {
+        Args: { p_email: string; p_password: string; p_role?: string };
+        Returns: string;
+      };
+      delete_cms_user: {
+        Args: { p_target_user_id: string };
+        Returns: undefined;
+      };
       get_user_role: { Args: never; Returns: string };
       slugify: { Args: { text: string }; Returns: string };
     };
@@ -1016,3 +1108,62 @@ export const Constants = {
     Enums: {},
   },
 } as const;
+
+export type LawyerWithPositionAndPracticeAreas = Tables<"lawyers"> & {
+  lawyer_positions: Tables<"lawyer_positions"> | null;
+  practice_areas: (Tables<"lawyer_practice_areas"> & {
+    practice_areas: Tables<"practice_areas"> | null;
+  })[];
+};
+
+export type Client = Tables<"clients">;
+export type ClientInsert = TablesInsert<"clients">;
+export type ClientUpdate = TablesUpdate<"clients">;
+
+export type PracticeGroup = Tables<"practice_groups">;
+export type PracticeGroupInsert = TablesInsert<"practice_groups">;
+export type PracticeGroupUpdate = TablesUpdate<"practice_groups">;
+
+export type PracticeArea = Tables<"practice_areas">;
+export type PracticeAreaInsert = TablesInsert<"practice_areas">;
+export type PracticeAreaUpdate = TablesUpdate<"practice_areas">;
+
+export type LawyerPosition = Tables<"lawyer_positions">;
+
+export type Testimonial = Tables<"testimonials">;
+export type TestimonialInsert = TablesInsert<"testimonials">;
+export type TestimonialUpdate = TablesUpdate<"testimonials">;
+
+export type ContactSettings = Tables<"contact_settings">;
+export type ContactSettingsInsert = TablesInsert<"contact_settings">;
+export type ContactSettingsUpdate = TablesUpdate<"contact_settings">;
+
+export type ContactSubmission = Tables<"contact_submissions">;
+export type ContactSubmissionInsert = TablesInsert<"contact_submissions">;
+export type ContactSubmissionUpdate = TablesUpdate<"contact_submissions">;
+export type ContactSubmissionStatus = "new" | "read" | "replied" | "spam" | "resolved" | "in_progress";
+
+export interface ApiResponse<T> {
+  data: T | null;
+  error: string | null;
+}
+
+export interface PaginatedResponse<T> {
+  data: T[];
+  count: number;
+  page: number;
+  pageSize: number;
+  totalPages: number;
+  error: string | null;
+}
+
+export type Event = Tables<"events">;
+export type EventInsert = TablesInsert<"events">;
+export type EventUpdate = TablesUpdate<"events">;
+export type EventFilters = {
+  is_active?: boolean;
+  upcoming?: boolean;
+  from_date?: string;
+  to_date?: string;
+};
+export type EventStatus = "upcoming" | "past"; // Example

@@ -2,12 +2,9 @@
 
 import { useState, useEffect } from "react";
 import {
-  Quote,
   Trophy,
   Target,
   History,
-  ChevronLeft,
-  ChevronRight,
   Scale as ScaleLucide,
   Heart,
   Shield,
@@ -19,32 +16,8 @@ import LogoTicker from "./LogoTicker";
 import { LogoItem } from "@/types";
 import Image from "next/image";
 import { LawyerWithPositionAndPracticeAreas, PracticeGroup } from "@/lib/types/database";
+import { TestimonialsSection } from "./TestimonialsSection";
 import PracticeAreasSection from "./PracticeAreasSection";
-
-// [DYNAMIC] - Will be replaced with Supabase testimonials table in Phase B
-const testimonials = [
-  {
-    id: 1,
-    quote:
-      "IBLM Law Group provides exceptional legal counsel with deep industry expertise. Their understanding of both legal frameworks and business needs is unmatched.",
-    author: "[Client Name]",
-    role: "[Position], [Company]",
-  },
-  {
-    id: 2,
-    quote:
-      "Working with IBLM has been transformative for our business. They provide strategic guidance that goes beyond traditional legal services.",
-    author: "[Client Name]",
-    role: "[Position], [Company]",
-  },
-  {
-    id: 3,
-    quote:
-      "The sophisticated approach to complex legal matters and genuine care for client success sets IBLM apart from other law firms.",
-    author: "[Client Name]",
-    role: "[Position], [Company]",
-  },
-];
 
 // IBLM Core Values
 const coreValues = [
@@ -84,8 +57,6 @@ interface AboutPageProps {
 }
 
 const AboutPage = ({ targetId, clientLogos, orgLogos, lawyers, locale, teamTranslations, practiceGroups, practiceSectionTranslations }: AboutPageProps) => {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-
   useEffect(() => {
     if (targetId) {
       const timer = setTimeout(() => {
@@ -97,19 +68,6 @@ const AboutPage = ({ targetId, clientLogos, orgLogos, lawyers, locale, teamTrans
       return () => clearTimeout(timer);
     }
   }, [targetId]);
-
-  // Testimonial Slider Logic
-  const nextTestimonial = () => {
-    setCurrentTestimonial((prev) =>
-      prev === testimonials.length - 1 ? 0 : prev + 1,
-    );
-  };
-
-  const prevTestimonial = () => {
-    setCurrentTestimonial((prev) =>
-      prev === 0 ? testimonials.length - 1 : prev - 1,
-    );
-  };
 
   return (
     <div className=" min-h-screen bg-white">
@@ -345,73 +303,7 @@ const AboutPage = ({ targetId, clientLogos, orgLogos, lawyers, locale, teamTrans
       )}
 
       {/* 7. TESTIMONIAL SECTION */}
-      <section className="py-32 bg-white px-6">
-        <div className="max-w-[1400px] mx-auto">
-          <span className="text-[#0B1B3B] font-bold tracking-[0.2em] text-xs uppercase block text-center mb-12">
-            Client Testimonials
-          </span>
-
-          <div className="relative max-w-5xl mx-auto">
-            <div className="overflow-hidden min-h-[450px] md:min-h-[350px] relative">
-              {testimonials.map((item, index) => (
-                <div
-                  key={item.id}
-                  className={`absolute top-0 left-0 w-full h-full transition-all duration-700 ease-in-out flex flex-col items-center justify-center text-center ${
-                    index === currentTestimonial
-                      ? "opacity-100 translate-y-0 scale-100"
-                      : "opacity-0 translate-y-12 scale-95 pointer-events-none"
-                  }`}
-                >
-                  <Quote className="w-16 h-16 text-[#D4C5A0]/30 mb-8" />
-                  <p className="text-2xl md:text-4xl font-serif italic text-[#0B1B3B] leading-tight mb-10 max-w-4xl">
-                    &quot;{item.quote}&quot;
-                  </p>
-
-                  <div className="flex flex-col items-center">
-                    <div className="w-14 h-14 bg-[#0B1B3B] text-[#D4C5A0] border border-[#D4C5A0] flex items-center justify-center font-bold text-xl mb-4">
-                      {item.author.charAt(0) === "[" ? "?" : item.author.charAt(0)}
-                    </div>
-                    <p className="text-sm font-bold text-[#0B1B3B] uppercase tracking-[0.15em] mb-1">
-                      {item.author}
-                    </p>
-                    <p className="text-xs text-[#2E4472] font-medium">
-                      {item.role}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="flex justify-center items-center gap-12 mt-8">
-              <button
-                onClick={prevTestimonial}
-                className="p-3 border border-[#0B1B3B]/10 hover:border-[#D4C5A0] hover:text-[#D4C5A0] transition-colors rounded-full text-[#0B1B3B]"
-              >
-                <ChevronLeft />
-              </button>
-              <div className="flex gap-2">
-                {testimonials.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setCurrentTestimonial(idx)}
-                    className={`h-2 w-2 rounded-full transition-all duration-300 ${
-                      idx === currentTestimonial
-                        ? "bg-[#D4C5A0] scale-125"
-                        : "bg-[#0B1B3B]/20"
-                    }`}
-                  />
-                ))}
-              </div>
-              <button
-                onClick={nextTestimonial}
-                className="p-3 border border-[#0B1B3B]/10 hover:border-[#D4C5A0] hover:text-[#D4C5A0] transition-colors rounded-full text-[#0B1B3B]"
-              >
-                <ChevronRight />
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <TestimonialsSection />
 
       {/* 8. CTA SECTION */}
       <CTASection />
