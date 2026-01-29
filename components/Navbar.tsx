@@ -66,17 +66,23 @@ const Navbar = () => {
     >
       <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between w-full">
         {/* Logo */}
-        <LangLink
-          href="/"
-          className="flex items-center group cursor-pointer"
-        >
+        <LangLink href="/" className="flex items-center group cursor-pointer">
           <Image
-            src="/images/logo-white.svg"
+            src="/images/iblm-logo.webp"
             alt="IBLM Law Group"
-            width={160}
+            width={45}
             height={45}
+            className="object-contain"
             priority
           />
+          <div className="flex flex-col ml-3 leading-tight">
+            <span className="text-white font-bold text-xl tracking-wider font-secondary">
+              IBLM
+            </span>
+            <span className="text-[#D4C5A0] text-xs tracking-[0.2em] uppercase">
+              Law Group
+            </span>
+          </div>
         </LangLink>
 
         {/* 1. Full Desktop Nav (> 1240px) */}
