@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import {
   Trophy,
   Target,
@@ -15,7 +15,10 @@ import Team, { TeamTranslations } from "./Team";
 import LogoTicker from "./LogoTicker";
 import { LogoItem } from "@/types";
 import Image from "next/image";
-import { LawyerWithPositionAndPracticeAreas, PracticeGroup } from "@/lib/types/database";
+import {
+  LawyerWithPositionAndPracticeAreas,
+  PracticeGroup,
+} from "@/lib/types/database";
 import { TestimonialsSection } from "./TestimonialsSection";
 import PracticeAreasSection from "./PracticeAreasSection";
 
@@ -24,19 +27,22 @@ const coreValues = [
   {
     id: "professionalism",
     title: "Professionalism",
-    description: "Excellence and integrity in every engagement. We uphold the highest standards of legal practice and ethical conduct.",
+    description:
+      "Excellence and integrity in every engagement. We uphold the highest standards of legal practice and ethical conduct.",
     icon: Shield,
   },
   {
     id: "empathy",
     title: "Empathy",
-    description: "Understanding client needs deeply. We listen first, then provide tailored solutions that address your unique challenges.",
+    description:
+      "Understanding client needs deeply. We listen first, then provide tailored solutions that address your unique challenges.",
     icon: Heart,
   },
   {
     id: "loyalty",
     title: "Loyalty",
-    description: "Long-term partnership commitment. Your success is our priority, and we stand by you through every challenge.",
+    description:
+      "Long-term partnership commitment. Your success is our priority, and we stand by you through every challenge.",
     icon: Handshake,
   },
 ];
@@ -56,7 +62,16 @@ interface AboutPageProps {
   };
 }
 
-const AboutPage = ({ targetId, clientLogos, orgLogos, lawyers, locale, teamTranslations, practiceGroups, practiceSectionTranslations }: AboutPageProps) => {
+const AboutPage = ({
+  targetId,
+  clientLogos,
+  orgLogos,
+  lawyers,
+  locale,
+  teamTranslations,
+  practiceGroups,
+  practiceSectionTranslations,
+}: AboutPageProps) => {
   useEffect(() => {
     if (targetId) {
       const timer = setTimeout(() => {
@@ -91,15 +106,16 @@ const AboutPage = ({ targetId, clientLogos, orgLogos, lawyers, locale, teamTrans
 
               <div className="space-y-6 text-lg md:text-xl text-[#2E4472] font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 <p>
-                  IBLM Law Group was founded with a clear vision: to provide 
-                  sophisticated legal services that combine classical jurisprudence 
-                  with modern business strategy.
+                  IBLM Law Group was founded with a clear vision: to provide
+                  sophisticated legal services that combine classical
+                  jurisprudence with modern business strategy.
                 </p>
                 <p>
-                  We believe in building long-term partnerships with our clients, 
-                  understanding their unique needs, and delivering unshakeable 
-                  legal standing. Our approach bridges the gap between traditional 
-                  legal excellence and the dynamic demands of modern industries.
+                  We believe in building long-term partnerships with our
+                  clients, understanding their unique needs, and delivering
+                  unshakeable legal standing. Our approach bridges the gap
+                  between traditional legal excellence and the dynamic demands
+                  of modern industries.
                 </p>
                 <div className="py-6 border-t border-[#0B1B3B]/10 border-b my-6">
                   <p className="font-medium text-[#0B1B3B] text-2xl font-serif italic">
@@ -137,11 +153,14 @@ const AboutPage = ({ targetId, clientLogos, orgLogos, lawyers, locale, teamTrans
       </section>
 
       {/* 2. CORE VALUES SECTION */}
-      <section id="values" className="bg-[#0B1B3B] py-32 border-y border-[#D4C5A0]/20 text-white relative overflow-hidden">
-        <div 
+      <section
+        id="values"
+        className="bg-[#0B1B3B] py-32 border-y border-[#D4C5A0]/20 text-white relative overflow-hidden"
+      >
+        <div
           className="absolute inset-0 opacity-5"
           style={{
-            backgroundImage: `linear-gradient(45deg, #1A2F5A 25%, transparent 25%, transparent 75%, #1A2F5A 75%, #1A2F5A), 
+            backgroundImage: `linear-gradient(45deg, #1A2F5A 25%, transparent 25%, transparent 75%, #1A2F5A 75%, #1A2F5A),
                linear-gradient(45deg, #1A2F5A 25%, transparent 25%, transparent 75%, #1A2F5A 75%, #1A2F5A)`,
             backgroundSize: "30px 30px",
             backgroundPosition: "0 0, 15px 15px",
@@ -155,14 +174,14 @@ const AboutPage = ({ targetId, clientLogos, orgLogos, lawyers, locale, teamTrans
               <span className="font-serif italic text-[#D4C5A0]">Values</span>
             </h2>
             <p className="text-gray-400 font-light">
-              Built on three pillars that define our approach to legal practice 
+              Built on three pillars that define our approach to legal practice
               and client relationships.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {coreValues.map((value) => (
-              <div 
+              <div
                 key={value.id}
                 className="bg-[#1A2F5A]/50 p-10 border border-[#D4C5A0]/20 hover:border-[#D4C5A0] transition-all group backdrop-blur-sm"
               >
@@ -191,7 +210,8 @@ const AboutPage = ({ targetId, clientLogos, orgLogos, lawyers, locale, teamTrans
               <span className="font-serif italic text-[#2E4472]">IBLM</span>
             </h2>
             <p className="text-[#2E4472] font-light">
-              Our commitment to excellence and client success drives everything we do.
+              Our commitment to excellence and client success drives everything
+              we do.
             </p>
           </div>
 
@@ -205,8 +225,9 @@ const AboutPage = ({ targetId, clientLogos, orgLogos, lawyers, locale, teamTrans
                 Strategic Partnership
               </h3>
               <p className="text-[#2E4472] font-light leading-relaxed">
-                We go beyond traditional legal services to become your trusted 
-                strategic partner, understanding your business goals and challenges.
+                We go beyond traditional legal services to become your trusted
+                strategic partner, understanding your business goals and
+                challenges.
               </p>
             </div>
             <div className="bg-white p-10 border border-[#1A2F5A]/10 hover:border-[#D4C5A0] transition-all group shadow-sm">
@@ -218,8 +239,9 @@ const AboutPage = ({ targetId, clientLogos, orgLogos, lawyers, locale, teamTrans
                 Industry Expertise
               </h3>
               <p className="text-[#2E4472] font-light leading-relaxed">
-                Deep expertise across Entertainment, Technology, Health & Education, 
-                and People & Labor practice areas through our specialized LEGs.
+                Deep expertise across Entertainment, Technology, Health &
+                Education, and People & Labor practice areas through our
+                specialized LEGs.
               </p>
             </div>
             <div className="bg-white p-10 border border-[#1A2F5A]/10 hover:border-[#D4C5A0] transition-all group shadow-sm">
@@ -231,8 +253,9 @@ const AboutPage = ({ targetId, clientLogos, orgLogos, lawyers, locale, teamTrans
                 Modern Approach
               </h3>
               <p className="text-[#2E4472] font-light leading-relaxed">
-                Combining classical jurisprudence with modern strategy to deliver 
-                innovative solutions for today&apos;s complex legal challenges.
+                Combining classical jurisprudence with modern strategy to
+                deliver innovative solutions for today&apos;s complex legal
+                challenges.
               </p>
             </div>
           </div>
@@ -245,7 +268,7 @@ const AboutPage = ({ targetId, clientLogos, orgLogos, lawyers, locale, teamTrans
       )}
 
       {/* 4. PRACTICE AREAS */}
-      <PracticeAreasSection 
+      <PracticeAreasSection
         practiceGroups={practiceGroups}
         locale={locale}
         className="bg-white"
@@ -290,16 +313,16 @@ const AboutPage = ({ targetId, clientLogos, orgLogos, lawyers, locale, teamTrans
 
       {/* 6. TEAM SUMMARY */}
       <div id="team">
-        <Team lawyers={lawyers} locale={locale} translations={teamTranslations} />
+        <Team
+          lawyers={lawyers}
+          locale={locale}
+          translations={teamTranslations}
+        />
       </div>
 
       {/* Org Ticker */}
       {orgLogos && orgLogos.length > 0 && (
-        <LogoTicker
-          title="Strategic Partners"
-          items={orgLogos}
-          theme="light"
-        />
+        <LogoTicker title="Strategic Partners" items={orgLogos} theme="light" />
       )}
 
       {/* 7. TESTIMONIAL SECTION */}
