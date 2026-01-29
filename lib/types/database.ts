@@ -1127,6 +1127,9 @@ export type PracticeGroupUpdate = TablesUpdate<"practice_groups">;
 export type PracticeArea = Tables<"practice_areas">;
 export type PracticeAreaInsert = TablesInsert<"practice_areas">;
 export type PracticeAreaUpdate = TablesUpdate<"practice_areas">;
+export type PracticeAreaWithGroup = PracticeArea & {
+  practice_groups: PracticeGroup | null;
+};
 
 export type LawyerPosition = Tables<"lawyer_positions">;
 
@@ -1167,3 +1170,67 @@ export type EventFilters = {
   to_date?: string;
 };
 export type EventStatus = "upcoming" | "past"; // Example
+
+export type Article = Tables<"articles">;
+export type ArticleInsert = TablesInsert<"articles">;
+export type ArticleUpdate = TablesUpdate<"articles">;
+export type ArticleCategory = Tables<"article_categories">;
+export type ArticleCategoryInsert = TablesInsert<"article_categories">;
+export type ArticleCategoryUpdate = TablesUpdate<"article_categories">;
+export type ArticleWithCategory = Article & {
+  category: ArticleCategory | null;
+  author: Tables<"lawyers"> | null;
+};
+export type ArticleFilters = {
+  category_id?: string;
+  author_id?: string;
+  tag?: string;
+  search?: string;
+  is_published?: boolean;
+};
+export type ArticleStatus = "draft" | "published";
+
+export type Lawyer = Tables<"lawyers">;
+export type LawyerInsert = TablesInsert<"lawyers">;
+export type LawyerUpdate = TablesUpdate<"lawyers">;
+export type LawyerPracticeArea = Tables<"lawyer_practice_areas">;
+export type LawyerPracticeAreaInsert = TablesInsert<"lawyer_practice_areas">;
+export type LawyerPracticeAreaUpdate = TablesUpdate<"lawyer_practice_areas">;
+export type LawyerWithPracticeAreas = Lawyer & {
+  practice_areas: (LawyerPracticeArea & {
+    practice_areas: Tables<"practice_areas"> | null;
+  })[];
+};
+export type LawyerFilters = {
+  practice_area_id?: string;
+  practice_group_id?: string;
+  position_id?: string;
+  search?: string;
+  is_active?: boolean;
+  status?: "active" | "inactive";
+  seniority?: LawyerSeniority;
+};
+export type LawyerStatus = "active" | "inactive";
+export type LawyerSeniority = "partner" | "senior_associate" | "associate" | "junior";
+
+export type JobOpening = Tables<"job_openings">;
+export type JobOpeningInsert = TablesInsert<"job_openings">;
+export type JobOpeningUpdate = TablesUpdate<"job_openings">;
+export type JobOpeningFilters = {
+  department?: string;
+  type?: string;
+  location?: string;
+  search?: string;
+  is_active?: boolean;
+};
+export type JobFilters = JobOpeningFilters; // Alias for backward compatibility
+export type JobOpeningStatus = "active" | "closed";
+export type JobStatus = JobOpeningStatus; // Alias for backward compatibility
+export type JobType = "full-time" | "part-time" | "contract" | "internship";
+
+export type ActivityLog = Tables<"activity_logs">;
+export type ActivityLogInsert = TablesInsert<"activity_logs">;
+
+export type UserRole = Tables<"user_roles">;
+export type UserRoleInsert = TablesInsert<"user_roles">;
+export type UserRoleUpdate = TablesUpdate<"user_roles">;

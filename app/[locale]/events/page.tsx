@@ -33,7 +33,7 @@ export default async function Page({
           event.description_en ||
           "",
         location:
-          (isId ? event.location_id : event.location_en) || event.location_en,
+          (isId ? event.location_id : event.location_en) || event.location_en || undefined,
         externalLink: event.registration_url || undefined,
       };
     }) || [];

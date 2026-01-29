@@ -46,7 +46,7 @@ export default async function Page({
       dbEvent.description_en ||
       "",
     location:
-      (isId ? dbEvent.location_id : dbEvent.location_en) || dbEvent.location_en,
+      (isId ? dbEvent.location_id : dbEvent.location_en) || dbEvent.location_en || undefined,
     externalLink: dbEvent.registration_url || undefined,
   };
 

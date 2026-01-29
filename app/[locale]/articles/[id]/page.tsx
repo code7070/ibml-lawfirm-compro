@@ -57,7 +57,7 @@ export default async function ArticleDetailPage({ params }: Props) {
   };
 
   // Map Related
-  const viewRelated: ViewArticle[] = relatedData.map(a => ({
+  const viewRelated: ViewArticle[] = (relatedData || []).map(a => ({
     id: a.slug || a.id,
     title: isId ? a.title_id : a.title_en,
     date: new Date(a.published_at || a.created_at || Date.now()).toLocaleDateString(isId ? 'id-ID' : 'en-US', {
