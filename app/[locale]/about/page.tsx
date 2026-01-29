@@ -2,8 +2,22 @@ import AboutPageComponent from "@/components/AboutPage";
 import { CLIENT_LOGOS, ORG_LOGOS } from "@/data/logos";
 import { lawyersService, practiceGroupsService } from "@/services";
 import { getDictionary, Locale } from "@/lib/dictionary";
+import { generatePageMetadata } from "@/lib/metadata";
 
 export const revaldiate = 60 * 5; // 60 seconds * 5 minutes = 5 minutes
+
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Promise<{ locale: string }> 
+}) {
+  const { locale } = await params;
+  return generatePageMetadata({
+    locale: locale as Locale,
+    page: "about",
+    path: "/about",
+  });
+}
 
 export default async function AboutPage({
   params,

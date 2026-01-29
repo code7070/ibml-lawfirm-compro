@@ -1,47 +1,57 @@
-import type { Metadata } from "next";
 import { Inter, Space_Grotesk, Merriweather } from "next/font/google";
 // import localFont from "next/font/local";
 import "@/app/globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { notFound } from "next/navigation";
-import { getDictionary, locales } from "@/lib/dictionary";
+import { getDictionary, locales, Locale } from "@/lib/dictionary";
 import { TranslationProvider } from "@/components/TranslationProvider";
+import { generatePageMetadata } from "@/lib/metadata";
 
 // const geometricaSans = localFont({
 //   src: "../../fonts/GeometricaSans-Regular.woff",
-//   variable: "--font-primary",
+//   variable: "--font-primary-var",
 //   display: "swap",
 // });
-//
+
 const fontPrimary = Space_Grotesk({
+  subsets: ["latin"],
   display: "swap",
-  variable: "--font-primary",
+  variable: "--font-primary-var",
 });
 
 // const museo = localFont({
 //   src: "../../fonts/Museo300-Regular.woff",
-//   variable: "--font-secondary",
+//   variable: "--font-secondary-var",
 //   display: "swap",
 // });
 
 const fontSecondary = Merriweather({
+  subsets: ["latin"],
+  weight: ["300", "400", "700"],
   display: "swap",
-  variable: "--font-secondary",
+  variable: "--font-secondary-var",
 });
 
 const inter = Inter({
-  variable: "--font-body",
-  weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
+  variable: "--font-body-var",
 });
 
-export const metadata: Metadata = {
-  title: "IBLM Law Group | Protection for the Digital Arena",
-  description:
-    "IBLM Law Group - Specialized legal counsel for the gaming and esports industry.",
-};
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Promise<{ locale: string }> 
+}) {
+  const { locale } = await params;
+  return generatePageMetadata({
+    locale: locale as Locale,
+    page: "default",
+    path: "",
+  });
+}
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));

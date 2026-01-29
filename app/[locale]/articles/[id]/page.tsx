@@ -10,6 +10,9 @@ interface Props {
   params: Promise<{ id: string; locale: string }>;
 }
 
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://iblmlaw.com";
+const META_IMAGE_PATH = "/images/meta-image-iblm.jpg";
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id, locale } = await params;
   const isId = locale === "id";
@@ -22,9 +25,44 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ? article.meta_description_id || article.excerpt_id
     : article.meta_description_en || article.excerpt_en;
 
+  const url = `${BASE_URL}/${locale}/articles/${id}`;
+  const imageUrl = article.cover_url || `${BASE_URL}${META_IMAGE_PATH}`;
+
   return {
-    title: `${title} - IBLM Law Firm`,
-    description: desc,
+    title: `${title} | IBLM Law Group`,
+    description: desc || undefined,
+    metadataBase: new URL(BASE_URL),
+    alternates: {
+      canonical: url,
+      languages: {
+        'en': `/en/articles/${id}`,
+        'id': `/id/articles/${id}`,
+      },
+    },
+    openGraph: {
+      type: "article",
+      locale: isId ? "id_ID" : "en_US",
+      url,
+      title: `${title} | IBLM Law Group`,
+      description: desc || undefined,
+      siteName: "IBLM Law Group",
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+      publishedTime: article.published_at || article.created_at || undefined,
+      authors: [article.author?.name_en || "IBLM Law Group"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} | IBLM Law Group`,
+      description: desc || undefined,
+      images: [imageUrl],
+    },
   };
 }
 

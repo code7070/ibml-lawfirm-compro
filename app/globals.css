@@ -1,36 +1,5 @@
 @import "tailwindcss";
 
-@theme {
-  /* Primary: Geometrica Sans - headings, display */
-  --font-sans: var(--font-primary);
-  /* Secondary: Museo 300 - accents, quotes */
-  --font-serif: var(--font-secondary);
-
-  /* Custom Spacing */
-  --spacing-navbar: var(--navbar-height);
-  --spacing-navbar-offset: calc(var(--navbar-height) + 2rem);
-
-  /* ========== COLOR PALETTE ========== */
-  /* Primary Colors */
-  --color-navy-darkest: #0b1b3b;
-  --color-navy-primary: #1a2f5a;
-  --color-navy-medium: #2e4472;
-  --color-navy-light: #4a639d;
-  --color-navy-accent: #76abff;
-
-  /* Gold/Brass Accent */
-  --color-gold-dark: #c0b181;
-  --color-gold-medium: #d4c5a0;
-  --color-gold-light: #e8dbbf;
-  --color-gold-pale: #fff0cc;
-
-  /* Supporting Colors */
-  --color-black-knight: #020814;
-  --color-white: #ffffff;
-  --color-gray-light: #f5f5f7;
-  --color-gray-medium: #e0e0e3;
-}
-
 :root {
   /* ========== DIMENSIONS ========== */
   --navbar-height: 5rem; /* 80px */
@@ -81,15 +50,59 @@
   --space-2xl: 120px;
 }
 
+@theme {
+  /* ========== FONT FAMILIES (Tailwind utilities) ========== */
+  /* Static fallback values - actual fonts loaded via Next.js font loader */
+  --font-primary: "Space Grotesk", "Inter", "Segoe UI", -apple-system,
+    BlinkMacSystemFont, sans-serif;
+  --font-secondary: "Merriweather", "Playfair Display", Georgia, serif;
+  --font-body: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+
+  /* Override Tailwind defaults */
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-secondary);
+
+  /* Custom Spacing */
+  --spacing-navbar: var(--navbar-height);
+  --spacing-navbar-offset: calc(var(--navbar-height) + 2rem);
+
+  /* ========== COLOR PALETTE ========== */
+  /* Primary Colors */
+  --color-navy-darkest: #0b1b3b;
+  --color-navy-primary: #1a2f5a;
+  --color-navy-medium: #2e4472;
+  --color-navy-light: #4a639d;
+  --color-navy-accent: #76abff;
+
+  /* Gold/Brass Accent */
+  --color-gold-dark: #c0b181;
+  --color-gold-medium: #d4c5a0;
+  --color-gold-light: #e8dbbf;
+  --color-gold-pale: #fff0cc;
+
+  /* Supporting Colors */
+  --color-black-knight: #020814;
+  --color-white: #ffffff;
+  --color-gray-light: #f5f5f7;
+  --color-gray-medium: #e0e0e3;
+}
+
 /* ========== BASE TYPOGRAPHY ========== */
 body {
-  font-family:
-    var(--font-body),
-    "Inter",
-    "Segoe UI",
-    -apple-system,
-    BlinkMacSystemFont,
-    sans-serif;
+  /* 
+   * Font families using Next.js font loader CSS variables
+   * --font-*-var are injected by Next.js at runtime via class on <body>
+   * We use var() with fallback for when the variable isn't loaded yet
+   */
+  --font-primary: var(--font-primary-var, "Space Grotesk"), "Inter", "Segoe UI",
+    -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-secondary: var(--font-secondary-var, "Merriweather"),
+    "Playfair Display", Georgia, serif;
+  --font-body: var(--font-body-var, "Inter"), "Segoe UI", -apple-system,
+    BlinkMacSystemFont, sans-serif;
+
+  font-family: var(--font-body);
   font-size: var(--body-regular-size);
   line-height: var(--body-regular-line-height);
   background-color: var(--color-white);
@@ -97,21 +110,14 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Headings use Geometrica Sans (primary font) */
+/* Headings use primary font (Space Grotesk / Geometrica Sans) */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family:
-    var(--font-primary),
-    "Space Grotesk",
-    "Inter",
-    "Segoe UI",
-    -apple-system,
-    BlinkMacSystemFont,
-    sans-serif;
+  font-family: var(--font-primary);
 }
 
 h1 {
@@ -138,33 +144,6 @@ h4 {
   font-weight: var(--h4-weight);
 }
 
-.font-primary {
-  font-family:
-    var(--font-primary),
-    "Space Grotesk",
-    "Inter",
-    "Segoe UI",
-    -apple-system,
-    BlinkMacSystemFont,
-    sans-serif;
-}
-
-/* Museo for serif/accents/quotes */
-.font-serif {
-  font-family: var(--font-secondary), "Merriweather", "Playfair Display", serif;
-}
-
-/* Inter for body text alternative */
-.font-body {
-  font-family:
-    var(--font-body),
-    "Inter",
-    "Segoe UI",
-    -apple-system,
-    BlinkMacSystemFont,
-    sans-serif;
-}
-
 /* ========== TYPOGRAPHY UTILITIES ========== */
 .text-body-large {
   font-size: var(--body-large-size);
@@ -184,7 +163,7 @@ h4 {
 .text-quote {
   font-size: var(--quote-size);
   font-style: italic;
-  font-family: var(--font-museo), "Merriweather", serif;
+  font-family: var(--font-secondary);
 }
 
 /* Section labels - uppercase with letter spacing */

@@ -254,5 +254,47 @@
     "label": "Client Testimonials",
     "title": "What Our Clients Say",
     "subtitle": "Trusted by industry leaders and innovative companies across Indonesia."
+  },
+  "meta": {
+    "default": {
+      "title": "IBLM Law Group | The Sophisticated Guardian",
+      "description": "Strategic legal partnership for elite leaders and sophisticated businesses. We combine classical jurisprudence with modern strategy to deliver unshakeable legal standing."
+    },
+    "home": {
+      "title": "IBLM Law Group | Unshakeable Legal Standing",
+      "description": "The Sophisticated Guardian for your business. Strategic legal counsel for entertainment, technology, education & health, and labor law. Professional legal services in Indonesia."
+    },
+    "about": {
+      "title": "About Us | IBLM Law Group",
+      "description": "Learn about IBLM Law Group - a strategic legal partnership built on professionalism, empathy, and loyalty. Meet our experienced team of legal professionals."
+    },
+    "lawyers": {
+      "title": "Our Team | IBLM Law Group",
+      "description": "Meet our experienced legal professionals. Expert lawyers specializing in entertainment law, technology law, education & health law, and labor law."
+    },
+    "practiceAreas": {
+      "title": "Practice Areas | IBLM Law Group",
+      "description": "Specialized practice areas organized into four expert groups: Entertainment, Technology, Education & Health, and People & Labor."
+    },
+    "services": {
+      "title": "Legal Services | IBLM Law Group",
+      "description": "Comprehensive legal solutions including advisory & consulting, litigation & dispute resolution, corporate & commercial, and pro bono services."
+    },
+    "contact": {
+      "title": "Contact Us | IBLM Law Group",
+      "description": "Get in touch with IBLM Law Group. Schedule a consultation with our legal team for strategic legal counsel tailored to your business needs."
+    },
+    "careers": {
+      "title": "Careers | IBLM Law Group",
+      "description": "Join IBLM Law Group. Build your legal career with a firm that values professionalism, empathy, and loyalty. Explore our open positions."
+    },
+    "events": {
+      "title": "Events & Seminars | IBLM Law Group",
+      "description": "Stay updated with our latest legal events, seminars, and workshops. Learn from industry experts and network with legal professionals."
+    },
+    "articles": {
+      "title": "Legal Insights | IBLM Law Group",
+      "description": "Expert analysis and legal perspectives from our team. Read the latest articles on entertainment law, technology law, and business law in Indonesia."
+    }
   }
 }

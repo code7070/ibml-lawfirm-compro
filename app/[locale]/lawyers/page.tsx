@@ -1,8 +1,22 @@
 import LawyersPage from "@/components/LawyersPage";
 import { lawyersService, lawyerPositionsService } from "@/services";
 import { getDictionary, Locale } from "@/lib/dictionary";
+import { generatePageMetadata } from "@/lib/metadata";
 
 export const revaldiate = 60 * 5; // 60 seconds * 5 minutes = 5 minutes
+
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Promise<{ locale: string }> 
+}) {
+  const { locale } = await params;
+  return generatePageMetadata({
+    locale: locale as Locale,
+    page: "lawyers",
+    path: "/lawyers",
+  });
+}
 
 export default async function Lawyers({
   params,

@@ -1,8 +1,23 @@
 import ArticleListPageComponent from "@/components/ArticleListPage";
 import { articlesService } from "@/services";
 import { Article as ViewArticle } from "@/types";
+import { generatePageMetadata } from "@/lib/metadata";
+import { Locale } from "@/lib/dictionary";
 
 export const revaldiate = 60 * 5; // 60 seconds * 5 minutes = 5 minutes
+
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Promise<{ locale: string }> 
+}) {
+  const { locale } = await params;
+  return generatePageMetadata({
+    locale: locale as Locale,
+    page: "articles",
+    path: "/articles",
+  });
+}
 
 export default async function ArticlesPage({
   params,

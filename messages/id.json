@@ -254,5 +254,47 @@
     "label": "Testimoni Klien",
     "title": "Apa Kata Klien Kami",
     "subtitle": "Dipercaya oleh pemimpin industri dan perusahaan inovatif di seluruh Indonesia."
+  },
+  "meta": {
+    "default": {
+      "title": "IBLM Law Group | The Sophisticated Guardian",
+      "description": "Kemitraan hukum strategis untuk pemimpin elit dan bisnis sophisticated. Kami menggabungkan yurisprudensi klasik dengan strategi modern untuk memberikan kedudukan hukum yang tak tergoyahkan."
+    },
+    "home": {
+      "title": "IBLM Law Group | Kedudukan Hukum Tak Tergoyahkan",
+      "description": "The Sophisticated Guardian untuk bisnis Anda. Nasihat hukum strategis untuk hiburan, teknologi, pendidikan & kesehatan, dan hukum ketenagakerjaan. Layanan hukum profesional di Indonesia."
+    },
+    "about": {
+      "title": "Tentang Kami | IBLM Law Group",
+      "description": "Pelajari tentang IBLM Law Group - kemitraan hukum strategis yang dibangun di atas profesionalisme, empati, dan loyalitas. Temui tim profesional hukum kami yang berpengalaman."
+    },
+    "lawyers": {
+      "title": "Tim Kami | IBLM Law Group",
+      "description": "Temui profesional hukum kami yang berpengalaman. Pengacara ahli yang spesialisasi dalam hukum hiburan, hukum teknologi, hukum pendidikan & kesehatan, dan hukum ketenagakerjaan."
+    },
+    "practiceAreas": {
+      "title": "Area Praktik | IBLM Law Group",
+      "description": "Area praktik khusus yang diorganisir ke dalam empat grup ahli: Hiburan, Teknologi, Pendidikan & Kesehatan, dan Ketenagakerjaan."
+    },
+    "services": {
+      "title": "Layanan Hukum | IBLM Law Group",
+      "description": "Solusi hukum komprehensif termasuk konsultasi & penasihat, litigasi & penyelesaian sengketa, korporasi & komersial, dan layanan pro bono."
+    },
+    "contact": {
+      "title": "Hubungi Kami | IBLM Law Group",
+      "description": "Hubungi IBLM Law Group. Jadwalkan konsultasi dengan tim hukum kami untuk nasihat hukum strategis yang disesuaikan dengan kebutuhan bisnis Anda."
+    },
+    "careers": {
+      "title": "Karir | IBLM Law Group",
+      "description": "Bergabunglah dengan IBLM Law Group. Bangun karir hukum Anda dengan firma yang menghargai profesionalisme, empati, dan loyalitas. Jelajahi posisi terbuka kami."
+    },
+    "events": {
+      "title": "Acara & Seminar | IBLM Law Group",
+      "description": "Tetap terinformasi dengan acara hukum, seminar, dan workshop terbaru kami. Belajar dari ahli industri dan jaringan dengan profesional hukum."
+    },
+    "articles": {
+      "title": "Wawasan Hukum | IBLM Law Group",
+      "description": "Analisis ahli dan perspektif hukum dari tim kami. Baca artikel terbaru tentang hukum hiburan, hukum teknologi, dan hukum bisnis di Indonesia."
+    }
   }
 }

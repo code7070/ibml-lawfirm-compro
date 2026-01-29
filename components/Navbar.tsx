@@ -79,7 +79,7 @@ const Navbar = () => {
             <span className="text-white font-bold text-xl tracking-wider font-secondary">
               IBLM
             </span>
-            <span className="text-[#D4C5A0] text-xs tracking-[0.2em] uppercase">
+            <span className="text-[#D4C5A0] text-xs tracking-[0.2em] uppercase font-primary">
               Law Group
             </span>
           </div>

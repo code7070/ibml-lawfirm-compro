@@ -13,8 +13,22 @@ import {
 import { ARTICLE_DATA } from "@/data/articles";
 import { getDictionary, Locale } from "@/lib/dictionary";
 import { LogoItem } from "@/types";
+import { generatePageMetadata } from "@/lib/metadata";
 
 export const revaldiate = 60 * 5; // 60 seconds * 5 minutes = 5 minutes
+
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Promise<{ locale: string }> 
+}) {
+  const { locale } = await params;
+  return generatePageMetadata({
+    locale: locale as Locale,
+    page: "home",
+    path: "",
+  });
+}
 
 export default async function HomePage({
   params,
