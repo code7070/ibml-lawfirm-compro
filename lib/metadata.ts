@@ -13,7 +13,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://iblmlaw.com";
 const META_IMAGE_PATH = "/images/meta-image-iblm.jpg";
 
 export async function generatePageMetadata(config: MetadataConfig): Promise<Metadata> {
-  const { locale, page, customTitle, customDescription, path } = config;
+  const { locale, page, customTitle, customDescription, path = "" } = config;
   
   const dict = await getDictionary(locale);
   
@@ -21,21 +21,24 @@ export async function generatePageMetadata(config: MetadataConfig): Promise<Meta
   const title = customTitle || dict.meta[page]?.title || dict.meta.default.title;
   const description = customDescription || dict.meta[page]?.description || dict.meta.default.description;
   
-  // Generate URL
-  const url = path ? `${BASE_URL}/${locale}${path}` : `${BASE_URL}/${locale}`;
+  // Generate clean path (remove leading slash if present, then add it back)
+  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  const fullPath = cleanPath === '/' ? '' : cleanPath;
   
-  // Generate image URL
+  // Generate URL
+  const url = `${BASE_URL}/${locale}${fullPath}`;
+  
+  // Generate image URL (absolute)
   const imageUrl = `${BASE_URL}${META_IMAGE_PATH}`;
   
   return {
     title,
     description,
-    metadataBase: new URL(BASE_URL),
     alternates: {
       canonical: url,
       languages: {
-        'en': `/en${path || ''}`,
-        'id': `/id${path || ''}`,
+        'en': `/en${fullPath}`,
+        'id': `/id${fullPath}`,
       },
     },
     openGraph: {

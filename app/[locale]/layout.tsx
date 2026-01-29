@@ -40,17 +40,26 @@ const inter = Inter({
   variable: "--font-body-var",
 });
 
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: Promise<{ locale: string }> 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  return generatePageMetadata({
+  const metadata = await generatePageMetadata({
     locale: locale as Locale,
     page: "default",
     path: "",
   });
+
+  // Add metadataBase in root layout only
+  return {
+    ...metadata,
+    metadataBase: new URL(
+      process.env.NEXT_PUBLIC_BASE_URL ||
+        "https://preview-iblm-compro.vercel.app",
+    ),
+  };
 }
 
 export async function generateStaticParams() {
