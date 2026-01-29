@@ -3,9 +3,11 @@ import { eventsService } from "@/services/events.service";
 import { Event as FrontendEvent } from "@/types";
 import { notFound } from "next/navigation";
 
+export const revaldiate = 60 * 5; // 60 seconds * 5 minutes = 5 minutes
+
 export async function generateStaticParams() {
   const { data: events } = await eventsService.getAll();
-  
+
   if (!events) return [];
 
   return events.map((event) => ({
@@ -46,7 +48,9 @@ export default async function Page({
       dbEvent.description_en ||
       "",
     location:
-      (isId ? dbEvent.location_id : dbEvent.location_en) || dbEvent.location_en || undefined,
+      (isId ? dbEvent.location_id : dbEvent.location_en) ||
+      dbEvent.location_en ||
+      undefined,
     externalLink: dbEvent.registration_url || undefined,
   };
 

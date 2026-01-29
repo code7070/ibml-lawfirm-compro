@@ -2,6 +2,8 @@ import EventsPage from "@/components/EventsPage";
 import { eventsService } from "@/services/events.service";
 import { Event as FrontendEvent } from "@/types";
 
+export const revaldiate = 60 * 5; // 60 seconds * 5 minutes = 5 minutes
+
 export default async function Page({
   params,
 }: {
@@ -33,7 +35,9 @@ export default async function Page({
           event.description_en ||
           "",
         location:
-          (isId ? event.location_id : event.location_en) || event.location_en || undefined,
+          (isId ? event.location_id : event.location_en) ||
+          event.location_en ||
+          undefined,
         externalLink: event.registration_url || undefined,
       };
     }) || [];

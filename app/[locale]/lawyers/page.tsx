@@ -2,13 +2,15 @@ import LawyersPage from "@/components/LawyersPage";
 import { lawyersService, lawyerPositionsService } from "@/services";
 import { getDictionary, Locale } from "@/lib/dictionary";
 
+export const revaldiate = 60 * 5; // 60 seconds * 5 minutes = 5 minutes
+
 export default async function Lawyers({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  
+
   // Fetch lawyers, positions, and translations in parallel
   const [lawyersResponse, positionsResponse, dict] = await Promise.all([
     lawyersService.getActiveWithPositionAndPracticeAreas(),

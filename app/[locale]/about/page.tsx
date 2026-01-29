@@ -3,6 +3,8 @@ import { CLIENT_LOGOS, ORG_LOGOS } from "@/data/logos";
 import { lawyersService, practiceGroupsService } from "@/services";
 import { getDictionary, Locale } from "@/lib/dictionary";
 
+export const revaldiate = 60 * 5; // 60 seconds * 5 minutes = 5 minutes
+
 export default async function AboutPage({
   params,
 }: {
