@@ -249,5 +249,10 @@
     "back": "Kembali",
     "loading": "Memuat...",
     "error": "Terjadi kesalahan"
+  },
+  "testimonials": {
+    "label": "Testimoni Klien",
+    "title": "Apa Kata Klien Kami",
+    "subtitle": "Dipercaya oleh pemimpin industri dan perusahaan inovatif di seluruh Indonesia."
   }
 }

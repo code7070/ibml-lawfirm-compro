@@ -249,5 +249,10 @@
     "back": "Back",
     "loading": "Loading...",
     "error": "An error occurred"
+  },
+  "testimonials": {
+    "label": "Client Testimonials",
+    "title": "What Our Clients Say",
+    "subtitle": "Trusted by industry leaders and innovative companies across Indonesia."
   }
 }
