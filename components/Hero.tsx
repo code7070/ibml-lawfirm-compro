@@ -2,7 +2,6 @@
 import { ArrowDown } from "lucide-react";
 import Button from "./Button";
 import { useTranslations } from "@/hooks/useTranslations";
-import Image from "next/image";
 
 const Hero = () => {
   const t = useTranslations("home.hero");
@@ -15,10 +14,10 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-[#0B1B3B] via-[#1A2F5A] to-[#020814]" />
 
         {/* Professional Pattern overlay */}
-        <div 
+        <div
           className="absolute inset-0 opacity-5 mix-blend-overlay"
           style={{
-            backgroundImage: `linear-gradient(45deg, #1A2F5A 25%, transparent 25%, transparent 75%, #1A2F5A 75%, #1A2F5A), 
+            backgroundImage: `linear-gradient(45deg, #1A2F5A 25%, transparent 25%, transparent 75%, #1A2F5A 75%, #1A2F5A),
                linear-gradient(45deg, #1A2F5A 25%, transparent 25%, transparent 75%, #1A2F5A 75%, #1A2F5A)`,
             backgroundSize: "30px 30px",
             backgroundPosition: "0 0, 15px 15px",
@@ -66,24 +65,35 @@ const Hero = () => {
             <div className="w-[400px] h-[500px] border border-[#D4C5A0]/20 relative">
               {/* Image Placeholder with Professional effect */}
               <div className="absolute inset-4 bg-[#1A2F5A] overflow-hidden">
-                <Image
-                  src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=900"
-                  alt="Professional Legal Services"
-                  fill
-                  className="object-cover opacity-40 mix-blend-luminosity hover:scale-105 transition-transform duration-1000"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B1B3B] to-transparent opacity-80" />
+                <picture>
+                  <source
+                    srcSet="/images/hero-banner-city-scape-hi.jpg"
+                    media="(min-width: 1280px)"
+                  />
+                  <source
+                    srcSet="/images/hero-banner-city-scape-med.jpg"
+                    media="(min-width: 768px)"
+                  />
+                  <img
+                    src="/images/hero-banner-city-scape-low.jpg"
+                    alt="Professional Legal Services"
+                    className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-luminosity hover:scale-105 transition-transform duration-1000"
+                  />
+                </picture>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0B1B3B]/20 to-transparent opacity-80" />
               </div>
 
               {/* Years of Excellence Badge */}
               <div className="absolute -top-6 -right-6 w-24 h-24 border border-[#D4C5A0] bg-[#0B1B3B] flex flex-col items-center justify-center">
                 <span className="text-3xl font-light text-white">4</span>
-                <span className="text-[0.6rem] text-[#D4C5A0] uppercase tracking-wider">LEGs</span>
+                <span className="text-[0.6rem] text-[#D4C5A0] uppercase tracking-wider">
+                  LEGs
+                </span>
               </div>
 
               {/* Brand Promise Badge */}
-              <div className="absolute -bottom-10 -left-10 bg-[#D4C5A0] p-6 text-[#0B1B3B] max-w-[200px]">
-                <p className="text-xs font-bold uppercase tracking-widest leading-relaxed">
+              <div className="absolute -bottom-10 -left-10 bg-[#D4C5A0] p-3 text-[#0B1B3B] max-w-[200px]">
+                <p className="text-xs font-bold uppercase tracking-wide leading-relaxed text-center">
                   {t("badge_text")}
                 </p>
               </div>
