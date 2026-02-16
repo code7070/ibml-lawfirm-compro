@@ -5,12 +5,15 @@ import { Calendar, MapPin, ArrowRight } from "lucide-react";
 import CTASection from "./CTASection";
 import { Event } from "../types";
 import Link from "next/link";
+import { useTranslations } from "@/hooks/useTranslations";
 
 interface EventsPageProps {
   events: Event[];
 }
 
 const EventsPage: React.FC<EventsPageProps> = ({ events }) => {
+  const t = useTranslations("events");
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -39,15 +42,13 @@ const EventsPage: React.FC<EventsPageProps> = ({ events }) => {
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5" />
         <div className="max-w-[1400px] mx-auto relative z-10 text-center">
           <span className="text-[#D4C5A0] font-bold tracking-[0.2em] text-xs uppercase mb-6 block">
-            Connect & Converge
+            {t("hero.tags")}
           </span>
           <h1 className="text-5xl md:text-7xl font-light mb-8">
-            Industry{" "}
-            <span className="font-serif italic text-[#D4C5A0]">Events</span>
+            {t("hero.title")}
           </h1>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light leading-relaxed">
-            Join IBLM Law Group at the forefront of the digital entertainment
-            industry. Workshops, summits, and networking mixers.
+            {t("hero.subtitle")}
           </p>
         </div>
       </section>
@@ -114,7 +115,7 @@ const EventsPage: React.FC<EventsPageProps> = ({ events }) => {
 
                       <div className="mt-auto pt-6 border-t border-[#0B1B3B]/5">
                         <div className="inline-flex items-center gap-2 text-[#D4C5A0] text-sm font-bold uppercase tracking-widest group-hover:text-[#0B1B3B] transition-colors">
-                          View Details <ArrowRight className="w-4 h-4" />
+                          {t("details")} <ArrowRight className="w-4 h-4" />
                         </div>
                       </div>
                     </div>
@@ -126,7 +127,7 @@ const EventsPage: React.FC<EventsPageProps> = ({ events }) => {
 
           {sortedYears.length === 0 && (
             <div className="text-center py-20 text-gray-400">
-              No upcoming events scheduled.
+              {t("noEvents")}
             </div>
           )}
         </div>

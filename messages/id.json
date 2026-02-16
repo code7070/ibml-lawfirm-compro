@@ -14,10 +14,9 @@
   "home": {
     "hero": {
       "tags": "Hiburan · Teknologi · Kesehatan & Pendidikan · Ketenagakerjaan",
-      "title_1": "Kedudukan",
-      "title_2": "Hukum",
-      "title_3": "Tak Tergoyahkan",
-      "description": "Penjaga Sophisticated untuk bisnis Anda. Kami menggabungkan yurisprudensi klasik dengan strategi modern untuk memberikan solusi hukum yang komprehensif.",
+      "title_1": "Menavigasi Kompleksitas,",
+      "title_2": "Menghadirkan Solusi",
+      "description": "Kelompok ahli hukum kami berkomitmen untuk memberikan yang terbaik, menghadirkan solusi hukum yang disesuaikan untuk melindungi bisnis Anda dengan presisi dan kepedulian.",
       "cta_primary": "Jadwalkan Konsultasi",
       "cta_secondary": "Area Praktik Kami",
       "badge_text": "Kemitraan Hukum Strategis"
@@ -44,39 +43,62 @@
       "description": "Strategi hukum yang disesuaikan untuk ekosistem game dan hiburan yang bergerak cepat."
     },
     "cta": {
-      "title": "Siap mendiskusikan kebutuhan hukum Anda?",
-      "subtitle": "Tim kami siap memberikan konsultasi strategis untuk bisnis Anda",
-      "button": "Jadwalkan Konsultasi"
+      "label": "Jelajahi Konsultasi",
+      "title": "Ahli hukum yang berkomitmen untuk terlibat dalam konsultasi guna mengungkap solusi strategis untuk kasus Anda",
+      "button": "Jadwalkan Sesi Strategi"
     }
   },
   "about": {
     "hero": {
       "tags": "Tentang IBLM Law Group",
-      "title": "The Sophisticated Guardian",
-      "subtitle": "Kemitraan hukum strategis yang dibangun di atas profesionalisme, empati, dan loyalitas"
+      "title_1": "The Sophisticated",
+      "title_2": "Guardian"
     },
     "story": {
-      "title": "Kisah Kami",
-      "content": "IBLM Law Group didirikan dengan visi yang jelas: menyediakan layanan hukum sophisticated yang menggabungkan yurisprudensi klasik dengan strategi bisnis modern. Kami percaya dalam membangun kemitraan jangka panjang dengan klien kami, memahami kebutuhan unik mereka, dan memberikan kedudukan hukum yang tak tergoyahkan."
+      "paragraph1": "IBLM Law Group didirikan atas keyakinan bahwa praktik hukum merupakan bagian integral dari pembangunan hukum. Dengan pendekatan modern terhadap industri hukum, IBLM Law Group berfokus pada 4 bidang (kelompok): Industri Hiburan/Kreatif, Teknologi, Kesehatan & Pendidikan, serta Ketenagakerjaan.",
+      "paragraph2": "Kami saat ini dipimpin oleh para mitra dengan pengalaman gabungan selama puluhan tahun di industri hukum. IBLM Law Group berkomitmen untuk menavigasi kompleksitas regulasi sambil bertujuan menciptakan solusi yang efektif dan berfokus pada industri. Dengan menyadari dinamika lanskap hukum Indonesia serta pesatnya perkembangan berbagai industri secara global, kami memperkuat kapabilitas kami melalui kolaborasi dengan berbagai ahli hukum. Hal ini memungkinkan kami untuk memanfaatkan perspektif kami dalam memberikan solusi hukum yang disesuaikan bagi klien kami. Misi kami adalah menjadi mitra terpercaya bagi bisnis dan individu yang menavigasi rezim regulasi yang kompleks. Melalui kolaborasi dan inovasi, IBLM Law Group berupaya memberikan solusi hukum yang disesuaikan untuk memberdayakan klien kami agar berkembang di dunia yang terus berevolusi.",
+      "brandPromise": "Kedudukan Hukum Tak Tergoyahkan",
+      "brandPromiseLabel": "Janji Brand Kami"
     },
     "values": {
-      "title": "Nilai-Nilai Kami",
+      "title": "Nilai-Nilai",
+      "titleHighlight": "Kami",
+      "subtitle": "Dibangun di atas tiga pilar yang mendefinisikan pendekatan kami terhadap praktik hukum dan hubungan klien.",
       "professionalism": {
         "title": "Profesionalisme",
-        "description": "Keunggulan dan integritas dalam setiap keterlibatan. Kami menegakkan standar tertinggi dalam praktik hukum."
+        "description": "Keunggulan dan integritas dalam setiap keterlibatan. Kami menegakkan standar tertinggi dalam praktik hukum dan perilaku etis."
       },
       "empathy": {
         "title": "Empati",
-        "description": "Memahami kebutuhan klien secara mendalam. Kami mendengarkan terlebih dahulu, kemudian memberikan solusi yang disesuaikan."
+        "description": "Memahami kebutuhan klien secara mendalam. Kami mendengarkan terlebih dahulu, kemudian memberikan solusi yang disesuaikan untuk mengatasi tantangan unik Anda."
       },
       "loyalty": {
         "title": "Loyalitas",
-        "description": "Komitmen kemitraan jangka panjang. Kesuksesan Anda adalah prioritas kami."
+        "description": "Komitmen kemitraan jangka panjang. Kesuksesan Anda adalah prioritas kami, dan kami mendampingi Anda melalui setiap tantangan."
       }
     },
-    "mission": {
-      "title": "Misi Kami",
-      "content": "Memberikan nasihat hukum strategis yang memberdayakan bisnis dan individu untuk mencapai tujuan mereka dengan kepercayaan dan kepastian hukum."
+    "whyChoose": {
+      "title": "Mengapa Memilih",
+      "titleHighlight": "IBLM",
+      "subtitle": "Komitmen kami terhadap keunggulan dan kesuksesan klien mendorong semua yang kami lakukan.",
+      "strategic": {
+        "title": "Kemitraan Strategis",
+        "description": "Kami melampaui layanan hukum tradisional untuk menjadi mitra strategis terpercaya Anda, memahami tujuan bisnis dan tantangan Anda."
+      },
+      "expertise": {
+        "title": "Keahlian Industri",
+        "description": "Keahlian mendalam di bidang Hiburan, Teknologi, Kesehatan & Pendidikan, dan Ketenagakerjaan melalui LEG khusus kami."
+      },
+      "modern": {
+        "title": "Pendekatan Modern",
+        "description": "Menggabungkan yurisprudensi klasik dengan strategi modern untuk memberikan solusi inovatif bagi tantangan hukum kompleks saat ini."
+      }
+    },
+    "clientTicker": "Dipercaya oleh Pemimpin Industri",
+    "orgTicker": "Afiliasi Industri",
+    "brandSection": {
+      "quote": "Di mana yurisprudensi klasik bertemu strategi modern.",
+      "label": "Filosofi IBLM Law Group"
     },
     "practice_section": {
       "label": "Grup Keahlian Hukum",
@@ -132,15 +154,36 @@
   },
   "services": {
     "hero": {
-      "tags": "Layanan Kami",
-      "title": "Layanan Hukum",
-      "subtitle": "Solusi komprehensif untuk kebutuhan hukum Anda"
+      "tags": "Lebih dari Praktik",
+      "title": "Layanan Khusus",
+      "subtitle": "Komitmen kami melampaui representasi komersial. Kami terlibat dalam bantuan hukum untuk yang kurang mampu dan riset akademis untuk membentuk regulasi masa depan."
     },
     "categories": {
       "advisory": "Konsultasi & Penasihat Hukum",
       "litigation": "Litigasi & Penyelesaian Sengketa",
       "corporate": "Korporasi & Komersial",
       "probono": "Layanan Pro Bono"
+    },
+    "probono": {
+      "title": "Layanan Pro Bono",
+      "description": "Akses terhadap keadilan tidak boleh menjadi hak istimewa. Kami menyediakan layanan hukum pro bono khusus untuk developer indie dari komunitas yang kurang terwakili dan organisasi non-profit yang berjuang untuk hak digital.",
+      "eligibilityTitle": "Kriteria Kelayakan",
+      "criteria1": "Developer indie dengan pendapatan tahunan di bawah $50k",
+      "criteria2": "Non-profit yang fokus pada literasi digital atau keamanan online",
+      "criteria3": "Mahasiswa yang menghadapi tindakan disipliner akademik untuk riset keamanan",
+      "applyForAid": "Ajukan Bantuan",
+      "hoursNumber": "1.500+",
+      "hoursLabel": "Jam Pro Bono Disumbangkan (2025)"
+    },
+    "research": {
+      "title": "Riset & Akademik",
+      "description": "Kami tidak hanya menafsirkan hukum; kami membantu menulisnya. Unit riset khusus kami berkolaborasi dengan universitas terkemuka dan think tank untuk menghasilkan white paper tentang regulasi loot box, hak cipta AI, dan tata kelola metaverse.",
+      "viewArchive": "Lihat Arsip Riset",
+      "partnersTitle": "Institusi Kolaborator",
+      "academicPartners": "Partner Akademik",
+      "publishedPapers": "Makalah Terpublikasi",
+      "policyAdvisory": "Penasihat Kebijakan",
+      "govtLiaison": "Hubungan Pemerintah"
     }
   },
   "contact": {
@@ -174,11 +217,84 @@
       "weekend": "Sabtu - Minggu: Dengan Perjanjian"
     }
   },
+  "contactForm": {
+    "successTitle": "Pesan Diterima",
+    "successMessage": "Pertanyaan Anda telah dicatat dengan aman. Tim kami akan meninjau pesan Anda dan segera merespons.",
+    "sendAnother": "Kirim Pesan Lain",
+    "requestConsultation": "Minta Konsultasi",
+    "requiredFields": "Kolom dengan tanda * wajib diisi.",
+    "transmissionFailed": "Pengiriman gagal",
+    "labels": {
+      "fullName": "Nama Lengkap",
+      "organization": "Organisasi",
+      "emailAddress": "Alamat Email",
+      "phone": "Telepon",
+      "practiceArea": "Area Praktik",
+      "caseBriefing": "Ringkasan Kasus"
+    },
+    "options": {
+      "selectPracticeArea": "Pilih Area Praktik...",
+      "entertainment": "Hukum Hiburan",
+      "technology": "Hukum Teknologi",
+      "labor": "Ketenagakerjaan",
+      "health": "Kesehatan & Pendidikan",
+      "ip": "Kekayaan Intelektual",
+      "corporate": "Strukturisasi Korporasi",
+      "dispute": "Penyelesaian Sengketa"
+    },
+    "submit": {
+      "sending": "Mengirim...",
+      "send": "Kirim Pesan"
+    }
+  },
   "career": {
     "hero": {
-      "tags": "Bergabung dengan Kami",
-      "title": "Karir",
-      "subtitle": "Bangun karir Anda bersama IBLM Law Group"
+      "tags": "Karir di IBLM",
+      "title": "Bergabung dengan Tim Kami",
+      "subtitle": "Kami mencari talenta hukum yang brilian dan bersemangat tentang persimpangan teknologi, hiburan, dan hukum."
+    },
+    "code": {
+      "title": "Kode Kami",
+      "precision": {
+        "title": "Presisi & Keunggulan",
+        "description": "Kami beroperasi pada tingkat tertinggi praktik hukum. 'Cukup baik' bukan dalam kosakata kami ketika hal-hal kritis dipertaruhkan."
+      },
+      "digital": {
+        "title": "Digital Native",
+        "description": "Kami tidak hanya mempelajari industri; kami menghidupinya. Tim kami memahami lanskap teknologi dan bisnis digital yang terus berkembang."
+      },
+      "collaborative": {
+        "title": "Kecerdasan Kolaboratif",
+        "description": "Kami percaya pada pikiran kolektif. Partner, associate, dan staf bekerja sebagai unit terpadu untuk menyelesaikan tantangan kompleks."
+      }
+    },
+    "culture": {
+      "title": "Firma yang Memadukan Tradisi dan Inovasi",
+      "description": "Di IBLM, Anda tidak hanya menyusun kontrak; Anda akan membentuk kerangka hukum untuk teknologi baru, bisnis digital, dan industri modern. Kami menawarkan lingkungan yang menghargai ketelitian intelektual dan pemecahan masalah kreatif secara setara.",
+      "quote": "Tempo di sini sangat dinamis. Kami menangani pertanyaan hukum yang tidak ada enam bulan lalu.",
+      "quoteAuthor": "Senior Associate",
+      "quoteRole": "IBLM Law Group"
+    },
+    "benefits": {
+      "mentorship": "Mentorship Lanjutan",
+      "secondments": "Secondment Global",
+      "health": "Asuransi Kesehatan Premium",
+      "hybrid": "Kerja Hybrid"
+    },
+    "openings": {
+      "title": "Lowongan Saat Ini",
+      "apply": "Lamar Sekarang",
+      "noOpenings": "Tidak ada lowongan saat ini. Silakan periksa kembali!"
+    },
+    "workWithUs": {
+      "label": "Peluang Masa Depan",
+      "title": "Bekerja dengan Kami",
+      "description": "Kami selalu mencari talenta luar biasa untuk bergabung dengan tim kami. Apakah Anda seorang partner berpengalaman yang ingin beralih ke hukum media digital, atau mahasiswa hukum dengan latar belakang teknologi, kami ingin mendengar dari Anda.",
+      "generalInquiries": "Pertanyaan Umum",
+      "generalDesc": "Untuk pengacara, paralegal, dan staf pendukung.",
+      "internship": "Program Magang",
+      "internshipDesc": "Associate musim panas dan clerkship hukum.",
+      "finalQuote": "Kami tidak merekrut latar belakang. Kami merekrut potensi dan passion untuk keahlian."
     },
     "values": {
       "title": "Nilai-Nilai Kami",
@@ -194,40 +310,52 @@
         "title": "Loyalitas",
         "description": "Kami membangun hubungan jangka panjang dengan anggota tim kami"
       }
-    },
-    "openings": {
-      "title": "Posisi Terbuka",
-      "apply": "Lamar Sekarang",
-      "noOpenings": "Tidak ada lowongan saat ini. Silakan periksa kembali!"
     }
   },
   "events": {
     "hero": {
-      "tags": "Acara & Seminar",
-      "title": "Acara",
-      "subtitle": "Tetap terinformasi dengan acara dan seminar hukum terbaru kami"
+      "tags": "Terhubung & Berkumpul",
+      "title": "Acara Industri",
+      "subtitle": "Bergabunglah dengan IBLM Law Group di garis depan industri hukum. Workshop, summit, dan acara networking."
     },
     "upcoming": "Acara Mendatang",
     "past": "Acara Sebelumnya",
     "register": "Daftar Sekarang",
-    "details": "Lihat Detail"
+    "details": "Lihat Detail",
+    "noEvents": "Tidak ada acara yang dijadwalkan."
   },
   "articles": {
     "hero": {
-      "tags": "Wawasan Hukum",
-      "title": "Wawasan",
-      "subtitle": "Analisis ahli dan perspektif hukum dari tim kami"
+      "tags": "Intelijen IBLM",
+      "title": "Wawasan & Analisis",
+      "subtitle": "Menavigasi persimpangan hukum, teknologi, dan bisnis. Tetap terdepan dalam perubahan regulasi dan tren industri."
     },
     "readMore": "Baca Selengkapnya",
+    "readAnalysis": "Baca Analisis",
     "categories": "Kategori",
-    "all": "Semua Artikel"
+    "all": "Semua Artikel",
+    "searchPlaceholder": "Cari arsip...",
+    "noArticles": "Tidak ada artikel dalam kategori ini."
   },
   "footer": {
+    "tagline": "Penjaga Sophisticated untuk bisnis Anda. Kami menggabungkan yurisprudensi klasik dengan strategi modern untuk memberikan kedudukan hukum yang tak tergoyahkan.",
     "practice": "Praktik",
+    "practiceLinks": {
+      "entertainment": "Hiburan",
+      "technology": "Teknologi",
+      "labor": "Ketenagakerjaan",
+      "health": "Kesehatan & Pendidikan"
+    },
     "firm": "Firma",
+    "firmLinks": {
+      "team": "Tim Kami",
+      "about": "Tentang Kami",
+      "careers": "Karir",
+      "contact": "Kontak"
+    },
     "newsletter": {
       "title": "Berlangganan",
-      "description": "Dapatkan update wawasan hukum terbaru kami",
+      "description": "Dapatkan update wawasan hukum dan berita terbaru kami.",
       "placeholder": "Alamat Email",
       "button": "Berlangganan"
     },

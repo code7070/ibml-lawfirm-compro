@@ -11,67 +11,86 @@ import {
   Handshake,
 } from "lucide-react";
 import CTASection from "./CTASection";
-import Team, { TeamTranslations } from "./Team";
 import LogoTicker from "./LogoTicker";
 import { LogoItem } from "@/types";
 import Image from "next/image";
 import {
-  LawyerWithPositionAndPracticeAreas,
   PracticeGroup,
 } from "@/lib/types/database";
 import { TestimonialsSection } from "./TestimonialsSection";
 import PracticeAreasSection from "./PracticeAreasSection";
-
-// IBLM Core Values
-const coreValues = [
-  {
-    id: "professionalism",
-    title: "Professionalism",
-    description:
-      "Excellence and integrity in every engagement. We uphold the highest standards of legal practice and ethical conduct.",
-    icon: Shield,
-  },
-  {
-    id: "empathy",
-    title: "Empathy",
-    description:
-      "Understanding client needs deeply. We listen first, then provide tailored solutions that address your unique challenges.",
-    icon: Heart,
-  },
-  {
-    id: "loyalty",
-    title: "Loyalty",
-    description:
-      "Long-term partnership commitment. Your success is our priority, and we stand by you through every challenge.",
-    icon: Handshake,
-  },
-];
+import { useTranslations } from "@/hooks/useTranslations";
+import { ReactNode } from "react";
 
 interface AboutPageProps {
   targetId?: string | null;
   clientLogos?: LogoItem[];
   orgLogos?: LogoItem[];
-  lawyers: LawyerWithPositionAndPracticeAreas[];
   locale: string;
-  teamTranslations: TeamTranslations;
   practiceGroups: PracticeGroup[];
   practiceSectionTranslations: {
     label: string;
     title_prefix: string;
     title_suffix: string;
   };
+  teamSection: ReactNode;
 }
 
 const AboutPage = ({
   targetId,
   clientLogos,
   orgLogos,
-  lawyers,
   locale,
-  teamTranslations,
   practiceGroups,
   practiceSectionTranslations,
+  teamSection,
 }: AboutPageProps) => {
+  const t = useTranslations("about");
+
+  // Core Values using translations
+  const coreValues = [
+    {
+      id: "professionalism",
+      titleKey: "values.professionalism.title",
+      descriptionKey: "values.professionalism.description",
+      icon: Shield,
+    },
+    {
+      id: "empathy",
+      titleKey: "values.empathy.title",
+      descriptionKey: "values.empathy.description",
+      icon: Heart,
+    },
+    {
+      id: "loyalty",
+      titleKey: "values.loyalty.title",
+      descriptionKey: "values.loyalty.description",
+      icon: Handshake,
+    },
+  ];
+
+  // Why Choose IBLM items
+  const whyChooseItems = [
+    {
+      id: "strategic",
+      titleKey: "whyChoose.strategic.title",
+      descriptionKey: "whyChoose.strategic.description",
+      icon: History,
+    },
+    {
+      id: "expertise",
+      titleKey: "whyChoose.expertise.title",
+      descriptionKey: "whyChoose.expertise.description",
+      icon: Trophy,
+    },
+    {
+      id: "modern",
+      titleKey: "whyChoose.modern.title",
+      descriptionKey: "whyChoose.modern.description",
+      icon: Target,
+    },
+  ];
+
   useEffect(() => {
     if (targetId) {
       const timer = setTimeout(() => {
@@ -95,34 +114,28 @@ const AboutPage = ({
           <div className="grid lg:grid-cols-12 gap-16 items-center">
             <div className="lg:col-span-6 space-y-10 text-center lg:text-left">
               <span className="text-[#D4C5A0] font-bold tracking-[0.3em] text-sm uppercase block">
-                About IBLM Law Group
+                {t("hero.tags")}
               </span>
               <h1 className="text-6xl md:text-7xl lg:text-8xl font-light text-[#0B1B3B] leading-[1.1]">
-                The Sophisticated <br />
+                {t("hero.title_1")} <br />
                 <span className="font-serif italic text-[#2E4472]">
-                  Guardian
+                  {t("hero.title_2")}
                 </span>
               </h1>
 
               <div className="space-y-6 text-lg md:text-xl text-[#2E4472] font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 <p>
-                  IBLM Law Group was founded with a clear vision: to provide
-                  sophisticated legal services that combine classical
-                  jurisprudence with modern business strategy.
+                  {t("story.paragraph1")}
                 </p>
                 <p>
-                  We believe in building long-term partnerships with our
-                  clients, understanding their unique needs, and delivering
-                  unshakeable legal standing. Our approach bridges the gap
-                  between traditional legal excellence and the dynamic demands
-                  of modern industries.
+                  {t("story.paragraph2")}
                 </p>
                 <div className="py-6 border-t border-[#0B1B3B]/10 border-b my-6">
                   <p className="font-medium text-[#0B1B3B] text-2xl font-serif italic">
-                    &quot;Unshakeable Legal Standing&quot;
+                    &quot;{t("story.brandPromise")}&quot;
                   </p>
                   <p className="text-sm text-[#D4C5A0] mt-2 uppercase tracking-wider">
-                    Our Brand Promise
+                    {t("story.brandPromiseLabel")}
                   </p>
                 </div>
               </div>
@@ -170,12 +183,11 @@ const AboutPage = ({
         <div className="max-w-[1400px] mx-auto px-6 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-20">
             <h2 className="text-4xl md:text-5xl font-light text-white mb-6">
-              Our{" "}
-              <span className="font-serif italic text-[#D4C5A0]">Values</span>
+              {t("values.title")}{" "}
+              <span className="font-serif italic text-[#D4C5A0]">{t("values.titleHighlight")}</span>
             </h2>
             <p className="text-gray-400 font-light">
-              Built on three pillars that define our approach to legal practice
-              and client relationships.
+              {t("values.subtitle")}
             </p>
           </div>
 
@@ -190,10 +202,10 @@ const AboutPage = ({
                   strokeWidth={1.5}
                 />
                 <h3 className="text-xl font-bold text-white mb-4">
-                  {value.title}
+                  {t(value.titleKey)}
                 </h3>
                 <p className="text-gray-300 font-light leading-relaxed">
-                  {value.description}
+                  {t(value.descriptionKey)}
                 </p>
               </div>
             ))}
@@ -206,65 +218,39 @@ const AboutPage = ({
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-20">
             <h2 className="text-4xl md:text-5xl font-light text-[#0B1B3B] mb-6">
-              Why Choose{" "}
-              <span className="font-serif italic text-[#2E4472]">IBLM</span>
+              {t("whyChoose.title")}{" "}
+              <span className="font-serif italic text-[#2E4472]">{t("whyChoose.titleHighlight")}</span>
             </h2>
             <p className="text-[#2E4472] font-light">
-              Our commitment to excellence and client success drives everything
-              we do.
+              {t("whyChoose.subtitle")}
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-10 border border-[#1A2F5A]/10 hover:border-[#D4C5A0] transition-all group shadow-sm">
-              <History
-                className="w-10 h-10 text-[#D4C5A0] mb-6 group-hover:scale-110 transition-transform"
-                strokeWidth={1.5}
-              />
-              <h3 className="text-xl font-bold text-[#0B1B3B] mb-4">
-                Strategic Partnership
-              </h3>
-              <p className="text-[#2E4472] font-light leading-relaxed">
-                We go beyond traditional legal services to become your trusted
-                strategic partner, understanding your business goals and
-                challenges.
-              </p>
-            </div>
-            <div className="bg-white p-10 border border-[#1A2F5A]/10 hover:border-[#D4C5A0] transition-all group shadow-sm">
-              <Trophy
-                className="w-10 h-10 text-[#D4C5A0] mb-6 group-hover:scale-110 transition-transform"
-                strokeWidth={1.5}
-              />
-              <h3 className="text-xl font-bold text-[#0B1B3B] mb-4">
-                Industry Expertise
-              </h3>
-              <p className="text-[#2E4472] font-light leading-relaxed">
-                Deep expertise across Entertainment, Technology, Health &
-                Education, and People & Labor practice areas through our
-                specialized LEGs.
-              </p>
-            </div>
-            <div className="bg-white p-10 border border-[#1A2F5A]/10 hover:border-[#D4C5A0] transition-all group shadow-sm">
-              <Target
-                className="w-10 h-10 text-[#D4C5A0] mb-6 group-hover:scale-110 transition-transform"
-                strokeWidth={1.5}
-              />
-              <h3 className="text-xl font-bold text-[#0B1B3B] mb-4">
-                Modern Approach
-              </h3>
-              <p className="text-[#2E4472] font-light leading-relaxed">
-                Combining classical jurisprudence with modern strategy to
-                deliver innovative solutions for today&apos;s complex legal
-                challenges.
-              </p>
-            </div>
+            {whyChooseItems.map((item) => (
+              <div
+                key={item.id}
+                className="bg-white p-10 border border-[#1A2F5A]/10 hover:border-[#D4C5A0] transition-all group shadow-sm"
+              >
+                <item.icon
+                  className="w-10 h-10 text-[#D4C5A0] mb-6 group-hover:scale-110 transition-transform"
+                  strokeWidth={1.5}
+                />
+                <h3 className="text-xl font-bold text-[#0B1B3B] mb-4">
+                  {t(item.titleKey)}
+                </h3>
+                <p className="text-[#2E4472] font-light leading-relaxed">
+                  {t(item.descriptionKey)}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Client Ticker */}
       {clientLogos && clientLogos.length > 0 && (
-        <LogoTicker title="Our Clients" items={clientLogos} theme="dark" />
+        <LogoTicker title={t("clientTicker")} items={clientLogos} theme="dark" />
       )}
 
       {/* 4. PRACTICE AREAS */}
@@ -298,31 +284,23 @@ const AboutPage = ({
           <div className="max-w-4xl space-y-8">
             <div className="w-20 h-1 bg-[#D4C5A0] mx-auto"></div>
             <h2 className="text-4xl md:text-6xl font-light text-white leading-tight">
-              &quot;Where classical jurisprudence meets <br />
-              <span className="font-serif italic text-[#D4C5A0]">
-                modern strategy
-              </span>
-              .&quot;
+              &quot;{t("brandSection.quote")}&quot;
             </h2>
             <p className="text-white/60 text-sm tracking-[0.3em] uppercase">
-              IBLM Law Group Philosophy
+              {t("brandSection.label")}
             </p>
           </div>
         </div>
       </section>
 
-      {/* 6. TEAM SUMMARY */}
+      {/* 6. TEAM SUMMARY — rendered as Server Component from parent */}
       <div id="team">
-        <Team
-          lawyers={lawyers}
-          locale={locale}
-          translations={teamTranslations}
-        />
+        {teamSection}
       </div>
 
       {/* Org Ticker */}
       {orgLogos && orgLogos.length > 0 && (
-        <LogoTicker title="Strategic Partners" items={orgLogos} theme="light" />
+        <LogoTicker title={t("orgTicker")} items={orgLogos} theme="light" />
       )}
 
       {/* 7. TESTIMONIAL SECTION */}

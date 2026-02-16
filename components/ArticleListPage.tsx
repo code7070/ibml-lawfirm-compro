@@ -5,21 +5,24 @@ import { ArrowUpRight, Search } from "lucide-react";
 import { Article } from "../types";
 import CTASection from "./CTASection";
 import Link from "next/link";
+import { useTranslations } from "@/hooks/useTranslations";
 
 interface ArticleListPageProps {
   articles: Article[];
 }
 
-const categories = [
-  "All",
-  "Research",
-  "Intellectual Property",
-  "Esports",
-  "Social Media",
-  "Corporate",
+// Category keys for translation - keep original values for filtering
+const categoryKeys = [
+  { value: "All", translationKey: "all" },
+  { value: "Research", translationKey: "Research" },
+  { value: "Intellectual Property", translationKey: "Intellectual Property" },
+  { value: "Esports", translationKey: "Esports" },
+  { value: "Social Media", translationKey: "Social Media" },
+  { value: "Corporate", translationKey: "Corporate" },
 ];
 
 const ArticleListPage = ({ articles }: ArticleListPageProps) => {
+  const t = useTranslations("articles");
   const [activeCategory, setActiveCategory] = useState("All");
 
   const filteredArticles =
@@ -34,15 +37,13 @@ const ArticleListPage = ({ articles }: ArticleListPageProps) => {
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5" />
         <div className="max-w-[1400px] mx-auto relative z-10">
           <span className="text-[#D4C5A0] font-bold tracking-[0.2em] text-xs uppercase mb-4 block">
-            IBLM Intelligence
+            {t("hero.tags")}
           </span>
           <h1 className="text-5xl md:text-7xl font-light mb-8">
-            Insights &{" "}
-            <span className="font-serif italic text-[#D4C5A0]">Analysis</span>
+            {t("hero.title")}
           </h1>
           <p className="text-gray-400 max-w-2xl text-lg font-light leading-relaxed">
-            Navigating the intersection of law, technology, and entertainment.
-            Stay ahead of regulatory shifts and industry trends.
+            {t("hero.subtitle")}
           </p>
         </div>
       </section>
@@ -54,17 +55,17 @@ const ArticleListPage = ({ articles }: ArticleListPageProps) => {
           <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-8 border-b border-[#0B1B3B]/10 pb-8">
             {/* Categories */}
             <div className="flex flex-wrap gap-2 md:gap-4">
-              {categories.map((cat) => (
+              {categoryKeys.map((cat) => (
                 <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
+                  key={cat.value}
+                  onClick={() => setActiveCategory(cat.value)}
                   className={`px-6 py-2 text-xs font-bold uppercase tracking-widest transition-all rounded-full border ${
-                    activeCategory === cat
+                    activeCategory === cat.value
                       ? "bg-[#0B1B3B] text-white border-[#0B1B3B]"
                       : "bg-transparent text-[#2E4472] border-transparent hover:border-[#2E4472]/30"
                   }`}
                 >
-                  {cat}
+                  {cat.value === "All" ? t("all") : cat.value}
                 </button>
               ))}
             </div>
@@ -73,7 +74,7 @@ const ArticleListPage = ({ articles }: ArticleListPageProps) => {
             <div className="relative group">
               <input
                 type="text"
-                placeholder="Search archives..."
+                placeholder={t("searchPlaceholder")}
                 className="bg-transparent border-b border-[#0B1B3B]/20 py-2 pl-2 pr-10 outline-none text-[#0B1B3B] placeholder-gray-400 focus:border-[#D4C5A0] w-full md:w-64 transition-colors"
               />
               <Search className="absolute right-0 top-2 w-4 h-4 text-gray-400 group-focus-within:text-[#D4C5A0]" />
@@ -115,7 +116,7 @@ const ArticleListPage = ({ articles }: ArticleListPageProps) => {
 
                   <div className="mt-auto pt-4 border-t border-[#0B1B3B]/10">
                     <div className="inline-flex items-center gap-2 text-[#D4C5A0] text-sm font-bold uppercase tracking-widest group-hover:text-[#0B1B3B] transition-colors">
-                      Read Analysis <ArrowUpRight className="w-4 h-4" />
+                      {t("readAnalysis")} <ArrowUpRight className="w-4 h-4" />
                     </div>
                   </div>
                 </div>
@@ -125,7 +126,7 @@ const ArticleListPage = ({ articles }: ArticleListPageProps) => {
 
           {filteredArticles.length === 0 && (
             <div className="text-center py-20 text-gray-400">
-              No articles found in this category.
+              {t("noArticles")}
             </div>
           )}
         </div>

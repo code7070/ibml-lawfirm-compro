@@ -1,3 +1,4 @@
+import localFont from "next/font/local";
 import { Inter, Space_Grotesk, Merriweather } from "next/font/google";
 // import localFont from "next/font/local";
 import "@/app/globals.css";
@@ -8,11 +9,11 @@ import { getDictionary, locales, Locale } from "@/lib/dictionary";
 import { TranslationProvider } from "@/components/TranslationProvider";
 import { generatePageMetadata } from "@/lib/metadata";
 
-// const geometricaSans = localFont({
-//   src: "../../fonts/GeometricaSans-Regular.woff",
-//   variable: "--font-primary-var",
-//   display: "swap",
-// });
+const geometricaSans = localFont({
+  src: "../../fonts/GeometricaSans-Regular.woff",
+  variable: "--font-geometrica-var",
+  display: "swap",
+});
 
 const fontPrimary = Space_Grotesk({
   subsets: ["latin"],
@@ -20,11 +21,11 @@ const fontPrimary = Space_Grotesk({
   variable: "--font-primary-var",
 });
 
-// const museo = localFont({
-//   src: "../../fonts/Museo300-Regular.woff",
-//   variable: "--font-secondary-var",
-//   display: "swap",
-// });
+const museo = localFont({
+  src: "../../fonts/Museo300-Regular.woff",
+  variable: "--font-museo-var",
+  display: "swap",
+});
 
 const fontSecondary = Merriweather({
   subsets: ["latin"],
@@ -85,12 +86,12 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body
-        className={`${fontPrimary.variable} ${fontSecondary.variable} ${inter.variable} antialiased min-h-screen bg-white text-[#0B1B3B] selection:bg-[#D4C5A0] selection:text-[#0B1B3B]`}
+        className={`${geometricaSans.variable} ${museo.variable} ${fontPrimary.variable} ${fontSecondary.variable} ${inter.variable} antialiased min-h-screen bg-white text-[#0B1B3B] selection:bg-[#D4C5A0] selection:text-[#0B1B3B]`}
       >
         <TranslationProvider locale={locale} messages={messages}>
           <Navbar />
           <main>{children}</main>
-          <Footer />
+          <Footer dictionary={messages} />
         </TranslationProvider>
       </body>
     </html>

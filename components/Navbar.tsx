@@ -75,14 +75,24 @@ const Navbar = () => {
             className="object-contain"
             priority
           />
-          <div className="flex flex-col ml-3 leading-tight">
-            <span className="text-white font-bold text-xl tracking-wider font-secondary">
+          <div className="flex gap-1 ml-3 items-center">
+            <div className="text-white font-bold text-4xl tracking-wider font-geometrica">
+              IBLM
+            </div>
+            <div className="text-[#D4C5A0] text-xs tracking-[0.05em] uppercase font-museo">
+              Law
+              <br />
+              Group
+            </div>
+          </div>
+          {/*<div className="flex flex-col ml-3 leading-tight">
+            <span className="text-white font-bold text-xl tracking-wider font-museo">
               IBLM
             </span>
             <span className="text-[#D4C5A0] text-xs tracking-[0.2em] uppercase font-primary">
               Law Group
             </span>
-          </div>
+          </div>*/}
         </LangLink>
 
         {/* 1. Full Desktop Nav (> 1240px) */}

@@ -121,6 +121,41 @@ class LawyersService extends BaseService<Lawyer, LawyerInsert, LawyerUpdate> {
   }
 
   /**
+   * Get featured lawyers with limit (for homepage/about team section)
+   * Fetches at database level — no client-side slicing needed
+   * @param limit - Maximum number of lawyers to return (default 3)
+   */
+  async getFeaturedWithLimit(
+    limit: number = 3,
+  ): Promise<ApiResponse<LawyerWithPositionAndPracticeAreas[]>> {
+    try {
+      const { data, error } = await this.supabase
+        .from(this.tableName)
+        .select(`
+          *,
+          lawyer_positions(*),
+          practice_areas:lawyer_practice_areas(
+            practice_area_id,
+            practice_areas(*)
+          )
+        `)
+        .eq("is_active", true)
+        .order("sort_order", { ascending: true })
+        .limit(limit);
+
+      if (error) throw error;
+
+      return { data: data as LawyerWithPositionAndPracticeAreas[], error: null };
+    } catch (error) {
+      console.error("Error fetching featured lawyers:", error);
+      return {
+        data: null,
+        error: error instanceof Error ? error.message : "Unknown error",
+      };
+    }
+  }
+
+  /**
    * Get lawyer by slug with practice areas
    */
   async getBySlugWithPracticeAreas(

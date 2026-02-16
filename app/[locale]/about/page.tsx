@@ -1,7 +1,8 @@
 import AboutPageComponent from "@/components/AboutPage";
-import { CLIENT_LOGOS, ORG_LOGOS } from "@/data/logos";
-import { lawyersService, practiceGroupsService } from "@/services";
+import Team from "@/components/Team";
+import { practiceGroupsService, clientsService } from "@/services";
 import { getDictionary, Locale } from "@/lib/dictionary";
+import { LogoItem } from "@/types";
 import { generatePageMetadata } from "@/lib/metadata";
 
 export const revaldiate = 60 * 5; // 60 seconds * 5 minutes = 5 minutes
@@ -26,23 +27,31 @@ export default async function AboutPage({
 }) {
   const { locale } = await params;
 
-  // Fetch data in parallel
-  const [lawyersResponse, practiceGroupsResponse, dict] = await Promise.all([
-    lawyersService.getActiveWithPositionAndPracticeAreas(),
+  // Fetch data in parallel — lawyers are fetched inside Team component
+  const [practiceGroupsResponse, clientsResponse, dict] = await Promise.all([
     practiceGroupsService.getActive(),
+    clientsService.getAllSorted(),
     getDictionary(locale as Locale),
   ]);
-  const lawyers = lawyersResponse.data || [];
   const practiceGroups = practiceGroupsResponse.data || [];
+  const allClients = clientsResponse.data || [];
 
-  // Build team translations from dictionary
-  const teamTranslations = {
-    title: dict.home.team.title,
-    subtitle: dict.home.team.subtitle,
-    cta: dict.home.team.cta,
-    noTeam: dict.home.team.noTeam,
-    detail: dict.lawyers.detail,
-  };
+  // Filter and map clients data (same as Homepage)
+  const clientLogos: LogoItem[] = allClients
+    .filter((c) => (c.type === "Client" || !c.type) && c.status === "Active")
+    .map((c) => ({
+      id: c.id,
+      name: c.name,
+      image: c.logo_url || undefined,
+    }));
+
+  const orgLogos: LogoItem[] = allClients
+    .filter((c) => c.type === "Organization" && c.status === "Active")
+    .map((c) => ({
+      id: c.id,
+      name: c.name,
+      image: c.logo_url || undefined,
+    }));
 
   const practiceSectionTranslations = {
     label: dict.about.practice_section.label,
@@ -52,13 +61,12 @@ export default async function AboutPage({
 
   return (
     <AboutPageComponent
-      clientLogos={CLIENT_LOGOS}
-      orgLogos={ORG_LOGOS}
-      lawyers={lawyers}
+      clientLogos={clientLogos}
+      orgLogos={orgLogos}
       locale={locale}
-      teamTranslations={teamTranslations}
       practiceGroups={practiceGroups}
       practiceSectionTranslations={practiceSectionTranslations}
+      teamSection={<Team locale={locale} />}
     />
   );
 }

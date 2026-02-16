@@ -38,9 +38,7 @@ const Hero = () => {
               {t("title_1")} <br />
               <span className="font-serif italic text-[#F5F5F7]">
                 {t("title_2")}
-              </span>{" "}
-              <br />
-              {t("title_3")}
+              </span>
             </h1>
           </div>
 

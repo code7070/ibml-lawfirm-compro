@@ -6,7 +6,6 @@ import CTASection from "@/components/CTASection";
 import LogoTicker from "@/components/LogoTicker";
 import PracticeAreasSection from "@/components/PracticeAreasSection";
 import {
-  lawyersService,
   practiceGroupsService,
   clientsService,
 } from "@/services";
@@ -37,15 +36,13 @@ export default async function HomePage({
 }) {
   const { locale } = await params;
 
-  // Fetch data in parallel
-  const [lawyersResponse, practiceGroupsResponse, clientsResponse, dict] =
+  // Fetch data in parallel — lawyers are fetched inside Team component
+  const [practiceGroupsResponse, clientsResponse, dict] =
     await Promise.all([
-      lawyersService.getActiveWithPositionAndPracticeAreas(),
       practiceGroupsService.getActive(),
       clientsService.getAllSorted(),
       getDictionary(locale as Locale),
     ]);
-  const lawyers = lawyersResponse.data || [];
   const practiceGroups = practiceGroupsResponse.data || [];
   const allClients = clientsResponse.data || [];
 
@@ -65,15 +62,6 @@ export default async function HomePage({
       name: c.name,
       image: c.logo_url || undefined,
     }));
-
-  // Build team translations from dictionary
-  const teamTranslations = {
-    title: dict.home.team.title,
-    subtitle: dict.home.team.subtitle,
-    cta: dict.home.team.cta,
-    noTeam: dict.home.team.noTeam,
-    detail: dict.lawyers.detail,
-  };
 
   return (
     <>
@@ -112,11 +100,7 @@ export default async function HomePage({
         <Achievements />
       </div>
       <div id="team">
-        <Team
-          lawyers={lawyers}
-          locale={locale}
-          translations={teamTranslations}
-        />
+        <Team locale={locale} />
       </div>
       <div id="articles">
         <Articles articles={ARTICLE_DATA} />

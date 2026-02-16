@@ -14,10 +14,9 @@
   "home": {
     "hero": {
       "tags": "Entertainment · Technology · Health & Education · People",
-      "title_1": "Unshakeable",
-      "title_2": "Legal",
-      "title_3": "Standing",
-      "description": "The Sophisticated Guardian for your business. We combine classical jurisprudence with modern strategy to deliver comprehensive legal solutions.",
+      "title_1": "Navigating Complexity,",
+      "title_2": "Delivering Solution",
+      "description": "Our group of legal experts are committed to excellence, delivering tailored legal solutions that safeguard your business with precision and care.",
       "cta_primary": "Schedule Consultation",
       "cta_secondary": "Our Practice Areas",
       "badge_text": "Strategic Legal Partnership"
@@ -44,39 +43,62 @@
       "description": "Tailored legal strategies for the fast-paced ecosystem of gaming and entertainment."
     },
     "cta": {
-      "title": "Ready to discuss your legal needs?",
-      "subtitle": "Our team is here to provide strategic counsel for your business",
-      "button": "Schedule Consultation"
+      "label": "Explore Consultation",
+      "title": "Our legal experts are committed to engage in consultations to uncover strategic solutions for your case",
+      "button": "Book Strategy Session"
     }
   },
   "about": {
     "hero": {
       "tags": "About IBLM Law Group",
-      "title": "The Sophisticated Guardian",
-      "subtitle": "Strategic legal partnership built on professionalism, empathy, and loyalty"
+      "title_1": "The Sophisticated",
+      "title_2": "Guardian"
     },
     "story": {
-      "title": "Our Story",
-      "content": "IBLM Law Group was founded with a clear vision: to provide sophisticated legal services that combine classical jurisprudence with modern business strategy. We believe in building long-term partnerships with our clients, understanding their unique needs, and delivering unshakeable legal standing."
+      "paragraph1": "IBLM Law Group is established on the belief that legal practice is an integral part of legal development. With modern takes on the legal industries, IBLM Law Group focuses on 4 fields (groups): Entertainment/Creative Industry, Technology, Health & Education, and People & Labor.",
+      "paragraph2": "We are currently led by partners with combined decades of experience in the legal industry. IBLM Law Group is committed to navigate the complexity of regulations while aiming to create effective industry focused solutions. By realizing the dynamic Indonesian legal landscape as well as the fast paced development of various industries globally, we strengthen our capabilities by collaborating with various legal experts. This enables us to leverage our perspective in delivering tailored legal solutions for our clients. Our mission is to stand as a trusted partner for businesses and individuals navigating complex regulatory regimes. Through collaboration and innovation, IBLM Law Group strives to provide tailored legal solutions that empower our clients to thrive in a rapidly evolving world.",
+      "brandPromise": "Unshakeable Legal Standing",
+      "brandPromiseLabel": "Our Brand Promise"
     },
     "values": {
-      "title": "Our Values",
+      "title": "Our",
+      "titleHighlight": "Values",
+      "subtitle": "Built on three pillars that define our approach to legal practice and client relationships.",
       "professionalism": {
         "title": "Professionalism",
-        "description": "Excellence and integrity in every engagement. We uphold the highest standards of legal practice."
+        "description": "Excellence and integrity in every engagement. We uphold the highest standards of legal practice and ethical conduct."
       },
       "empathy": {
         "title": "Empathy",
-        "description": "Understanding client needs deeply. We listen first, then provide tailored solutions."
+        "description": "Understanding client needs deeply. We listen first, then provide tailored solutions that address your unique challenges."
       },
       "loyalty": {
         "title": "Loyalty",
-        "description": "Long-term partnership commitment. Your success is our priority."
+        "description": "Long-term partnership commitment. Your success is our priority, and we stand by you through every challenge."
       }
     },
-    "mission": {
-      "title": "Our Mission",
-      "content": "To provide strategic legal counsel that empowers businesses and individuals to achieve their goals with confidence and legal certainty."
+    "whyChoose": {
+      "title": "Why Choose",
+      "titleHighlight": "IBLM",
+      "subtitle": "Our commitment to excellence and client success drives everything we do.",
+      "strategic": {
+        "title": "Strategic Partnership",
+        "description": "We go beyond traditional legal services to become your trusted strategic partner, understanding your business goals and challenges."
+      },
+      "expertise": {
+        "title": "Industry Expertise",
+        "description": "Deep expertise across Entertainment, Technology, Health & Education, and People & Labor practice areas through our specialized LEGs."
+      },
+      "modern": {
+        "title": "Modern Approach",
+        "description": "Combining classical jurisprudence with modern strategy to deliver innovative solutions for today's complex legal challenges."
+      }
+    },
+    "clientTicker": "Trusted By Industry Leaders",
+    "orgTicker": "Industry Affiliations",
+    "brandSection": {
+      "quote": "Where classical jurisprudence meets modern strategy.",
+      "label": "IBLM Law Group Philosophy"
     },
     "practice_section": {
       "label": "Legal Expertise Groups",
@@ -132,15 +154,36 @@
   },
   "services": {
     "hero": {
-      "tags": "Our Services",
-      "title": "Legal Services",
-      "subtitle": "Comprehensive solutions for your legal needs"
+      "tags": "Beyond Practice",
+      "title": "Specialized Services",
+      "subtitle": "Our commitment extends beyond commercial representation. We engage in legal aid for the underserved and academic research to shape future regulations."
     },
     "categories": {
       "advisory": "Legal Advisory & Consulting",
       "litigation": "Litigation & Dispute Resolution",
       "corporate": "Corporate & Commercial",
       "probono": "Pro Bono Services"
+    },
+    "probono": {
+      "title": "Pro Bono Services",
+      "description": "Access to justice should not be a privilege. We provide dedicated pro bono legal services to indie developers from underrepresented communities and non-profit organizations fighting for digital rights.",
+      "eligibilityTitle": "Eligibility Criteria",
+      "criteria1": "Indie developers with annual revenue under $50k",
+      "criteria2": "Non-profits focused on digital literacy or online safety",
+      "criteria3": "Students facing academic disciplinary action for security research",
+      "applyForAid": "Apply for Aid",
+      "hoursNumber": "1,500+",
+      "hoursLabel": "Pro Bono Hours Donated (2025)"
+    },
+    "research": {
+      "title": "Research & Academic",
+      "description": "We don't just interpret the law; we help write it. Our dedicated research arm collaborates with top universities and think tanks to produce white papers on loot box regulation, AI copyright, and metaverse governance.",
+      "viewArchive": "View Research Archive",
+      "partnersTitle": "Collaborating Institutions",
+      "academicPartners": "Academic Partners",
+      "publishedPapers": "Published Papers",
+      "policyAdvisory": "Policy Advisory",
+      "govtLiaison": "Govt. Liaison"
     }
   },
   "contact": {
@@ -174,11 +217,84 @@
       "weekend": "Saturday - Sunday: By Appointment"
     }
   },
+  "contactForm": {
+    "successTitle": "Message Received",
+    "successMessage": "Your inquiry has been securely logged. Our counsel will review your message and respond shortly.",
+    "sendAnother": "Send Another Message",
+    "requestConsultation": "Request Consultation",
+    "requiredFields": "Fields marked with * are required.",
+    "transmissionFailed": "Submission failed",
+    "labels": {
+      "fullName": "Full Name",
+      "organization": "Organization",
+      "emailAddress": "Email Address",
+      "phone": "Phone",
+      "practiceArea": "Practice Area",
+      "caseBriefing": "Case Briefing"
+    },
+    "options": {
+      "selectPracticeArea": "Select Practice Area...",
+      "entertainment": "Entertainment Law",
+      "technology": "Technology Law",
+      "labor": "Labor & Employment",
+      "health": "Health & Education",
+      "ip": "Intellectual Property",
+      "corporate": "Corporate Structuring",
+      "dispute": "Dispute Resolution"
+    },
+    "submit": {
+      "sending": "Sending...",
+      "send": "Send Message"
+    }
+  },
   "career": {
     "hero": {
-      "tags": "Join Our Team",
-      "title": "Careers",
-      "subtitle": "Build your career with IBLM Law Group"
+      "tags": "Careers at IBLM",
+      "title": "Join Our Team",
+      "subtitle": "We are looking for brilliant legal minds who are passionate about the intersection of technology, entertainment, and law."
+    },
+    "code": {
+      "title": "Our Code",
+      "precision": {
+        "title": "Precision & Excellence",
+        "description": "We operate at the highest level of legal practice. 'Good enough' is not in our vocabulary when critical matters are at stake."
+      },
+      "digital": {
+        "title": "Digital Native",
+        "description": "We don't just learn the industry; we live it. Our team understands the evolving landscape of technology and digital business."
+      },
+      "collaborative": {
+        "title": "Collaborative Intelligence",
+        "description": "We believe in the collective mind. Partners, associates, and staff work as a unified unit to solve complex challenges."
+      }
+    },
+    "culture": {
+      "title": "A Firm Where Tradition Meets Innovation",
+      "description": "At IBLM, you won't just draft contracts; you'll shape legal frameworks for emerging technologies, digital businesses, and modern industries. We offer an environment that values intellectual rigor and creative problem-solving equally.",
+      "quote": "The pace here is electric. We are dealing with legal questions that didn't exist six months ago.",
+      "quoteAuthor": "Senior Associate",
+      "quoteRole": "IBLM Law Group"
+    },
+    "benefits": {
+      "mentorship": "Advanced Mentorship",
+      "secondments": "Global Secondments",
+      "health": "Top-Tier Health",
+      "hybrid": "Hybrid Work"
+    },
+    "openings": {
+      "title": "Current Openings",
+      "apply": "Apply Now",
+      "noOpenings": "No current openings. Check back soon!"
+    },
+    "workWithUs": {
+      "label": "Future Opportunities",
+      "title": "Work with Us",
+      "description": "We are always scouting for exceptional talent to join our ranks. Whether you are a seasoned partner looking to pivot into digital media law, or a law student with a background in technology, we want to hear from you.",
+      "generalInquiries": "General Inquiries",
+      "generalDesc": "For attorneys, paralegals, and support staff.",
+      "internship": "Internship Program",
+      "internshipDesc": "Summer associates and legal clerkships.",
+      "finalQuote": "We don't hire backgrounds. We hire potential and passion for the craft."
     },
     "values": {
       "title": "Our Values",
@@ -194,40 +310,52 @@
         "title": "Loyalty",
         "description": "We build lasting relationships with our team members"
       }
-    },
-    "openings": {
-      "title": "Open Positions",
-      "apply": "Apply Now",
-      "noOpenings": "No current openings. Check back soon!"
     }
   },
   "events": {
     "hero": {
-      "tags": "Events & Seminars",
-      "title": "Events",
-      "subtitle": "Stay updated with our latest events and legal seminars"
+      "tags": "Connect & Converge",
+      "title": "Industry Events",
+      "subtitle": "Join IBLM Law Group at the forefront of the legal industry. Workshops, summits, and networking events."
     },
     "upcoming": "Upcoming Events",
     "past": "Past Events",
     "register": "Register Now",
-    "details": "View Details"
+    "details": "View Details",
+    "noEvents": "No upcoming events scheduled."
   },
   "articles": {
     "hero": {
-      "tags": "Legal Insights",
-      "title": "Insights",
-      "subtitle": "Expert analysis and legal perspectives from our team"
+      "tags": "IBLM Intelligence",
+      "title": "Insights & Analysis",
+      "subtitle": "Navigating the intersection of law, technology, and business. Stay ahead of regulatory shifts and industry trends."
     },
     "readMore": "Read More",
+    "readAnalysis": "Read Analysis",
     "categories": "Categories",
-    "all": "All Articles"
+    "all": "All Articles",
+    "searchPlaceholder": "Search archives...",
+    "noArticles": "No articles found in this category."
   },
   "footer": {
+    "tagline": "The Sophisticated Guardian for your business. We combine classical jurisprudence with modern strategy to deliver unshakeable legal standing.",
     "practice": "Practice",
+    "practiceLinks": {
+      "entertainment": "Entertainment",
+      "technology": "Technology",
+      "labor": "People & Labor",
+      "health": "Health & Education"
+    },
     "firm": "Firm",
+    "firmLinks": {
+      "team": "Our Team",
+      "about": "About Us",
+      "careers": "Careers",
+      "contact": "Contact"
+    },
     "newsletter": {
       "title": "Subscribe",
-      "description": "Stay updated with our latest legal insights",
+      "description": "Stay updated with our latest legal insights and news.",
       "placeholder": "Email Address",
       "button": "Subscribe"
     },

@@ -51,13 +51,16 @@
 }
 
 @theme {
-  /* ========== FONT FAMILIES (Tailwind utilities) ========== */
-  /* Static fallback values - actual fonts loaded via Next.js font loader */
-  --font-primary: "Space Grotesk", "Inter", "Segoe UI", -apple-system,
-    BlinkMacSystemFont, sans-serif;
-  --font-secondary: "Merriweather", "Playfair Display", Georgia, serif;
-  --font-body: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont,
+  /* ========== FONT FAMILIES (Tailwind v4 utilities) ========== */
+  /* Google Fonts - loaded via Next.js font loader */
+  --font-primary: var(--font-primary-var, "Space Grotesk"), "Inter", sans-serif;
+  --font-secondary: var(--font-secondary-var, "Merriweather"), Georgia, serif;
+  --font-body: var(--font-body-var, "Inter"), "Segoe UI", -apple-system,
     sans-serif;
+
+  /* Local Fonts - loaded via Next.js localFont */
+  --font-geometrica: var(--font-geometrica-var, "Geometrica Sans"), sans-serif;
+  --font-museo: var(--font-museo-var, "Museo"), Georgia, serif;
 
   /* Override Tailwind defaults */
   --font-sans: var(--font-body);
@@ -90,18 +93,6 @@
 
 /* ========== BASE TYPOGRAPHY ========== */
 body {
-  /* 
-   * Font families using Next.js font loader CSS variables
-   * --font-*-var are injected by Next.js at runtime via class on <body>
-   * We use var() with fallback for when the variable isn't loaded yet
-   */
-  --font-primary: var(--font-primary-var, "Space Grotesk"), "Inter", "Segoe UI",
-    -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-secondary: var(--font-secondary-var, "Merriweather"),
-    "Playfair Display", Georgia, serif;
-  --font-body: var(--font-body-var, "Inter"), "Segoe UI", -apple-system,
-    BlinkMacSystemFont, sans-serif;
-
   font-family: var(--font-body);
   font-size: var(--body-regular-size);
   line-height: var(--body-regular-line-height);

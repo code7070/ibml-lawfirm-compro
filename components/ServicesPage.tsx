@@ -20,6 +20,7 @@ import CTASection from "./CTASection";
 import LogoTicker from "./LogoTicker";
 import { LangLink } from "./LangLink";
 import { Article, LogoItem } from "@/types";
+import { useTranslations } from "@/hooks/useTranslations";
 
 interface ServicesPageProps {
   articles?: Article[];
@@ -35,6 +36,8 @@ const ACADEMIC_PARTNERS: LogoItem[] = [
 ];
 
 const ServicesPage = ({ articles = [] }: ServicesPageProps) => {
+  const t = useTranslations("services");
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -44,6 +47,13 @@ const ServicesPage = ({ articles = [] }: ServicesPageProps) => {
     .filter((a) => a.category === "Research")
     .slice(0, 2);
 
+  // Eligibility criteria array for mapping
+  const eligibilityCriteria = [
+    t("probono.criteria1"),
+    t("probono.criteria2"),
+    t("probono.criteria3"),
+  ];
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -51,16 +61,13 @@ const ServicesPage = ({ articles = [] }: ServicesPageProps) => {
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5" />
         <div className="max-w-[1400px] mx-auto relative z-10 text-center">
           <span className="text-[#D4C5A0] font-bold tracking-[0.2em] text-xs uppercase mb-6 block">
-            Beyond Practice
+            {t("hero.tags")}
           </span>
           <h1 className="text-5xl md:text-7xl font-light mb-8">
-            Specialized{" "}
-            <span className="font-serif italic text-[#D4C5A0]">Services</span>
+            {t("hero.title")}
           </h1>
           <p className="text-gray-300 max-w-2xl mx-auto text-lg font-light leading-relaxed">
-            Our commitment extends beyond commercial representation. We engage
-            in legal aid for the underserved and academic research to shape
-            future regulations.
+            {t("hero.subtitle")}
           </p>
         </div>
       </section>
@@ -77,27 +84,20 @@ const ServicesPage = ({ articles = [] }: ServicesPageProps) => {
                 />
               </div>
               <h2 className="text-4xl font-serif text-[#0B1B3B]">
-                Pro Bono Services
+                {t("probono.title")}
               </h2>
             </div>
 
             <p className="text-[#2E4472] text-lg font-light leading-relaxed mb-8">
-              Access to justice should not be a privilege. We provide dedicated
-              pro bono legal services to indie developers from underrepresented
-              communities and non-profit organizations fighting for digital
-              rights.
+              {t("probono.description")}
             </p>
 
             <div className="space-y-6 mb-10">
               <h4 className="text-[#0B1B3B] font-bold text-sm uppercase tracking-widest">
-                Eligibility Criteria
+                {t("probono.eligibilityTitle")}
               </h4>
               <ul className="space-y-4">
-                {[
-                  "Indie developers with annual revenue under $50k",
-                  "Non-profits focused on digital literacy or online safety",
-                  "Students facing academic disciplinary action for security research",
-                ].map((item, i) => (
+                {eligibilityCriteria.map((item, i) => (
                   <li
                     key={i}
                     className="flex items-start gap-3 text-[#2E4472] font-light"
@@ -113,7 +113,7 @@ const ServicesPage = ({ articles = [] }: ServicesPageProps) => {
               href="/contact"
               className="inline-flex items-center gap-2 text-[#0B1B3B] font-bold border-b-2 border-[#D4C5A0] hover:text-[#D4C5A0] transition-colors pb-1 uppercase text-sm tracking-widest"
             >
-              Apply for Aid <ArrowRight className="w-4 h-4" />
+              {t("probono.applyForAid")} <ArrowRight className="w-4 h-4" />
             </LangLink>
           </div>
 
@@ -127,9 +127,9 @@ const ServicesPage = ({ articles = [] }: ServicesPageProps) => {
             ></div>
             <div className="text-center relative z-10">
               <Users className="w-24 h-24 text-[#0B1B3B]/20 mx-auto mb-6" />
-              <p className="text-4xl font-light text-[#0B1B3B] mb-2">1,500+</p>
+              <p className="text-4xl font-light text-[#0B1B3B] mb-2">{t("probono.hoursNumber")}</p>
               <p className="text-xs font-bold text-[#D4C5A0] uppercase tracking-widest">
-                Pro Bono Hours Donated (2025)
+                {t("probono.hoursLabel")}
               </p>
             </div>
           </div>
@@ -145,25 +145,25 @@ const ServicesPage = ({ articles = [] }: ServicesPageProps) => {
               <div className="p-6 bg-[#F5F5F7] text-center border border-[#0B1B3B]/5">
                 <GraduationCap className="w-10 h-10 text-[#1A2F5A] mx-auto mb-4" />
                 <p className="text-sm font-bold text-[#0B1B3B]">
-                  Academic Partners
+                  {t("research.academicPartners")}
                 </p>
               </div>
               <div className="p-6 bg-[#F5F5F7] text-center border border-[#0B1B3B]/5">
                 <BookOpen className="w-10 h-10 text-[#1A2F5A] mx-auto mb-4" />
                 <p className="text-sm font-bold text-[#0B1B3B]">
-                  Published Papers
+                  {t("research.publishedPapers")}
                 </p>
               </div>
               <div className="p-6 bg-[#F5F5F7] text-center border border-[#0B1B3B]/5">
                 <Scale className="w-10 h-10 text-[#1A2F5A] mx-auto mb-4" />
                 <p className="text-sm font-bold text-[#0B1B3B]">
-                  Policy Advisory
+                  {t("research.policyAdvisory")}
                 </p>
               </div>
               <div className="p-6 bg-[#F5F5F7] text-center border border-[#0B1B3B]/5">
                 <Building className="w-10 h-10 text-[#1A2F5A] mx-auto mb-4" />
                 <p className="text-sm font-bold text-[#0B1B3B]">
-                  Govt. Liaison
+                  {t("research.govtLiaison")}
                 </p>
               </div>
             </div>
@@ -178,15 +178,12 @@ const ServicesPage = ({ articles = [] }: ServicesPageProps) => {
                 />
               </div>
               <h2 className="text-4xl font-serif text-[#0B1B3B]">
-                Research & Academic
+                {t("research.title")}
               </h2>
             </div>
 
             <p className="text-[#2E4472] text-lg font-light leading-relaxed mb-8">
-              We don&apos;t just interpret the law; we help write it. Our
-              dedicated research arm collaborates with top universities and
-              think tanks to produce white papers on loot box regulation, AI
-              copyright, and metaverse governance.
+              {t("research.description")}
             </p>
 
             {researchArticles.length > 0 && (
@@ -224,14 +221,14 @@ const ServicesPage = ({ articles = [] }: ServicesPageProps) => {
               href="/articles"
               className="inline-flex items-center gap-2 text-[#0B1B3B] font-bold border-b-2 border-[#D4C5A0] hover:text-[#D4C5A0] transition-colors pb-1 uppercase text-sm tracking-widest"
             >
-              View Research Archive <ArrowRight className="w-4 h-4" />
+              {t("research.viewArchive")} <ArrowRight className="w-4 h-4" />
             </LangLink>
           </div>
         </div>
 
         {/* Academic Partners Ticker */}
         <LogoTicker
-          title="Collaborating Institutions"
+          title={t("research.partnersTitle")}
           items={ACADEMIC_PARTNERS}
           theme="light"
         />

@@ -2,8 +2,45 @@ import Link from "next/link";
 import Image from "next/image";
 import { contactSettingsService } from "@/services/contact.service";
 
-const Footer = async () => {
+interface FooterDictionary {
+  footer: {
+    tagline: string;
+    practice: string;
+    practiceLinks: {
+      entertainment: string;
+      technology: string;
+      labor: string;
+      health: string;
+    };
+    firm: string;
+    firmLinks: {
+      team: string;
+      about: string;
+      careers: string;
+      contact: string;
+    };
+    newsletter: {
+      title: string;
+      description: string;
+      placeholder: string;
+      button: string;
+    };
+    legal: {
+      privacy: string;
+      terms: string;
+      sitemap: string;
+    };
+    copyright: string;
+  };
+}
+
+interface FooterProps {
+  dictionary: FooterDictionary;
+}
+
+const Footer = async ({ dictionary }: FooterProps) => {
   const { data: settings } = await contactSettingsService.getMain();
+  const t = dictionary.footer;
 
   return (
     <footer className="bg-[#020814] text-white pt-24 pb-12 relative overflow-hidden">
@@ -31,8 +68,7 @@ const Footer = async () => {
               />
             </Link>
             <p className="text-gray-500 text-sm leading-relaxed max-w-sm font-light">
-              The Sophisticated Guardian for your business. We combine classical
-              jurisprudence with modern strategy to deliver unshakeable legal standing.
+              {t.tagline}
             </p>
             <div className="flex gap-4">
               {/* Social Links */}
@@ -82,7 +118,7 @@ const Footer = async () => {
           {/* Practice Areas */}
           <div className="md:col-span-2 md:col-start-6">
             <h4 className="text-[#D4C5A0] font-bold text-xs uppercase tracking-widest mb-8">
-              Practice
+              {t.practice}
             </h4>
             <ul className="space-y-4 text-sm text-gray-400 font-light">
               <li>
@@ -90,7 +126,7 @@ const Footer = async () => {
                   href="/practice-areas#entertainment"
                   className="hover:text-white transition-colors"
                 >
-                  Entertainment
+                  {t.practiceLinks.entertainment}
                 </Link>
               </li>
               <li>
@@ -98,7 +134,7 @@ const Footer = async () => {
                   href="/practice-areas#technology"
                   className="hover:text-white transition-colors"
                 >
-                  Technology
+                  {t.practiceLinks.technology}
                 </Link>
               </li>
               <li>
@@ -106,7 +142,7 @@ const Footer = async () => {
                   href="/practice-areas#labor"
                   className="hover:text-white transition-colors"
                 >
-                  People & Labor
+                  {t.practiceLinks.labor}
                 </Link>
               </li>
               <li>
@@ -114,7 +150,7 @@ const Footer = async () => {
                   href="/practice-areas#health"
                   className="hover:text-white transition-colors"
                 >
-                  Health & Education
+                  {t.practiceLinks.health}
                 </Link>
               </li>
             </ul>
@@ -123,7 +159,7 @@ const Footer = async () => {
           {/* Firm Links */}
           <div className="md:col-span-2">
             <h4 className="text-[#D4C5A0] font-bold text-xs uppercase tracking-widest mb-8">
-              Firm
+              {t.firm}
             </h4>
             <ul className="space-y-4 text-sm text-gray-400 font-light">
               <li>
@@ -131,7 +167,7 @@ const Footer = async () => {
                   href="/lawyers"
                   className="hover:text-white transition-colors"
                 >
-                  Our Team
+                  {t.firmLinks.team}
                 </Link>
               </li>
               <li>
@@ -139,7 +175,7 @@ const Footer = async () => {
                   href="/about"
                   className="hover:text-white transition-colors"
                 >
-                  About Us
+                  {t.firmLinks.about}
                 </Link>
               </li>
               <li>
@@ -147,7 +183,7 @@ const Footer = async () => {
                   href="/careers"
                   className="hover:text-white transition-colors"
                 >
-                  Careers
+                  {t.firmLinks.careers}
                 </Link>
               </li>
               <li>
@@ -155,7 +191,7 @@ const Footer = async () => {
                   href="/contact"
                   className="hover:text-white transition-colors"
                 >
-                  Contact
+                  {t.firmLinks.contact}
                 </Link>
               </li>
             </ul>
@@ -164,30 +200,30 @@ const Footer = async () => {
           {/* Newsletter */}
           <div className="md:col-span-3">
             <h4 className="text-[#D4C5A0] font-bold text-xs uppercase tracking-widest mb-8">
-              Subscribe
+              {t.newsletter.title}
             </h4>
             <p className="text-xs text-gray-500 mb-4">
-              Stay updated with our latest legal insights and news.
+              {t.newsletter.description}
             </p>
             <div className="flex border-b border-white/20 pb-2">
               <input
                 type="email"
-                placeholder="Email Address"
+                placeholder={t.newsletter.placeholder}
                 className="bg-transparent w-full outline-none text-white text-sm placeholder-gray-600"
               />
               <button className="text-[#D4C5A0] hover:text-white uppercase text-xs font-bold tracking-widest">
-                Subscribe
+                {t.newsletter.button}
               </button>
             </div>
           </div>
         </div>
 
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-600 font-mono">
-          <p>&copy; {new Date().getFullYear()} IBLM Law Group. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} {t.copyright}</p>
           <div className="flex gap-8">
-            <Link href="/privacy" className="hover:text-gray-400 cursor-pointer">Privacy</Link>
-            <Link href="/terms" className="hover:text-gray-400 cursor-pointer">Terms</Link>
-            <Link href="/sitemap" className="hover:text-gray-400 cursor-pointer">Sitemap</Link>
+            <Link href="/privacy" className="hover:text-gray-400 cursor-pointer">{t.legal.privacy}</Link>
+            <Link href="/terms" className="hover:text-gray-400 cursor-pointer">{t.legal.terms}</Link>
+            <Link href="/sitemap" className="hover:text-gray-400 cursor-pointer">{t.legal.sitemap}</Link>
           </div>
         </div>
       </div>
@@ -196,4 +232,3 @@ const Footer = async () => {
 };
 
 export default Footer;
-

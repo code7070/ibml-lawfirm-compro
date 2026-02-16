@@ -3,8 +3,11 @@
 import { useState } from "react";
 import Button from "./Button";
 import { contactSubmissionsService } from "@/services/contact.service";
+import { useTranslations } from "@/hooks/useTranslations";
 
 const ContactForm = () => {
+  const t = useTranslations("contactForm");
+  
   const [formData, setFormData] = useState({
     name: "",
     organization: "",
@@ -80,12 +83,12 @@ ${formData.message}
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="text-2xl text-[#0B1B3B] mb-2 font-serif">Transmission Received</h3>
+        <h3 className="text-2xl text-[#0B1B3B] mb-2 font-serif">{t("successTitle")}</h3>
         <p className="text-gray-500 mb-8">
-          Your inquiry has been securely logged. Our counsel will review your protocol and respond shortly.
+          {t("successMessage")}
         </p>
         <Button variant="gold" onClick={() => setSubmitStatus("idle")}>
-          Send Another Message
+          {t("sendAnother")}
         </Button>
       </div>
     );
@@ -97,15 +100,15 @@ ${formData.message}
       <div className="absolute top-0 right-0 w-20 h-20 bg-[#F5F5F7] -rotate-45 translate-x-10 -translate-y-10"></div>
 
       <h2 className="text-3xl font-light text-[#0B1B3B] mb-2">
-        Request Consultation
+        {t("requestConsultation")}
       </h2>
       <p className="text-gray-500 mb-10 font-light">
-        Fields marked with * are required for encryption.
+        {t("requiredFields")}
       </p>
 
       {submitStatus === "error" && (
         <div className="mb-6 p-4 bg-red-50 text-red-600 text-sm rounded border border-red-100">
-          Transmission failed: {errorMessage}
+          {t("transmissionFailed")}: {errorMessage}
         </div>
       )}
 
@@ -113,7 +116,7 @@ ${formData.message}
         <div className="grid md:grid-cols-2 gap-8">
           <div className="space-y-2">
             <label className="text-xs font-bold text-[#0B1B3B] uppercase tracking-widest">
-              Full Name *
+              {t("labels.fullName")} *
             </label>
             <input
               type="text"
@@ -127,7 +130,7 @@ ${formData.message}
           </div>
           <div className="space-y-2">
             <label className="text-xs font-bold text-[#0B1B3B] uppercase tracking-widest">
-              Organization
+              {t("labels.organization")}
             </label>
             <input
               type="text"
@@ -143,7 +146,7 @@ ${formData.message}
         <div className="grid md:grid-cols-2 gap-8">
           <div className="space-y-2">
             <label className="text-xs font-bold text-[#0B1B3B] uppercase tracking-widest">
-              Email Address *
+              {t("labels.emailAddress")} *
             </label>
             <input
               type="email"
@@ -157,7 +160,7 @@ ${formData.message}
           </div>
           <div className="space-y-2">
             <label className="text-xs font-bold text-[#0B1B3B] uppercase tracking-widest">
-              Phone
+              {t("labels.phone")}
             </label>
             <input
               type="tel"
@@ -172,7 +175,7 @@ ${formData.message}
 
         <div className="space-y-2">
           <label className="text-xs font-bold text-[#0B1B3B] uppercase tracking-widest">
-            Practice Area
+            {t("labels.practiceArea")}
           </label>
           <select 
             name="practice_area"
@@ -180,18 +183,20 @@ ${formData.message}
             onChange={handleChange}
             className="w-full border-b border-[#0B1B3B]/20 py-3 bg-transparent outline-none focus:border-[#D4C5A0] transition-colors text-[#2E4472]"
           >
-            <option value="">Select Protocol...</option>
-            <option value="Game Development">Game Development</option>
-            <option value="eSports Representation">eSports Representation</option>
-            <option value="Intellectual Property">Intellectual Property</option>
-            <option value="Corporate Structuring">Corporate Structuring</option>
-            <option value="Dispute Resolution">Dispute Resolution</option>
+            <option value="">{t("options.selectPracticeArea")}</option>
+            <option value="Entertainment Law">{t("options.entertainment")}</option>
+            <option value="Technology Law">{t("options.technology")}</option>
+            <option value="Labor & Employment">{t("options.labor")}</option>
+            <option value="Health & Education">{t("options.health")}</option>
+            <option value="Intellectual Property">{t("options.ip")}</option>
+            <option value="Corporate Structuring">{t("options.corporate")}</option>
+            <option value="Dispute Resolution">{t("options.dispute")}</option>
           </select>
         </div>
 
         <div className="space-y-2">
           <label className="text-xs font-bold text-[#0B1B3B] uppercase tracking-widest">
-            Case Briefing *
+            {t("labels.caseBriefing")} *
           </label>
           <textarea
             name="message"
@@ -206,7 +211,7 @@ ${formData.message}
 
         <div className="pt-4">
           <Button variant="gold" className="w-full md:w-auto" disabled={isSubmitting}>
-            {isSubmitting ? "Transmitting..." : "Transmit Securely"}
+            {isSubmitting ? t("submit.sending") : t("submit.send")}
           </Button>
         </div>
       </form>

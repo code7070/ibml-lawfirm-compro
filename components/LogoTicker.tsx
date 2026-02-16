@@ -22,9 +22,7 @@ const LogoTicker = ({ title, items, theme = "dark" }: LogoTickerProps) => {
   const displayItems = [...items, ...items, ...items, ...items];
 
   return (
-    <div
-      className={`py-12 border-y ${bgClass} overflow-hidden relative`}
-    >
+    <div className={`py-12 border-y ${bgClass} overflow-hidden relative`}>
       {title && (
         <div className="text-center mb-8 relative z-10">
           <p
@@ -52,21 +50,23 @@ const LogoTicker = ({ title, items, theme = "dark" }: LogoTickerProps) => {
                 theme === "dark" ? "grayscale hover:grayscale-0" : ""
               }`}
             >
-              {item.image ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="h-10 md:h-12 w-auto object-contain"
-                />
-              ) : (
-                <div className={`flex items-center gap-3 ${textClass}`}>
-                  {item.icon}
-                  <span className="text-xl md:text-2xl font-serif whitespace-nowrap">
-                    {item.name}
-                  </span>
-                </div>
-              )}
+              <div className={`flex items-center gap-3 ${textClass}`}>
+                {/* Logo/Icon - show if available */}
+                {item.image ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="h-8 md:h-10 object-contain rounded-sm"
+                  />
+                ) : item.icon ? (
+                  item.icon
+                ) : null}
+                {/* Name - always show */}
+                <span className="text-xl md:text-2xl font-serif whitespace-nowrap">
+                  {item.name}
+                </span>
+              </div>
             </div>
           ))}
         </div>
