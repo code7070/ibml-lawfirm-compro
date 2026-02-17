@@ -58,6 +58,16 @@ ${formData.message}
         throw new Error(error);
       }
 
+      // Fire-and-forget: forward to Google Sheets via API route
+      // This won't block the success state — Apps Script failure is silent
+      fetch("/api/contact-sheets", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      }).catch((err) => {
+        console.error("[ContactForm] Google Sheets submission failed:", err);
+      });
+
       setSubmitStatus("success");
       setFormData({
         name: "",

@@ -62,6 +62,9 @@ class ContactSubmissionsService extends BaseService<
 
   /**
    * Submit a new contact form
+   * Note: Does not chain .select().single() after insert because
+   * anon/public users have INSERT but not SELECT permission (RLS).
+   * The caller only needs to know success/failure, not the created record.
    */
   async submit(
     data: Omit<ContactSubmissionInsert, "status" | "ip_address" | "user_agent">,
@@ -69,21 +72,18 @@ class ContactSubmissionsService extends BaseService<
     try {
       const submission: ContactSubmissionInsert = {
         ...data,
-        status: "new" as ContactSubmissionStatus,
+        status: "New" as ContactSubmissionStatus,
         ip_address: null,
         user_agent: null,
-        // ip_address and user_agent would be set server-side in a real implementation
       };
 
-      const { data: record, error } = await this.supabase
+      const { error } = await this.supabase
         .from(this.tableName)
-        .insert(submission as never)
-        .select()
-        .single();
+        .insert(submission as never);
 
       if (error) throw error;
 
-      return { data: record as ContactSubmission, error: null };
+      return { data: null, error: null };
     } catch (error) {
       console.error("Error submitting contact form:", error);
       return {
