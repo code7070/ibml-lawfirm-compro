@@ -59,7 +59,7 @@
     var(--font-body-var, "Inter"), "Segoe UI", -apple-system, sans-serif;
 
   /* Local Fonts - loaded via Next.js localFont */
-  --font-geometrica: var(--font-geometrica-var, "GeometricaSans Regular");
+  --font-geometrica: var(--font-geometrica-var, "GeometricaSans");
   --font-museo: var(--font-museo-var, "Museo");
 
   /* Override Tailwind defaults */

@@ -1,7 +1,8 @@
 {
   "nav": {
     "home": "Home",
-    "about": "The Firm",
+    "about": "About",
+    "firm": "The Firm",
     "practiceAreas": "Practice Areas",
     "services": "Services",
     "lawyers": "Our Team",

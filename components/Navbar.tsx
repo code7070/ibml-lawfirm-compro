@@ -26,7 +26,7 @@ const Navbar = () => {
 
   // Full Desktop Links
   const fullNavLinks = [
-    { name: t("about"), href: "/about" },
+    { name: t("firm"), href: "/about" },
     { name: t("practiceAreas"), href: "/practice-areas" },
     { name: t("services"), href: "/services" },
     { name: t("lawyers"), href: "/lawyers" },
@@ -36,7 +36,7 @@ const Navbar = () => {
 
   // Compact Links (Tablet/Small Laptop)
   const compactDropdownLinks = [
-    { name: t("about"), href: "/about" },
+    { name: t("firm"), href: "/about" },
     { name: t("practiceAreas"), href: "/practice-areas" },
     { name: t("services"), href: "/services" },
     { name: t("lawyers"), href: "/lawyers" },
