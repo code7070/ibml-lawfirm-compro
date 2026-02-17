@@ -645,6 +645,7 @@ export type Database = {
           experience: Json | null;
           id: string;
           is_active: boolean | null;
+          is_primary: boolean | null;
           languages: Json | null;
           lawyer_position_id: string | null;
           linkedin_url: string | null;
@@ -670,6 +671,7 @@ export type Database = {
           experience?: Json | null;
           id?: string;
           is_active?: boolean | null;
+          is_primary?: boolean | null;
           languages?: Json | null;
           lawyer_position_id?: string | null;
           linkedin_url?: string | null;
@@ -695,6 +697,7 @@ export type Database = {
           experience?: Json | null;
           id?: string;
           is_active?: boolean | null;
+          is_primary?: boolean | null;
           languages?: Json | null;
           lawyer_position_id?: string | null;
           linkedin_url?: string | null;

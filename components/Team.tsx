@@ -18,11 +18,16 @@ interface TeamProps {
 }
 
 const Team = async ({ locale }: TeamProps) => {
-  // Fetch only 3 featured lawyers directly at database level
+  // Fetch all primary lawyers (is_primary = true), no limit
   const [{ data: lawyers }, dict] = await Promise.all([
-    lawyersService.getFeaturedWithLimit(3),
+    lawyersService.getPrimary(),
     getDictionary(locale as Locale),
   ]);
+
+  // Don't render the section at all if no primary lawyers
+  if (!lawyers || lawyers.length === 0) {
+    return null;
+  }
 
   const translations: TeamTranslations = {
     title: dict.home.team.title,

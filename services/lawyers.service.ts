@@ -156,6 +156,38 @@ class LawyersService extends BaseService<Lawyer, LawyerInsert, LawyerUpdate> {
   }
 
   /**
+   * Get primary lawyers (for homepage team section)
+   * Fetches all lawyers where is_primary = true, no limit
+   */
+  async getPrimary(): Promise<ApiResponse<LawyerWithPositionAndPracticeAreas[]>> {
+    try {
+      const { data, error } = await this.supabase
+        .from(this.tableName)
+        .select(`
+          *,
+          lawyer_positions(*),
+          practice_areas:lawyer_practice_areas(
+            practice_area_id,
+            practice_areas(*)
+          )
+        `)
+        .eq("is_active", true)
+        .eq("is_primary", true)
+        .order("sort_order", { ascending: true });
+
+      if (error) throw error;
+
+      return { data: data as LawyerWithPositionAndPracticeAreas[], error: null };
+    } catch (error) {
+      console.error("Error fetching primary lawyers:", error);
+      return {
+        data: null,
+        error: error instanceof Error ? error.message : "Unknown error",
+      };
+    }
+  }
+
+  /**
    * Get lawyer by slug with practice areas
    */
   async getBySlugWithPracticeAreas(
