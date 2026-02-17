@@ -55,12 +55,12 @@
   /* Google Fonts - loaded via Next.js font loader */
   --font-primary: var(--font-primary-var, "Space Grotesk"), "Inter", sans-serif;
   --font-secondary: var(--font-secondary-var, "Merriweather"), Georgia, serif;
-  --font-body: var(--font-body-var, "Inter"), "Segoe UI", -apple-system,
-    sans-serif;
+  --font-body:
+    var(--font-body-var, "Inter"), "Segoe UI", -apple-system, sans-serif;
 
   /* Local Fonts - loaded via Next.js localFont */
-  --font-geometrica: var(--font-geometrica-var, "Geometrica Sans"), sans-serif;
-  --font-museo: var(--font-museo-var, "Museo"), Georgia, serif;
+  --font-geometrica: var(--font-geometrica-var, "GeometricaSans Regular");
+  --font-museo: var(--font-museo-var, "Museo");
 
   /* Override Tailwind defaults */
   --font-sans: var(--font-body);

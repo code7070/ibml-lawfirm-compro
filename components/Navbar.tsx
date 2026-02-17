@@ -75,11 +75,11 @@ const Navbar = () => {
             className="object-contain"
             priority
           />
-          <div className="flex gap-1 ml-3 items-center">
-            <div className="text-white font-bold text-4xl tracking-wider font-geometrica">
+          <div className="flex gap-1 ml-3 items-start">
+            <div className="text-[#D4C5A0] text-4xl leading-7 font-geometrica pt-1">
               IBLM
             </div>
-            <div className="text-[#D4C5A0] text-xs tracking-[0.05em] uppercase font-museo">
+            <div className="text-white text-xs tracking-[0.05em] uppercase font-museo">
               Law
               <br />
               Group

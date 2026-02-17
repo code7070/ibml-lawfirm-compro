@@ -44,8 +44,8 @@ const PracticeAreaPage = ({
         }
       }, 100);
       return () => clearTimeout(timer);
-    } 
-    
+    }
+
     // Otherwise check for hash in URL
     if (window.location.hash) {
       const id = window.location.hash.substring(1); // Remove #
@@ -109,19 +109,19 @@ const PracticeAreaPage = ({
           {practiceGroups.map((group) => (
             <div key={group.id} id={group.slug} className="scroll-mt-32">
               {/* Group Header */}
-              <div className="flex flex-col md:flex-row items-start md:items-end gap-6 mb-12 border-b border-[#0B1B3B]/10 pb-8">
-                <div className="p-4 bg-[#0B1B3B] text-[#D4C5A0]">
+              <div className="sticky top-20 pt-4 bg-white  flex flex-col md:flex-row items-start md:items-end gap-6 mb-12 border-b border-[#0B1B3B]/10 pb-8">
+                <div className="p-3 bg-[#0B1B3B] text-[#D4C5A0] aspect-square">
                   {group.icon_url ? (
                     <img
                       src={group.icon_url}
                       alt=""
-                      className="w-10 h-10 object-contain invert-0"
+                      className="w-12 h-12 object-contain invert-100"
                     />
                   ) : (
                     <DefaultIcon size={40} strokeWidth={1.5} />
                   )}
                 </div>
-                <div>
+                <div className="flex-1">
                   <span className="text-[#D4C5A0] font-bold tracking-[0.2em] text-xs uppercase mb-2 block">
                     {isEn ? "Practice Group" : "Grup Praktik"}
                   </span>
@@ -129,13 +129,13 @@ const PracticeAreaPage = ({
                     {isEn ? group.name_en : group.name_id}
                   </h2>
                   {(isEn ? group.subtitle_en : group.subtitle_id) && (
-                    <p className="text-xl text-[#2E4472] mt-2 font-serif italic">
+                    <p className="text-xl text-[#2E4472] mt-1 font-serif italic">
                       {isEn ? group.subtitle_en : group.subtitle_id}
                     </p>
                   )}
                 </div>
                 <div
-                  className="md:ml-auto md:max-w-md text-[#2E4472] font-light text-right prose prose-sm"
+                  className="md:ml-auto md:max-w-[40%] text-[#2E4472] font-light text-right prose prose-sm"
                   dangerouslySetInnerHTML={{
                     __html:
                       (isEn ? group.description_en : group.description_id) ||

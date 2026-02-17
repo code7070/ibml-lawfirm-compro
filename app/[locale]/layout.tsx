@@ -10,8 +10,14 @@ import { TranslationProvider } from "@/components/TranslationProvider";
 import { generatePageMetadata } from "@/lib/metadata";
 
 const geometricaSans = localFont({
-  src: "../../fonts/GeometricaSans-Regular.woff",
+  src: "../fonts/GeometricaSans-Regular.woff",
   variable: "--font-geometrica-var",
+  display: "swap",
+});
+
+const museo = localFont({
+  src: "../fonts/Museo300-Regular.woff",
+  variable: "--font-museo-var",
   display: "swap",
 });
 
@@ -19,12 +25,6 @@ const fontPrimary = Space_Grotesk({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-primary-var",
-});
-
-const museo = localFont({
-  src: "../../fonts/Museo300-Regular.woff",
-  variable: "--font-museo-var",
-  display: "swap",
 });
 
 const fontSecondary = Merriweather({

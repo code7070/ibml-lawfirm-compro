@@ -156,7 +156,7 @@
     "hero": {
       "tags": "Lebih dari Praktik",
       "title": "Layanan Khusus",
-      "subtitle": "Komitmen kami melampaui representasi komersial. Kami terlibat dalam bantuan hukum untuk yang kurang mampu dan riset akademis untuk membentuk regulasi masa depan."
+      "subtitle": "Melampaui praktik tradisional, kami menggunakan keahlian kami untuk menjembatani kesenjangan antara komunitas yang kurang terlayani dan garis depan evolusi hukum."
     },
     "categories": {
       "advisory": "Konsultasi & Penasihat Hukum",
@@ -165,26 +165,53 @@
       "probono": "Layanan Pro Bono"
     },
     "probono": {
-      "title": "Layanan Pro Bono",
-      "description": "Akses terhadap keadilan tidak boleh menjadi hak istimewa. Kami menyediakan layanan hukum pro bono khusus untuk developer indie dari komunitas yang kurang terwakili dan organisasi non-profit yang berjuang untuk hak digital.",
-      "eligibilityTitle": "Kriteria Kelayakan",
-      "criteria1": "Developer indie dengan pendapatan tahunan di bawah $50k",
-      "criteria2": "Non-profit yang fokus pada literasi digital atau keamanan online",
-      "criteria3": "Mahasiswa yang menghadapi tindakan disipliner akademik untuk riset keamanan",
-      "applyForAid": "Ajukan Bantuan",
+      "badge": "Tanggung Jawab Sosial",
+      "title": "Penjaga yang Kurang Terwakili",
+      "description": "Kami percaya akses terhadap keadilan adalah fondasi masyarakat yang adil. Program Pro-Bono kami menyediakan konsultasi hukum elite bagi mereka yang membentuk komunitas namun kekurangan sumber daya untuk mempertahankan visi mereka.",
+      "applyForAid": "Ajukan Permohonan",
       "hoursNumber": "1.500+",
-      "hoursLabel": "Jam Pro Bono Disumbangkan (2025)"
+      "hoursLabel": "Jam Disumbangkan di 2025",
+      "orgsNumber": "45+",
+      "orgsLabel": "Entitas Diwakili",
+      "card1Title": "Pembelaan Hukum Komunitas",
+      "card1Desc": "Perlindungan hukum dan negosiasi kontrak untuk organisasi kecil dan komunitas dengan modal terbatas.",
+      "card1Tag": "Komunitas",
+      "card2Title": "Advokasi Hak Digital",
+      "card2Desc": "Dukungan litigasi strategis untuk non-profit yang fokus pada privasi online dan kedaulatan data pengguna.",
+      "card2Tag": "Non-Profit",
+      "card3Title": "Perisai Akademik",
+      "card3Desc": "Membela peneliti dan mahasiswa yang menghadapi ancaman hukum karena mengidentifikasi kerentanan industri.",
+      "card3Tag": "Peneliti",
+      "card4Title": "Landasan Keberagaman",
+      "card4Desc": "Konsultasi khusus untuk pendiri dari kelompok kurang terwakili yang memasuki pasar bisnis dan teknologi.",
+      "card4Tag": "Inisiatif DEI",
+      "calloutTitle": "Ajukan Representasi Pro-Bono",
+      "calloutDesc": "Kelayakan ditentukan berdasarkan kondisi keuangan dan dampak sosial. Biasanya diperuntukkan bagi entitas dengan sumber daya terbatas yang didedikasikan untuk kesejahteraan komunitas."
     },
     "research": {
-      "title": "Riset & Akademik",
-      "description": "Kami tidak hanya menafsirkan hukum; kami membantu menulisnya. Unit riset khusus kami berkolaborasi dengan universitas terkemuka dan think tank untuk menghasilkan white paper tentang regulasi loot box, hak cipta AI, dan tata kelola metaverse.",
-      "viewArchive": "Lihat Arsip Riset",
+      "badge": "Lab Riset",
+      "titlePrefix": "Arsitek",
+      "titleAccent": "Regulasi",
+      "description": "Kami tidak hanya menafsirkan hukum yang ada; kami memproyeksikan dekade berikutnya dari kebijakan hukum. Kelompok riset kami bekerja di persimpangan praktik dan yurisdiksi.",
+      "readTime": "12m Baca",
+      "accessAnalysis": "Akses Analisis",
       "partnersTitle": "Institusi Kolaborator",
-      "academicPartners": "Partner Akademik",
-      "publishedPapers": "Makalah Terpublikasi",
-      "policyAdvisory": "Penasihat Kebijakan",
-      "govtLiaison": "Hubungan Pemerintah"
-    }
+      "partner1": "Fakultas Hukum UI",
+      "partner2": "Studi Hukum UGM",
+      "partner3": "Riset Hukum UNPAD",
+      "partner4": "Institut Atma Jaya",
+      "partner5": "PERADI",
+      "partner6": "HKPM Indonesia"
+    },
+    "values": {
+      "statNumber": "20+",
+      "statLabel": "Makalah Dikutip dalam Dengar Pendapat Legislatif",
+      "quote": "Praktik kami didefinisikan bukan hanya oleh kasus yang kami menangkan, tetapi oleh standar yang kami bantu tetapkan.",
+      "description": "Dengan mempertahankan departemen akademik yang ketat, IBLM memastikan bahwa klien komersial kami mendapatkan manfaat dari terobosan teoretis dan praktis terbaru dalam bidang hukum.",
+      "exploreLibrary": "Jelajahi Perpustakaan Lengkap"
+    },
+    "clientTicker": "Dipercaya oleh Pemimpin Industri",
+    "orgTicker": "Afiliasi Industri"
   },
   "contact": {
     "hero": {

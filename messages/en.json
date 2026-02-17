@@ -156,7 +156,7 @@
     "hero": {
       "tags": "Beyond Practice",
       "title": "Specialized Services",
-      "subtitle": "Our commitment extends beyond commercial representation. We engage in legal aid for the underserved and academic research to shape future regulations."
+      "subtitle": "Beyond traditional practice, we deploy our expertise to bridge the gap between underserved communities and the frontier of legal evolution."
     },
     "categories": {
       "advisory": "Legal Advisory & Consulting",
@@ -165,26 +165,53 @@
       "probono": "Pro Bono Services"
     },
     "probono": {
-      "title": "Pro Bono Services",
-      "description": "Access to justice should not be a privilege. We provide dedicated pro bono legal services to indie developers from underrepresented communities and non-profit organizations fighting for digital rights.",
-      "eligibilityTitle": "Eligibility Criteria",
-      "criteria1": "Indie developers with annual revenue under $50k",
-      "criteria2": "Non-profits focused on digital literacy or online safety",
-      "criteria3": "Students facing academic disciplinary action for security research",
-      "applyForAid": "Apply for Aid",
+      "badge": "Social Responsibility",
+      "title": "Guardians of the Underrepresented",
+      "description": "We believe access to justice is the bedrock of a fair society. Our Pro-Bono program provides elite legal counsel to those who shape communities but lack the resources to defend their vision.",
+      "applyForAid": "Submit Request",
       "hoursNumber": "1,500+",
-      "hoursLabel": "Pro Bono Hours Donated (2025)"
+      "hoursLabel": "Hours Donated in 2025",
+      "orgsNumber": "45+",
+      "orgsLabel": "Entities Represented",
+      "card1Title": "Community Legal Defense",
+      "card1Desc": "Legal protection and contract negotiation for small organizations and communities with limited capital.",
+      "card1Tag": "Communities",
+      "card2Title": "Digital Rights Advocacy",
+      "card2Desc": "Strategic litigation support for non-profits focused on online privacy and user data sovereignty.",
+      "card2Tag": "Non-Profits",
+      "card3Title": "Academic Shield",
+      "card3Desc": "Defending researchers and students facing legal threats for identifying industry vulnerabilities.",
+      "card3Tag": "Researchers",
+      "card4Title": "Diversity Launchpad",
+      "card4Desc": "Dedicated counsel for underrepresented founders entering the business and technology marketplace.",
+      "card4Tag": "DEI Initiatives",
+      "calloutTitle": "Request Pro-Bono Representation",
+      "calloutDesc": "Eligibility is determined by financial standing and social impact. Typically reserved for entities with limited resources dedicated to community welfare."
     },
     "research": {
-      "title": "Research & Academic",
-      "description": "We don't just interpret the law; we help write it. Our dedicated research arm collaborates with top universities and think tanks to produce white papers on loot box regulation, AI copyright, and metaverse governance.",
-      "viewArchive": "View Research Archive",
+      "badge": "The Research Lab",
+      "titlePrefix": "Architects of",
+      "titleAccent": "Regulation",
+      "description": "We don't just interpret existing law; we forecast the next decade of legal policy. Our research group works at the intersection of practice and jurisdiction.",
+      "readTime": "12m Read",
+      "accessAnalysis": "Access Analysis",
       "partnersTitle": "Collaborating Institutions",
-      "academicPartners": "Academic Partners",
-      "publishedPapers": "Published Papers",
-      "policyAdvisory": "Policy Advisory",
-      "govtLiaison": "Govt. Liaison"
-    }
+      "partner1": "UI Faculty of Law",
+      "partner2": "UGM Legal Studies",
+      "partner3": "UNPAD Law Research",
+      "partner4": "Atma Jaya Institute",
+      "partner5": "PERADI",
+      "partner6": "HKPM Indonesia"
+    },
+    "values": {
+      "statNumber": "20+",
+      "statLabel": "Papers cited in Legislative Hearings",
+      "quote": "Our practice is defined not just by the cases we win, but by the standards we help establish.",
+      "description": "By maintaining a rigorous academic department, IBLM ensures that our commercial clients benefit from the absolute latest theoretical and practical breakthroughs in law.",
+      "exploreLibrary": "Explore Full Library"
+    },
+    "clientTicker": "Trusted By Industry Leaders",
+    "orgTicker": "Industry Affiliations"
   },
   "contact": {
     "hero": {

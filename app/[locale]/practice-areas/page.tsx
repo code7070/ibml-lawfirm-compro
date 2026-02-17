@@ -1,8 +1,8 @@
 import PracticeAreaPageComponent from "@/components/PracticeAreaPage";
-import { CLIENT_LOGOS, ORG_LOGOS } from "@/data/logos";
-import { practiceGroupsService } from "@/services";
+import { practiceGroupsService, clientsService } from "@/services";
 import { generatePageMetadata } from "@/lib/metadata";
 import { Locale } from "@/lib/dictionary";
+import { LogoItem } from "@/types";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -26,17 +26,37 @@ export async function generateMetadata({
 export default async function PracticeAreasPage({ params }: PageProps) {
   const { locale } = await params;
 
-  // Fetch practice groups with areas
-  const { data: allGroups, error } =
-    await practiceGroupsService.getAllWithAreas();
+  // Fetch practice groups and clients in parallel
+  const [groupsResponse, clientsResponse] = await Promise.all([
+    practiceGroupsService.getAllWithAreas(),
+    clientsService.getAllSorted(),
+  ]);
 
-  if (error) {
-    console.error("Error fetching practice groups:", error);
-    // You might want to throw an error or show an error state
+  if (groupsResponse.error) {
+    console.error("Error fetching practice groups:", groupsResponse.error);
   }
 
+  const allClients = clientsResponse.data || [];
+
+  // Filter and map clients data (same pattern as /about)
+  const clientLogos: LogoItem[] = allClients
+    .filter((c) => (c.type === "Client" || !c.type) && c.status === "Active")
+    .map((c) => ({
+      id: c.id,
+      name: c.name,
+      image: c.logo_url || undefined,
+    }));
+
+  const orgLogos: LogoItem[] = allClients
+    .filter((c) => c.type === "Organization" && c.status === "Active")
+    .map((c) => ({
+      id: c.id,
+      name: c.name,
+      image: c.logo_url || undefined,
+    }));
+
   // Filter for active groups and active areas
-  const practiceGroups = (allGroups || [])
+  const practiceGroups = (groupsResponse.data || [])
     .filter((group) => group.status === "Active")
     .sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0))
     .map((group) => ({
@@ -49,8 +69,8 @@ export default async function PracticeAreasPage({ params }: PageProps) {
   return (
     <PracticeAreaPageComponent
       targetId={null}
-      clientLogos={CLIENT_LOGOS}
-      orgLogos={ORG_LOGOS}
+      clientLogos={clientLogos}
+      orgLogos={orgLogos}
       practiceGroups={practiceGroups}
       locale={locale}
     />
