@@ -4,7 +4,7 @@ import { Event as FrontendEvent } from "@/types";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 
-export const revaldiate = 60 * 5; // 60 seconds * 5 minutes = 5 minutes
+export const revalidate = 300;
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://iblmlaw.com";
 const META_IMAGE_PATH = "/images/meta-image-iblm.jpg";

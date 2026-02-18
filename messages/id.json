@@ -362,8 +362,18 @@
     "readAnalysis": "Baca Analisis",
     "categories": "Kategori",
     "all": "Semua Artikel",
-    "searchPlaceholder": "Cari arsip...",
-    "noArticles": "Tidak ada artikel dalam kategori ini."
+    "searchPlaceholder": "Cari semua artikel...",
+    "noArticles": "Tidak ada artikel ditemukan.",
+    "searchResults": "Menampilkan hasil untuk",
+    "clearSearch": "Hapus",
+    "loadMore": "Muat Lebih Banyak",
+    "loading": "Memuat...",
+    "previousPage": "Sebelumnya",
+    "nextPage": "Selanjutnya",
+    "page": "Halaman",
+    "of": "dari",
+    "backToAll": "Semua Artikel",
+    "articlesIn": "Artikel dalam"
   },
   "footer": {
     "tagline": "Kelompok ahli hukum kami berkomitmen untuk memberikan yang terbaik, menghadirkan solusi hukum yang disesuaikan untuk melindungi bisnis Anda dengan presisi dan kepedulian.",

@@ -1,15 +1,17 @@
 import ArticleListPageComponent from "@/components/ArticleListPage";
-import { articlesService } from "@/services";
+import { articlesService, articleCategoriesService } from "@/services";
 import { Article as ViewArticle } from "@/types";
 import { generatePageMetadata } from "@/lib/metadata";
 import { Locale } from "@/lib/dictionary";
 
-export const revaldiate = 60 * 5; // 60 seconds * 5 minutes = 5 minutes
+export const revalidate = 300;
 
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: Promise<{ locale: string }> 
+const PAGE_SIZE = 9;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
   return generatePageMetadata({
@@ -19,26 +21,43 @@ export async function generateMetadata({
   });
 }
 
+interface ArticlesPageProps {
+  params: Promise<{ locale: string }>;
+  searchParams: Promise<{ search?: string }>;
+}
+
 export default async function ArticlesPage({
   params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
+  searchParams,
+}: ArticlesPageProps) {
   const { locale } = await params;
+  const resolvedSearchParams = await searchParams;
   const isId = locale === "id";
 
-  // Fetch articles
-  const { data: articles } = await articlesService.getPublishedPaginated(
-    1,
-    100,
-  );
+  // Search query from URL — only passed to client, NOT used for SSR fetch
+  const searchQuery = resolvedSearchParams.search || "";
 
-  // Map to View Model
-  const viewArticles: ViewArticle[] = articles.map((article) => ({
+  // Fetch categories and initial articles (no search filter) in parallel
+  const [categoriesResult, articlesResult] = await Promise.all([
+    articleCategoriesService.getActive(),
+    articlesService.getPublishedPaginated(1, PAGE_SIZE),
+  ]);
+
+  const categories = categoriesResult.data || [];
+
+  // Map categories to view model
+  const viewCategories = categories.map((cat) => ({
+    id: cat.id,
+    slug: cat.slug,
+    name: isId ? cat.name_id : cat.name_en,
+  }));
+
+  // Map articles to view model
+  const viewArticles: ViewArticle[] = articlesResult.data.map((article) => ({
     id: article.slug || article.id,
     title: isId ? article.title_id : article.title_en,
     date: new Date(
-      article.published_at || article.created_at || "2024-01-01",
+      article.published_at || article.created_at || "2024-01-01"
     ).toLocaleDateString(isId ? "id-ID" : "en-US", {
       year: "numeric",
       month: "long",
@@ -49,11 +68,19 @@ export default async function ArticlesPage({
       "Uncategorized",
     image:
       article.cover_url ||
-      "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=2000", // Fallback legal image
+      "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=2000",
     summary: (isId ? article.excerpt_id : article.excerpt_en) || "",
     author: article.author?.name_en || "IBLM Team",
     content: null,
   }));
 
-  return <ArticleListPageComponent articles={viewArticles} />;
+  return (
+    <ArticleListPageComponent
+      articles={viewArticles}
+      categories={viewCategories}
+      totalCount={articlesResult.count}
+      searchQuery={searchQuery}
+      locale={locale}
+    />
+  );
 }

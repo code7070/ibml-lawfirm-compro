@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { Article as ViewArticle } from "@/types";
 import { Metadata } from "next";
 
-export const revaldiate = 60 * 5; // 60 seconds * 5 minutes = 5 minutes
+export const revalidate = 300;
 
 interface Props {
   params: Promise<{ id: string; locale: string }>;

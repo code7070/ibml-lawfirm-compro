@@ -362,8 +362,18 @@
     "readAnalysis": "Read Analysis",
     "categories": "Categories",
     "all": "All Articles",
-    "searchPlaceholder": "Search archives...",
-    "noArticles": "No articles found in this category."
+    "searchPlaceholder": "Search all articles...",
+    "noArticles": "No articles found.",
+    "searchResults": "Showing results for",
+    "clearSearch": "Clear",
+    "loadMore": "Load More Articles",
+    "loading": "Loading...",
+    "previousPage": "Previous",
+    "nextPage": "Next",
+    "page": "Page",
+    "of": "of",
+    "backToAll": "All Articles",
+    "articlesIn": "Articles in"
   },
   "footer": {
     "tagline": "Our group of legal experts are committed to excellence, delivering tailored legal solutions that safeguard your business with precision and care.",

@@ -5,7 +5,7 @@ import { generatePageMetadata } from "@/lib/metadata";
 import { Locale } from "@/lib/dictionary";
 import { LogoItem } from "@/types";
 
-export const revaldiate = 60 * 5; // 60 seconds * 5 minutes = 5 minutes
+export const revalidate = 300;
 
 export async function generateMetadata({ 
   params 
