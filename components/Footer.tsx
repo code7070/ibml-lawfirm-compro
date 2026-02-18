@@ -48,7 +48,7 @@ const Footer = async ({ dictionary }: FooterProps) => {
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
-          backgroundImage: `linear-gradient(45deg, #1A2F5A 25%, transparent 25%, transparent 75%, #1A2F5A 75%, #1A2F5A), 
+          backgroundImage: `linear-gradient(45deg, #1A2F5A 25%, transparent 25%, transparent 75%, #1A2F5A 75%, #1A2F5A),
              linear-gradient(45deg, #1A2F5A 25%, transparent 25%, transparent 75%, #1A2F5A 75%, #1A2F5A)`,
           backgroundSize: "20px 20px",
           backgroundPosition: "0 0, 10px 10px",
@@ -116,7 +116,7 @@ const Footer = async ({ dictionary }: FooterProps) => {
           </div>
 
           {/* Practice Areas */}
-          <div className="md:col-span-2 md:col-start-6">
+          <div className="md:col-span-2 md:col-start-8">
             <h4 className="text-[#D4C5A0] font-bold text-xs uppercase tracking-widest mb-8">
               {t.practice}
             </h4>
@@ -198,7 +198,7 @@ const Footer = async ({ dictionary }: FooterProps) => {
           </div>
 
           {/* Newsletter */}
-          <div className="md:col-span-3">
+          {/*<div className="md:col-span-3">
             <h4 className="text-[#D4C5A0] font-bold text-xs uppercase tracking-widest mb-8">
               {t.newsletter.title}
             </h4>
@@ -215,15 +215,29 @@ const Footer = async ({ dictionary }: FooterProps) => {
                 {t.newsletter.button}
               </button>
             </div>
-          </div>
+          </div>*/}
         </div>
 
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-600 font-mono">
-          <p>&copy; {new Date().getFullYear()} {t.copyright}</p>
+          <p>
+            &copy; {new Date().getFullYear()} {t.copyright}
+          </p>
           <div className="flex gap-8">
-            <Link href="/privacy" className="hover:text-gray-400 cursor-pointer">{t.legal.privacy}</Link>
-            <Link href="/terms" className="hover:text-gray-400 cursor-pointer">{t.legal.terms}</Link>
-            <Link href="/sitemap" className="hover:text-gray-400 cursor-pointer">{t.legal.sitemap}</Link>
+            <Link
+              href="/privacy"
+              className="hover:text-gray-400 cursor-pointer"
+            >
+              {t.legal.privacy}
+            </Link>
+            <Link href="/terms" className="hover:text-gray-400 cursor-pointer">
+              {t.legal.terms}
+            </Link>
+            <Link
+              href="/sitemap"
+              className="hover:text-gray-400 cursor-pointer"
+            >
+              {t.legal.sitemap}
+            </Link>
           </div>
         </div>
       </div>

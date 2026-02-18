@@ -63,7 +63,7 @@ const EventDetailPage: React.FC<EventDetailPageProps> = ({ event }) => {
       {/* Content Layout */}
       <div className="max-w-[1400px] mx-auto px-6 py-24 grid lg:grid-cols-12 gap-16">
         {/* Sidebar Metadata */}
-        <div className="lg:col-span-4 space-y-12">
+        <div className="lg:col-span-4 space-y-12 sticky">
           <div className="bg-[#F5F5F7] p-8 border-l-4 border-[#D4C5A0]">
             <h3 className="text-[#0B1B3B] font-bold text-sm uppercase tracking-widest mb-8">
               Event Details
@@ -71,7 +71,9 @@ const EventDetailPage: React.FC<EventDetailPageProps> = ({ event }) => {
 
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <Calendar className="w-5 h-5 text-[#D4C5A0] shrink-0 mt-1" />
+                <div className="bg-[#D4C5A0] p-1.5">
+                  <Calendar className="w-5 h-5 text-[#0b1b3b] shrink-0" />
+                </div>
                 <div>
                   <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">
                     Date
@@ -82,9 +84,11 @@ const EventDetailPage: React.FC<EventDetailPageProps> = ({ event }) => {
 
               {event.time && (
                 <div className="flex items-start gap-4">
-                  <Clock className="w-5 h-5 text-[#D4C5A0] shrink-0 mt-1" />
+                  <div className="bg-[#D4C5A0] p-1.5">
+                    <Clock className="w-5 h-5 text-[#0B1B3B] shrink-0" />
+                  </div>
                   <div>
-                    <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">
+                    <p className="text-xs text-gray-400 uppercase tracking-wide">
                       Time
                     </p>
                     <p className="text-[#0B1B3B] font-medium">{event.time}</p>
@@ -94,9 +98,11 @@ const EventDetailPage: React.FC<EventDetailPageProps> = ({ event }) => {
 
               {event.location && (
                 <div className="flex items-start gap-4">
-                  <MapPin className="w-5 h-5 text-[#D4C5A0] shrink-0 mt-1" />
+                  <div className="bg-[#D4C5A0] p-1.5">
+                    <MapPin className="w-5 h-5 text-[#0B1B3B] shrink-0" />
+                  </div>
                   <div>
-                    <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">
+                    <p className="text-xs text-gray-400 uppercase tracking-wide">
                       Location
                     </p>
                     <p className="text-[#0B1B3B] font-medium">
@@ -108,9 +114,11 @@ const EventDetailPage: React.FC<EventDetailPageProps> = ({ event }) => {
 
               {event.contactEmail && (
                 <div className="flex items-start gap-4">
-                  <Mail className="w-5 h-5 text-[#D4C5A0] shrink-0 mt-1" />
+                  <div className="bg-[#D4C5A0] p-1.5">
+                    <Mail className="w-5 h-5 text-[#0B1B3B] shrink-0" />
+                  </div>
                   <div>
-                    <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">
+                    <p className="text-xs text-gray-400 uppercase tracking-wide">
                       Inquiries
                     </p>
                     <a
@@ -140,9 +148,10 @@ const EventDetailPage: React.FC<EventDetailPageProps> = ({ event }) => {
         </div>
 
         {/* Main Description */}
-        <div className="lg:col-span-8 prose prose-lg prose-headings:font-serif prose-headings:text-[#0B1B3B] prose-p:text-[#2E4472] prose-p:font-light prose-p:leading-relaxed prose-strong:text-[#0B1B3B] max-w-none">
-          {event.description}
-        </div>
+        <div
+          className="lg:col-span-8 prose prose-lg prose-headings:font-serif prose-headings:text-[#0B1B3B] prose-p:text-[#2E4472] prose-p:font-light prose-p:leading-relaxed prose-strong:text-[#0B1B3B] max-w-none"
+          dangerouslySetInnerHTML={{ __html: `${event.description}` }}
+        />
       </div>
 
       <CTASection />

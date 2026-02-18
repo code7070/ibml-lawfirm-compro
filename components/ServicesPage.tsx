@@ -92,7 +92,8 @@ const ServicesPage = ({
                 {t("probono.badge")}
               </div>
               <h2 className="text-5xl font-light text-[#0B1B3B] mb-8 font-serif italic">
-                {t("probono.title")}
+                {/*{t("probono.title")}*/}
+                Pro-Bono Service
               </h2>
               <p className="text-[#2E4472] text-lg font-light leading-relaxed mb-8">
                 {t("probono.description")}
@@ -212,7 +213,7 @@ const ServicesPage = ({
 
           {/* Research Articles Grid */}
           {researchArticles.length > 0 && (
-            <div className="grid md:grid-cols-3 gap-8 mb-24">
+            <div className="grid md:grid-cols-3 gap-8 ">
               {researchArticles.map((article) => (
                 <LangLink
                   key={article.id}
@@ -258,7 +259,7 @@ const ServicesPage = ({
           )}
 
           {/* Academic Collaborations */}
-          <div className="pt-20 border-t border-[#0B1B3B]/10">
+          {/*<div className="pt-20 border-t border-[#0B1B3B]/10">
             <h4 className="text-center text-[#D4C5A0] text-xs font-bold uppercase tracking-[0.3em] mb-12">
               {t("research.partnersTitle")}
             </h4>
@@ -277,7 +278,7 @@ const ServicesPage = ({
                 </div>
               ))}
             </div>
-          </div>
+          </div>*/}
         </div>
       </section>
 
