@@ -129,7 +129,7 @@ const ArticleCategoryPage = ({
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-8 border-b border-[#0B1B3B]/10 pb-8">
             {/* Categories */}
             {/* Outer: full-viewport scroll container */}
-            <div className="overflow-x-auto md:overflow-x-visible scrollbar-hide -mx-[calc(50vw-50%)] md:mx-0">
+            <div className="w-screen overflow-x-auto md:overflow-x-visible scrollbar-hide -mx-[calc(50vw-50%)] px-2 md:mx-0">
               {/* Inner: content-aligned tab container */}
               <div className="flex gap-2 md:gap-4 md:flex-wrap px-[calc(50vw-50%)] md:px-0 w-max md:w-auto">
                 {/* "All" tab */}
