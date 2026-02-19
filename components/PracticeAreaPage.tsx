@@ -109,7 +109,7 @@ const PracticeAreaPage = ({
           {practiceGroups.map((group) => (
             <div key={group.id} id={group.slug} className="scroll-mt-32">
               {/* Group Header */}
-              <div className="sticky top-20 pt-4 bg-white  flex flex-col md:flex-row items-start md:items-end gap-6 mb-12 border-b border-[#0B1B3B]/10 pb-8">
+              <div className="static lg:sticky top-20 pt-4 bg-white  flex flex-col md:flex-row items-start md:items-end gap-6 mb-12 border-b border-[#0B1B3B]/10 pb-8">
                 <div className="p-3 bg-[#0B1B3B] text-[#D4C5A0] aspect-square">
                   {group.icon_url ? (
                     <img

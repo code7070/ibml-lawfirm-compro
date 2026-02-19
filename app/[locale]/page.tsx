@@ -5,10 +5,7 @@ import Articles from "@/components/Articles";
 import CTASection from "@/components/CTASection";
 import LogoTicker from "@/components/LogoTicker";
 import PracticeAreasSection from "@/components/PracticeAreasSection";
-import {
-  practiceGroupsService,
-  clientsService,
-} from "@/services";
+import { practiceGroupsService, clientsService } from "@/services";
 import { ARTICLE_DATA } from "@/data/articles";
 import { getDictionary, Locale } from "@/lib/dictionary";
 import { LogoItem } from "@/types";
@@ -16,10 +13,10 @@ import { generatePageMetadata } from "@/lib/metadata";
 
 export const revalidate = 300;
 
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: Promise<{ locale: string }> 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
   return generatePageMetadata({
@@ -37,12 +34,11 @@ export default async function HomePage({
   const { locale } = await params;
 
   // Fetch data in parallel — lawyers are fetched inside Team component
-  const [practiceGroupsResponse, clientsResponse, dict] =
-    await Promise.all([
-      practiceGroupsService.getActive(),
-      clientsService.getAllSorted(),
-      getDictionary(locale as Locale),
-    ]);
+  const [practiceGroupsResponse, clientsResponse, dict] = await Promise.all([
+    practiceGroupsService.getActive(),
+    clientsService.getAllSorted(),
+    getDictionary(locale as Locale),
+  ]);
   const practiceGroups = practiceGroupsResponse.data || [];
   const allClients = clientsResponse.data || [];
 
@@ -65,7 +61,7 @@ export default async function HomePage({
 
   return (
     <>
-      <div id="hero" className="-mt-[122px]">
+      <div id="hero" className="-mt-[100px] md:-mt-[122px]">
         <Hero />
       </div>
       {/* Client Logo Ticker */}

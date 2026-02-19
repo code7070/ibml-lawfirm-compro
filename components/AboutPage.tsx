@@ -14,9 +14,7 @@ import CTASection from "./CTASection";
 import LogoTicker from "./LogoTicker";
 import { LogoItem } from "@/types";
 import Image from "next/image";
-import {
-  PracticeGroup,
-} from "@/lib/types/database";
+import { PracticeGroup } from "@/lib/types/database";
 import { TestimonialsSection } from "./TestimonialsSection";
 import PracticeAreasSection from "./PracticeAreasSection";
 import { useTranslations } from "@/hooks/useTranslations";
@@ -116,7 +114,7 @@ const AboutPage = ({
               <span className="text-[#D4C5A0] font-bold tracking-[0.3em] text-sm uppercase block">
                 {t("hero.tags")}
               </span>
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-light text-[#0B1B3B] leading-[1.1]">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl lg:text-8xl font-light text-[#0B1B3B] leading-[1.1]">
                 {t("hero.title_1")} <br />
                 <span className="font-serif italic text-[#2E4472]">
                   {t("hero.title_2")}
@@ -124,12 +122,8 @@ const AboutPage = ({
               </h1>
 
               <div className="space-y-6 text-lg md:text-xl text-[#2E4472] font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                <p>
-                  {t("story.paragraph1")}
-                </p>
-                <p>
-                  {t("story.paragraph2")}
-                </p>
+                <p>{t("story.paragraph1")}</p>
+                <p>{t("story.paragraph2")}</p>
                 <div className="py-6 border-t border-[#0B1B3B]/10 border-b my-6">
                   <p className="font-medium text-[#0B1B3B] text-2xl font-serif italic">
                     &quot;{t("story.brandPromise")}&quot;
@@ -141,9 +135,9 @@ const AboutPage = ({
               </div>
             </div>
 
-            <div className="lg:col-span-6 relative mt-12 lg:mt-0">
+            <div className="lg:col-span-6 relative">
               {/* Abstract Composition */}
-              <div className="relative h-[600px] w-full max-w-lg mx-auto lg:max-w-none">
+              <div className="relative h-[320px] md:h-[600px] w-full max-w-lg mx-auto lg:max-w-none">
                 <div className="absolute top-0 right-0 w-[90%] h-[90%] bg-[#0B1B3B] z-0 hidden lg:block"></div>
                 <div className="absolute bottom-0 left-0 w-full lg:w-[90%] h-full lg:h-[90%] z-10 overflow-hidden border-4 border-white shadow-2xl">
                   <Image
@@ -156,7 +150,7 @@ const AboutPage = ({
                 </div>
 
                 {/* Floating badge */}
-                <div className="absolute -top-6 -left-6 lg:top-[20%] lg:left-[5%] z-20 w-32 h-32 border border-[#D4C5A0] flex items-center justify-center bg-white shadow-lg">
+                <div className="absolute -top-6 -left-3 md:-left-6 lg:top-[20%] lg:left-[5%] z-20 w-24 md:w-32 h-24 md:h-32 border border-[#D4C5A0] flex items-center justify-center bg-white shadow-lg">
                   <ScaleLucide className="w-12 h-12 text-[#0B1B3B]" />
                 </div>
               </div>
@@ -184,11 +178,11 @@ const AboutPage = ({
           <div className="text-center max-w-3xl mx-auto mb-20">
             <h2 className="text-4xl md:text-5xl font-light text-white mb-6">
               {t("values.title")}{" "}
-              <span className="font-serif italic text-[#D4C5A0]">{t("values.titleHighlight")}</span>
+              <span className="font-serif italic text-[#D4C5A0]">
+                {t("values.titleHighlight")}
+              </span>
             </h2>
-            <p className="text-gray-400 font-light">
-              {t("values.subtitle")}
-            </p>
+            <p className="text-gray-400 font-light">{t("values.subtitle")}</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -219,7 +213,9 @@ const AboutPage = ({
           <div className="text-center max-w-3xl mx-auto mb-20">
             <h2 className="text-4xl md:text-5xl font-light text-[#0B1B3B] mb-6">
               {t("whyChoose.title")}{" "}
-              <span className="font-serif italic text-[#2E4472]">{t("whyChoose.titleHighlight")}</span>
+              <span className="font-serif italic text-[#2E4472]">
+                {t("whyChoose.titleHighlight")}
+              </span>
             </h2>
             <p className="text-[#2E4472] font-light">
               {t("whyChoose.subtitle")}
@@ -250,7 +246,11 @@ const AboutPage = ({
 
       {/* Client Ticker */}
       {clientLogos && clientLogos.length > 0 && (
-        <LogoTicker title={t("clientTicker")} items={clientLogos} theme="dark" />
+        <LogoTicker
+          title={t("clientTicker")}
+          items={clientLogos}
+          theme="dark"
+        />
       )}
 
       {/* 4. PRACTICE AREAS */}
@@ -294,9 +294,7 @@ const AboutPage = ({
       </section>
 
       {/* 6. TEAM SUMMARY — rendered as Server Component from parent */}
-      <div id="team">
-        {teamSection}
-      </div>
+      <div id="team">{teamSection}</div>
 
       {/* Org Ticker */}
       {orgLogos && orgLogos.length > 0 && (

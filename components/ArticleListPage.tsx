@@ -53,7 +53,7 @@ const ArticleListPage = ({
       id: article.slug || article.id,
       title: isId ? article.title_id : article.title_en,
       date: new Date(
-        article.published_at || article.created_at || "2024-01-01"
+        article.published_at || article.created_at || "2024-01-01",
       ).toLocaleDateString(isId ? "id-ID" : "en-US", {
         year: "numeric",
         month: "long",
@@ -68,11 +68,10 @@ const ArticleListPage = ({
         article.cover_url ||
         "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=2000",
       summary: (isId ? article.excerpt_id : article.excerpt_en) || "",
-      author:
-        (article.author as { name_en?: string })?.name_en || "IBLM Team",
+      author: (article.author as { name_en?: string })?.name_en || "IBLM Team",
       content: null,
     }),
-    [isId]
+    [isId],
   );
 
   // Fetch articles from Supabase (client-side)
@@ -90,19 +89,17 @@ const ArticleListPage = ({
           category:article_categories(*),
           author:lawyers(*)
         `,
-          { count: "exact" }
+          { count: "exact" },
         )
         .eq("is_published", true);
 
       if (search) {
         query = query.or(
-          `title_id.ilike.%${search}%,title_en.ilike.%${search}%,excerpt_id.ilike.%${search}%,excerpt_en.ilike.%${search}%`
+          `title_id.ilike.%${search}%,title_en.ilike.%${search}%,excerpt_id.ilike.%${search}%,excerpt_en.ilike.%${search}%`,
         );
       }
 
-      query = query
-        .order("published_at", { ascending: false })
-        .range(from, to);
+      query = query.order("published_at", { ascending: false }).range(from, to);
 
       const { data, error, count } = await query;
 
@@ -113,7 +110,7 @@ const ArticleListPage = ({
         count: count || 0,
       };
     },
-    [mapArticle]
+    [mapArticle],
   );
 
   // On mount: if searchQuery from URL, perform client-side search
@@ -161,10 +158,7 @@ const ArticleListPage = ({
     setLoading(true);
     try {
       const nextPage = page + 1;
-      const result = await fetchArticles(
-        nextPage,
-        activeSearch || undefined
-      );
+      const result = await fetchArticles(nextPage, activeSearch || undefined);
 
       setArticles((prev) => [...prev, ...result.data]);
       setPage(nextPage);
@@ -199,28 +193,32 @@ const ArticleListPage = ({
           {/* Controls */}
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-8 border-b border-[#0B1B3B]/10 pb-8">
             {/* Categories */}
-            <div className="flex flex-wrap gap-2 md:gap-4">
-              {/* "All" tab — active when no search */}
-              <LangLink
-                href="/articles"
-                className={`px-6 py-2 text-xs font-bold uppercase tracking-widest transition-all rounded-full border ${
-                  !activeSearch
-                    ? "bg-[#0B1B3B] text-white border-[#0B1B3B]"
-                    : "bg-transparent text-[#2E4472] border-transparent hover:border-[#2E4472]/30"
-                }`}
-              >
-                {t("all")}
-              </LangLink>
-
-              {categories.map((cat) => (
+            {/* Outer: full-viewport scroll container */}
+            <div className="overflow-x-auto md:overflow-x-visible scrollbar-hide -mx-[calc(50vw-50%)] md:mx-0">
+              {/* Inner: content-aligned tab container */}
+              <div className="flex gap-2 md:gap-4 md:flex-wrap px-[calc(50vw-50%)] md:px-0 w-max md:w-auto">
+                {/* "All" tab — active when no search */}
                 <LangLink
-                  key={cat.id}
-                  href={`/articles/category/${cat.slug}`}
-                  className="px-6 py-2 text-xs font-bold uppercase tracking-widest transition-all rounded-full border bg-transparent text-[#2E4472] border-transparent hover:border-[#2E4472]/30"
+                  href="/articles"
+                  className={`px-6 py-2 text-xs font-bold uppercase tracking-widest transition-all rounded-full border ${
+                    !activeSearch
+                      ? "bg-[#0B1B3B] text-white border-[#0B1B3B]"
+                      : "bg-transparent text-[#2E4472] border-transparent hover:border-[#2E4472]/30"
+                  }`}
                 >
-                  {cat.name}
+                  {t("all")}
                 </LangLink>
-              ))}
+
+                {categories.map((cat) => (
+                  <LangLink
+                    key={cat.id}
+                    href={`/articles/category/${cat.slug}`}
+                    className="px-6 py-2 text-xs font-bold uppercase tracking-widest transition-all rounded-full border bg-transparent text-[#2E4472] border-transparent hover:border-[#2E4472]/30"
+                  >
+                    {cat.name}
+                  </LangLink>
+                ))}
+              </div>
             </div>
 
             {/* Search */}

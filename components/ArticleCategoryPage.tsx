@@ -60,7 +60,7 @@ const ArticleCategoryPage = ({
           *,
           category:article_categories(*),
           author:lawyers(*)
-        `
+        `,
         )
         .eq("is_published", true)
         .eq("category_id", categoryId)
@@ -74,7 +74,7 @@ const ArticleCategoryPage = ({
           id: article.slug || article.id,
           title: isId ? article.title_id : article.title_en,
           date: new Date(
-            article.published_at || article.created_at || "2024-01-01"
+            article.published_at || article.created_at || "2024-01-01",
           ).toLocaleDateString(isId ? "id-ID" : "en-US", {
             year: "numeric",
             month: "long",
@@ -128,28 +128,32 @@ const ArticleCategoryPage = ({
           {/* Controls */}
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-8 border-b border-[#0B1B3B]/10 pb-8">
             {/* Categories */}
-            <div className="flex flex-wrap gap-2 md:gap-4">
-              {/* "All" tab */}
-              <LangLink
-                href="/articles"
-                className="px-6 py-2 text-xs font-bold uppercase tracking-widest transition-all rounded-full border bg-transparent text-[#2E4472] border-transparent hover:border-[#2E4472]/30"
-              >
-                {t("all")}
-              </LangLink>
-
-              {categories.map((cat) => (
+            {/* Outer: full-viewport scroll container */}
+            <div className="overflow-x-auto md:overflow-x-visible scrollbar-hide -mx-[calc(50vw-50%)] md:mx-0">
+              {/* Inner: content-aligned tab container */}
+              <div className="flex gap-2 md:gap-4 md:flex-wrap px-[calc(50vw-50%)] md:px-0 w-max md:w-auto">
+                {/* "All" tab */}
                 <LangLink
-                  key={cat.id}
-                  href={`/articles/category/${cat.slug}`}
-                  className={`px-6 py-2 text-xs font-bold uppercase tracking-widest transition-all rounded-full border ${
-                    cat.slug === category.slug
-                      ? "bg-[#0B1B3B] text-white border-[#0B1B3B]"
-                      : "bg-transparent text-[#2E4472] border-transparent hover:border-[#2E4472]/30"
-                  }`}
+                  href="/articles"
+                  className="px-6 py-2 text-xs font-bold uppercase tracking-widest transition-all rounded-full border bg-transparent text-[#2E4472] border-transparent hover:border-[#2E4472]/30"
                 >
-                  {cat.name}
+                  {t("all")}
                 </LangLink>
-              ))}
+
+                {categories.map((cat) => (
+                  <LangLink
+                    key={cat.id}
+                    href={`/articles/category/${cat.slug}`}
+                    className={`px-6 py-2 text-xs font-bold uppercase tracking-widest transition-all rounded-full border ${
+                      cat.slug === category.slug
+                        ? "bg-[#0B1B3B] text-white border-[#0B1B3B]"
+                        : "bg-transparent text-[#2E4472] border-transparent hover:border-[#2E4472]/30"
+                    }`}
+                  >
+                    {cat.name}
+                  </LangLink>
+                ))}
+              </div>
             </div>
 
             {/* Search — always redirects to /articles?search= */}

@@ -84,12 +84,12 @@ const PracticeAreasSection = ({
               <LangLink
                 key={group.id}
                 href={`/practice-areas#${group.slug}`}
-                className="group relative bg-white border border-[#1A2F5A] p-12 hover:-translate-y-2 transition-all duration-300 cursor-pointer flex flex-col"
+                className="group relative bg-white border border-[#1A2F5A] p-6 md:p-8 lg:p-12 hover:-translate-y-2 transition-all duration-300 cursor-pointer flex flex-col"
               >
                 {/* Gold Accent Line */}
                 <div className="absolute top-0 left-0 w-full h-1 bg-[#1A2F5A] group-hover:bg-[#D4C5A0] transition-colors duration-300" />
 
-                <div className="mb-8 h-10 w-10 relative flex items-center justify-center">
+                <div className="mb-4 md:mb-8 h-10 w-10 relative flex items-center justify-center">
                   {group.icon_url ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
@@ -105,7 +105,7 @@ const PracticeAreasSection = ({
                   )}
                 </div>
 
-                <h3 className="text-2xl font-normal text-[#0B1B3B] mb-4 font-serif">
+                <h3 className="text-2xl font-normal text-[#0B1B3B] mb-2 md:mb-4 font-serif">
                   {groupTitle}
                 </h3>
 

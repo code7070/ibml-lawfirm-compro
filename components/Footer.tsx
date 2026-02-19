@@ -60,12 +60,21 @@ const Footer = async ({ dictionary }: FooterProps) => {
           {/* Brand Column */}
           <div className="md:col-span-4 space-y-8">
             <Link href="/" className="flex items-center">
-              <Image
+              <div className="aspect-[3/1] h-10 md:h-14 relative">
+                <Image
+                  src="/images/iblm-logo-master.webp"
+                  alt="IBLM Law Group"
+                  className="object-contain size-full pointer-events-none"
+                  fill
+                  priority
+                />
+              </div>
+              {/*<Image
                 src="/images/logo-white.svg"
                 alt="IBLM Law Group"
                 width={160}
                 height={45}
-              />
+              />*/}
             </Link>
             <p className="text-gray-500 text-sm leading-relaxed max-w-sm font-light">
               {t.tagline}
@@ -222,7 +231,7 @@ const Footer = async ({ dictionary }: FooterProps) => {
           <p>
             &copy; {new Date().getFullYear()} {t.copyright}
           </p>
-          <div className="flex gap-8">
+          {/*<div className="flex gap-8">
             <Link
               href="/privacy"
               className="hover:text-gray-400 cursor-pointer"
@@ -238,7 +247,7 @@ const Footer = async ({ dictionary }: FooterProps) => {
             >
               {t.legal.sitemap}
             </Link>
-          </div>
+          </div>*/}
         </div>
       </div>
     </footer>

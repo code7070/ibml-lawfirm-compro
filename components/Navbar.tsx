@@ -67,15 +67,24 @@ const Navbar = () => {
       <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between w-full">
         {/* Logo */}
         <LangLink href="/" className="flex items-center group cursor-pointer">
-          <Image
+          <div className="aspect-[3/1] h-16 lg:h-20 relative">
+            <Image
+              src="/images/iblm-logo-master.webp"
+              alt="IBLM Law Group"
+              className="object-contain size-full pointer-events-none"
+              fill
+              priority
+            />
+          </div>
+          {/*<Image
             src="/images/iblm-logo.webp"
             alt="IBLM Law Group"
             width={45}
             height={45}
             className="object-contain"
             priority
-          />
-          <div className="flex gap-1 ml-3 items-start">
+          />*/}
+          {/*<div className="flex gap-1 ml-3 items-start">
             <div className="text-[#D4C5A0] text-4xl leading-7 font-geometrica pt-1">
               IBLM
             </div>
@@ -84,7 +93,7 @@ const Navbar = () => {
               <br />
               Group
             </div>
-          </div>
+          </div>*/}
           {/*<div className="flex flex-col ml-3 leading-tight">
             <span className="text-white font-bold text-xl tracking-wider font-museo">
               IBLM

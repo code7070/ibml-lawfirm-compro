@@ -14,7 +14,7 @@ const CTASection = () => {
         <span className="text-[#D4C5A0] font-bold tracking-[0.2em] text-xs uppercase mb-6 block">
           {t("label")}
         </span>
-        <h2 className="text-3xl md:text-4xl font-light mb-10 text-white leading-relaxed">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-light mb-10 text-white leading-relaxed">
           {t("title")}
         </h2>
         <Button variant="primary" href="/contact">
