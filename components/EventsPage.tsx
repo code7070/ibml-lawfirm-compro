@@ -60,7 +60,7 @@ const EventsPage: React.FC<EventsPageProps> = ({ events }) => {
             <div key={year} className="border-t border-[#0B1B3B]/10 pt-12">
               {/* Year Header */}
               <div className="flex items-center gap-6 mb-12">
-                <h2 className="text-6xl md:text-8xl font-light text-[#0B1B3B]/10 font-serif">
+                <h2 className="text-6xl md:text-7xl font-light text-[#0B1B3B]/10 font-serif">
                   {year}
                 </h2>
                 <div className="h-px bg-[#0B1B3B]/10 flex-grow"></div>

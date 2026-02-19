@@ -34,7 +34,7 @@ const Hero = () => {
             <p className="text-[#D4C5A0] uppercase tracking-[0.2em] text-sm font-bold mb-4">
               {t("tags")}
             </p>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-light leading-[1.1] text-white">
+            <h1 className="text-5xl md:text-7xl font-light leading-[1.1] text-white">
               {t("title_1")} <br />
               <span className="font-serif italic text-[#F5F5F7]">
                 {t("title_2")}
