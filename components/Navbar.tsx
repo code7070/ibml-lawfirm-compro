@@ -67,7 +67,7 @@ const Navbar = () => {
       <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between w-full">
         {/* Logo */}
         <LangLink href="/" className="flex items-center group cursor-pointer">
-          <div className="aspect-[3/1] h-16 lg:h-20 relative">
+          <div className="aspect-[3/1] h-14 lg:h-16 relative">
             <Image
               src="/images/iblm-logo-master.webp"
               alt="IBLM Law Group"

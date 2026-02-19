@@ -34,7 +34,7 @@ const Hero = () => {
             <p className="text-[#D4C5A0] uppercase tracking-[0.2em] text-sm font-bold mb-4">
               {t("tags")}
             </p>
-            <h1 className="text-5xl md:text-7xl font-light leading-[1.1] text-white">
+            <h1 className="text-4xl md:text-7xl font-light leading-[1.1] text-white">
               {t("title_1")} <br />
               <span className="font-serif italic text-[#F5F5F7]">
                 {t("title_2")}
@@ -42,7 +42,7 @@ const Hero = () => {
             </h1>
           </div>
 
-          <p className="text-xl text-gray-400 max-w-lg leading-[1.8] font-light pl-6 border-l border-white/10">
+          <p className="text-lg lg:text-xl text-gray-400 max-w-lg leading-[1.8] font-light pl-6 border-l border-white/10">
             {t("description")}
           </p>
 
@@ -101,7 +101,7 @@ const Hero = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/30 animate-bounce">
+      <div className="hidden md:block absolute bottom-10 left-1/2 -translate-x-1/2 text-white/30 animate-bounce">
         <ArrowDown size={24} />
       </div>
     </section>
