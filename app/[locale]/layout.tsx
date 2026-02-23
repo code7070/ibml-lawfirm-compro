@@ -93,6 +93,18 @@ export default async function RootLayout({
           <main>{children}</main>
           <Footer dictionary={messages} />
         </TranslationProvider>
+        {/*
+          <!-- Google tag (gtag.js) -->
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-5ERDX4JWBV"></script>
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-5ERDX4JWBV');
+          </script>
+
+          */}
       </body>
     </html>
   );

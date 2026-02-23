@@ -178,7 +178,7 @@ const PracticeAreaPage = ({
                         </p>
                       )}
                       <div
-                        className="text-[#2E4472] font-light text-sm leading-relaxed mt-4 prose prose-sm line-clamp-3"
+                        className="text-[#2E4472] font-light text-sm leading-relaxed mt-4 prose prose-sm"
                         dangerouslySetInnerHTML={{
                           __html:
                             (isEn
