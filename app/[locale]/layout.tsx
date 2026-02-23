@@ -8,6 +8,7 @@ import { notFound } from "next/navigation";
 import { getDictionary, locales, Locale } from "@/lib/dictionary";
 import { TranslationProvider } from "@/components/TranslationProvider";
 import { generatePageMetadata } from "@/lib/metadata";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const geometricaSans = localFont({
   src: "../fonts/GeometricaSans-Regular.woff",
@@ -93,18 +94,7 @@ export default async function RootLayout({
           <main>{children}</main>
           <Footer dictionary={messages} />
         </TranslationProvider>
-        {/*
-          <!-- Google tag (gtag.js) -->
-          <script async src="https://www.googletagmanager.com/gtag/js?id=G-5ERDX4JWBV"></script>
-          <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-5ERDX4JWBV');
-          </script>
-
-          */}
+        <GoogleAnalytics gaId={process.env.GA_ID!} />
       </body>
     </html>
   );
