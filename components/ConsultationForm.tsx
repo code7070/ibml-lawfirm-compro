@@ -230,7 +230,7 @@ ${formData.message}
               <div
                 ref={scrollContainerRef}
                 onScroll={handleScroll}
-                className="flex-1 max-h-[520px] overflow-y-auto border md:border-l-0 border-[#0B1B3B]/15 bg-[#F5F5F7]/40 p-4 md:p-8 scroll-smooth -mx-8"
+                className="flex-1 max-h-[520px] overflow-y-auto border md:border-l-0 border-[#0B1B3B]/15 bg-[#F5F5F7]/40 p-4 md:p-8 scroll-smooth -mx-8 md:mx-0"
                 style={{
                   scrollbarWidth: "thin",
                   scrollbarColor: "#0B1B3B #e0e0e3",
