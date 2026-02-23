@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import CTASection from "./CTASection";
 import { useTranslations } from "@/hooks/useTranslations";
+import { JobOpening } from "@/lib/types/database";
 
 const CopyButton = ({ text }: { text: string }) => {
   const [copied, setCopied] = useState(false);
@@ -40,7 +41,12 @@ const CopyButton = ({ text }: { text: string }) => {
   );
 };
 
-const CareerPage = () => {
+interface CareerPageProps {
+  jobs?: JobOpening[];
+  locale?: string;
+}
+
+const CareerPage = ({ jobs = [], locale = "en" }: CareerPageProps) => {
   const t = useTranslations("career");
 
   const values = [
@@ -61,26 +67,7 @@ const CareerPage = () => {
     },
   ];
 
-  const positions = [
-    {
-      title: "Senior Associate - IP Litigation",
-      location: "Jakarta / Hybrid",
-      type: "Full-time",
-      department: "Litigation",
-    },
-    {
-      title: "Mid-Level Associate - Corporate M&A",
-      location: "Jakarta / Remote",
-      type: "Full-time",
-      department: "Corporate",
-    },
-    {
-      title: "Legal Technologist",
-      location: "Jakarta",
-      type: "Full-time",
-      department: "Operations",
-    },
-  ];
+
 
   const benefits = [
     { icon: Brain, labelKey: "benefits.mentorship" },
@@ -196,30 +183,46 @@ const CareerPage = () => {
             {t("openings.title")}
           </h2>
 
-          <div className="space-y-4">
-            {positions.map((job) => (
-              <div
-                key={job.title}
-                className="bg-white p-8 border border-transparent hover:border-[#D4C5A0] transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-6 group cursor-pointer shadow-sm hover:shadow-md"
-              >
-                <div>
-                  <h3 className="font-serif !text-lg font-bold text-[#0B1B3B] mb-2">
-                    {job.title}
-                  </h3>
-                  <div className="flex flex-wrap gap-4 text-sm text-gray-500 font-mono">
-                    <span>{job.department}</span>
-                    <span className="hidden md:inline">•</span>
-                    <span>{job.location}</span>
-                    <span className="hidden md:inline">•</span>
-                    <span>{job.type}</span>
+          {jobs.length === 0 ? (
+            <div className="text-center py-16 text-gray-400 font-light">
+              <p className="text-lg mb-2">{t("openings.noOpenings") || "No open positions at this time."}</p>
+              <p className="text-sm">{t("openings.speculativeHint") || "Send your CV to careers@iblm.law for speculative applications."}</p>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {jobs.map((job) => {
+                const title = locale === "id" ? job.title_id : job.title_en;
+                const location = locale === "id" ? job.location_id : job.location_en;
+
+                return (
+                  <div
+                    key={job.id}
+                    className="bg-white p-8 border border-transparent hover:border-[#D4C5A0] transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-6 group cursor-pointer shadow-sm hover:shadow-md"
+                  >
+                    <div>
+                      <h3 className="font-serif !text-lg font-bold text-[#0B1B3B] mb-2">
+                        {title}
+                      </h3>
+                      <div className="flex flex-wrap gap-4 text-sm text-gray-500 font-mono">
+                        {job.department && <span>{job.department}</span>}
+                        {job.department && location && <span className="hidden md:inline">•</span>}
+                        {location && <span>{location}</span>}
+                        {job.employment_type && (
+                          <>
+                            <span className="hidden md:inline">•</span>
+                            <span className="capitalize">{job.employment_type.replace("-", " ")}</span>
+                          </>
+                        )}
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2 text-[#D4C5A0] font-bold uppercase text-xs tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-[-10px] group-hover:translate-x-0 duration-300">
+                      {t("openings.apply")} <ArrowRight className="w-4 h-4" />
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-center gap-2 text-[#D4C5A0] font-bold uppercase text-xs tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-[-10px] group-hover:translate-x-0 duration-300">
-                  {t("openings.apply")} <ArrowRight className="w-4 h-4" />
-                </div>
-              </div>
-            ))}
-          </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       </section>
 

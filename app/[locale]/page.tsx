@@ -5,8 +5,7 @@ import Articles from "@/components/Articles";
 import CTASection from "@/components/CTASection";
 import LogoTicker from "@/components/LogoTicker";
 import PracticeAreasSection from "@/components/PracticeAreasSection";
-import { practiceGroupsService, clientsService } from "@/services";
-import { ARTICLE_DATA } from "@/data/articles";
+import { practiceGroupsService, clientsService, articlesService } from "@/services";
 import { getDictionary, Locale } from "@/lib/dictionary";
 import { LogoItem } from "@/types";
 import { generatePageMetadata } from "@/lib/metadata";
@@ -34,13 +33,15 @@ export default async function HomePage({
   const { locale } = await params;
 
   // Fetch data in parallel — lawyers are fetched inside Team component
-  const [practiceGroupsResponse, clientsResponse, dict] = await Promise.all([
+  const [practiceGroupsResponse, clientsResponse, articlesResponse, dict] = await Promise.all([
     practiceGroupsService.getActive(),
     clientsService.getAllSorted(),
+    articlesService.getFeatured(3),
     getDictionary(locale as Locale),
   ]);
   const practiceGroups = practiceGroupsResponse.data || [];
   const allClients = clientsResponse.data || [];
+  const featuredArticles = articlesResponse.data || [];
 
   // Filter and map clients data
   const clientLogos: LogoItem[] = allClients
@@ -99,7 +100,7 @@ export default async function HomePage({
         <Team locale={locale} />
       </div>
       <div id="articles">
-        <Articles articles={ARTICLE_DATA} />
+        <Articles articles={featuredArticles} locale={locale} />
       </div>
       <CTASection />
     </>

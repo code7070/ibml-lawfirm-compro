@@ -1,6 +1,7 @@
 import CareerPage from "@/components/CareerPage";
 import { generatePageMetadata } from "@/lib/metadata";
 import { Locale } from "@/lib/dictionary";
+import { jobsService } from "@/services";
 
 export const revalidate = 300;
 
@@ -22,5 +23,10 @@ export default async function Page({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  return <CareerPage />;
+  const { locale } = await params;
+
+  const jobsResponse = await jobsService.getOpen();
+  const jobs = jobsResponse.data || [];
+
+  return <CareerPage jobs={jobs} locale={locale} />;
 }

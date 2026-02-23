@@ -64,7 +64,7 @@ export async function generatePageMetadata(
       title,
       description,
       siteName: "IBLM Law Group",
-      // images: [{url: imageUrl,width: 1200,height: 630,alt: "IBLM Law Group - The Sophisticated Guardian",},],
+      // images: [{url: imageUrl,width: 1200,height: 630,alt: "IBLM Law Group - Driven by Excellence",},],
     },
     twitter: {
       card: "summary_large_image",

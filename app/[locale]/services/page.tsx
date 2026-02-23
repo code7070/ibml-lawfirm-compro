@@ -1,6 +1,5 @@
 import ServicesPage from "@/components/ServicesPage";
-import { ARTICLE_DATA } from "@/data/articles";
-import { clientsService } from "@/services";
+import { clientsService, articlesService } from "@/services";
 import { generatePageMetadata } from "@/lib/metadata";
 import { Locale } from "@/lib/dictionary";
 import { LogoItem } from "@/types";
@@ -25,8 +24,13 @@ export default async function Services({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  // Fetch clients data
-  const clientsResponse = await clientsService.getAllSorted();
+  const { locale } = await params;
+
+  // Fetch clients and recent articles in parallel
+  const [clientsResponse, articlesResponse] = await Promise.all([
+    clientsService.getAllSorted(),
+    articlesService.getFeatured(6),
+  ]);
   const allClients = clientsResponse.data || [];
 
   // Filter and map clients data (same pattern as /about and /practice-areas)
@@ -46,9 +50,12 @@ export default async function Services({
       image: c.logo_url || undefined,
     }));
 
+  const articles = articlesResponse.data || [];
+
   return (
     <ServicesPage
-      articles={ARTICLE_DATA}
+      articles={articles}
+      locale={locale}
       clientLogos={clientLogos}
       orgLogos={orgLogos}
     />

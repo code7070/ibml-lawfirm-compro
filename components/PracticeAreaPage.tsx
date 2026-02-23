@@ -76,7 +76,7 @@ const PracticeAreaPage = ({
           <h1 className="text-5xl md:text-7xl font-light mb-8">
             {isEn ? "Specialized" : "Spesialisasi"}{" "}
             <span className="font-serif italic text-[#D4C5A0]">
-              {isEn ? "Legal Architectures" : "Arsitektur Hukum"}
+              {isEn ? "Legal Groups" : "Arsitektur Hukum"}
             </span>
           </h1>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light leading-relaxed">

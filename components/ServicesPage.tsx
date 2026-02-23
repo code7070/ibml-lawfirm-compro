@@ -19,12 +19,14 @@ import {
 import CTASection from "./CTASection";
 import LogoTicker from "./LogoTicker";
 import { LangLink } from "./LangLink";
-import { Article, LogoItem } from "@/types";
+import { ArticleWithCategory } from "@/lib/types/database";
+import { LogoItem } from "@/types";
 import { useTranslations } from "@/hooks/useTranslations";
 import Image from "next/image";
 
 interface ServicesPageProps {
-  articles?: Article[];
+  articles?: ArticleWithCategory[];
+  locale?: string;
   clientLogos?: LogoItem[];
   orgLogos?: LogoItem[];
 }
@@ -40,6 +42,7 @@ const ACADEMIC_PARTNERS = [
 
 const ServicesPage = ({
   articles = [],
+  locale = "en",
   clientLogos,
   orgLogos,
 }: ServicesPageProps) => {
@@ -49,10 +52,14 @@ const ServicesPage = ({
     window.scrollTo(0, 0);
   }, []);
 
-  // Use the Research articles, if available
-  const researchArticles = articles
-    .filter((a) => a.category === "Research")
-    .slice(0, 3);
+  // Use the Research articles if available, otherwise use latest 3 articles
+  const researchArticles = (() => {
+    const research = articles.filter((a) => {
+      const catName = locale === "id" ? a.category?.name_id : a.category?.name_en;
+      return catName?.toLowerCase().includes("research");
+    });
+    return (research.length > 0 ? research : articles).slice(0, 3);
+  })();
 
   return (
     <div className="min-h-screen bg-white">
@@ -214,47 +221,59 @@ const ServicesPage = ({
           {/* Research Articles Grid */}
           {researchArticles.length > 0 && (
             <div className="grid md:grid-cols-3 gap-8 ">
-              {researchArticles.map((article) => (
-                <LangLink
-                  key={article.id}
-                  href={`/articles/${article.id}`}
-                  className="group bg-white flex flex-col h-full shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer"
-                >
-                  <div className="relative h-48 overflow-hidden">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={article.image}
-                      alt={article.title}
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                    />
-                    <div className="absolute inset-0 bg-[#0B1B3B]/20 mix-blend-multiply" />
-                    <div className="absolute top-4 left-4 bg-[#0B1B3B] text-[#D4C5A0] p-2">
-                      <FileText size={20} />
+              {researchArticles.map((article) => {
+                const title = locale === "id" ? article.title_id : article.title_en;
+                const excerpt = locale === "id" ? article.excerpt_id : article.excerpt_en;
+                const categoryName = article.category
+                  ? locale === "id"
+                    ? article.category.name_id
+                    : article.category.name_en
+                  : null;
+
+                return (
+                  <LangLink
+                    key={article.id}
+                    href={`/articles/${article.slug}`}
+                    className="group bg-white flex flex-col h-full shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer"
+                  >
+                    <div className="relative h-48 overflow-hidden">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={article.cover_url || "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=800"}
+                        alt={title || "Article"}
+                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                      />
+                      <div className="absolute inset-0 bg-[#0B1B3B]/20 mix-blend-multiply" />
+                      <div className="absolute top-4 left-4 bg-[#0B1B3B] text-[#D4C5A0] p-2">
+                        <FileText size={20} />
+                      </div>
                     </div>
-                  </div>
-                  <div className="p-8 flex-1 flex flex-col">
-                    <div className="flex items-center gap-4 mb-4">
-                      <span className="text-[10px] font-bold text-[#D4C5A0] uppercase tracking-widest">
-                        {article.category}
-                      </span>
-                      <span className="w-1 h-1 bg-gray-300 rounded-full" />
-                      <span className="text-[10px] text-gray-400 font-mono">
-                        {t("research.readTime")}
-                      </span>
+                    <div className="p-8 flex-1 flex flex-col">
+                      <div className="flex items-center gap-4 mb-4">
+                        {categoryName && (
+                          <span className="text-[10px] font-bold text-[#D4C5A0] uppercase tracking-widest">
+                            {categoryName}
+                          </span>
+                        )}
+                        <span className="w-1 h-1 bg-gray-300 rounded-full" />
+                        <span className="text-[10px] text-gray-400 font-mono">
+                          {t("research.readTime")}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-serif text-[#0B1B3B] mb-4 group-hover:text-[#D4C5A0] transition-colors leading-tight line-clamp-4">
+                        {title}
+                      </h3>
+                      <p className="text-sm text-gray-500 font-light mb-8 line-clamp-3">
+                        {excerpt}
+                      </p>
+                      <div className="mt-auto flex items-center gap-2 text-[#0B1B3B] text-[10px] font-bold uppercase tracking-[0.2em] group-hover:gap-4 transition-all">
+                        {t("research.accessAnalysis")}{" "}
+                        <ArrowRight size={14} className="text-[#D4C5A0]" />
+                      </div>
                     </div>
-                    <h3 className="text-xl font-serif text-[#0B1B3B] mb-4 group-hover:text-[#D4C5A0] transition-colors leading-tight line-clamp-4">
-                      {article.title}
-                    </h3>
-                    <p className="text-sm text-gray-500 font-light mb-8 line-clamp-3">
-                      {article.summary}
-                    </p>
-                    <div className="mt-auto flex items-center gap-2 text-[#0B1B3B] text-[10px] font-bold uppercase tracking-[0.2em] group-hover:gap-4 transition-all">
-                      {t("research.accessAnalysis")}{" "}
-                      <ArrowRight size={14} className="text-[#D4C5A0]" />
-                    </div>
-                  </div>
-                </LangLink>
-              ))}
+                  </LangLink>
+                );
+              })}
             </div>
           )}
 
