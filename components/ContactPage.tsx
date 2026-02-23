@@ -7,18 +7,13 @@ import {
   Youtube,
   Instagram,
 } from "lucide-react";
-import ContactForm from "./ContactForm";
+import ContactFormSelector from "./ContactFormSelector";
 import { contactSettingsService } from "@/services/contact.service";
 
 // ─── Social URL normalizers ───────────────────────────────────────────────────
-// Menerima input bebas: full URL, username dengan @, atau username polos.
-// Selalu mengembalikan URL yang valid dan bisa dibuka langsung.
-
 function normalizeSocialUrl(raw: string, base: string): string {
   const trimmed = raw.trim();
-  // Sudah berupa full URL (http/https) → langsung pakai
   if (/^https?:\/\//i.test(trimmed)) return trimmed;
-  // Strip leading @ atau /
   const handle = trimmed.replace(/^[@/]+/, "");
   return `${base}${handle}`;
 }
@@ -30,12 +25,9 @@ const SOCIAL_BASES = {
   youtube:   "https://youtube.com/@",
 } as const;
 
-/** Kembalikan label tampilan yang bersih (tanpa prefix URL, tanpa @) */
 function socialLabel(raw: string, base: string): string {
   const url = normalizeSocialUrl(raw, base);
-  // Ambil path terakhir setelah base, buang trailing slash
   const path = url.replace(base, "").replace(/\/$/, "");
-  // Jika path masih kosong, tampilkan URL aslinya
   return path || url;
 }
 // ─────────────────────────────────────────────────────────────────────────────
@@ -65,8 +57,19 @@ const ContactPage = async () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <section className="bg-[#0B1B3B] text-white py-20 px-6">
-        <div className="max-w-[1400px] mx-auto text-center">
+      <section className="bg-[#0B1B3B] text-white py-20 px-6 relative overflow-hidden">
+        {/* Diagonal accent lines */}
+        <div className="absolute inset-0 opacity-[0.02]" style={{
+          backgroundImage: `repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 14px,
+            #D4C5A0 14px,
+            #D4C5A0 15px
+          )`,
+        }} />
+
+        <div className="max-w-[1400px] mx-auto text-center relative z-10">
           <span className="text-[#D4C5A0] font-bold tracking-[0.2em] text-xs uppercase mb-4 block">
             Secure Channel
           </span>
@@ -86,7 +89,7 @@ const ContactPage = async () => {
         <div
           className={`grid gap-16 ${hasLeftColumn ? "lg:grid-cols-12" : ""}`}
         >
-          {/* LEFT COLUMN: Contact Info — hanya tampil jika ada minimal satu section */}
+          {/* LEFT COLUMN: Contact Info */}
           {hasLeftColumn && (
             <div className="lg:col-span-5 space-y-12">
               {/* ── Direct Comms ─────────────────────────────────────────── */}
@@ -96,7 +99,6 @@ const ContactPage = async () => {
                     Direct Comms
                   </h3>
 
-                  {/* Email — hanya tampil jika ada */}
                   {hasEmail && (
                     <a
                       href={`mailto:${settings!.email}`}
@@ -116,7 +118,6 @@ const ContactPage = async () => {
                     </a>
                   )}
 
-                  {/* WhatsApp / Phone — hanya tampil jika ada */}
                   {hasPhone && (
                     <a
                       href={
@@ -153,7 +154,6 @@ const ContactPage = async () => {
                     Office Address
                   </h3>
 
-                  {/* Alamat teks — hanya tampil jika ada */}
                   {hasAddress && (
                     <div className="flex items-start gap-4 mb-6 text-[#2E4472]">
                       <MapPin className="text-[#D4C5A0] shrink-0 mt-1" />
@@ -163,7 +163,6 @@ const ContactPage = async () => {
                     </div>
                   )}
 
-                  {/* Google Maps embed — hanya tampil jika ada link */}
                   {hasMap && (
                     <div className="w-full h-64 bg-[#0B1B3B] relative overflow-hidden border border-[#D4C5A0]/30 grayscale hover:grayscale-0 transition-all duration-700">
                       <iframe
@@ -273,13 +272,13 @@ const ContactPage = async () => {
             </div>
           )}
 
-          {/* RIGHT COLUMN: Form — melebar penuh jika tidak ada left column */}
+          {/* RIGHT COLUMN: Form Selector */}
           <div
             className={
               hasLeftColumn ? "lg:col-span-7" : "w-full max-w-3xl mx-auto"
             }
           >
-            <ContactForm />
+            <ContactFormSelector />
           </div>
         </div>
       </div>

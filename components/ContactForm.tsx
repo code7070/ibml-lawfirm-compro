@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Button from "./Button";
+import { Send, CheckCircle2, ArrowRight } from "lucide-react";
 import { contactSubmissionsService } from "@/services/contact.service";
 import { useTranslations } from "@/hooks/useTranslations";
 
@@ -32,12 +32,6 @@ const ContactForm = () => {
     setErrorMessage("");
 
     try {
-      // Prepare submission data
-      // Combine organization and practice area into the message or subject if needed, 
-      // or just send them as part of the message body since the database schema 
-      // is fixed (name, email, phone, subject, message).
-      // We'll construct a structured message.
-      
       const structuredMessage = `
 Organization: ${formData.organization}
 Practice Area: ${formData.practice_area}
@@ -59,7 +53,6 @@ ${formData.message}
       }
 
       // Fire-and-forget: forward to Google Sheets via API route
-      // This won't block the success state — Apps Script failure is silent
       fetch("/api/contact-sheets", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -87,37 +80,47 @@ ${formData.message}
 
   if (submitStatus === "success") {
     return (
-      <div className="bg-white border-2 border-[#F5F5F7] p-8 md:p-12 shadow-2xl shadow-[#0B1B3B]/5 text-center py-20">
-        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-          <svg className="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-          </svg>
+      <div className="bg-white border border-[#e0e0e3] p-8 md:p-12 text-center py-16">
+        <div className="w-16 h-16 border-2 border-green-200 flex items-center justify-center mx-auto mb-6">
+          <CheckCircle2 className="w-8 h-8 text-green-600" strokeWidth={1.5} />
         </div>
         <h3 className="text-2xl text-[#0B1B3B] mb-2 font-serif">{t("successTitle")}</h3>
-        <p className="text-gray-500 mb-8">
+        <p className="text-gray-500 mb-8 font-light">
           {t("successMessage")}
         </p>
-        <Button variant="gold" onClick={() => setSubmitStatus("idle")}>
-          {t("sendAnother")}
-        </Button>
+        <button
+          onClick={() => setSubmitStatus("idle")}
+          className="inline-flex items-center gap-3 px-10 py-4 border-2 border-[#0B1B3B] text-[#0B1B3B] hover:bg-[#0B1B3B] hover:text-white transition-all duration-300 tracking-wider uppercase text-sm font-medium cursor-pointer"
+        >
+          <span>{t("sendAnother")}</span>
+          <ArrowRight className="w-4 h-4" />
+        </button>
       </div>
     );
   }
 
   return (
-    <div className="bg-white border-2 border-[#F5F5F7] p-8 md:p-12 shadow-2xl shadow-[#0B1B3B]/5 relative overflow-hidden">
-      {/* Decorative corner */}
-      <div className="absolute top-0 right-0 w-20 h-20 bg-[#F5F5F7] -rotate-45 translate-x-10 -translate-y-10"></div>
+    <div className="bg-white border border-[#e0e0e3] p-8 md:p-12 relative overflow-hidden">
+      {/* Subtle top accent line */}
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#0B1B3B]/20 to-transparent" />
 
-      <h2 className="text-3xl font-light text-[#0B1B3B] mb-2">
-        {t("requestConsultation")}
-      </h2>
-      <p className="text-gray-500 mb-10 font-light">
-        {t("requiredFields")}
-      </p>
+      <div className="mb-10">
+        <div className="flex items-center gap-3 mb-4">
+          <Send className="w-5 h-5 text-[#2E4472]" strokeWidth={1.5} />
+          <span className="text-xs font-bold text-[#2E4472] uppercase tracking-[0.2em]">
+            {t("engageLabel")}
+          </span>
+        </div>
+        <h2 className="text-3xl font-light text-[#0B1B3B] mb-2">
+          {t("engageTitle")}
+        </h2>
+        <p className="text-gray-500 font-light text-sm">
+          {t("requiredFields")}
+        </p>
+      </div>
 
       {submitStatus === "error" && (
-        <div className="mb-6 p-4 bg-red-50 text-red-600 text-sm rounded border border-red-100">
+        <div className="mb-6 p-4 bg-red-50 text-red-600 text-sm border border-red-100">
           {t("transmissionFailed")}: {errorMessage}
         </div>
       )}
@@ -178,7 +181,7 @@ ${formData.message}
               value={formData.phone}
               onChange={handleChange}
               className="w-full border-b border-[#0B1B3B]/20 py-3 bg-transparent outline-none focus:border-[#D4C5A0] transition-colors text-[#2E4472]"
-              placeholder="+1 (555) 000-0000"
+              placeholder="+62 812 3456 7890"
             />
           </div>
         </div>
@@ -214,15 +217,20 @@ ${formData.message}
             rows={4}
             value={formData.message}
             onChange={handleChange}
-            className="w-full border border-[#0B1B3B]/20 p-4 bg-transparent outline-none focus:border-[#D4C5A0] transition-colors text-[#2E4472]"
-            placeholder="Briefly describe your legal needs..."
+            className="w-full border border-[#0B1B3B]/15 p-4 bg-[#F5F5F7]/50 outline-none focus:border-[#D4C5A0] focus:bg-white transition-all text-[#2E4472]"
+            placeholder="Briefly describe your inquiry..."
           ></textarea>
         </div>
 
         <div className="pt-4">
-          <Button variant="gold" className="w-full md:w-auto" disabled={isSubmitting}>
-            {isSubmitting ? t("submit.sending") : t("submit.send")}
-          </Button>
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="group inline-flex items-center gap-3 px-10 py-4 border-2 border-[#0B1B3B] text-[#0B1B3B] hover:bg-[#0B1B3B] hover:text-white transition-all duration-300 tracking-wider uppercase text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+          >
+            <span>{isSubmitting ? t("submit.sending") : t("submit.send")}</span>
+            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </button>
         </div>
       </form>
     </div>

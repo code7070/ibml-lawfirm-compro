@@ -245,7 +245,15 @@
       "weekend": "Saturday - Sunday: By Appointment"
     }
   },
+  "contactPage": {
+    "tabEngage": "Engage with Us",
+    "tabConsultation": "Professional Consultation",
+    "consultationBanner": "Need a formal legal consultation session? Schedule one through our",
+    "consultationBannerLink": "Professional Consultation channel"
+  },
   "contactForm": {
+    "engageLabel": "General Inquiry",
+    "engageTitle": "Engage with Us",
     "successTitle": "Message Received",
     "successMessage": "Your inquiry has been securely logged. Our counsel will review your message and respond shortly.",
     "sendAnother": "Send Another Message",
@@ -274,6 +282,45 @@
       "sending": "Sending...",
       "send": "Send Message"
     }
+  },
+  "consultationForm": {
+    "gateLabel": "Privileged & Confidential",
+    "gateTitle": "Professional",
+    "gateTitleHighlight": "Consultation",
+    "agreementText": "Please read and scroll through the following terms and conditions in full before proceeding with your consultation request.",
+    "tncSection1Title": "1. Nature of Consultation",
+    "tncSection1P1": "By submitting this consultation request, you are initiating a formal engagement inquiry with IBLM Law Group. This request does not automatically establish an attorney-client relationship. An attorney-client relationship is only formed upon mutual written agreement between you and IBLM Law Group.",
+    "tncSection1P2": "The initial consultation is intended to assess your legal needs and determine whether IBLM Law Group is the appropriate firm to represent your interests. Our team reserves the right to decline engagement based on conflicts of interest, capacity, or other professional considerations.",
+    "tncSection2Title": "2. Confidentiality & Privilege",
+    "tncSection2P1": "All information disclosed during and in preparation for the consultation will be treated as strictly confidential. IBLM Law Group adheres to the highest standards of attorney-client privilege as governed by the Indonesian Advocates Law (UU No. 18 Tahun 2003) and applicable professional codes of conduct.",
+    "tncSection2P2": "Your personal data, case details, and any supporting documents shared will be securely stored and will not be disclosed to any third party without your explicit written consent, except as required by law or court order.",
+    "tncSection3Title": "3. Consultation Process",
+    "tncSection3P1": "Upon submission of your request, the following process will be initiated:",
+    "tncSection3Item1": "A member of our counsel will review your submission within 1-2 business days and assess the preliminary scope of your legal matter.",
+    "tncSection3Item2": "You will be contacted via your provided email or phone number to confirm the consultation schedule, format (online or in-person), and any preparatory materials required.",
+    "tncSection3Item3": "The initial consultation session typically lasts 30-60 minutes. Additional sessions or formal engagement will be discussed and agreed upon separately.",
+    "tncSection4Title": "4. Fees & Obligations",
+    "tncSection4P1": "The initial consultation may be subject to a consultation fee, which will be communicated to you prior to the scheduled session. Payment terms and methods will be provided in the confirmation correspondence.",
+    "tncSection4P2": "By proceeding, you agree to provide accurate and complete information to the best of your knowledge. Providing false or misleading information may affect the quality of legal advice rendered and may constitute grounds for termination of the consultation.",
+    "tncSection5Title": "5. Data Processing & Privacy",
+    "tncSection5P1": "Your personal information will be processed in accordance with IBLM Law Group's Privacy Policy and applicable Indonesian data protection regulations (UU PDP No. 27 Tahun 2022). You have the right to request access to, correction of, or deletion of your personal data at any time by contacting our office directly.",
+    "scrollToRead": "Scroll to read all",
+    "scrollReminder": "Please scroll through and read all terms above to continue.",
+    "agreeButton": "I Acknowledge & Proceed",
+    "agreeFootnote": "By proceeding, you agree to our consultation terms and privacy policy.",
+    "formLabel": "Consultation Request",
+    "formTitle": "Schedule Your",
+    "formTitleHighlight": "Consultation",
+    "channelLabel": "Consultation Channel",
+    "channelOnline": "Online",
+    "channelOnlineDesc": "Virtual meeting via video call",
+    "channelOffline": "In-Person",
+    "channelOfflineDesc": "Visit our office in Jakarta",
+    "submitButton": "Request Consultation",
+    "encrypted": "Encrypted & Privileged",
+    "successTitle": "Consultation Request Received",
+    "successMessage": "Your professional consultation request has been securely logged. A senior member of our counsel will review and respond within 1-2 business days.",
+    "sendAnother": "Submit Another Request"
   },
   "career": {
     "hero": {

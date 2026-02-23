@@ -245,7 +245,15 @@
       "weekend": "Sabtu - Minggu: Dengan Perjanjian"
     }
   },
+  "contactPage": {
+    "tabEngage": "Hubungi Kami",
+    "tabConsultation": "Konsultasi Profesional",
+    "consultationBanner": "Butuh sesi konsultasi hukum formal? Jadwalkan melalui",
+    "consultationBannerLink": "Kanal Konsultasi Profesional"
+  },
   "contactForm": {
+    "engageLabel": "Pertanyaan Umum",
+    "engageTitle": "Hubungi Kami",
     "successTitle": "Pesan Diterima",
     "successMessage": "Pertanyaan Anda telah dicatat dengan aman. Tim kami akan meninjau pesan Anda dan segera merespons.",
     "sendAnother": "Kirim Pesan Lain",
@@ -274,6 +282,45 @@
       "sending": "Mengirim...",
       "send": "Kirim Pesan"
     }
+  },
+  "consultationForm": {
+    "gateLabel": "Rahasia & Istimewa",
+    "gateTitle": "Konsultasi",
+    "gateTitleHighlight": "Profesional",
+    "agreementText": "Mohon baca dan gulir seluruh syarat dan ketentuan berikut sebelum melanjutkan permintaan konsultasi Anda.",
+    "tncSection1Title": "1. Sifat Konsultasi",
+    "tncSection1P1": "Dengan mengajukan permintaan konsultasi ini, Anda memulai penyelidikan keterlibatan formal dengan IBLM Law Group. Permintaan ini tidak secara otomatis membentuk hubungan pengacara-klien. Hubungan pengacara-klien hanya terbentuk berdasarkan kesepakatan tertulis bersama antara Anda dan IBLM Law Group.",
+    "tncSection1P2": "Konsultasi awal bertujuan untuk menilai kebutuhan hukum Anda dan menentukan apakah IBLM Law Group merupakan firma yang tepat untuk mewakili kepentingan Anda. Tim kami berhak menolak keterlibatan berdasarkan konflik kepentingan, kapasitas, atau pertimbangan profesional lainnya.",
+    "tncSection2Title": "2. Kerahasiaan & Hak Istimewa",
+    "tncSection2P1": "Seluruh informasi yang diungkapkan selama dan dalam persiapan konsultasi akan diperlakukan sebagai sangat rahasia. IBLM Law Group mematuhi standar tertinggi hak istimewa pengacara-klien sebagaimana diatur dalam Undang-Undang Advokat Indonesia (UU No. 18 Tahun 2003) dan kode etik profesional yang berlaku.",
+    "tncSection2P2": "Data pribadi Anda, detail kasus, dan dokumen pendukung yang dibagikan akan disimpan secara aman dan tidak akan diungkapkan kepada pihak ketiga mana pun tanpa persetujuan tertulis eksplisit dari Anda, kecuali sebagaimana diwajibkan oleh hukum atau perintah pengadilan.",
+    "tncSection3Title": "3. Proses Konsultasi",
+    "tncSection3P1": "Setelah pengajuan permintaan Anda, proses berikut akan dimulai:",
+    "tncSection3Item1": "Anggota tim hukum kami akan meninjau pengajuan Anda dalam 1-2 hari kerja dan menilai ruang lingkup awal masalah hukum Anda.",
+    "tncSection3Item2": "Anda akan dihubungi melalui email atau nomor telepon yang diberikan untuk mengonfirmasi jadwal konsultasi, format (online atau tatap muka), dan materi persiapan yang diperlukan.",
+    "tncSection3Item3": "Sesi konsultasi awal biasanya berlangsung 30-60 menit. Sesi tambahan atau keterlibatan formal akan didiskusikan dan disepakati secara terpisah.",
+    "tncSection4Title": "4. Biaya & Kewajiban",
+    "tncSection4P1": "Konsultasi awal mungkin dikenakan biaya konsultasi, yang akan dikomunikasikan kepada Anda sebelum sesi yang dijadwalkan. Ketentuan dan metode pembayaran akan diberikan dalam korespondensi konfirmasi.",
+    "tncSection4P2": "Dengan melanjutkan, Anda setuju untuk memberikan informasi yang akurat dan lengkap sesuai pengetahuan terbaik Anda. Memberikan informasi palsu atau menyesatkan dapat mempengaruhi kualitas nasihat hukum yang diberikan dan dapat menjadi dasar penghentian konsultasi.",
+    "tncSection5Title": "5. Pemrosesan Data & Privasi",
+    "tncSection5P1": "Informasi pribadi Anda akan diproses sesuai dengan Kebijakan Privasi IBLM Law Group dan peraturan perlindungan data Indonesia yang berlaku (UU PDP No. 27 Tahun 2022). Anda berhak untuk meminta akses, koreksi, atau penghapusan data pribadi Anda kapan saja dengan menghubungi kantor kami secara langsung.",
+    "scrollToRead": "Gulir untuk membaca semua",
+    "scrollReminder": "Mohon gulir dan baca seluruh ketentuan di atas untuk melanjutkan.",
+    "agreeButton": "Saya Memahami & Lanjutkan",
+    "agreeFootnote": "Dengan melanjutkan, Anda menyetujui ketentuan konsultasi dan kebijakan privasi kami.",
+    "formLabel": "Permintaan Konsultasi",
+    "formTitle": "Jadwalkan",
+    "formTitleHighlight": "Konsultasi Anda",
+    "channelLabel": "Kanal Konsultasi",
+    "channelOnline": "Online",
+    "channelOnlineDesc": "Pertemuan virtual via panggilan video",
+    "channelOffline": "Tatap Muka",
+    "channelOfflineDesc": "Kunjungi kantor kami di Jakarta",
+    "submitButton": "Ajukan Konsultasi",
+    "encrypted": "Terenkripsi & Rahasia",
+    "successTitle": "Permintaan Konsultasi Diterima",
+    "successMessage": "Permintaan konsultasi profesional Anda telah dicatat dengan aman. Anggota senior tim hukum kami akan meninjau dan merespons dalam 1-2 hari kerja.",
+    "sendAnother": "Ajukan Permintaan Lain"
   },
   "career": {
     "hero": {
