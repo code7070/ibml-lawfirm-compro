@@ -1,27 +1,65 @@
-import { MapPin, Mail, MessageCircle, Linkedin, Twitter, Youtube, Instagram } from "lucide-react";
+import {
+  MapPin,
+  Mail,
+  MessageCircle,
+  Linkedin,
+  Twitter,
+  Youtube,
+  Instagram,
+} from "lucide-react";
 import ContactForm from "./ContactForm";
 import { contactSettingsService } from "@/services/contact.service";
+
+// ─── Social URL normalizers ───────────────────────────────────────────────────
+// Menerima input bebas: full URL, username dengan @, atau username polos.
+// Selalu mengembalikan URL yang valid dan bisa dibuka langsung.
+
+function normalizeSocialUrl(raw: string, base: string): string {
+  const trimmed = raw.trim();
+  // Sudah berupa full URL (http/https) → langsung pakai
+  if (/^https?:\/\//i.test(trimmed)) return trimmed;
+  // Strip leading @ atau /
+  const handle = trimmed.replace(/^[@/]+/, "");
+  return `${base}${handle}`;
+}
+
+const SOCIAL_BASES = {
+  linkedin:  "https://linkedin.com/company/",
+  twitter:   "https://x.com/",
+  instagram: "https://instagram.com/",
+  youtube:   "https://youtube.com/@",
+} as const;
+
+/** Kembalikan label tampilan yang bersih (tanpa prefix URL, tanpa @) */
+function socialLabel(raw: string, base: string): string {
+  const url = normalizeSocialUrl(raw, base);
+  // Ambil path terakhir setelah base, buang trailing slash
+  const path = url.replace(base, "").replace(/\/$/, "");
+  // Jika path masih kosong, tampilkan URL aslinya
+  return path || url;
+}
+// ─────────────────────────────────────────────────────────────────────────────
 
 const ContactPage = async () => {
   const { data: settings } = await contactSettingsService.getMain();
 
   // ─── Derived flags ────────────────────────────────────────────────────────
-  const hasEmail        = Boolean(settings?.email);
-  const hasPhone        = Boolean(settings?.whatsapp || settings?.phone_primary);
-  const hasDirectComms  = hasEmail || hasPhone;
+  const hasEmail = Boolean(settings?.email);
+  const hasPhone = Boolean(settings?.whatsapp || settings?.phone_primary);
+  const hasDirectComms = hasEmail || hasPhone;
 
-  const hasAddress      = Boolean(settings?.address_text);
-  const hasMap          = Boolean(settings?.address_map_link);
-  const hasOffice       = hasAddress || hasMap;
+  const hasAddress = Boolean(settings?.address_text);
+  const hasMap = Boolean(settings?.address_map_link);
+  const hasOffice = hasAddress || hasMap;
 
-  const hasSocials      = Boolean(
-    settings?.linkedin_url  ||
-    settings?.twitter_url   ||
+  const hasSocials = Boolean(
+    settings?.linkedin_url ||
+    settings?.twitter_url ||
     settings?.instagram_url ||
-    settings?.youtube_url
+    settings?.youtube_url,
   );
 
-  const hasLeftColumn   = hasDirectComms || hasOffice || hasSocials;
+  const hasLeftColumn = hasDirectComms || hasOffice || hasSocials;
   // ─────────────────────────────────────────────────────────────────────────
 
   return (
@@ -45,12 +83,12 @@ const ContactPage = async () => {
       </section>
 
       <div className="max-w-[1400px] mx-auto px-6 py-24">
-        <div className={`grid gap-16 ${hasLeftColumn ? "lg:grid-cols-12" : ""}`}>
-
+        <div
+          className={`grid gap-16 ${hasLeftColumn ? "lg:grid-cols-12" : ""}`}
+        >
           {/* LEFT COLUMN: Contact Info — hanya tampil jika ada minimal satu section */}
           {hasLeftColumn && (
             <div className="lg:col-span-5 space-y-12">
-
               {/* ── Direct Comms ─────────────────────────────────────────── */}
               {hasDirectComms && (
                 <div className="space-y-6">
@@ -98,7 +136,9 @@ const ContactPage = async () => {
                           {settings?.whatsapp ? "Secure Chat" : "Phone Line"}
                         </p>
                         <p className="text-[#2E4472] text-lg font-light group-hover:text-[#25D366] transition-colors">
-                          {settings?.whatsapp ? "WhatsApp Line" : settings?.phone_primary}
+                          {settings?.whatsapp
+                            ? "WhatsApp Line"
+                            : settings?.phone_primary}
                         </p>
                       </div>
                     </a>
@@ -106,11 +146,11 @@ const ContactPage = async () => {
                 </div>
               )}
 
-              {/* ── Base of Operations ───────────────────────────────────── */}
+              {/* ── Office Address ───────────────────────────────────── */}
               {hasOffice && (
                 <div>
                   <h3 className="text-[#0B1B3B] font-serif text-2xl mb-6">
-                    Base of Operations
+                    Office Address
                   </h3>
 
                   {/* Alamat teks — hanya tampil jika ada */}
@@ -146,59 +186,101 @@ const ContactPage = async () => {
                   <h3 className="text-[#0B1B3B] font-serif text-2xl mb-6">
                     Signal Frequency
                   </h3>
-                  <div className="flex gap-4">
+                  <div className="space-y-4">
                     {settings?.linkedin_url && (
                       <a
-                        href={settings.linkedin_url}
+                        href={normalizeSocialUrl(settings.linkedin_url, SOCIAL_BASES.linkedin)}
                         target="_blank"
                         rel="noreferrer"
-                        className="w-12 h-12 border border-[#0B1B3B]/20 flex items-center justify-center hover:bg-[#0B1B3B] hover:text-[#D4C5A0] hover:border-[#0B1B3B] transition-all text-[#0B1B3B]"
+                        className="flex items-center gap-6 group p-6 border border-[#0B1B3B]/10 hover:border-[#D4C5A0] transition-all bg-[#F5F5F7] hover:bg-white"
                       >
-                        <Linkedin strokeWidth={1.5} />
+                        <div className="w-12 h-12 bg-[#0B1B3B] flex items-center justify-center text-[#D4C5A0] shrink-0">
+                          <Linkedin strokeWidth={1.5} />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="text-xs font-bold text-[#0B1B3B] uppercase tracking-widest mb-1">
+                            LinkedIn
+                          </p>
+                          <p className="text-[#2E4472] text-sm font-light group-hover:text-[#D4C5A0] transition-colors truncate">
+                            {socialLabel(settings.linkedin_url, SOCIAL_BASES.linkedin)}
+                          </p>
+                        </div>
                       </a>
                     )}
                     {settings?.twitter_url && (
                       <a
-                        href={settings.twitter_url}
+                        href={normalizeSocialUrl(settings.twitter_url, SOCIAL_BASES.twitter)}
                         target="_blank"
                         rel="noreferrer"
-                        className="w-12 h-12 border border-[#0B1B3B]/20 flex items-center justify-center hover:bg-[#0B1B3B] hover:text-[#D4C5A0] hover:border-[#0B1B3B] transition-all text-[#0B1B3B]"
+                        className="flex items-center gap-6 group p-6 border border-[#0B1B3B]/10 hover:border-[#D4C5A0] transition-all bg-[#F5F5F7] hover:bg-white"
                       >
-                        <Twitter strokeWidth={1.5} />
+                        <div className="w-12 h-12 bg-[#0B1B3B] flex items-center justify-center text-[#D4C5A0] shrink-0">
+                          <Twitter strokeWidth={1.5} />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="text-xs font-bold text-[#0B1B3B] uppercase tracking-widest mb-1">
+                            Twitter / X
+                          </p>
+                          <p className="text-[#2E4472] text-sm font-light group-hover:text-[#D4C5A0] transition-colors truncate">
+                            {socialLabel(settings.twitter_url, SOCIAL_BASES.twitter)}
+                          </p>
+                        </div>
                       </a>
                     )}
                     {settings?.instagram_url && (
                       <a
-                        href={settings.instagram_url}
+                        href={normalizeSocialUrl(settings.instagram_url, SOCIAL_BASES.instagram)}
                         target="_blank"
                         rel="noreferrer"
-                        className="w-12 h-12 border border-[#0B1B3B]/20 flex items-center justify-center hover:bg-[#0B1B3B] hover:text-[#D4C5A0] hover:border-[#0B1B3B] transition-all text-[#0B1B3B]"
+                        className="flex items-center gap-6 group p-6 border border-[#0B1B3B]/10 hover:border-[#D4C5A0] transition-all bg-[#F5F5F7] hover:bg-white"
                       >
-                        <Instagram strokeWidth={1.5} />
+                        <div className="w-12 h-12 bg-[#0B1B3B] flex items-center justify-center text-[#D4C5A0] shrink-0">
+                          <Instagram strokeWidth={1.5} />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="text-xs font-bold text-[#0B1B3B] uppercase tracking-widest mb-1">
+                            Instagram
+                          </p>
+                          <p className="text-[#2E4472] text-sm font-light group-hover:text-[#D4C5A0] transition-colors truncate">
+                            {socialLabel(settings.instagram_url, SOCIAL_BASES.instagram)}
+                          </p>
+                        </div>
                       </a>
                     )}
                     {settings?.youtube_url && (
                       <a
-                        href={settings.youtube_url}
+                        href={normalizeSocialUrl(settings.youtube_url, SOCIAL_BASES.youtube)}
                         target="_blank"
                         rel="noreferrer"
-                        className="w-12 h-12 border border-[#0B1B3B]/20 flex items-center justify-center hover:bg-[#0B1B3B] hover:text-[#D4C5A0] hover:border-[#0B1B3B] transition-all text-[#0B1B3B]"
+                        className="flex items-center gap-6 group p-6 border border-[#0B1B3B]/10 hover:border-[#D4C5A0] transition-all bg-[#F5F5F7] hover:bg-white"
                       >
-                        <Youtube strokeWidth={1.5} />
+                        <div className="w-12 h-12 bg-[#0B1B3B] flex items-center justify-center text-[#D4C5A0] shrink-0">
+                          <Youtube strokeWidth={1.5} />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="text-xs font-bold text-[#0B1B3B] uppercase tracking-widest mb-1">
+                            YouTube
+                          </p>
+                          <p className="text-[#2E4472] text-sm font-light group-hover:text-[#D4C5A0] transition-colors truncate">
+                            {socialLabel(settings.youtube_url, SOCIAL_BASES.youtube)}
+                          </p>
+                        </div>
                       </a>
                     )}
                   </div>
                 </div>
               )}
-
             </div>
           )}
 
           {/* RIGHT COLUMN: Form — melebar penuh jika tidak ada left column */}
-          <div className={hasLeftColumn ? "lg:col-span-7" : "w-full max-w-3xl mx-auto"}>
+          <div
+            className={
+              hasLeftColumn ? "lg:col-span-7" : "w-full max-w-3xl mx-auto"
+            }
+          >
             <ContactForm />
           </div>
-
         </div>
       </div>
     </div>
@@ -206,4 +288,3 @@ const ContactPage = async () => {
 };
 
 export default ContactPage;
-

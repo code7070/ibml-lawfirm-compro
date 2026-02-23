@@ -373,7 +373,14 @@
     "page": "Page",
     "of": "of",
     "backToAll": "All Articles",
-    "articlesIn": "Articles in"
+    "articlesIn": "Articles in",
+    "values": {
+      "statNumber": "20+",
+      "statLabel": "Papers cited in Legislative Hearings",
+      "quote": "Our practice is defined not just by the cases we win, but by the standards we help establish.",
+      "description": "By maintaining a rigorous academic department, IBLM ensures that our commercial clients benefit from the absolute latest theoretical and practical breakthroughs in law.",
+      "exploreLibrary": "Explore Full Library"
+    }
   },
   "footer": {
     "tagline": "Our group of legal experts are committed to excellence, delivering tailored legal solutions that safeguard your business with precision and care.",

@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { ArrowUpRight, X, Loader2 } from "lucide-react";
+import { ArrowUpRight, ArrowRight, X, Loader2 } from "lucide-react";
+import Image from "next/image";
 import { Article } from "../types";
 import CTASection from "./CTASection";
 import { LangLink } from "./LangLink";
@@ -328,6 +329,47 @@ const ArticleListPage = ({
               )}
             </>
           )}
+        </div>
+      </section>
+
+      {/* --- VALUES / QUOTE SECTION (dipindahkan dari halaman Services) --- */}
+      <section className="py-24 px-6 bg-white">
+        <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-16 items-center">
+          <div className="relative">
+            <div className="w-full h-[500px] overflow-hidden">
+              <Image
+                src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1200"
+                alt="Academic excellence"
+                width={1200}
+                height={800}
+                className="w-full h-full object-cover grayscale"
+              />
+            </div>
+            <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-[#D4C5A0] p-8 hidden md:block">
+              <p className="text-[#0B1B3B] text-3xl font-serif italic mb-2">
+                {t("values.statNumber")}
+              </p>
+              <p className="text-[10px] font-bold text-[#0B1B3B] uppercase tracking-widest leading-relaxed">
+                {t("values.statLabel")}
+              </p>
+            </div>
+          </div>
+
+          <div className="space-y-8">
+            <h3 className="text-4xl font-light text-[#0B1B3B] leading-tight font-serif italic">
+              &ldquo;{t("values.quote")}&rdquo;
+            </h3>
+            <div className="w-16 h-1 bg-[#D4C5A0]" />
+            <p className="text-[#2E4472] font-light text-lg leading-relaxed">
+              {t("values.description")}
+            </p>
+            <LangLink
+              href="/articles"
+              className="flex items-center gap-3 text-sm font-bold uppercase tracking-[0.2em] text-[#0B1B3B] hover:text-[#D4C5A0] transition-colors"
+            >
+              {t("values.exploreLibrary")} <ArrowRight size={16} />
+            </LangLink>
+          </div>
         </div>
       </section>
 
