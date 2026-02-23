@@ -98,7 +98,7 @@ const ArticleDetailPage = ({
 
       {/* Related Articles */}
       <section className="bg-[#F5F5F7] py-24 px-6 border-t border-[#0B1B3B]/10">
-        <div className="max-w-[1400px] mx-auto">
+        <div className="max-w-[1400px] mx-auto px-6">
           <h3 className="text-3xl font-light text-[#0B1B3B] mb-12">
             Related Intelligence
           </h3>
