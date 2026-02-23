@@ -7,16 +7,17 @@ import {
   Video,
   Building2,
   ArrowRight,
-  Scale,
   ChevronDown,
   Lock,
 } from "lucide-react";
 import { contactSubmissionsService } from "@/services/contact.service";
-import { useTranslations } from "@/hooks/useTranslations";
+import { useTranslations, useLocale } from "@/hooks/useTranslations";
+import TncContent from "./TncContent";
 
 const ConsultationForm = () => {
   const t = useTranslations("consultationForm");
   const tContact = useTranslations("contactForm");
+  const locale = useLocale();
 
   const [hasAgreed, setHasAgreed] = useState(false);
   const [isRevealing, setIsRevealing] = useState(false);
@@ -229,88 +230,13 @@ ${formData.message}
               <div
                 ref={scrollContainerRef}
                 onScroll={handleScroll}
-                className="flex-1 max-h-72 overflow-y-auto border border-l-0 border-[#0B1B3B]/15 bg-[#F5F5F7]/40 p-6 md:p-8 scroll-smooth"
+                className="flex-1 max-h-[480px] overflow-y-auto border border-l-0 border-[#0B1B3B]/15 bg-[#F5F5F7]/40 p-6 md:p-8 scroll-smooth"
                 style={{
                   scrollbarWidth: "thin",
                   scrollbarColor: "#0B1B3B #e0e0e3",
                 }}
               >
-                {/* Section 1 */}
-                <div className="mb-7">
-                  <h4 className="inline-block bg-[#0B1B3B] text-white text-[10px] font-bold uppercase tracking-[0.15em] px-3 py-1.5 mb-3">
-                    {t("tncSection1Title")}
-                  </h4>
-                  <p className="text-[#2E4472] text-sm font-light leading-relaxed mb-2">
-                    {t("tncSection1P1")}
-                  </p>
-                  <p className="text-[#2E4472] text-sm font-light leading-relaxed">
-                    {t("tncSection1P2")}
-                  </p>
-                </div>
-
-                {/* Section 2 */}
-                <div className="mb-7">
-                  <h4 className="inline-block bg-[#0B1B3B] text-white text-[10px] font-bold uppercase tracking-[0.15em] px-3 py-1.5 mb-3">
-                    {t("tncSection2Title")}
-                  </h4>
-                  <p className="text-[#2E4472] text-sm font-light leading-relaxed mb-2">
-                    {t("tncSection2P1")}
-                  </p>
-                  <p className="text-[#2E4472] text-sm font-light leading-relaxed">
-                    {t("tncSection2P2")}
-                  </p>
-                </div>
-
-                {/* Section 3 */}
-                <div className="mb-7">
-                  <h4 className="inline-block bg-[#0B1B3B] text-white text-[10px] font-bold uppercase tracking-[0.15em] px-3 py-1.5 mb-3">
-                    {t("tncSection3Title")}
-                  </h4>
-                  <p className="text-[#2E4472] text-sm font-light leading-relaxed mb-2">
-                    {t("tncSection3P1")}
-                  </p>
-                  <div className="space-y-2 mt-3">
-                    {[
-                      "tncSection3Item1",
-                      "tncSection3Item2",
-                      "tncSection3Item3",
-                    ].map((key) => (
-                      <div
-                        key={key}
-                        className="flex items-start gap-3 text-[#2E4472] text-sm"
-                      >
-                        <Scale
-                          className="w-3.5 h-3.5 text-[#0B1B3B] shrink-0 mt-0.5"
-                          strokeWidth={2}
-                        />
-                        <span className="font-light">{t(key)}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Section 4 */}
-                <div className="mb-7">
-                  <h4 className="inline-block bg-[#0B1B3B] text-white text-[10px] font-bold uppercase tracking-[0.15em] px-3 py-1.5 mb-3">
-                    {t("tncSection4Title")}
-                  </h4>
-                  <p className="text-[#2E4472] text-sm font-light leading-relaxed mb-2">
-                    {t("tncSection4P1")}
-                  </p>
-                  <p className="text-[#2E4472] text-sm font-light leading-relaxed">
-                    {t("tncSection4P2")}
-                  </p>
-                </div>
-
-                {/* Section 5 */}
-                <div>
-                  <h4 className="inline-block bg-[#0B1B3B] text-white text-[10px] font-bold uppercase tracking-[0.15em] px-3 py-1.5 mb-3">
-                    {t("tncSection5Title")}
-                  </h4>
-                  <p className="text-[#2E4472] text-sm font-light leading-relaxed">
-                    {t("tncSection5P1")}
-                  </p>
-                </div>
+                <TncContent locale={locale} />
               </div>
             </div>
 
