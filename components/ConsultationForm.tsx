@@ -225,12 +225,12 @@ ${formData.message}
           <div className="relative mb-8">
             <div className="flex">
               {/* Gold accent bar */}
-              <div className="w-1.5 bg-[#D4C5A0] shrink-0" />
+              <div className="w-1.5 bg-[#D4C5A0] shrink-0 hidden md:block" />
 
               <div
                 ref={scrollContainerRef}
                 onScroll={handleScroll}
-                className="flex-1 max-h-[480px] overflow-y-auto border border-l-0 border-[#0B1B3B]/15 bg-[#F5F5F7]/40 p-6 md:p-8 scroll-smooth"
+                className="flex-1 max-h-[520px] overflow-y-auto border md:border-l-0 border-[#0B1B3B]/15 bg-[#F5F5F7]/40 p-4 md:p-8 scroll-smooth -mx-8"
                 style={{
                   scrollbarWidth: "thin",
                   scrollbarColor: "#0B1B3B #e0e0e3",
