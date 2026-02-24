@@ -271,9 +271,10 @@ const LawyerDetailPopup = ({
                   {labels.overview}
                 </h3>
                 <div className="w-12 h-1 bg-[#D4C5A0] mb-6"></div>
-                <p className="text-[#2E4472] font-light leading-relaxed whitespace-pre-line">
-                  {bio || labels.noBio}
-                </p>
+                <div 
+                  className="rich-content max-w-none"
+                  dangerouslySetInnerHTML={{ __html: bio || labels.noBio }}
+                />
               </div>
 
               {/* Experience */}

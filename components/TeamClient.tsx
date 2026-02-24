@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Linkedin, Mail } from "lucide-react";
+import { Linkedin, Mail, Phone } from "lucide-react";
 import { LawyerWithPositionAndPracticeAreas } from "@/lib/types/database";
 import LawyerDetailPopup from "./LawyerDetailPopup";
 import { TeamTranslations } from "./Team";
@@ -73,8 +73,10 @@ const TeamClient = ({ lawyers, locale, translations }: TeamClientProps) => {
           const name = getLocalizedText(lawyer.name_en, lawyer.name_id);
           const position = getPositionName(lawyer);
           const specialty = getPrimaryPracticeArea(lawyer);
-          const photoUrl =
-            lawyer.photo_url || "/images/placeholder-lawyer.jpg";
+          const photoUrl = lawyer.photo_url || "/images/placeholder-lawyer.jpg";
+
+          const hasContact =
+            lawyer.email || lawyer.phone || lawyer.linkedin_url;
 
           return (
             <div
@@ -98,38 +100,93 @@ const TeamClient = ({ lawyers, locale, translations }: TeamClientProps) => {
                 {/* Decorative border frame */}
                 <div className="absolute inset-0 border border-transparent group-hover:border-[#D4C5A0] transition-colors duration-500 m-4" />
 
-                {/* Social Links Slide Up */}
-                <div className="absolute bottom-0 left-0 w-full p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500 flex gap-4 bg-[#0B1B3B]">
-                  {lawyer.linkedin_url && (
-                    <a
-                      href={lawyer.linkedin_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Linkedin className="w-5 h-5 text-[#D4C5A0] hover:text-white transition-colors" />
-                    </a>
-                  )}
-                  {lawyer.email && (
-                    <a
-                      href={`mailto:${lawyer.email}`}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Mail className="w-5 h-5 text-[#D4C5A0] hover:text-white transition-colors" />
-                    </a>
-                  )}
-                </div>
+                {/* Social Links Slide Up — icon-only bar on hover (LinkedIn + social) */}
+                {/*{hasContact && (
+                  <div className="absolute bottom-0 left-0 w-full px-6 py-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500 flex gap-4 bg-[#0B1B3B]">
+                    {lawyer.linkedin_url && (
+                      <a
+                        href={lawyer.linkedin_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="LinkedIn"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <Linkedin className="w-5 h-5 text-[#D4C5A0] hover:text-white transition-colors" />
+                      </a>
+                    )}
+                    {lawyer.email && (
+                      <a
+                        href={`mailto:${lawyer.email}`}
+                        title={lawyer.email}
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <Mail className="w-5 h-5 text-[#D4C5A0] hover:text-white transition-colors" />
+                      </a>
+                    )}
+                    {lawyer.phone && (
+                      <a
+                        href={`tel:${lawyer.phone}`}
+                        title={lawyer.phone}
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <Phone className="w-5 h-5 text-[#D4C5A0] hover:text-white transition-colors" />
+                      </a>
+                    )}
+                  </div>
+                )}*/}
               </div>
 
               {/* Text Info */}
               <div className="border-l-2 border-transparent group-hover:border-[#D4C5A0] pl-4 transition-all duration-300">
+                {/* Name */}
                 <h3 className="text-2xl font-normal text-[#0B1B3B] mb-1 font-serif">
                   {name}
                 </h3>
+
+                {/* Position */}
                 <p className="text-[#D4C5A0] text-xs font-bold uppercase tracking-widest mb-1">
                   {position}
                 </p>
-                <p className="text-gray-400 text-sm font-light">{specialty}</p>
+
+                {/* Specialty */}
+                {specialty && (
+                  <p className="text-gray-400 text-sm font-light mb-4">
+                    {specialty}
+                  </p>
+                )}
+
+                {/* ─── Contact Info — Always Visible ─── */}
+                {(lawyer.email || lawyer.phone) && (
+                  <div
+                    className="mt-3 pt-3 border-t border-[#E8DBBF] space-y-1.5"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {lawyer.email && (
+                      <a
+                        href={`mailto:${lawyer.email}`}
+                        className="flex items-center gap-2 group/contact"
+                        title={`Email ${name}`}
+                      >
+                        <Mail className="w-3.5 h-3.5 text-[#D4C5A0] shrink-0" />
+                        <span className="text-[#4A639D] text-xs font-light tracking-wide truncate group-hover/contact:text-[#0B1B3B] transition-colors duration-200 underline decoration-[#D4C5A0]/40 underline-offset-2 hover:decoration-[#D4C5A0]">
+                          {lawyer.email}
+                        </span>
+                      </a>
+                    )}
+                    {lawyer.phone && (
+                      <a
+                        href={`tel:${lawyer.phone}`}
+                        className="flex items-center gap-2 group/contact"
+                        title={`Call ${name}`}
+                      >
+                        <Phone className="w-3.5 h-3.5 text-[#D4C5A0] shrink-0" />
+                        <span className="text-[#4A639D] text-xs font-light tracking-wide group-hover/contact:text-[#0B1B3B] transition-colors duration-200">
+                          {lawyer.phone}
+                        </span>
+                      </a>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           );

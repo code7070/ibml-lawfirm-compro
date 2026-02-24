@@ -427,6 +427,17 @@
       "quote": "Praktik kami didefinisikan bukan hanya oleh kasus yang kami menangkan, tetapi oleh standar yang kami bantu tetapkan.",
       "description": "Dengan mempertahankan departemen akademik yang ketat, IBLM memastikan bahwa klien komersial kami mendapatkan manfaat dari terobosan teoretis dan praktis terbaru dalam bidang hukum.",
       "exploreLibrary": "Jelajahi Perpustakaan Lengkap"
+    },
+    "share": {
+      "label": "Bagikan",
+      "share": "Bagikan Artikel",
+      "copyLink": "Salin Tautan",
+      "copied": "Tautan Disalin"
+    },
+    "relatedIntelligence": {
+      "tag": "Lanjut Membaca",
+      "title": "Intelijen Terkait",
+      "viewAll": "Lihat Semua Artikel"
     }
   },
   "footer": {

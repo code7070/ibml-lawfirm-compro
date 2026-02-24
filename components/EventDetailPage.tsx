@@ -24,43 +24,60 @@ const EventDetailPage: React.FC<EventDetailPageProps> = ({ event }) => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Event Hero */}
-      <div className="relative h-[60vh] min-h-[500px] w-full overflow-hidden">
+      {/* ━━━ Hero Image — Full Bleed, No Text Overlay ━━━ */}
+      <div className="relative h-[55vh] min-h-[400px] lg:h-[65vh] lg:min-h-[500px] w-full overflow-hidden">
         <img
           src={event.image}
           alt={event.title}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1B3B] via-[#0B1B3B]/60 to-transparent"></div>
+        {/* Subtle vignette — purely aesthetic, no text readability concern */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0B1B3B]/40 via-transparent to-[#0B1B3B]/20 pointer-events-none" />
 
-        <div className="absolute inset-0 flex flex-col justify-end pb-20 px-6">
-          <div className="max-w-[1400px] mx-auto w-full">
-            <Link
-              href="/events"
-              className="flex items-center gap-2 text-[#D4C5A0] hover:text-white mb-8 transition-colors text-xs font-bold uppercase tracking-widest w-fit"
-            >
-              <ArrowLeft className="w-4 h-4" /> Back to Events
-            </Link>
+        {/* Back navigation — floating pill over image */}
+        <div className="absolute top-6 left-6 z-10">
+          <Link
+            href="/events"
+            className="
+              inline-flex items-center gap-2 px-4 py-2
+              bg-[#0B1B3B]/60 backdrop-blur-md
+              text-white/90 hover:text-[#D4C5A0] hover:bg-[#0B1B3B]/80
+              transition-all duration-300
+              text-xs font-bold uppercase tracking-widest
+              rounded-sm
+            "
+          >
+            <ArrowLeft className="w-3.5 h-3.5" /> Back to Events
+          </Link>
+        </div>
+      </div>
 
+      {/* ━━━ Event Header Card — Rises Into Hero ━━━ */}
+      <div className="relative z-10 -mt-20 lg:-mt-28">
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="bg-white pt-10 pb-8 px-8 lg:px-12 border-t-[3px] border-[#D4C5A0] shadow-[0_-20px_60px_rgba(11,27,59,0.12)]">
+            {/* Year Badge + Location */}
             <div className="flex flex-wrap items-center gap-4 mb-6">
-              <span className="bg-[#D4C5A0] text-[#0B1B3B] px-4 py-1 text-xs font-bold uppercase tracking-wider">
+              <span className="bg-[#0B1B3B] text-[#D4C5A0] px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.15em]">
                 {event.year}
               </span>
               {event.location && (
-                <span className="text-white/80 text-sm font-mono flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-[#D4C5A0]" /> {event.location}
+                <span className="text-[#2E4472]/60 text-sm font-mono flex items-center gap-2">
+                  <MapPin className="w-3.5 h-3.5 text-[#D4C5A0]" />{" "}
+                  {event.location}
                 </span>
               )}
             </div>
 
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-light text-white leading-tight mb-8 max-w-4xl">
+            {/* Title */}
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-light text-[#0B1B3B] leading-tight mb-4 max-w-4xl">
               {event.title}
             </h1>
           </div>
         </div>
       </div>
 
-      {/* Content Layout */}
+      {/* ━━━ Content Layout ━━━ */}
       <div className="max-w-[1400px] mx-auto px-6 py-24 grid lg:grid-cols-12 gap-16">
         {/* Sidebar Metadata */}
         <div className="lg:col-span-4 space-y-12 sticky">
@@ -149,7 +166,7 @@ const EventDetailPage: React.FC<EventDetailPageProps> = ({ event }) => {
 
         {/* Main Description */}
         <div
-          className="lg:col-span-8 prose prose-lg prose-headings:font-serif prose-headings:text-[#0B1B3B] prose-p:text-[#2E4472] prose-p:font-light prose-p:leading-relaxed prose-strong:text-[#0B1B3B] max-w-none"
+          className="lg:col-span-8 rich-content max-w-none"
           dangerouslySetInnerHTML={{ __html: `${event.description}` }}
         />
       </div>

@@ -4,6 +4,7 @@ import Button from "./Button";
 import { ArrowUpRight } from "lucide-react";
 import { ArticleWithCategory } from "@/lib/types/database";
 import Link from "next/link";
+import { useTranslations } from "@/hooks/useTranslations";
 
 interface ArticlesProps {
   articles: ArticleWithCategory[];
@@ -11,6 +12,8 @@ interface ArticlesProps {
 }
 
 const Articles = ({ articles, locale = "en" }: ArticlesProps) => {
+  const t = useTranslations("articles");
+
   // Only show first 3
   const displayedArticles = articles.slice(0, 3);
 
@@ -49,12 +52,14 @@ const Articles = ({ articles, locale = "en" }: ArticlesProps) => {
                 : article.category.name_en
               : null;
             const authorName = article.author
-              ? (locale === "id" ? article.author.name_id : article.author.name_en)
+              ? locale === "id"
+                ? article.author.name_id
+                : article.author.name_en
               : null;
             const publishedDate = article.published_at
               ? new Date(article.published_at).toLocaleDateString(
                   locale === "id" ? "id-ID" : "en-US",
-                  { year: "numeric", month: "long", day: "numeric" }
+                  { year: "numeric", month: "long", day: "numeric" },
                 )
               : null;
 
@@ -67,7 +72,10 @@ const Articles = ({ articles, locale = "en" }: ArticlesProps) => {
                 <div className="relative h-64 overflow-hidden mb-8 border border-[#0B1B3B]/10">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={article.cover_url || "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=800"}
+                    src={
+                      article.cover_url ||
+                      "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=800"
+                    }
                     alt={title || "Article"}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
                   />
@@ -92,7 +100,7 @@ const Articles = ({ articles, locale = "en" }: ArticlesProps) => {
                   </h3>
 
                   <div className="inline-flex items-center gap-2 text-[#D4C5A0] text-sm font-bold uppercase tracking-widest border-b border-transparent group-hover:border-[#D4C5A0] pb-1 transition-all">
-                    Read Analysis <ArrowUpRight className="w-4 h-4" />
+                    {t("readMore")} <ArrowUpRight className="w-4 h-4" />
                   </div>
                 </div>
               </Link>

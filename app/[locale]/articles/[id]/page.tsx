@@ -98,14 +98,10 @@ export default async function ArticleDetailPage({ params }: Props) {
       article.cover_url ||
       "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=2000",
     summary: (isId ? article.excerpt_id : article.excerpt_en) || "",
-    author: article.author?.name_en || "IBLM Team",
-    content: (
-      <div
-        dangerouslySetInnerHTML={{
-          __html: (isId ? article.content_id : article.content_en) || "",
-        }}
-      />
-    ),
+    author: (isId ? article.author?.name_id : article.author?.name_en) || "IBLM Team",
+    authorImage: article.author?.photo_url ?? null,
+    authorPosition: (isId ? article.author?.position_id : article.author?.position_en) ?? null,
+    content: (isId ? article.content_id : article.content_en) || "",
   };
 
   // Map Related
@@ -125,14 +121,17 @@ export default async function ArticleDetailPage({ params }: Props) {
       a.cover_url ||
       "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=2000",
     summary: (isId ? a.excerpt_id : a.excerpt_en) || "",
-    author: a.author?.name_en || "IBLM Team",
-    content: null,
+    author: (isId ? a.author?.name_id : a.author?.name_en) || "IBLM Team",
+    authorImage: a.author?.photo_url ?? null,
+    authorPosition: (isId ? a.author?.position_id : a.author?.position_en) ?? null,
+    content: "",
   }));
 
   return (
     <ArticleDetailPageComponent
       article={viewArticle}
       allArticles={viewRelated}
+      locale={locale}
     />
   );
 }

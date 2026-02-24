@@ -70,7 +70,7 @@ const ArticleListPage = ({
         "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=2000",
       summary: (isId ? article.excerpt_id : article.excerpt_en) || "",
       author: (article.author as { name_en?: string })?.name_en || "IBLM Team",
-      content: null,
+      content: "",
     }),
     [isId],
   );
@@ -292,8 +292,7 @@ const ArticleListPage = ({
 
                       <div className="mt-auto pt-4 border-t border-[#0B1B3B]/10">
                         <div className="inline-flex items-center gap-2 text-[#D4C5A0] text-sm font-bold uppercase tracking-widest group-hover:text-[#0B1B3B] transition-colors">
-                          {t("readAnalysis")}{" "}
-                          <ArrowUpRight className="w-4 h-4" />
+                          {t("readMore")} <ArrowUpRight className="w-4 h-4" />
                         </div>
                       </div>
                     </div>
@@ -345,14 +344,14 @@ const ArticleListPage = ({
                 className="w-full h-full object-cover grayscale"
               />
             </div>
-            <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-[#D4C5A0] p-8 hidden md:block">
+            {/*<div className="absolute -bottom-8 -right-8 w-48 h-48 bg-[#D4C5A0] p-8 hidden md:block">
               <p className="text-[#0B1B3B] text-3xl font-serif italic mb-2">
                 {t("values.statNumber")}
               </p>
               <p className="text-[10px] font-bold text-[#0B1B3B] uppercase tracking-widest leading-relaxed">
                 {t("values.statLabel")}
               </p>
-            </div>
+            </div>*/}
           </div>
 
           <div className="space-y-8">
@@ -363,12 +362,12 @@ const ArticleListPage = ({
             <p className="text-[#2E4472] font-light text-lg leading-relaxed">
               {t("values.description")}
             </p>
-            <LangLink
+            {/*<LangLink
               href="/articles"
               className="flex items-center gap-3 text-sm font-bold uppercase tracking-[0.2em] text-[#0B1B3B] hover:text-[#D4C5A0] transition-colors"
             >
               {t("values.exploreLibrary")} <ArrowRight size={16} />
-            </LangLink>
+            </LangLink>*/}
           </div>
         </div>
       </section>

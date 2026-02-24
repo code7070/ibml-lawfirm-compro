@@ -41,7 +41,9 @@ export interface Article {
   image: string;
   summary: string;
   author: string;
-  content: React.ReactNode; // HTML/JSX content
+  authorImage?: string | null; // Optional: photo_url from lawyers table (via author_id FK)
+  authorPosition?: string | null; // Optional: position_en/id from lawyers table
+  content: string; // HTML content string
 }
 
 export interface Event {
@@ -51,7 +53,7 @@ export interface Event {
   time?: string;
   year: string; // Grouping key
   image: string;
-  description: React.ReactNode;
+  description: string; // HTML content string
   location?: string;
   contactEmail?: string;
   externalLink?: string;

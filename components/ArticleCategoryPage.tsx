@@ -91,7 +91,7 @@ const ArticleCategoryPage = ({
           summary: (isId ? article.excerpt_id : article.excerpt_en) || "",
           author:
             (article.author as { name_en?: string })?.name_en || "IBLM Team",
-          content: null,
+          content: "",
         }));
 
         setArticles((prev) => [...prev, ...newArticles]);
@@ -195,7 +195,7 @@ const ArticleCategoryPage = ({
 
                   <div className="mt-auto pt-4 border-t border-[#0B1B3B]/10">
                     <div className="inline-flex items-center gap-2 text-[#D4C5A0] text-sm font-bold uppercase tracking-widest group-hover:text-[#0B1B3B] transition-colors">
-                      {t("readAnalysis")} <ArrowUpRight className="w-4 h-4" />
+                      {t("readMore")} <ArrowUpRight className="w-4 h-4" />
                     </div>
                   </div>
                 </div>

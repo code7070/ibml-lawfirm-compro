@@ -14,7 +14,7 @@
   },
   "home": {
     "hero": {
-      "tags": "Entertainment · Technology · Health & Education · People",
+      "tags": "Entertainment · Technology · Health & Education · People & Labor",
       "title_1": "Navigating Complexity,",
       "title_2": "Delivering Solution",
       "description": "Our group of legal experts are committed to excellence, delivering tailored legal solutions that safeguard your business with precision and care.",
@@ -427,6 +427,17 @@
       "quote": "Our practice is defined not just by the cases we win, but by the standards we help establish.",
       "description": "By maintaining a rigorous academic department, IBLM ensures that our commercial clients benefit from the absolute latest theoretical and practical breakthroughs in law.",
       "exploreLibrary": "Explore Full Library"
+    },
+    "share": {
+      "label": "Share",
+      "share": "Share Article",
+      "copyLink": "Copy Link",
+      "copied": "Link Copied"
+    },
+    "relatedIntelligence": {
+      "tag": "Continue Reading",
+      "title": "Related Intelligence",
+      "viewAll": "View All Articles"
     }
   },
   "footer": {

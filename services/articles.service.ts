@@ -307,7 +307,9 @@ class ArticlesService extends BaseService<Article, ArticleInsert, ArticleUpdate>
   }
 
   /**
-   * Get related articles (by category or tags)
+   * Get related articles (by category, backfilled with latest if needed)
+   * Always returns up to `limit` articles. First tries same category,
+   * then fills remaining slots with the latest published articles.
    */
   async getRelated(
     articleId: string,
@@ -325,8 +327,8 @@ class ArticlesService extends BaseService<Article, ArticleInsert, ArticleUpdate>
         return { data: [], error: null };
       }
 
-      // Get related articles by category
-      const { data, error } = await this.supabase
+      // Get related articles by same category
+      const { data: sameCategoryData, error: catError } = await this.supabase
         .from(this.tableName)
         .select(`
           *,
@@ -339,9 +341,39 @@ class ArticlesService extends BaseService<Article, ArticleInsert, ArticleUpdate>
         .order('published_at', { ascending: false })
         .limit(limit);
 
-      if (error) throw error;
+      if (catError) throw catError;
 
-      return { data: data as ArticleWithCategory[], error: null };
+      const related = (sameCategoryData || []) as ArticleWithCategory[];
+
+      // If we have enough same-category articles, return them
+      if (related.length >= limit) {
+        return { data: related.slice(0, limit), error: null };
+      }
+
+      // Backfill with latest published articles from other categories
+      const remaining = limit - related.length;
+      const excludeIds = [articleId, ...related.map((a) => a.id)];
+
+      const { data: backfillData, error: bfError } = await this.supabase
+        .from(this.tableName)
+        .select(`
+          *,
+          category:article_categories(*),
+          author:lawyers(*)
+        `)
+        .eq('is_published', true)
+        .not('id', 'in', `(${excludeIds.join(',')})`)
+        .order('published_at', { ascending: false })
+        .limit(remaining);
+
+      if (bfError) throw bfError;
+
+      const combined = [
+        ...related,
+        ...((backfillData || []) as ArticleWithCategory[]),
+      ];
+
+      return { data: combined.slice(0, limit), error: null };
     } catch (error) {
       console.error('Error fetching related articles:', error);
       return {

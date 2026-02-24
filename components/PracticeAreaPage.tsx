@@ -135,7 +135,7 @@ const PracticeAreaPage = ({
                   )}
                 </div>
                 <div
-                  className="md:ml-auto md:max-w-[40%] text-[#2E4472] font-light text-right prose prose-sm"
+                  className="md:ml-auto md:max-w-[40%] rich-content text-right"
                   dangerouslySetInnerHTML={{
                     __html:
                       (isEn ? group.description_en : group.description_id) ||
@@ -178,7 +178,7 @@ const PracticeAreaPage = ({
                         </p>
                       )}
                       <div
-                        className="text-[#2E4472] font-light text-sm leading-relaxed mt-4 prose prose-sm"
+                        className="rich-content mt-4 !text-sm"
                         dangerouslySetInnerHTML={{
                           __html:
                             (isEn
