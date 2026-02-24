@@ -20,7 +20,7 @@ export interface MetadataConfig {
 }
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://iblmlaw.com";
-const META_IMAGE_PATH = "/images/meta-image-iblm.jpg";
+// const META_IMAGE_PATH = "/images/meta-image-iblm.jpg";
 
 export async function generatePageMetadata(
   config: MetadataConfig,
@@ -45,7 +45,7 @@ export async function generatePageMetadata(
   const url = `${BASE_URL}/${locale}${fullPath}`;
 
   // Generate image URL (absolute)
-  const imageUrl = `${BASE_URL}${META_IMAGE_PATH}`;
+  // const imageUrl = `${BASE_URL}${META_IMAGE_PATH}`;
 
   return {
     title,
@@ -64,13 +64,13 @@ export async function generatePageMetadata(
       title,
       description,
       siteName: "IBLM Law Group",
-      images: [{ url: imageUrl, width: 1200, height: 630, alt: "IBLM Law Group - Driven by Excellence" }],
+      // images: [{ url: imageUrl, width: 1200, height: 630, alt: "IBLM Law Group - Driven by Excellence" }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [imageUrl],
+      // images: [imageUrl],
     },
     robots: {
       index: true,
