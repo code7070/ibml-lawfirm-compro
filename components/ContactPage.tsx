@@ -7,7 +7,7 @@ import {
   Youtube,
   Instagram,
 } from "lucide-react";
-import ContactFormSelector from "./ContactFormSelector";
+import ContactFormSelector, { TFormContact } from "./ContactFormSelector";
 import { contactSettingsService } from "@/services/contact.service";
 
 // ─── Social URL normalizers ───────────────────────────────────────────────────
@@ -19,10 +19,10 @@ function normalizeSocialUrl(raw: string, base: string): string {
 }
 
 const SOCIAL_BASES = {
-  linkedin:  "https://linkedin.com/company/",
-  twitter:   "https://x.com/",
+  linkedin: "https://linkedin.com/company/",
+  twitter: "https://x.com/",
   instagram: "https://instagram.com/",
-  youtube:   "https://youtube.com/@",
+  youtube: "https://youtube.com/@",
 } as const;
 
 function socialLabel(raw: string, base: string): string {
@@ -32,7 +32,7 @@ function socialLabel(raw: string, base: string): string {
 }
 // ─────────────────────────────────────────────────────────────────────────────
 
-const ContactPage = async () => {
+const ContactPage = async ({ form }: { form?: TFormContact }) => {
   const { data: settings } = await contactSettingsService.getMain();
 
   // ─── Derived flags ────────────────────────────────────────────────────────
@@ -59,15 +59,18 @@ const ContactPage = async () => {
       {/* Header */}
       <section className="bg-[#0B1B3B] text-white py-20 px-6 relative overflow-hidden">
         {/* Diagonal accent lines */}
-        <div className="absolute inset-0 opacity-[0.02]" style={{
-          backgroundImage: `repeating-linear-gradient(
+        <div
+          className="absolute inset-0 opacity-[0.02]"
+          style={{
+            backgroundImage: `repeating-linear-gradient(
             -45deg,
             transparent,
             transparent 14px,
             #D4C5A0 14px,
             #D4C5A0 15px
           )`,
-        }} />
+          }}
+        />
 
         <div className="max-w-[1400px] mx-auto text-center relative z-10">
           <span className="text-[#D4C5A0] font-bold tracking-[0.2em] text-xs uppercase mb-4 block">
@@ -188,7 +191,10 @@ const ContactPage = async () => {
                   <div className="space-y-4">
                     {settings?.linkedin_url && (
                       <a
-                        href={normalizeSocialUrl(settings.linkedin_url, SOCIAL_BASES.linkedin)}
+                        href={normalizeSocialUrl(
+                          settings.linkedin_url,
+                          SOCIAL_BASES.linkedin,
+                        )}
                         target="_blank"
                         rel="noreferrer"
                         className="flex items-center gap-6 group p-6 border border-[#0B1B3B]/10 hover:border-[#D4C5A0] transition-all bg-[#F5F5F7] hover:bg-white"
@@ -201,14 +207,20 @@ const ContactPage = async () => {
                             LinkedIn
                           </p>
                           <p className="text-[#2E4472] text-sm font-light group-hover:text-[#D4C5A0] transition-colors truncate">
-                            {socialLabel(settings.linkedin_url, SOCIAL_BASES.linkedin)}
+                            {socialLabel(
+                              settings.linkedin_url,
+                              SOCIAL_BASES.linkedin,
+                            )}
                           </p>
                         </div>
                       </a>
                     )}
                     {settings?.twitter_url && (
                       <a
-                        href={normalizeSocialUrl(settings.twitter_url, SOCIAL_BASES.twitter)}
+                        href={normalizeSocialUrl(
+                          settings.twitter_url,
+                          SOCIAL_BASES.twitter,
+                        )}
                         target="_blank"
                         rel="noreferrer"
                         className="flex items-center gap-6 group p-6 border border-[#0B1B3B]/10 hover:border-[#D4C5A0] transition-all bg-[#F5F5F7] hover:bg-white"
@@ -221,14 +233,20 @@ const ContactPage = async () => {
                             Twitter / X
                           </p>
                           <p className="text-[#2E4472] text-sm font-light group-hover:text-[#D4C5A0] transition-colors truncate">
-                            {socialLabel(settings.twitter_url, SOCIAL_BASES.twitter)}
+                            {socialLabel(
+                              settings.twitter_url,
+                              SOCIAL_BASES.twitter,
+                            )}
                           </p>
                         </div>
                       </a>
                     )}
                     {settings?.instagram_url && (
                       <a
-                        href={normalizeSocialUrl(settings.instagram_url, SOCIAL_BASES.instagram)}
+                        href={normalizeSocialUrl(
+                          settings.instagram_url,
+                          SOCIAL_BASES.instagram,
+                        )}
                         target="_blank"
                         rel="noreferrer"
                         className="flex items-center gap-6 group p-6 border border-[#0B1B3B]/10 hover:border-[#D4C5A0] transition-all bg-[#F5F5F7] hover:bg-white"
@@ -241,14 +259,20 @@ const ContactPage = async () => {
                             Instagram
                           </p>
                           <p className="text-[#2E4472] text-sm font-light group-hover:text-[#D4C5A0] transition-colors truncate">
-                            {socialLabel(settings.instagram_url, SOCIAL_BASES.instagram)}
+                            {socialLabel(
+                              settings.instagram_url,
+                              SOCIAL_BASES.instagram,
+                            )}
                           </p>
                         </div>
                       </a>
                     )}
                     {settings?.youtube_url && (
                       <a
-                        href={normalizeSocialUrl(settings.youtube_url, SOCIAL_BASES.youtube)}
+                        href={normalizeSocialUrl(
+                          settings.youtube_url,
+                          SOCIAL_BASES.youtube,
+                        )}
                         target="_blank"
                         rel="noreferrer"
                         className="flex items-center gap-6 group p-6 border border-[#0B1B3B]/10 hover:border-[#D4C5A0] transition-all bg-[#F5F5F7] hover:bg-white"
@@ -261,7 +285,10 @@ const ContactPage = async () => {
                             YouTube
                           </p>
                           <p className="text-[#2E4472] text-sm font-light group-hover:text-[#D4C5A0] transition-colors truncate">
-                            {socialLabel(settings.youtube_url, SOCIAL_BASES.youtube)}
+                            {socialLabel(
+                              settings.youtube_url,
+                              SOCIAL_BASES.youtube,
+                            )}
                           </p>
                         </div>
                       </a>
@@ -278,7 +305,7 @@ const ContactPage = async () => {
               hasLeftColumn ? "lg:col-span-7" : "w-full max-w-3xl mx-auto"
             }
           >
-            <ContactFormSelector />
+            <ContactFormSelector form={form} />
           </div>
         </div>
       </div>

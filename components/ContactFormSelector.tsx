@@ -8,8 +8,10 @@ import { useTranslations } from "@/hooks/useTranslations";
 
 type FormType = "engage" | "consultation";
 
-const ContactFormSelector = () => {
-  const [activeForm, setActiveForm] = useState<FormType>("engage");
+export type TFormContact = FormType;
+
+const ContactFormSelector = ({ form = "engage" }: { form?: FormType }) => {
+  const [activeForm, setActiveForm] = useState<FormType>(form);
   const t = useTranslations("contactPage");
 
   return (
@@ -67,7 +69,10 @@ const ContactFormSelector = () => {
       {/* Recommendation banner for consultation */}
       {activeForm === "engage" && (
         <div className="flex items-center gap-4 p-5 bg-[#0B1B3B] border-l-4 border-[#D4C5A0]">
-          <Shield className="w-5 h-5 text-[#D4C5A0] shrink-0" strokeWidth={1.5} />
+          <Shield
+            className="w-5 h-5 text-[#D4C5A0] shrink-0"
+            strokeWidth={1.5}
+          />
           <p className="text-sm text-white/70 font-light leading-relaxed">
             {t("consultationBanner")}{" "}
             <button
