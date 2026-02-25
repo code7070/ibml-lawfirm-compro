@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, ReactNode } from "react";
 import {
   HandHeart,
   ArrowRight,
@@ -17,18 +17,16 @@ import {
   Gavel,
 } from "lucide-react";
 import CTASection from "./CTASection";
-import LogoTicker from "./LogoTicker";
 import { LangLink } from "./LangLink";
 import { ArticleWithCategory } from "@/lib/types/database";
-import { LogoItem } from "@/types";
 import { useTranslations } from "@/hooks/useTranslations";
 import Image from "next/image";
 
 interface ServicesPageProps {
   articles?: ArticleWithCategory[];
   locale?: string;
-  clientLogos?: LogoItem[];
-  orgLogos?: LogoItem[];
+  clientsTickerSection?: ReactNode;
+  affiliationsTickerSection?: ReactNode;
 }
 
 const ACADEMIC_PARTNERS = [
@@ -43,8 +41,8 @@ const ACADEMIC_PARTNERS = [
 const ServicesPage = ({
   articles = [],
   locale = "en",
-  clientLogos,
-  orgLogos,
+  clientsTickerSection,
+  affiliationsTickerSection,
 }: ServicesPageProps) => {
   const t = useTranslations("services");
 
@@ -80,13 +78,7 @@ const ServicesPage = ({
       </section>
 
       {/* Client Ticker */}
-      {clientLogos && clientLogos.length > 0 && (
-        <LogoTicker
-          title={t("clientTicker")}
-          items={clientLogos}
-          theme="dark"
-        />
-      )}
+      {clientsTickerSection}
 
       {/* --- PILLAR 1: PRO BONO --- */}
       <section className="py-32 px-6 bg-white relative">
@@ -302,9 +294,7 @@ const ServicesPage = ({
       </section>
 
       {/* Org Ticker */}
-      {orgLogos && orgLogos.length > 0 && (
-        <LogoTicker title={t("orgTicker")} items={orgLogos} theme="light" />
-      )}
+      {affiliationsTickerSection}
 
       {/* --- REPUTATION / VALUES --- */}
       <section className="py-24 px-6 bg-white">

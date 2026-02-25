@@ -3,11 +3,12 @@ import Team from "@/components/Team";
 import Achievements from "@/components/Achievements";
 import Articles from "@/components/Articles";
 import CTASection from "@/components/CTASection";
-import LogoTicker from "@/components/LogoTicker";
+// Hidden until data is ready:
+// import ClientsTicker from "@/components/ClientsTicker";
+// import AffiliationsTicker from "@/components/AffiliationsTicker";
 import PracticeAreasSection from "@/components/PracticeAreasSection";
-import { practiceGroupsService, clientsService, articlesService } from "@/services";
+import { practiceGroupsService, articlesService } from "@/services";
 import { getDictionary, Locale } from "@/lib/dictionary";
-import { LogoItem } from "@/types";
 import { generatePageMetadata } from "@/lib/metadata";
 
 export const revalidate = 300;
@@ -33,44 +34,21 @@ export default async function HomePage({
   const { locale } = await params;
 
   // Fetch data in parallel — lawyers are fetched inside Team component
-  const [practiceGroupsResponse, clientsResponse, articlesResponse, dict] = await Promise.all([
+  const [practiceGroupsResponse, articlesResponse, dict] = await Promise.all([
     practiceGroupsService.getActive(),
-    clientsService.getAllSorted(),
     articlesService.getFeatured(3),
     getDictionary(locale as Locale),
   ]);
   const practiceGroups = practiceGroupsResponse.data || [];
-  const allClients = clientsResponse.data || [];
   const featuredArticles = articlesResponse.data || [];
-
-  // Filter and map clients data
-  const clientLogos: LogoItem[] = allClients
-    .filter((c) => (c.type === "Client" || !c.type) && c.status === "Active")
-    .map((c) => ({
-      id: c.id,
-      name: c.name,
-      image: c.logo_url || undefined,
-    }));
-
-  const orgLogos: LogoItem[] = allClients
-    .filter((c) => c.type === "Organization" && c.status === "Active")
-    .map((c) => ({
-      id: c.id,
-      name: c.name,
-      image: c.logo_url || undefined,
-    }));
 
   return (
     <>
       <div id="hero" className="-mt-[100px] md:-mt-[122px]">
         <Hero />
       </div>
-      {/* Client Logo Ticker */}
-      <LogoTicker
-        title="Trusted By Industry Leaders"
-        items={clientLogos}
-        theme="dark"
-      />
+      {/* Client Logo Ticker — hidden until data is ready */}
+      {/* <ClientsTicker /> */}
       <div id="expertise">
         <PracticeAreasSection
           practiceGroups={practiceGroups}
@@ -87,12 +65,8 @@ export default async function HomePage({
           description={dict.home.practice_section.description}
         />
       </div>
-      {/* Org Logo Ticker */}
-      <LogoTicker
-        title="Industry Affiliations"
-        items={orgLogos}
-        theme="light"
-      />
+      {/* Affiliations Ticker — hidden until data is ready */}
+      {/* <AffiliationsTicker /> */}
       <div id="achievements">
         <Achievements />
       </div>

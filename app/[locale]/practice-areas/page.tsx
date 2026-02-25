@@ -1,8 +1,10 @@
 import PracticeAreaPageComponent from "@/components/PracticeAreaPage";
-import { practiceGroupsService, clientsService } from "@/services";
+// Hidden until data is ready:
+// import ClientsTicker from "@/components/ClientsTicker";
+// import AffiliationsTicker from "@/components/AffiliationsTicker";
+import { practiceGroupsService } from "@/services";
 import { generatePageMetadata } from "@/lib/metadata";
 import { Locale } from "@/lib/dictionary";
-import { LogoItem } from "@/types";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -26,34 +28,11 @@ export async function generateMetadata({
 export default async function PracticeAreasPage({ params }: PageProps) {
   const { locale } = await params;
 
-  // Fetch practice groups and clients in parallel
-  const [groupsResponse, clientsResponse] = await Promise.all([
-    practiceGroupsService.getAllWithAreas(),
-    clientsService.getAllSorted(),
-  ]);
+  const groupsResponse = await practiceGroupsService.getAllWithAreas();
 
   if (groupsResponse.error) {
     console.error("Error fetching practice groups:", groupsResponse.error);
   }
-
-  const allClients = clientsResponse.data || [];
-
-  // Filter and map clients data (same pattern as /about)
-  const clientLogos: LogoItem[] = allClients
-    .filter((c) => (c.type === "Client" || !c.type) && c.status === "Active")
-    .map((c) => ({
-      id: c.id,
-      name: c.name,
-      image: c.logo_url || undefined,
-    }));
-
-  const orgLogos: LogoItem[] = allClients
-    .filter((c) => c.type === "Organization" && c.status === "Active")
-    .map((c) => ({
-      id: c.id,
-      name: c.name,
-      image: c.logo_url || undefined,
-    }));
 
   // Filter for active groups and active areas
   const practiceGroups = (groupsResponse.data || [])
@@ -69,10 +48,12 @@ export default async function PracticeAreasPage({ params }: PageProps) {
   return (
     <PracticeAreaPageComponent
       targetId={null}
-      clientLogos={clientLogos}
-      orgLogos={orgLogos}
       practiceGroups={practiceGroups}
       locale={locale}
+      /* Tickers hidden until data is ready:
+      clientsTickerSection={<ClientsTicker theme="light" />}
+      affiliationsTickerSection={<AffiliationsTicker />}
+      */
     />
   );
 }

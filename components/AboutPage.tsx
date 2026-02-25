@@ -11,8 +11,6 @@ import {
   Handshake,
 } from "lucide-react";
 import CTASection from "./CTASection";
-import LogoTicker from "./LogoTicker";
-import { LogoItem } from "@/types";
 import Image from "next/image";
 import { PracticeGroup } from "@/lib/types/database";
 import { TestimonialsSection } from "./TestimonialsSection";
@@ -22,8 +20,6 @@ import { ReactNode } from "react";
 
 interface AboutPageProps {
   targetId?: string | null;
-  clientLogos?: LogoItem[];
-  orgLogos?: LogoItem[];
   locale: string;
   practiceGroups: PracticeGroup[];
   practiceSectionTranslations: {
@@ -32,16 +28,18 @@ interface AboutPageProps {
     title_suffix: string;
   };
   teamSection: ReactNode;
+  clientsTickerSection?: ReactNode;
+  affiliationsTickerSection?: ReactNode;
 }
 
 const AboutPage = ({
   targetId,
-  clientLogos,
-  orgLogos,
   locale,
   practiceGroups,
   practiceSectionTranslations,
   teamSection,
+  clientsTickerSection,
+  affiliationsTickerSection,
 }: AboutPageProps) => {
   const t = useTranslations("about");
 
@@ -245,13 +243,7 @@ const AboutPage = ({
       </section>
 
       {/* Client Ticker */}
-      {clientLogos && clientLogos.length > 0 && (
-        <LogoTicker
-          title={t("clientTicker")}
-          items={clientLogos}
-          theme="dark"
-        />
-      )}
+      {clientsTickerSection}
 
       {/* 4. PRACTICE AREAS */}
       <PracticeAreasSection
@@ -297,9 +289,7 @@ const AboutPage = ({
       <div id="team">{teamSection}</div>
 
       {/* Org Ticker */}
-      {orgLogos && orgLogos.length > 0 && (
-        <LogoTicker title={t("orgTicker")} items={orgLogos} theme="light" />
-      )}
+      {affiliationsTickerSection}
 
       {/* 7. TESTIMONIAL SECTION */}
       <TestimonialsSection />

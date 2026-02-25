@@ -1,15 +1,13 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, ReactNode } from "react";
 import {
   ShieldCheck,
   ArrowRight,
   Briefcase as DefaultIcon,
 } from "lucide-react";
 import CTASection from "./CTASection";
-import LogoTicker from "./LogoTicker";
 import CoreCompetencies from "./CoreCompetencies";
-import { LogoItem } from "@/types";
 import { Database } from "@/lib/types/database";
 
 type PracticeGroup = Database["public"]["Tables"]["practice_groups"]["Row"];
@@ -21,18 +19,18 @@ interface PracticeGroupWithAreas extends PracticeGroup {
 
 interface PracticeAreaPageProps {
   targetId?: string | null;
-  clientLogos?: LogoItem[];
-  orgLogos?: LogoItem[];
   practiceGroups: PracticeGroupWithAreas[];
   locale: string;
+  clientsTickerSection?: ReactNode;
+  affiliationsTickerSection?: ReactNode;
 }
 
 const PracticeAreaPage = ({
   targetId,
-  clientLogos,
-  orgLogos,
   practiceGroups,
   locale,
+  clientsTickerSection,
+  affiliationsTickerSection,
 }: PracticeAreaPageProps) => {
   useEffect(() => {
     // If targetId is provided via props, use it
@@ -88,17 +86,7 @@ const PracticeAreaPage = ({
       </section>
 
       {/* Client Ticker */}
-      {clientLogos && clientLogos.length > 0 && (
-        <LogoTicker
-          title={
-            isEn
-              ? "Trusted By Industry Leaders"
-              : "Dipercaya Oleh Pemimpin Industri"
-          }
-          items={clientLogos}
-          theme="light"
-        />
-      )}
+      {clientsTickerSection}
 
       {/* Core Competencies */}
       <CoreCompetencies isEn={isEn} />
@@ -202,13 +190,7 @@ const PracticeAreaPage = ({
       </section>
 
       {/* Org Ticker */}
-      {orgLogos && orgLogos.length > 0 && (
-        <LogoTicker
-          title={isEn ? "Member Organizations" : "Organisasi Anggota"}
-          items={orgLogos}
-          theme="light"
-        />
-      )}
+      {affiliationsTickerSection}
 
       <CTASection />
     </div>
