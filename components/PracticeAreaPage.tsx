@@ -147,15 +147,24 @@ const PracticeAreaPage = ({
                         {isEn ? group.subtitle_en : group.subtitle_id}
                       </p>
                     )}
+                    <div
+                      className="md:max-w-[60%] xl:max-w-[40%] !text-navy-primary/70 text-sm !leading-[1.5em] mt-3"
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          (isEn
+                            ? group.description_en
+                            : group.description_id) || "",
+                      }}
+                    />
                   </div>
-                  <div
+                  {/*<div
                     className="hidden xl:block md:ml-auto md:max-w-[40%] rich-content text-right"
                     dangerouslySetInnerHTML={{
                       __html:
                         (isEn ? group.description_en : group.description_id) ||
                         "",
                     }}
-                  />
+                  />*/}
                 </div>
 
                 {/* Areas Grid */}
