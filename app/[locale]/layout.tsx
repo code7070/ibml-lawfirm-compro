@@ -4,11 +4,13 @@ import { Inter, Space_Grotesk, Merriweather } from "next/font/google";
 import "@/app/globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AnnouncementBanner from "@/components/AnnouncementBanner";
 import { notFound } from "next/navigation";
 import { getDictionary, locales, Locale } from "@/lib/dictionary";
 import { TranslationProvider } from "@/components/TranslationProvider";
 import { generatePageMetadata } from "@/lib/metadata";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { eventsService } from "@/services";
 
 const geometricaSans = localFont({
   src: "../fonts/GeometricaSans-Regular.woff",
@@ -84,12 +86,22 @@ export default async function RootLayout({
   // Cast locale to valid type since we checked includes()
   const messages = await getDictionary(locale as any);
 
+  // Fetch events happening within the next 7 days
+  const now = new Date();
+  const in7Days = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
+  const { data: upcomingEvents } = await eventsService.getByDateRange(
+    now.toISOString(),
+    in7Days.toISOString(),
+  );
+  const upcomingEventCount = upcomingEvents?.length ?? 0;
+
   return (
     <html lang={locale}>
       <body
         className={`${geometricaSans.variable} ${museo.variable} ${fontPrimary.variable} ${fontSecondary.variable} ${inter.variable} antialiased min-h-screen bg-white text-[#0B1B3B] selection:bg-[#D4C5A0] selection:text-[#0B1B3B]`}
       >
         <TranslationProvider locale={locale} messages={messages}>
+          <AnnouncementBanner eventCount={upcomingEventCount} />
           <Navbar />
           <main>{children}</main>
           <Footer dictionary={messages} />

@@ -9,6 +9,8 @@ interface ContactSheetsPayload {
   phone?: string;
   practice_area?: string;
   message: string;
+  form_type?: "contact" | "consultation";
+  consultation_channel?: "online" | "offline";
 }
 
 /**
@@ -42,15 +44,16 @@ export async function POST(request: NextRequest) {
     }
 
     // Map to Apps Script expected format
-    const practiceArea = body.practice_area || "General";
     const appsScriptPayload = {
       name: body.name,
       organization: body.organization || "",
       email: body.email,
       phone: body.phone || "",
-      practice_area: practiceArea,
       message: body.message,
       contact_link: `${process.env.WEB_URL}/contact`,
+      practice_area: "-",
+      form_type: body.form_type || "contact",
+      consultation_channel: body.consultation_channel || "",
     };
 
     // Submit to Apps Script with 1 silent retry

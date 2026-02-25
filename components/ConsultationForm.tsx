@@ -10,7 +10,7 @@ import {
   ChevronDown,
   Lock,
 } from "lucide-react";
-import { contactSubmissionsService } from "@/services/contact.service";
+import { consultationSubmissionsService } from "@/services/consultation.service";
 import { useTranslations, useLocale } from "@/hooks/useTranslations";
 import TncContent from "./TncContent";
 
@@ -31,7 +31,7 @@ const ConsultationForm = () => {
     organization: "",
     email: "",
     phone: "",
-    practice_area: "",
+    practice_area: "-",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -79,21 +79,16 @@ const ConsultationForm = () => {
     setErrorMessage("");
 
     try {
-      const structuredMessage = `
-[PROFESSIONAL CONSULTATION REQUEST]
-Organization: ${formData.organization}
-Practice Area: ${formData.practice_area}
-Consultation Channel: ${consultationChannel === "online" ? "Online (Virtual)" : "Offline (In-Person)"}
+      const structuredMessage = `[PROFESSIONAL CONSULTATION REQUEST]\nOrganization: ${formData.organization}\n\n${formData.message}`.trim();
 
-${formData.message}
-      `.trim();
-
-      const { error } = await contactSubmissionsService.submit({
+      const { error } = await consultationSubmissionsService.submit({
         name: formData.name,
         email: formData.email,
         phone: formData.phone || null,
-        subject: `Professional Consultation - ${formData.name} - ${formData.practice_area || "General"} [${consultationChannel.toUpperCase()}]`,
+        subject: `Professional Consultation - ${formData.name} [${consultationChannel.toUpperCase()}]`,
         message: structuredMessage,
+        consultation_channel: consultationChannel,
+        agreed_tnc: true,
         referrer:
           typeof window !== "undefined" ? window.location.href : undefined,
       });
@@ -106,7 +101,7 @@ ${formData.message}
         body: JSON.stringify({
           ...formData,
           consultation_channel: consultationChannel,
-          type: "consultation",
+          form_type: "consultation",
         }),
       }).catch((err) => {
         console.error(
@@ -121,7 +116,7 @@ ${formData.message}
         organization: "",
         email: "",
         phone: "",
-        practice_area: "",
+        practice_area: "-",
         message: "",
       });
     } catch (err) {
@@ -475,41 +470,7 @@ ${formData.message}
             </div>
           </div>
 
-          {/* Practice Area */}
-          <div className="space-y-2">
-            <label className="text-[10px] font-bold text-[#0B1B3B] uppercase tracking-[0.3em]">
-              {tContact("labels.practiceArea")}
-            </label>
-            <select
-              name="practice_area"
-              value={formData.practice_area}
-              onChange={handleChange}
-              className="w-full border-b-2 border-[#0B1B3B]/15 py-3 bg-transparent outline-none focus:border-[#0B1B3B] transition-colors text-[#0B1B3B] text-lg"
-            >
-              <option value="">{tContact("options.selectPracticeArea")}</option>
-              <option value="Entertainment Law">
-                {tContact("options.entertainment")}
-              </option>
-              <option value="Technology Law">
-                {tContact("options.technology")}
-              </option>
-              <option value="Labor & Employment">
-                {tContact("options.labor")}
-              </option>
-              <option value="Health & Education">
-                {tContact("options.health")}
-              </option>
-              <option value="Intellectual Property">
-                {tContact("options.ip")}
-              </option>
-              <option value="Corporate Structuring">
-                {tContact("options.corporate")}
-              </option>
-              <option value="Dispute Resolution">
-                {tContact("options.dispute")}
-              </option>
-            </select>
-          </div>
+          {/* Practice Area selector hidden — default "General" sent on submit */}
 
           {/* Message */}
           <div className="space-y-2">

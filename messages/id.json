@@ -527,5 +527,21 @@
       "title": "Wawasan Hukum | IBLM Law Group",
       "description": "Analisis ahli dan perspektif hukum dari tim kami. Baca artikel terbaru tentang hukum hiburan, hukum teknologi, dan hukum bisnis di Indonesia."
     }
+  },
+  "banner": {
+    "announcement_label": "Pengumuman",
+    "close": "Tutup",
+    "slide_of": "dari",
+    "confirm_cta": "Mengerti",
+    "confirm_last_cta": "Mengerti, lanjutkan",
+    "event_label": "Event Mendatang",
+    "event_title": "Jangan Terlewat",
+    "event_body": "Ada <strong>{count} event</strong> yang dijadwalkan dalam 7 hari ke depan.",
+    "event_cta": "Lihat Event",
+    "notice_label": "Pemberitahuan",
+    "notice_title": "Website Dalam Pengembangan",
+    "notice_body": "Website ini sedang dalam proses pengembangan dan mungkin mengalami perubahan atau gangguan sementara.",
+    "notice_cta": "Hubungi Kami",
+    "notice_cta_suffix": "bila ada masalah."
   }
 }

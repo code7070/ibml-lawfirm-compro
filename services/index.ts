@@ -17,6 +17,7 @@ export { practiceGroupsService } from './practice-groups.service';
 export { testimonialsService } from './testimonials.service';
 export { clientsService } from './clients.service';
 export { contactSettingsService, contactSubmissionsService } from './contact.service';
+export { consultationSubmissionsService } from './consultation.service';
 export { jobsService } from './jobs.service';
 
 // Export base service for extension (if needed)
@@ -83,6 +84,11 @@ export type {
   ContactSubmissionInsert,
   ContactSubmissionUpdate,
   ContactSubmissionStatus,
+  // Consultation
+  ConsultationSubmission,
+  ConsultationSubmissionInsert,
+  ConsultationSubmissionUpdate,
+  ConsultationSubmissionStatus,
   // Jobs
   JobOpening,
   JobOpeningInsert,

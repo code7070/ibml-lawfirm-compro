@@ -527,5 +527,21 @@
       "title": "Legal Insights | IBLM Law Group",
       "description": "Expert analysis and legal perspectives from our team. Read the latest articles on entertainment law, technology law, and business law in Indonesia."
     }
+  },
+  "banner": {
+    "announcement_label": "Site Announcement",
+    "close": "Dismiss",
+    "slide_of": "of",
+    "confirm_cta": "Understood",
+    "confirm_last_cta": "Got it, continue",
+    "event_label": "Upcoming Event",
+    "event_title": "Don't Miss This",
+    "event_body": "There are <strong>{count} events</strong> scheduled within the next 7 days.",
+    "event_cta": "View Events",
+    "notice_label": "Notice",
+    "notice_title": "Site Under Development",
+    "notice_body": "This website is currently being developed and may be subject to changes or temporary issues.",
+    "notice_cta": "Contact Us",
+    "notice_cta_suffix": "if you encounter any issues."
   }
 }

@@ -116,14 +116,12 @@ const Navbar = () => {
           ))}
 
           <div className="flex items-center gap-4">
-            {/* Language Switcher Dropdown */}
+            {/* DUAL LANG DISABLED — Language Switcher hidden. Uncomment to re-enable.
             <div className="relative group border-r border-white/20 pr-4">
               <button className="flex items-center gap-2 text-xs font-bold tracking-[0.15em] text-white/80 hover:text-[#D4C5A0] uppercase transition-colors py-4">
                 {locale.toUpperCase()}
                 <ChevronDown className="w-3 h-3" />
               </button>
-
-              {/* Dropdown Menu */}
               <div className="absolute top-full right-0 w-48 bg-[#0B1B3B] border border-[#D4C5A0]/20 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 flex flex-col p-2">
                 <button
                   onClick={() => handleLanguageChange("en")}
@@ -141,6 +139,7 @@ const Navbar = () => {
                 </button>
               </div>
             </div>
+            */}
 
             <LangLink
               href="/contact"
@@ -187,14 +186,12 @@ const Navbar = () => {
           ))}
 
           <div className="flex items-center gap-4">
-            {/* Language Switcher Dropdown */}
+            {/* DUAL LANG DISABLED — Language Switcher hidden. Uncomment to re-enable.
             <div className="relative group border-r border-white/20 pr-4">
               <button className="flex items-center gap-2 text-xs font-bold tracking-[0.15em] text-white/80 hover:text-[#D4C5A0] uppercase transition-colors py-4">
                 {locale.toUpperCase()}
                 <ChevronDown className="w-3 h-3" />
               </button>
-
-              {/* Dropdown Menu */}
               <div className="absolute top-full right-0 w-48 bg-[#0B1B3B] border border-[#D4C5A0]/20 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 flex flex-col p-2">
                 <button
                   onClick={() => handleLanguageChange("en")}
@@ -212,6 +209,7 @@ const Navbar = () => {
                 </button>
               </div>
             </div>
+            */}
 
             <LangLink
               href="/contact"
@@ -245,7 +243,7 @@ const Navbar = () => {
             </LangLink>
           ))}
 
-          {/* Language Options */}
+          {/* DUAL LANG DISABLED — Mobile Language Options hidden. Uncomment to re-enable.
           <div className="border-t border-[#D4C5A0]/20 pt-6 space-y-4">
             <span className="text-[#D4C5A0] font-bold tracking-[0.3em] text-xs uppercase block">
               Language
@@ -271,6 +269,7 @@ const Navbar = () => {
               {locale === "id" && <Check size={14} />}
             </button>
           </div>
+          */}
 
           <LangLink
             href="/contact"

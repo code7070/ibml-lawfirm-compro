@@ -4,7 +4,7 @@ const dictionaries = {
 };
 
 export const locales = ["en", "id"];
-export const defaultLocale = "id";
+export const defaultLocale = "en"; // temporarily forced to English (was "id")
 
 export type Locale = keyof typeof dictionaries;
 

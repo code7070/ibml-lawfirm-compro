@@ -242,6 +242,91 @@ h4 {
   scrollbar-width: none;
 }
 
+/* ========== ANNOUNCEMENT BANNER ========== */
+.announcement-banner {
+  position: relative;
+  height: 36px;
+  background-color: #0b1b3b;
+  background-image:
+    linear-gradient(
+      105deg,
+      transparent 0%,
+      rgba(212, 197, 160, 0.03) 30%,
+      rgba(212, 197, 160, 0.06) 50%,
+      rgba(212, 197, 160, 0.03) 70%,
+      transparent 100%
+    );
+  font-family: var(--font-body);
+  overflow: hidden;
+  will-change: height, opacity;
+}
+
+/* The living shimmer sweep */
+.shimmer-track {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 35%,
+    rgba(212, 197, 160, 0.07) 50%,
+    transparent 65%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer-sweep 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmer-sweep {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Banner open state */
+.banner-visible {
+  animation: banner-slide-down 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Banner close state */
+.banner-closing {
+  animation: banner-slide-up 0.45s cubic-bezier(0.55, 0, 0.45, 1) forwards;
+  overflow: hidden;
+}
+
+@keyframes banner-slide-down {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: 36px;
+    opacity: 1;
+  }
+}
+
+@keyframes banner-slide-up {
+  from {
+    height: 36px;
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+/* Progress bar — resets on key change */
+.progress-bar {
+  animation: progress-fill 5s linear forwards;
+  transform-origin: left;
+}
+
+@keyframes progress-fill {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
 /* ========== RICH TEXT CONTENT (replaces @tailwindcss/typography) ========== */
 /* Used for article body, event description, lawyer bio, practice area content  */
 .rich-content {

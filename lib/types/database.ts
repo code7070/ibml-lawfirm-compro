@@ -336,6 +336,72 @@ export type Database = {
         };
         Relationships: [];
       };
+      consultation_submission: {
+        Row: {
+          admin_notes: string | null;
+          agreed_tnc: boolean | null;
+          assigned_to: string | null;
+          consultation_channel: string | null;
+          created_by: string | null;
+          email: string;
+          id: string;
+          ip_address: unknown;
+          message: string;
+          name: string;
+          phone: string | null;
+          referrer: string | null;
+          responded_at: string | null;
+          status: string | null;
+          subject: string | null;
+          submitted_at: string | null;
+          updated_at: string | null;
+          updated_by: string | null;
+          user_agent: string | null;
+        };
+        Insert: {
+          admin_notes?: string | null;
+          agreed_tnc?: boolean | null;
+          assigned_to?: string | null;
+          consultation_channel?: string | null;
+          created_by?: string | null;
+          email: string;
+          id?: string;
+          ip_address?: unknown;
+          message: string;
+          name: string;
+          phone?: string | null;
+          referrer?: string | null;
+          responded_at?: string | null;
+          status?: string | null;
+          subject?: string | null;
+          submitted_at?: string | null;
+          updated_at?: string | null;
+          updated_by?: string | null;
+          user_agent?: string | null;
+        };
+        Update: {
+          admin_notes?: string | null;
+          agreed_tnc?: boolean | null;
+          assigned_to?: string | null;
+          consultation_channel?: string | null;
+          created_by?: string | null;
+          email?: string;
+          id?: string;
+          ip_address?: unknown;
+          message?: string;
+          name?: string;
+          phone?: string | null;
+          referrer?: string | null;
+          responded_at?: string | null;
+          status?: string | null;
+          subject?: string | null;
+          submitted_at?: string | null;
+          updated_at?: string | null;
+          updated_by?: string | null;
+          user_agent?: string | null;
+        };
+        Relationships: [];
+      };
       contact_submissions: {
         Row: {
           admin_notes: string | null;
@@ -1148,6 +1214,11 @@ export type ContactSubmission = Tables<"contact_submissions">;
 export type ContactSubmissionInsert = TablesInsert<"contact_submissions">;
 export type ContactSubmissionUpdate = TablesUpdate<"contact_submissions">;
 export type ContactSubmissionStatus = "new" | "read" | "replied" | "spam" | "resolved" | "in_progress";
+
+export type ConsultationSubmission = Tables<"consultation_submission">;
+export type ConsultationSubmissionInsert = TablesInsert<"consultation_submission">;
+export type ConsultationSubmissionUpdate = TablesUpdate<"consultation_submission">;
+export type ConsultationSubmissionStatus = ContactSubmissionStatus; // shared status set
 
 export interface ApiResponse<T> {
   data: T | null;

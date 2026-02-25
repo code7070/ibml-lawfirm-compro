@@ -32,11 +32,7 @@ const TNC_ID: TncSection[] = [
     title: "PROSEDUR BOOKING & PEMBAYARAN",
     body: [
       { type: "sub", number: "2.1", title: "Permohonan Konsultasi", body: [
-        { type: "paragraph", text: "Klien wajib menyampaikan ringkasan permasalahan hukum atau kebutuhan jasa hukum melalui:" },
-        { type: "bullet", items: [
-          "Direct Message media sosial IBLM; atau",
-          "Email kepada CR di cr@iblmlaw.group.",
-        ]},
+        { type: "paragraph", text: "Klien wajib menyampaikan ringkasan permasalahan hukum atau kebutuhan jasa hukum melalui formulir konsultasi di website IBLM." },
       ]},
       { type: "sub", number: "2.2", title: "Konfirmasi Jadwal & Biaya", body: [
         { type: "paragraph", text: "IBLM melalui Admin/CR akan:" },
@@ -210,11 +206,7 @@ const TNC_EN: TncSection[] = [
     title: "BOOKING & PAYMENT PROCEDURE",
     body: [
       { type: "sub", number: "2.1", title: "Consultation Request", body: [
-        { type: "paragraph", text: "The Client must submit a summary of their legal issue or legal service needs through:" },
-        { type: "bullet", items: [
-          "Direct Message via IBLM's social media; or",
-          "Email to CR at cr@iblmlaw.group.",
-        ]},
+        { type: "paragraph", text: "The Client must submit a summary of their legal issue or legal service needs through the consultation form on IBLM's website." },
       ]},
       { type: "sub", number: "2.2", title: "Schedule & Fee Confirmation", body: [
         { type: "paragraph", text: "IBLM through Admin/CR will:" },

@@ -3,7 +3,7 @@
  * Handles all event-related data operations
  */
 
-import { BaseService } from './base.service';
+import { BaseService } from "./base.service";
 import {
   Event,
   EventInsert,
@@ -11,11 +11,11 @@ import {
   EventFilters,
   ApiResponse,
   EventStatus,
-} from '@/lib/types/database';
+} from "@/lib/types/database";
 
 class EventsService extends BaseService<Event, EventInsert, EventUpdate> {
   constructor() {
-    super('events');
+    super("events");
   }
 
   /**
@@ -25,19 +25,19 @@ class EventsService extends BaseService<Event, EventInsert, EventUpdate> {
     try {
       const { data, error } = await this.supabase
         .from(this.tableName)
-        .select('*')
-        .eq('is_active', true)
-        .gte('event_date', new Date().toISOString())
-        .order('event_date', { ascending: true });
+        .select("*")
+        .eq("is_active", true)
+        .gte("event_date", new Date().toISOString())
+        .order("event_date", { ascending: false });
 
       if (error) throw error;
 
       return { data: data as Event[], error: null };
     } catch (error) {
-      console.error('Error fetching upcoming events:', error);
+      console.error("Error fetching upcoming events:", error);
       return {
         data: null,
-        error: error instanceof Error ? error.message : 'Unknown error',
+        error: error instanceof Error ? error.message : "Unknown error",
       };
     }
   }
@@ -49,18 +49,18 @@ class EventsService extends BaseService<Event, EventInsert, EventUpdate> {
     try {
       const { data, error } = await this.supabase
         .from(this.tableName)
-        .select('*')
-        .lt('event_date', new Date().toISOString())
-        .order('event_date', { ascending: false });
+        .select("*")
+        .lt("event_date", new Date().toISOString())
+        .order("event_date", { ascending: false });
 
       if (error) throw error;
 
       return { data: data as Event[], error: null };
     } catch (error) {
-      console.error('Error fetching past events:', error);
+      console.error("Error fetching past events:", error);
       return {
         data: null,
-        error: error instanceof Error ? error.message : 'Unknown error',
+        error: error instanceof Error ? error.message : "Unknown error",
       };
     }
   }
@@ -72,20 +72,20 @@ class EventsService extends BaseService<Event, EventInsert, EventUpdate> {
     try {
       const { data, error } = await this.supabase
         .from(this.tableName)
-        .select('*')
-        .eq('is_active', true) // Featured implies active usually
-        .gte('event_date', new Date().toISOString())
-        .order('event_date', { ascending: true })
+        .select("*")
+        .eq("is_active", true) // Featured implies active usually
+        .gte("event_date", new Date().toISOString())
+        .order("event_date", { ascending: true })
         .limit(limit);
 
       if (error) throw error;
 
       return { data: data as Event[], error: null };
     } catch (error) {
-      console.error('Error fetching featured events:', error);
+      console.error("Error fetching featured events:", error);
       return {
         data: null,
-        error: error instanceof Error ? error.message : 'Unknown error',
+        error: error instanceof Error ? error.message : "Unknown error",
       };
     }
   }
@@ -95,24 +95,24 @@ class EventsService extends BaseService<Event, EventInsert, EventUpdate> {
    */
   async getByDateRange(
     fromDate: string,
-    toDate: string
+    toDate: string,
   ): Promise<ApiResponse<Event[]>> {
     try {
       const { data, error } = await this.supabase
         .from(this.tableName)
-        .select('*')
-        .gte('event_date', fromDate)
-        .lte('event_date', toDate)
-        .order('event_date', { ascending: true });
+        .select("*")
+        .gte("event_date", fromDate)
+        .lte("event_date", toDate)
+        .order("event_date", { ascending: true });
 
       if (error) throw error;
 
       return { data: data as Event[], error: null };
     } catch (error) {
-      console.error('Error fetching events by date range:', error);
+      console.error("Error fetching events by date range:", error);
       return {
         data: null,
-        error: error instanceof Error ? error.message : 'Unknown error',
+        error: error instanceof Error ? error.message : "Unknown error",
       };
     }
   }
@@ -124,18 +124,18 @@ class EventsService extends BaseService<Event, EventInsert, EventUpdate> {
     try {
       const { data, error } = await this.supabase
         .from(this.tableName)
-        .select('*')
-        .eq('event_type', eventType)
-        .order('event_date', { ascending: true });
+        .select("*")
+        .eq("event_type", eventType)
+        .order("event_date", { ascending: true });
 
       if (error) throw error;
 
       return { data: data as Event[], error: null };
     } catch (error) {
-      console.error('Error fetching events by type:', error);
+      console.error("Error fetching events by type:", error);
       return {
         data: null,
-        error: error instanceof Error ? error.message : 'Unknown error',
+        error: error instanceof Error ? error.message : "Unknown error",
       };
     }
   }
@@ -145,26 +145,26 @@ class EventsService extends BaseService<Event, EventInsert, EventUpdate> {
    */
   async getFiltered(filters: EventFilters): Promise<ApiResponse<Event[]>> {
     try {
-      let query = this.supabase.from(this.tableName).select('*');
+      let query = this.supabase.from(this.tableName).select("*");
 
       // Apply filters
       if (filters.is_active !== undefined) {
-        query = query.eq('is_active', filters.is_active);
+        query = query.eq("is_active", filters.is_active);
       }
 
       if (filters.upcoming) {
-        query = query.gte('event_date', new Date().toISOString());
+        query = query.gte("event_date", new Date().toISOString());
       }
 
       if (filters.from_date) {
-        query = query.gte('event_date', filters.from_date);
+        query = query.gte("event_date", filters.from_date);
       }
 
       if (filters.to_date) {
-        query = query.lte('event_date', filters.to_date);
+        query = query.lte("event_date", filters.to_date);
       }
 
-      query = query.order('event_date', { ascending: true });
+      query = query.order("event_date", { ascending: true });
 
       const { data, error } = await query;
 
@@ -172,10 +172,10 @@ class EventsService extends BaseService<Event, EventInsert, EventUpdate> {
 
       return { data: data as Event[], error: null };
     } catch (error) {
-      console.error('Error fetching filtered events:', error);
+      console.error("Error fetching filtered events:", error);
       return {
         data: null,
-        error: error instanceof Error ? error.message : 'Unknown error',
+        error: error instanceof Error ? error.message : "Unknown error",
       };
     }
   }
@@ -187,20 +187,20 @@ class EventsService extends BaseService<Event, EventInsert, EventUpdate> {
     try {
       const { data, error } = await this.supabase
         .from(this.tableName)
-        .select('*')
+        .select("*")
         .or(
-          `title_id.ilike.%${query}%,title_en.ilike.%${query}%,description_id.ilike.%${query}%,description_en.ilike.%${query}%`
+          `title_id.ilike.%${query}%,title_en.ilike.%${query}%,description_id.ilike.%${query}%,description_en.ilike.%${query}%`,
         )
-        .order('event_date', { ascending: true });
+        .order("event_date", { ascending: true });
 
       if (error) throw error;
 
       return { data: data as Event[], error: null };
     } catch (error) {
-      console.error('Error searching events:', error);
+      console.error("Error searching events:", error);
       return {
         data: null,
-        error: error instanceof Error ? error.message : 'Unknown error',
+        error: error instanceof Error ? error.message : "Unknown error",
       };
     }
   }
@@ -215,19 +215,19 @@ class EventsService extends BaseService<Event, EventInsert, EventUpdate> {
 
       const { data, error } = await this.supabase
         .from(this.tableName)
-        .select('*')
-        .gte('event_date', startDate)
-        .lte('event_date', endDate)
-        .order('event_date', { ascending: true });
+        .select("*")
+        .gte("event_date", startDate)
+        .lte("event_date", endDate)
+        .order("event_date", { ascending: true });
 
       if (error) throw error;
 
       return { data: data as Event[], error: null };
     } catch (error) {
-      console.error('Error fetching events by month:', error);
+      console.error("Error fetching events by month:", error);
       return {
         data: null,
-        error: error instanceof Error ? error.message : 'Unknown error',
+        error: error instanceof Error ? error.message : "Unknown error",
       };
     }
   }
@@ -238,7 +238,7 @@ class EventsService extends BaseService<Event, EventInsert, EventUpdate> {
    */
   async autoUpdateStatus(): Promise<ApiResponse<null>> {
     // Status column does not exist in current schema
-    return { data: null, error: 'Feature not available' };
+    return { data: null, error: "Feature not available" };
     /*
     try {
       const now = new Date().toISOString();

@@ -13,7 +13,7 @@ const ContactForm = () => {
     organization: "",
     email: "",
     phone: "",
-    practice_area: "",
+    practice_area: "-",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -34,7 +34,6 @@ const ContactForm = () => {
     try {
       const structuredMessage = `
 Organization: ${formData.organization}
-Practice Area: ${formData.practice_area}
 
 ${formData.message}
       `.trim();
@@ -43,7 +42,7 @@ ${formData.message}
         name: formData.name,
         email: formData.email,
         phone: formData.phone || null,
-        subject: `Inquiry from ${formData.name} - ${formData.practice_area || 'General'}`,
+        subject: `Inquiry from ${formData.name}`,
         message: structuredMessage,
         referrer: typeof window !== 'undefined' ? window.location.href : undefined
       });
@@ -56,7 +55,7 @@ ${formData.message}
       fetch("/api/contact-sheets", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, form_type: "contact" }),
       }).catch((err) => {
         console.error("[ContactForm] Google Sheets submission failed:", err);
       });
@@ -67,7 +66,7 @@ ${formData.message}
         organization: "",
         email: "",
         phone: "",
-        practice_area: "",
+        practice_area: "-",
         message: "",
       });
     } catch (err) {
@@ -186,26 +185,7 @@ ${formData.message}
           </div>
         </div>
 
-        <div className="space-y-2">
-          <label className="text-xs font-bold text-[#0B1B3B] uppercase tracking-widest">
-            {t("labels.practiceArea")}
-          </label>
-          <select 
-            name="practice_area"
-            value={formData.practice_area}
-            onChange={handleChange}
-            className="w-full border-b border-[#0B1B3B]/20 py-3 bg-transparent outline-none focus:border-[#D4C5A0] transition-colors text-[#2E4472]"
-          >
-            <option value="">{t("options.selectPracticeArea")}</option>
-            <option value="Entertainment Law">{t("options.entertainment")}</option>
-            <option value="Technology Law">{t("options.technology")}</option>
-            <option value="Labor & Employment">{t("options.labor")}</option>
-            <option value="Health & Education">{t("options.health")}</option>
-            <option value="Intellectual Property">{t("options.ip")}</option>
-            <option value="Corporate Structuring">{t("options.corporate")}</option>
-            <option value="Dispute Resolution">{t("options.dispute")}</option>
-          </select>
-        </div>
+        {/* Practice Area selector hidden — default "General" sent on submit */}
 
         <div className="space-y-2">
           <label className="text-xs font-bold text-[#0B1B3B] uppercase tracking-widest">
