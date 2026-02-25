@@ -453,3 +453,85 @@ h4 {
   border-top: 1px solid #e0e0e3;
   margin: 2rem 0;
 }
+
+/* ========== PRIVACY POLICY PAGE ========== */
+
+/* Tab indicator animation */
+.privacy-tab-indicator {
+  animation: tab-slide-in 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes tab-slide-in {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* Mobile TOC drawer */
+.privacy-toc-drawer {
+  animation: toc-slide-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes toc-slide-in {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+/* Document body text */
+.privacy-document .privacy-body p {
+  color: #2e4472;
+  font-size: 0.9375rem;   /* 15px */
+  line-height: 1.85;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+.privacy-document .privacy-body p:last-child {
+  margin-bottom: 0;
+}
+
+.privacy-document .privacy-body strong {
+  color: #0b1b3b;
+  font-weight: 600;
+}
+
+.privacy-document .privacy-body ol {
+  counter-reset: pp-counter;
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.privacy-document .privacy-body ol li {
+  counter-increment: pp-counter;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  color: #2e4472;
+  font-size: 0.9375rem;
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+.privacy-document .privacy-body ol li::before {
+  content: counter(pp-counter) ".";
+  color: #d4c5a0;
+  font-weight: 700;
+  font-size: 0.75rem;
+  font-family: var(--font-primary);
+  padding-top: 3px;
+  flex-shrink: 0;
+  min-width: 1.5rem;
+}
+
+/* Section entrance fade-in */
+.privacy-section {
+  animation: section-fade-in 0.4s ease-out both;
+}
+
+@keyframes section-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

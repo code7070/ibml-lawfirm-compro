@@ -526,6 +526,10 @@
     "articles": {
       "title": "Legal Insights | IBLM Law Group",
       "description": "Expert analysis and legal perspectives from our team. Read the latest articles on entertainment law, technology law, and business law in Indonesia."
+    },
+    "privacyPolicy": {
+      "title": "Privacy Policy & Terms | IBLM Law Group",
+      "description": "Read IBLM Law Group's Privacy Notice and Terms & Conditions. Learn how we collect, use, and protect your personal data in accordance with applicable Indonesian laws."
     }
   },
   "banner": {

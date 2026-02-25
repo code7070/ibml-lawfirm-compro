@@ -123,7 +123,7 @@ const PracticeAreaPage = ({
                   )}
                 </div>
                 <div
-                  className="md:ml-auto md:max-w-[40%] rich-content text-right"
+                  className="hidden xl:block md:ml-auto md:max-w-[40%] rich-content text-right"
                   dangerouslySetInnerHTML={{
                     __html:
                       (isEn ? group.description_en : group.description_id) ||

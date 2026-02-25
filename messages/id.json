@@ -526,6 +526,10 @@
     "articles": {
       "title": "Wawasan Hukum | IBLM Law Group",
       "description": "Analisis ahli dan perspektif hukum dari tim kami. Baca artikel terbaru tentang hukum hiburan, hukum teknologi, dan hukum bisnis di Indonesia."
+    },
+    "privacyPolicy": {
+      "title": "Kebijakan Privasi & Syarat | IBLM Law Group",
+      "description": "Baca Pemberitahuan Privasi dan Syarat & Ketentuan IBLM Law Group. Pelajari bagaimana kami mengumpulkan, menggunakan, dan melindungi data pribadi Anda sesuai hukum yang berlaku."
     }
   },
   "banner": {

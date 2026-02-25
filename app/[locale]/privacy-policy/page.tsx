@@ -1,20 +1,20 @@
-import CareerPage from "@/components/CareerPage";
+import PrivacyPolicyPage from "@/components/PrivacyPolicyPage";
 import { generatePageMetadata } from "@/lib/metadata";
 import { Locale } from "@/lib/dictionary";
-// import { jobsService } from "@/services";
+import { Metadata } from "next";
 
-export const revalidate = 300;
+export const revalidate = 86400; // revalidate once a day
 
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
-}) {
+}): Promise<Metadata> {
   const { locale } = await params;
   return generatePageMetadata({
     locale: locale as Locale,
-    page: "careers",
-    path: "/careers",
+    page: "privacyPolicy",
+    path: "/privacy-policy",
   });
 }
 
@@ -24,9 +24,5 @@ export default async function Page({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-
-  // const jobsResponse = await jobsService.getOpen();
-  // const jobs = jobsResponse.data || [];
-
-  return <CareerPage jobs={[]} locale={locale} />;
+  return <PrivacyPolicyPage locale={locale} />;
 }

@@ -82,19 +82,20 @@ const Hero = () => {
               </div>
 
               {/* Years of Excellence Badge */}
-              <div className="absolute -top-6 -right-6 w-24 h-24 border border-[#D4C5A0] bg-[#0B1B3B] flex flex-col items-center justify-center">
+              {/*<div className="absolute -top-6 -right-6 w-24 h-24 border border-[#D4C5A0] bg-[#0B1B3B] flex flex-col items-center justify-center">
                 <span className="text-3xl font-light text-white">4</span>
                 <span className="text-[0.6rem] text-[#D4C5A0] uppercase tracking-wider">
                   LEGs
                 </span>
-              </div>
+              </div>*/}
 
               {/* Brand Promise Badge */}
-              <div className="absolute -bottom-10 -left-10 bg-[#D4C5A0] p-3 text-[#0B1B3B] max-w-[200px]">
+              {/*<div className="absolute -bottom-10 -left-10 bg-[#D4C5A0] p-3 text-[#0B1B3B] max-w-[200px]">
                 <p className="text-xs font-bold uppercase tracking-wide leading-relaxed text-center">
                   {t("badge_text")}
                 </p>
-              </div>
+              </div>*/}
+              <div className="absolute -bottom-3 -left-3 size-14 bg-[#D4C5A0] p-3 text-[#0B1B3B] max-w-[200px]"></div>
             </div>
           </div>
         </div>

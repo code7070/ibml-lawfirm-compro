@@ -13,7 +13,8 @@ export interface MetadataConfig {
     | "contact"
     | "careers"
     | "events"
-    | "articles";
+    | "articles"
+    | "privacyPolicy";
   customTitle?: string;
   customDescription?: string;
   path?: string;

@@ -6,7 +6,6 @@ import {
   Users,
   Zap,
   Briefcase,
-  ArrowRight,
   Brain,
   Globe,
   Shield,
@@ -67,8 +66,6 @@ const CareerPage = ({ jobs = [], locale = "en" }: CareerPageProps) => {
     },
   ];
 
-
-
   const benefits = [
     { icon: Brain, labelKey: "benefits.mentorship" },
     { icon: Globe, labelKey: "benefits.secondments" },
@@ -110,7 +107,7 @@ const CareerPage = ({ jobs = [], locale = "en" }: CareerPageProps) => {
                 key={v.titleKey}
                 className="group p-8 border border-[#F5F5F7] hover:border-[#D4C5A0]/30 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
               >
-                <div className="w-14 h-14 bg-[#F5F5F7] flex items-center justify-center text-[#D4C5A0] mb-8 group-hover:bg-[#0B1B3B] transition-colors duration-300">
+                <div className="w-14 h-14 bg-[#F5F5F7] flex items-center justify-center text-[#0B1B3B] mb-8 group-hover:bg-[#0B1B3B] group-hover:text-[#D4C5A0] transition-colors duration-300">
                   <v.icon strokeWidth={1.5} size={28} />
                 </div>
                 <h3 className="text-2xl font-serif text-[#0B1B3B] mb-4">
@@ -137,9 +134,7 @@ const CareerPage = ({ jobs = [], locale = "en" }: CareerPageProps) => {
         <div className="absolute inset-0 flex items-center justify-center relative z-10 px-6">
           <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-16 items-center">
             <div className="text-white">
-              <h2 className="text-4xl font-light mb-6">
-                {t("culture.title")}
-              </h2>
+              <h2 className="text-4xl font-light mb-6">{t("culture.title")}</h2>
               <p className="text-gray-300 font-light leading-relaxed mb-8">
                 {t("culture.description")}
               </p>
@@ -167,7 +162,9 @@ const CareerPage = ({ jobs = [], locale = "en" }: CareerPageProps) => {
                     <p className="text-sm font-bold text-white uppercase">
                       {t("culture.quoteAuthor")}
                     </p>
-                    <p className="text-xs text-[#D4C5A0]">{t("culture.quoteRole")}</p>
+                    <p className="text-xs text-[#D4C5A0]">
+                      {t("culture.quoteRole")}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -177,7 +174,7 @@ const CareerPage = ({ jobs = [], locale = "en" }: CareerPageProps) => {
       </section>
 
       {/* Open Positions */}
-      <section className="py-24 px-6 bg-[#F5F5F7]">
+      {/*<section className="py-24 px-6 bg-[#F5F5F7]">
         <div className="max-w-[1000px] mx-auto">
           <h2 className="text-3xl font-light text-[#0B1B3B] mb-12 text-center">
             {t("openings.title")}
@@ -185,14 +182,20 @@ const CareerPage = ({ jobs = [], locale = "en" }: CareerPageProps) => {
 
           {jobs.length === 0 ? (
             <div className="text-center py-16 text-gray-400 font-light">
-              <p className="text-lg mb-2">{t("openings.noOpenings") || "No open positions at this time."}</p>
-              <p className="text-sm">{t("openings.speculativeHint") || "Send your CV to careers@iblm.law for speculative applications."}</p>
+              <p className="text-lg mb-2">
+                {t("openings.noOpenings") || "No open positions at this time."}
+              </p>
+              <p className="text-sm">
+                {t("openings.speculativeHint") ||
+                  "Send your CV to careers@iblm.law for speculative applications."}
+              </p>
             </div>
           ) : (
             <div className="space-y-4">
               {jobs.map((job) => {
                 const title = locale === "id" ? job.title_id : job.title_en;
-                const location = locale === "id" ? job.location_id : job.location_en;
+                const location =
+                  locale === "id" ? job.location_id : job.location_en;
 
                 return (
                   <div
@@ -205,12 +208,16 @@ const CareerPage = ({ jobs = [], locale = "en" }: CareerPageProps) => {
                       </h3>
                       <div className="flex flex-wrap gap-4 text-sm text-gray-500 font-mono">
                         {job.department && <span>{job.department}</span>}
-                        {job.department && location && <span className="hidden md:inline">•</span>}
+                        {job.department && location && (
+                          <span className="hidden md:inline">•</span>
+                        )}
                         {location && <span>{location}</span>}
                         {job.employment_type && (
                           <>
                             <span className="hidden md:inline">•</span>
-                            <span className="capitalize">{job.employment_type.replace("-", " ")}</span>
+                            <span className="capitalize">
+                              {job.employment_type.replace("-", " ")}
+                            </span>
                           </>
                         )}
                       </div>
@@ -224,7 +231,7 @@ const CareerPage = ({ jobs = [], locale = "en" }: CareerPageProps) => {
             </div>
           )}
         </div>
-      </section>
+      </section>*/}
 
       {/* Work With Us Section */}
       <section className="py-24 px-6 bg-white border-t border-[#0B1B3B]/10">
@@ -239,7 +246,7 @@ const CareerPage = ({ jobs = [], locale = "en" }: CareerPageProps) => {
             <p className="text-[#2E4472] text-lg font-light leading-relaxed mb-8">
               {t("workWithUs.description")}
             </p>
-            <div className="space-y-6">
+            {/*<div className="space-y-6">
               <div className="flex items-start gap-4 group">
                 <div className="w-12 h-12 bg-[#F5F5F7] group-hover:bg-[#0B1B3B] transition-colors flex items-center justify-center text-[#0B1B3B] group-hover:text-[#D4C5A0] shrink-0 border border-[#0B1B3B]/10">
                   <Mail size={20} />
@@ -285,7 +292,7 @@ const CareerPage = ({ jobs = [], locale = "en" }: CareerPageProps) => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div>*/}
           </div>
 
           <div className="relative h-[500px] bg-[#0B1B3B] overflow-hidden">

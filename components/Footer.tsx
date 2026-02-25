@@ -203,6 +203,14 @@ const Footer = async ({ dictionary }: FooterProps) => {
                   {t.firmLinks.contact}
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/privacy-policy"
+                  className="hover:text-white transition-colors"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -231,23 +239,14 @@ const Footer = async ({ dictionary }: FooterProps) => {
           <p>
             &copy; {new Date().getFullYear()} {t.copyright}
           </p>
-          {/*<div className="flex gap-8">
+          <div className="flex gap-8">
             <Link
-              href="/privacy"
-              className="hover:text-gray-400 cursor-pointer"
+              href="/en/privacy-policy"
+              className="hover:text-gray-400 transition-colors cursor-pointer"
             >
-              {t.legal.privacy}
+              {t.legal.privacy} &amp; {t.legal.terms}
             </Link>
-            <Link href="/terms" className="hover:text-gray-400 cursor-pointer">
-              {t.legal.terms}
-            </Link>
-            <Link
-              href="/sitemap"
-              className="hover:text-gray-400 cursor-pointer"
-            >
-              {t.legal.sitemap}
-            </Link>
-          </div>*/}
+          </div>
         </div>
       </div>
     </footer>
