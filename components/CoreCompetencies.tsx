@@ -1,4 +1,11 @@
-import { Scale, Landmark, ShieldAlert, Gavel, TrendingUp, Handshake } from "lucide-react";
+import {
+  Scale,
+  Landmark,
+  ShieldAlert,
+  Gavel,
+  TrendingUp,
+  Handshake,
+} from "lucide-react";
 
 interface CoreCompetenciesProps {
   isEn: boolean;
@@ -64,7 +71,7 @@ const coreCompetencies = [
 const CoreCompetencies = ({ isEn }: CoreCompetenciesProps) => {
   return (
     <section className="py-24 bg-[#FAFAF8] border-y border-[#0B1B3B]/5">
-      <div className="max-w-[1400px] mx-auto px-6">
+      <div className="max-w-[1400px] mx-auto px-6 ">
         {/* ── Header Block ── */}
         <div className="max-w-3xl mx-auto text-center mb-8">
           <span className="text-[#D4C5A0] font-bold tracking-[0.2em] text-xs uppercase mb-4 block">
