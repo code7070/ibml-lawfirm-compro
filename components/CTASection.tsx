@@ -3,11 +3,13 @@
 import Button from "./Button";
 import { useTranslations } from "@/hooks/useTranslations";
 
-const CTASection = () => {
+const CTASection = ({ noBorderTop = false }: { noBorderTop?: boolean }) => {
   const t = useTranslations("home.cta");
 
   return (
-    <section className="py-32 relative overflow-hidden bg-[#0B1B3B] border-t border-[#D4C5A0]/20">
+    <section
+      className={`py-32 relative overflow-hidden bg-[#0B1B3B] ${noBorderTop ? "" : "border-t border-[#D4C5A0]/20"}`}
+    >
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5" />
 
       <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">

@@ -334,15 +334,18 @@ const ArticleListPage = ({
       {/* --- VALUES / QUOTE SECTION (dipindahkan dari halaman Services) --- */}
       <section className="py-24 px-6 bg-white">
         <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <div className="relative">
-            <div className="w-full h-[500px] overflow-hidden">
-              <Image
-                src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1200"
-                alt="Academic excellence"
-                width={1200}
-                height={800}
-                className="w-full h-full object-cover grayscale"
-              />
+          <div className="relative lg:flex justify-end">
+            <div className="relative max-w-[600px]">
+              <div className="aspect-[1/1.5] overflow-hidden">
+                <Image
+                  src="https://iblam.ac.id/wp-content/uploads/2025/09/IBLAM-Justice-House.webp"
+                  alt="Academic excellence"
+                  width={1200}
+                  height={800}
+                  className="size-full object-cover grayscale"
+                />
+              </div>
+              <div className="absolute size-full left-0 top-0 bg-gradient-to-br from-[#0b1b3b]/60 via-[#0b1b3b]/30 to-transparent mix-blend-multiply z-10" />
             </div>
             {/*<div className="absolute -bottom-8 -right-8 w-48 h-48 bg-[#D4C5A0] p-8 hidden md:block">
               <p className="text-[#0B1B3B] text-3xl font-serif italic mb-2">

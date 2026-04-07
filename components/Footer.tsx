@@ -77,7 +77,16 @@ const Footer = async ({ dictionary }: FooterProps) => {
               />*/}
             </Link>
             <p className="text-gray-500 text-sm leading-relaxed max-w-sm font-light">
-              {t.tagline}
+              {/*{t.tagline}*/}
+              Prudential Centre, Kota Kasablanka Lantai 7, Unit 7B,
+              <br />
+              Jl. Raya Casablanca No.Raya Kav. 88,
+              <br />
+              Daerah Khusus Ibukota Jakarta 12870
+              <br />
+              <Link className="underline hover:text-white" href="iblmlaw.group">
+                www.iblmlaw.group
+              </Link>
             </p>
             <div className="flex gap-4">
               {/* Social Links */}

@@ -4,7 +4,7 @@ import { Event as FrontendEvent } from "@/types";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 
-export const revalidate = 300;
+export const revalidate = 3600; // one hour
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://iblmlaw.com";
 const META_IMAGE_PATH = "/images/meta-image-iblm.jpg";
@@ -30,8 +30,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!dbEvent) return { title: "Event Not Found" };
 
-  const title = (isId ? dbEvent.title_id : dbEvent.title_en) || dbEvent.title_en;
-  const desc = (isId ? dbEvent.description_id : dbEvent.description_en) || dbEvent.description_en || "";
+  const title =
+    (isId ? dbEvent.title_id : dbEvent.title_en) || dbEvent.title_en;
+  const desc =
+    (isId ? dbEvent.description_id : dbEvent.description_en) ||
+    dbEvent.description_en ||
+    "";
   const url = `${BASE_URL}/${locale}/events/${id}`;
   const imageUrl = dbEvent.image_url || `${BASE_URL}${META_IMAGE_PATH}`;
 
@@ -42,8 +46,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: url,
       languages: {
-        'en': `/en/events/${id}`,
-        'id': `/id/events/${id}`,
+        en: `/en/events/${id}`,
+        id: `/id/events/${id}`,
       },
     },
     openGraph: {

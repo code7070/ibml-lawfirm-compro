@@ -74,7 +74,7 @@
         "description": "Understanding client needs deeply. We listen first, then provide tailored solutions that address your unique challenges."
       },
       "loyalty": {
-        "title": "Loyalty",
+        "title": "Devotion",
         "description": "Long-term partnership commitment. Your success is our priority, and we stand by you through every challenge."
       }
     },
@@ -111,7 +111,7 @@
     "hero": {
       "tags": "Our Legal Team",
       "title": "Our Team",
-      "subtitle": "Experienced professionals dedicated to your success"
+      "subtitle": "Where brilliant minds come to work together"
     },
     "filters": {
       "all": "All",
@@ -216,9 +216,10 @@
   },
   "contact": {
     "hero": {
-      "tags": "Get in Touch",
-      "title": "Contact Us",
-      "subtitle": "We're here to help with your legal needs"
+      "tags": "Contact Us",
+      "titleLead": "Consult",
+      "titleAccent": "Now",
+      "subtitle": "All communications are protected by client-attorney priv"
     },
     "form": {
       "title": "Get in Touch",
@@ -364,7 +365,7 @@
     "workWithUs": {
       "label": "Future Opportunities",
       "title": "Work with Us",
-      "description": "We are always scouting for exceptional talent to join our ranks. Whether you are a seasoned partner looking to pivot into digital media law, or a law student with a background in technology, we want to hear from you.",
+      "description": "We are always scouting for exceptional talent to join our groups.",
       "generalInquiries": "General Inquiries",
       "generalDesc": "For attorneys, paralegals, and support staff.",
       "internship": "Internship Program",
@@ -390,7 +391,7 @@
   "events": {
     "hero": {
       "tags": "Connect & Converge",
-      "title": "Industry Events",
+      "title": "Events",
       "subtitle": "Join IBLM Law Group at the forefront of the legal industry. Workshops, summits, and networking events."
     },
     "upcoming": "Upcoming Events",
@@ -409,7 +410,7 @@
   },
   "articles": {
     "hero": {
-      "tags": "IBLM Intelligence",
+      "tags": "IBLM Legal News Brief and Articles",
       "title": "Insights & Analysis",
       "subtitle": "Navigating the intersection of law, technology, and business. Stay ahead of regulatory shifts and industry trends."
     },
@@ -432,8 +433,8 @@
     "values": {
       "statNumber": "20+",
       "statLabel": "Papers cited in Legislative Hearings",
-      "quote": "Our practice is defined not just by the cases we win, but by the standards we help establish.",
-      "description": "By maintaining a rigorous academic department, IBLM ensures that our commercial clients benefit from the absolute latest theoretical and practical breakthroughs in law.",
+      "quote": "The legal news brief and articles are also in collaboration with Academia from IBLAM School of Law.",
+      "description": "Our legal experts are committed to deliver strategic solutions for your legal case",
       "exploreLibrary": "Explore Full Library"
     },
     "share": {

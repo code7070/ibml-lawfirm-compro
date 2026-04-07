@@ -13,8 +13,8 @@ import {
 import CTASection from "./CTASection";
 import Image from "next/image";
 import { PracticeGroup } from "@/lib/types/database";
-import { TestimonialsSection } from "./TestimonialsSection";
-import PracticeAreasSection from "./PracticeAreasSection";
+// import { TestimonialsSection } from "./TestimonialsSection";
+// import PracticeAreasSection from "./PracticeAreasSection";
 import { useTranslations } from "@/hooks/useTranslations";
 import { ReactNode } from "react";
 
@@ -34,10 +34,10 @@ interface AboutPageProps {
 
 const AboutPage = ({
   targetId,
-  locale,
-  practiceGroups,
-  practiceSectionTranslations,
-  teamSection,
+  // locale,
+  // practiceGroups,
+  // practiceSectionTranslations,
+  // teamSection,
   clientsTickerSection,
   affiliationsTickerSection,
 }: AboutPageProps) => {
@@ -246,7 +246,7 @@ const AboutPage = ({
       {clientsTickerSection}
 
       {/* 4. PRACTICE AREAS */}
-      <PracticeAreasSection
+      {/*<PracticeAreasSection
         practiceGroups={practiceGroups}
         locale={locale}
         className="bg-white"
@@ -259,7 +259,7 @@ const AboutPage = ({
             </span>
           </>
         }
-      />
+      />*/}
 
       {/* 5. BRAND PROMISE SECTION */}
       <section className="w-full h-[600px] relative overflow-hidden">
@@ -286,16 +286,16 @@ const AboutPage = ({
       </section>
 
       {/* 6. TEAM SUMMARY — rendered as Server Component from parent */}
-      <div id="team">{teamSection}</div>
+      {/*<div id="team">{teamSection}</div>*/}
 
       {/* Org Ticker */}
       {affiliationsTickerSection}
 
       {/* 7. TESTIMONIAL SECTION */}
-      <TestimonialsSection />
+      {/*<TestimonialsSection />*/}
 
       {/* 8. CTA SECTION */}
-      <CTASection />
+      <CTASection noBorderTop />
     </div>
   );
 };

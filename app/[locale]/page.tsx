@@ -11,7 +11,7 @@ import { practiceGroupsService, articlesService } from "@/services";
 import { getDictionary, Locale } from "@/lib/dictionary";
 import { generatePageMetadata } from "@/lib/metadata";
 
-export const revalidate = 300;
+export const revalidate = 3600; // one hour
 
 export async function generateMetadata({
   params,

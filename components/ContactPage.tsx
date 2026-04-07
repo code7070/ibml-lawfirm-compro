@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import ContactFormSelector, { TFormContact } from "./ContactFormSelector";
 import { contactSettingsService } from "@/services/contact.service";
+import { getDictionary, Locale } from "@/lib/dictionary";
 
 // ─── Social URL normalizers ───────────────────────────────────────────────────
 function normalizeSocialUrl(raw: string, base: string): string {
@@ -32,8 +33,12 @@ function socialLabel(raw: string, base: string): string {
 }
 // ─────────────────────────────────────────────────────────────────────────────
 
-const ContactPage = async ({ form }: { form?: TFormContact }) => {
-  const { data: settings } = await contactSettingsService.getMain();
+const ContactPage = async ({ form, locale = "en" }: { form?: TFormContact; locale?: string }) => {
+  const [{ data: settings }, dict] = await Promise.all([
+    contactSettingsService.getMain(),
+    getDictionary(locale as Locale),
+  ]);
+  const heroT = dict.contact.hero;
 
   // ─── Derived flags ────────────────────────────────────────────────────────
   const hasEmail = Boolean(settings?.email);
@@ -74,16 +79,14 @@ const ContactPage = async ({ form }: { form?: TFormContact }) => {
 
         <div className="max-w-[1400px] mx-auto text-center relative z-10">
           <span className="text-[#D4C5A0] font-bold tracking-[0.2em] text-xs uppercase mb-4 block">
-            Secure Channel
+            {heroT.tags}
           </span>
           <h1 className="text-5xl md:text-6xl font-light mb-6">
-            Initiate{" "}
-            <span className="font-serif italic text-[#D4C5A0]">Protocol</span>
+            {heroT.titleLead}{" "}
+            <span className="font-serif italic text-[#D4C5A0]">{heroT.titleAccent}</span>
           </h1>
           <p className="text-gray-400 text-lg font-light max-w-2xl mx-auto leading-relaxed">
-            Whether you are facing a platform dispute or structuring a new
-            studio, our council is ready to deploy. All communications are
-            privileged and confidential.
+            {heroT.subtitle}
           </p>
         </div>
       </section>

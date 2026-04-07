@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Target,
   Users,
@@ -65,6 +65,37 @@ const CareerPage = ({ jobs = [], locale = "en" }: CareerPageProps) => {
       descriptionKey: "code.collaborative.description",
     },
   ];
+
+  const SLIDE_DURATION = 5500;
+  const carouselSlides = [
+    {
+      image:
+        "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=1600",
+      quote: "Where sharp minds forge unshakeable standing.",
+      alt: "Team Collaboration",
+    },
+    {
+      image:
+        "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=1600",
+      quote: "We don't hire résumés. We hire resolve.",
+      alt: "Strategic Discussion",
+    },
+    {
+      image:
+        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=1600",
+      quote: "Build a career as deliberate as the counsel we give.",
+      alt: "Mentorship & Growth",
+    },
+  ];
+
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % carouselSlides.length);
+    }, SLIDE_DURATION);
+    return () => clearInterval(interval);
+  }, [carouselSlides.length]);
 
   const benefits = [
     { icon: Brain, labelKey: "benefits.mentorship" },
@@ -295,17 +326,77 @@ const CareerPage = ({ jobs = [], locale = "en" }: CareerPageProps) => {
             </div>*/}
           </div>
 
-          <div className="relative h-[500px] bg-[#0B1B3B] overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=1600"
-              alt="Team Collaboration"
-              className="w-full h-full object-cover opacity-60 mix-blend-overlay grayscale hover:grayscale-0 transition-all duration-1000"
-            />
-            <div className="absolute inset-0 border border-[#D4C5A0]/30 m-6 pointer-events-none"></div>
-            <div className="absolute bottom-10 left-10 right-10">
-              <p className="text-white text-xl font-serif italic leading-relaxed">
-                &quot;{t("workWithUs.finalQuote")}&quot;
-              </p>
+          <div className="relative h-[500px] bg-[#0B1B3B] overflow-hidden group">
+            {carouselSlides.map((slide, i) => (
+              <img
+                key={slide.image}
+                src={slide.image}
+                alt={slide.alt}
+                className={`absolute inset-0 w-full h-full object-cover mix-blend-overlay grayscale group-hover:grayscale-0 transition-all duration-[1200ms] ease-out ${
+                  i === activeSlide
+                    ? "opacity-60 scale-100"
+                    : "opacity-0 scale-105"
+                }`}
+              />
+            ))}
+
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0B1B3B] via-[#0B1B3B]/30 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 border border-[#D4C5A0]/30 m-6 pointer-events-none" />
+
+            {/* Slide counter */}
+            {/*<div className="absolute top-10 right-10 font-mono text-[#D4C5A0] text-xs tracking-[0.3em] uppercase">
+              <span className="text-white">
+                {String(activeSlide + 1).padStart(2, "0")}
+              </span>
+              <span className="mx-2 opacity-40">/</span>
+              <span>
+                {String(carouselSlides.length).padStart(2, "0")}
+              </span>
+            </div>*/}
+
+            {/* Quote */}
+            <div className="absolute bottom-20 left-10 right-10">
+              {carouselSlides.map((slide, i) => (
+                <p
+                  key={slide.quote}
+                  className={`text-white text-xl font-serif italic leading-relaxed transition-[opacity,transform] duration-700 ease-out ${
+                    i === activeSlide
+                      ? "opacity-100 translate-y-0 relative"
+                      : "opacity-0 translate-y-3 absolute inset-0"
+                  }`}
+                >
+                  &quot;{slide.quote}&quot;
+                </p>
+              ))}
+            </div>
+
+            {/* Indicators */}
+            <style>{`@keyframes iblm-carousel-fill { from { width: 0% } to { width: 100% } }`}</style>
+            <div className="absolute bottom-10 left-10 right-10 flex items-center gap-3">
+              {carouselSlides.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveSlide(i)}
+                  aria-label={`Go to slide ${i + 1}`}
+                  className="relative h-[2px] flex-1 bg-white/20 overflow-hidden"
+                >
+                  {i === activeSlide ? (
+                    <span
+                      key={`active-${activeSlide}`}
+                      className="absolute inset-y-0 left-0 bg-[#D4C5A0]"
+                      style={{
+                        animation: `iblm-carousel-fill ${SLIDE_DURATION}ms linear forwards`,
+                      }}
+                    />
+                  ) : (
+                    <span
+                      className={`absolute inset-y-0 left-0 bg-[#D4C5A0] ${
+                        i < activeSlide ? "w-full" : "w-0"
+                      }`}
+                    />
+                  )}
+                </button>
+              ))}
             </div>
           </div>
         </div>

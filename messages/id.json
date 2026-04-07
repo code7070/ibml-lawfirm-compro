@@ -74,7 +74,7 @@
         "description": "Memahami kebutuhan klien secara mendalam. Kami mendengarkan terlebih dahulu, kemudian memberikan solusi yang disesuaikan untuk mengatasi tantangan unik Anda."
       },
       "loyalty": {
-        "title": "Loyalitas",
+        "title": "Pengabdian",
         "description": "Komitmen kemitraan jangka panjang. Kesuksesan Anda adalah prioritas kami, dan kami mendampingi Anda melalui setiap tantangan."
       }
     },
@@ -111,7 +111,7 @@
     "hero": {
       "tags": "Tim Hukum Kami",
       "title": "Tim Kami",
-      "subtitle": "Profesional berpengalaman yang berdedikasi untuk kesuksesan Anda"
+      "subtitle": "Tempat para pemikir brilian berkumpul untuk berkarya bersama"
     },
     "filters": {
       "all": "Semua",
@@ -217,8 +217,9 @@
   "contact": {
     "hero": {
       "tags": "Hubungi Kami",
-      "title": "Kontak",
-      "subtitle": "Kami siap membantu kebutuhan hukum Anda"
+      "titleLead": "Konsultasi",
+      "titleAccent": "Sekarang",
+      "subtitle": "Semua komunikasi dilindungi oleh hak istimewa pengacara-klien"
     },
     "form": {
       "title": "Hubungi Kami",
@@ -364,7 +365,7 @@
     "workWithUs": {
       "label": "Peluang Masa Depan",
       "title": "Bekerja dengan Kami",
-      "description": "Kami selalu mencari talenta luar biasa untuk bergabung dengan tim kami. Apakah Anda seorang partner berpengalaman yang ingin beralih ke hukum media digital, atau mahasiswa hukum dengan latar belakang teknologi, kami ingin mendengar dari Anda.",
+      "description": "Kami selalu mencari talenta luar biasa untuk bergabung dengan grup kami.",
       "generalInquiries": "Pertanyaan Umum",
       "generalDesc": "Untuk pengacara, paralegal, dan staf pendukung.",
       "internship": "Program Magang",
@@ -390,7 +391,7 @@
   "events": {
     "hero": {
       "tags": "Terhubung & Berkumpul",
-      "title": "Acara Industri",
+      "title": "Acara",
       "subtitle": "Bergabunglah dengan IBLM Law Group di garis depan industri hukum. Workshop, summit, dan acara networking."
     },
     "upcoming": "Acara Mendatang",
@@ -409,7 +410,7 @@
   },
   "articles": {
     "hero": {
-      "tags": "Intelijen IBLM",
+      "tags": "Artikel dan Artikel Hukum IBLM",
       "title": "Wawasan & Analisis",
       "subtitle": "Menavigasi persimpangan hukum, teknologi, dan bisnis. Tetap terdepan dalam perubahan regulasi dan tren industri."
     },
@@ -432,8 +433,8 @@
     "values": {
       "statNumber": "20+",
       "statLabel": "Makalah Dikutip dalam Dengar Pendapat Legislatif",
-      "quote": "Praktik kami didefinisikan bukan hanya oleh kasus yang kami menangkan, tetapi oleh standar yang kami bantu tetapkan.",
-      "description": "Dengan mempertahankan departemen akademik yang ketat, IBLM memastikan bahwa klien komersial kami mendapatkan manfaat dari terobosan teoretis dan praktis terbaru dalam bidang hukum.",
+      "quote": "Ringkasan berita hukum dan artikel ini juga merupakan hasil kolaborasi dengan Akademisi dari IBLAM School of Law.",
+      "description": "Para ahli hukum kami berkomitmen memberikan solusi strategis untuk kasus hukum Anda",
       "exploreLibrary": "Jelajahi Perpustakaan Lengkap"
     },
     "share": {

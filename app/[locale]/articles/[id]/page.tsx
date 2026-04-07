@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { Article as ViewArticle } from "@/types";
 import { Metadata } from "next";
 
-export const revalidate = 300;
+export const revalidate = 3600; // one hour
 
 interface Props {
   params: Promise<{ id: string; locale: string }>;
@@ -35,8 +35,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: url,
       languages: {
-        'en': `/en/articles/${id}`,
-        'id': `/id/articles/${id}`,
+        en: `/en/articles/${id}`,
+        id: `/id/articles/${id}`,
       },
     },
     openGraph: {
@@ -98,9 +98,12 @@ export default async function ArticleDetailPage({ params }: Props) {
       article.cover_url ||
       "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=2000",
     summary: (isId ? article.excerpt_id : article.excerpt_en) || "",
-    author: (isId ? article.author?.name_id : article.author?.name_en) || "IBLM Team",
+    author:
+      (isId ? article.author?.name_id : article.author?.name_en) || "IBLM Team",
     authorImage: article.author?.photo_url ?? null,
-    authorPosition: (isId ? article.author?.position_id : article.author?.position_en) ?? null,
+    authorPosition:
+      (isId ? article.author?.position_id : article.author?.position_en) ??
+      null,
     content: (isId ? article.content_id : article.content_en) || "",
   };
 
@@ -123,7 +126,8 @@ export default async function ArticleDetailPage({ params }: Props) {
     summary: (isId ? a.excerpt_id : a.excerpt_en) || "",
     author: (isId ? a.author?.name_id : a.author?.name_en) || "IBLM Team",
     authorImage: a.author?.photo_url ?? null,
-    authorPosition: (isId ? a.author?.position_id : a.author?.position_en) ?? null,
+    authorPosition:
+      (isId ? a.author?.position_id : a.author?.position_en) ?? null,
     content: "",
   }));
 

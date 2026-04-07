@@ -2,7 +2,7 @@ import ContactPageComponent from "@/components/ContactPage";
 import { generatePageMetadata } from "@/lib/metadata";
 import { Locale } from "@/lib/dictionary";
 
-export const revalidate = 300;
+export const revalidate = 3600; // one hour
 
 export async function generateMetadata({
   params,

@@ -84,7 +84,7 @@ export default async function RootLayout({
   }
 
   // Cast locale to valid type since we checked includes()
-  const messages = await getDictionary(locale as any);
+  const messages = await getDictionary(locale as Locale);
 
   // Fetch events happening within the next 7 days
   const now = new Date();

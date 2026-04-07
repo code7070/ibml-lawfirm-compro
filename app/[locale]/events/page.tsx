@@ -4,12 +4,12 @@ import { Event as FrontendEvent } from "@/types";
 import { generatePageMetadata } from "@/lib/metadata";
 import { Locale } from "@/lib/dictionary";
 
-export const revalidate = 300;
+export const revalidate = 3600; // one hour
 
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: Promise<{ locale: string }> 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
   return generatePageMetadata({

@@ -58,7 +58,7 @@ const LawyerDetailPopup = ({
         onClose();
       }
     },
-    [onClose]
+    [onClose],
   );
 
   // Prevent scrolling when modal is open
@@ -92,7 +92,7 @@ const LawyerDetailPopup = ({
   const positionName = lawyer.lawyer_positions
     ? getLocalizedText(
         lawyer.lawyer_positions.name_en,
-        lawyer.lawyer_positions.name_id
+        lawyer.lawyer_positions.name_id,
       )
     : lawyer.position_en || "";
 
@@ -162,13 +162,20 @@ const LawyerDetailPopup = ({
 
   // Use translations with fallbacks
   const labels = {
-    overview: translations.overview || (locale === "id" ? "Profil" : "Overview"),
-    experience: translations.experience || (locale === "id" ? "Pengalaman Profesional" : "Professional Experience"),
+    overview:
+      translations.overview || (locale === "id" ? "Profil" : "Overview"),
+    experience:
+      translations.experience ||
+      (locale === "id" ? "Pengalaman Profesional" : "Professional Experience"),
     education: translations.education,
     certifications: translations.certifications,
     languages: translations.languages,
     linkedinProfile: translations.linkedinProfile || translations.linkedin,
-    noBio: translations.noBio || (locale === "id" ? "Biografi belum tersedia." : "No biography available."),
+    noBio:
+      translations.noBio ||
+      (locale === "id"
+        ? "Biografi belum tersedia."
+        : "No biography available."),
   };
 
   return (
@@ -271,8 +278,8 @@ const LawyerDetailPopup = ({
                   {labels.overview}
                 </h3>
                 <div className="w-12 h-1 bg-[#D4C5A0] mb-6"></div>
-                <div 
-                  className="rich-content max-w-none"
+                <div
+                  className="rich-content max-w-none text-justify"
                   dangerouslySetInnerHTML={{ __html: bio || labels.noBio }}
                 />
               </div>
@@ -288,7 +295,9 @@ const LawyerDetailPopup = ({
                     {experience.map((exp, idx) => (
                       <li key={idx} className="relative">
                         <span className="absolute -left-[29px] top-2 w-3 h-3 rounded-full bg-[#D4C5A0] border-2 border-white"></span>
-                        <p className="text-[#2E4472] font-light text-sm">{exp}</p>
+                        <p className="text-[#2E4472] font-light text-sm">
+                          {exp}
+                        </p>
                       </li>
                     ))}
                   </ul>

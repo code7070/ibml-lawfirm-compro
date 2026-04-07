@@ -3,12 +3,12 @@ import { lawyersService, lawyerPositionsService } from "@/services";
 import { getDictionary, Locale } from "@/lib/dictionary";
 import { generatePageMetadata } from "@/lib/metadata";
 
-export const revalidate = 300;
+export const revalidate = 3600; // one hour
 
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: Promise<{ locale: string }> 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
   return generatePageMetadata({
