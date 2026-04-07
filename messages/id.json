@@ -397,7 +397,15 @@
     "past": "Acara Sebelumnya",
     "register": "Daftar Sekarang",
     "details": "Lihat Detail",
-    "noEvents": "Tidak ada acara yang dijadwalkan."
+    "noEvents": "Tidak ada acara yang dijadwalkan.",
+    "empty": {
+      "eyebrow": "Kalender Menanti",
+      "title": "Belum Ada Acara",
+      "titleAccent": "Yang Dijadwalkan",
+      "body": "Pertemuan kami berikutnya tengah dikurasi dengan ketelitian yang sama seperti saat kami memberikan nasihat hukum. Kembalilah sebentar lagi, atau hubungi kami untuk diberitahukan saat tanggal telah ditetapkan.",
+      "cta": "Minta Undangan",
+      "secondary": "Lihat Acara Sebelumnya"
+    }
   },
   "articles": {
     "hero": {

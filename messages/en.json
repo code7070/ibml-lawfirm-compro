@@ -397,7 +397,15 @@
     "past": "Past Events",
     "register": "Register Now",
     "details": "View Details",
-    "noEvents": "No upcoming events scheduled."
+    "noEvents": "No upcoming events scheduled.",
+    "empty": {
+      "eyebrow": "The Calendar Awaits",
+      "title": "No Convenings",
+      "titleAccent": "On the Horizon",
+      "body": "Our next gathering is being curated with the same precision we bring to counsel. Return shortly, or write to us to be notified the moment a date is set.",
+      "cta": "Request an Invitation",
+      "secondary": "Browse Past Events"
+    }
   },
   "articles": {
     "hero": {

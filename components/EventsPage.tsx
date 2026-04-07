@@ -126,8 +126,89 @@ const EventsPage: React.FC<EventsPageProps> = ({ events }) => {
           ))}
 
           {sortedYears.length === 0 && (
-            <div className="text-center py-20 text-gray-400">
-              {t("noEvents")}
+            <div className="relative">
+              {/* Decorative top hairline with diamond */}
+              <div className="flex items-center justify-center gap-6 mb-16">
+                <div className="h-px w-24 md:w-40 bg-gradient-to-r from-transparent to-[#D4C5A0]" />
+                <div className="w-2 h-2 rotate-45 border border-[#D4C5A0]" />
+                <div className="h-px w-24 md:w-40 bg-gradient-to-l from-transparent to-[#D4C5A0]" />
+              </div>
+
+              <div className="relative mx-auto max-w-3xl">
+                {/* Gold corner brackets */}
+                <span className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-[#D4C5A0]" />
+                <span className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-[#D4C5A0]" />
+                <span className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-[#D4C5A0]" />
+                <span className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-[#D4C5A0]" />
+
+                <div
+                  className="relative bg-[#0B1B3B] text-white px-8 md:px-20 py-20 md:py-28 text-center overflow-hidden"
+                  style={{
+                    backgroundImage:
+                      "radial-gradient(ellipse at top, rgba(212,197,160,0.12), transparent 60%), radial-gradient(ellipse at bottom, rgba(118,171,255,0.06), transparent 60%)",
+                  }}
+                >
+                  {/* Faint grid pattern */}
+                  <div
+                    className="absolute inset-0 opacity-[0.06] pointer-events-none"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(#D4C5A0 1px, transparent 1px), linear-gradient(90deg, #D4C5A0 1px, transparent 1px)",
+                      backgroundSize: "44px 44px",
+                    }}
+                  />
+
+                  {/* Calendar medallion */}
+                  <div className="relative inline-flex items-center justify-center mb-10">
+                    <div className="absolute inset-0 rounded-full bg-[#D4C5A0]/10 blur-2xl scale-150" />
+                    <div className="relative w-20 h-20 rounded-full border border-[#D4C5A0]/40 flex items-center justify-center">
+                      <div className="absolute inset-2 rounded-full border border-[#D4C5A0]/20" />
+                      <Calendar
+                        className="w-8 h-8 text-[#D4C5A0]"
+                        strokeWidth={1}
+                      />
+                    </div>
+                  </div>
+
+                  <span className="relative text-[#D4C5A0] font-bold tracking-[0.3em] text-[10px] md:text-xs uppercase mb-8 block">
+                    — {t("empty.eyebrow")} —
+                  </span>
+
+                  <h3 className="relative font-serif font-light leading-[0.95] text-5xl md:text-7xl mb-3">
+                    {t("empty.title")}
+                  </h3>
+                  <h3 className="relative font-serif italic font-light text-4xl md:text-6xl text-[#D4C5A0] mb-10">
+                    {t("empty.titleAccent")}
+                  </h3>
+
+                  {/* Hairline divider */}
+                  <div className="relative flex items-center justify-center gap-3 mb-10">
+                    <div className="h-px w-12 bg-[#D4C5A0]/40" />
+                    <div className="w-1 h-1 rotate-45 bg-[#D4C5A0]/60" />
+                    <div className="h-px w-12 bg-[#D4C5A0]/40" />
+                  </div>
+
+                  <p className="relative max-w-xl mx-auto text-gray-300 font-light leading-relaxed text-base md:text-lg mb-12">
+                    {t("empty.body")}
+                  </p>
+
+                  <div className="relative flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <Link
+                      href="/contact"
+                      className="group inline-flex items-center gap-3 bg-[#D4C5A0] text-[#0B1B3B] px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition-colors"
+                    >
+                      {t("empty.cta")}
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                    <Link
+                      href="/insights"
+                      className="inline-flex items-center gap-3 border border-[#D4C5A0]/30 text-[#D4C5A0] px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] hover:border-[#D4C5A0] hover:bg-[#D4C5A0]/5 transition-colors"
+                    >
+                      {t("empty.secondary")}
+                    </Link>
+                  </div>
+                </div>
+              </div>
             </div>
           )}
         </div>
