@@ -53,7 +53,8 @@ const ServicesPage = ({
   // Use the Research articles if available, otherwise use latest 3 articles
   const researchArticles = (() => {
     const research = articles.filter((a) => {
-      const catName = locale === "id" ? a.category?.name_id : a.category?.name_en;
+      const catName =
+        locale === "id" ? a.category?.name_id : a.category?.name_en;
       return catName?.toLowerCase().includes("research");
     });
     return (research.length > 0 ? research : articles).slice(0, 3);
@@ -180,7 +181,7 @@ const ServicesPage = ({
                 </p>
               </div>
               <LangLink
-                href="/contact"
+                href="/contact/engage"
                 className="px-8 py-4 bg-[#D4C5A0] text-[#0B1B3B] text-xs font-bold uppercase tracking-widest hover:bg-white transition-colors shrink-0"
               >
                 {t("probono.applyForAid")}
@@ -214,8 +215,10 @@ const ServicesPage = ({
           {researchArticles.length > 0 && (
             <div className="grid md:grid-cols-3 gap-8 ">
               {researchArticles.map((article) => {
-                const title = locale === "id" ? article.title_id : article.title_en;
-                const excerpt = locale === "id" ? article.excerpt_id : article.excerpt_en;
+                const title =
+                  locale === "id" ? article.title_id : article.title_en;
+                const excerpt =
+                  locale === "id" ? article.excerpt_id : article.excerpt_en;
                 const categoryName = article.category
                   ? locale === "id"
                     ? article.category.name_id
@@ -231,7 +234,10 @@ const ServicesPage = ({
                     <div className="relative h-48 overflow-hidden">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
-                        src={article.cover_url || "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=800"}
+                        src={
+                          article.cover_url ||
+                          "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=800"
+                        }
                         alt={title || "Article"}
                         className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                       />

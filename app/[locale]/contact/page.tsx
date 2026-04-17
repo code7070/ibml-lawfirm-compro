@@ -23,5 +23,5 @@ export default async function ContactPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  return <ContactPageComponent locale={locale} />;
+  return <ContactPageComponent locale={locale} form="consultation" />;
 }

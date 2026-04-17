@@ -1,7 +1,14 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { X, CalendarDays, Construction, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  X,
+  CalendarDays,
+  Construction,
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { LangLink } from "./LangLink";
 import { useTranslations } from "@/hooks/useTranslations";
 
@@ -50,7 +57,7 @@ export default function AnnouncementBanner({
       label: t("notice_label"),
       title: t("notice_title"),
       body: t("notice_body"),
-      cta: { label: t("notice_cta"), href: "/contact" },
+      cta: { label: t("notice_cta"), href: "/contact/engage" },
       ctaSuffix: t("notice_cta_suffix"),
     },
   ];
@@ -68,7 +75,7 @@ export default function AnnouncementBanner({
         setIsSliding(false);
       }, 320);
     },
-    [isSliding, activeIndex]
+    [isSliding, activeIndex],
   );
 
   const goPrev = () => {
@@ -131,7 +138,6 @@ export default function AnnouncementBanner({
         >
           {/* Card */}
           <div className="relative bg-[#0B1B3B] border border-[#D4C5A0]/15 shadow-[0_32px_80px_rgba(2,8,20,0.8)] overflow-hidden">
-
             {/* Gold hairline top */}
             <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#D4C5A0] to-transparent" />
 
@@ -195,7 +201,9 @@ export default function AnnouncementBanner({
                   </div>
                   <span
                     className={`text-[10px] font-bold tracking-[0.2em] uppercase ${
-                      slide.type === "event" ? "text-[#D4C5A0]" : "text-white/40"
+                      slide.type === "event"
+                        ? "text-[#D4C5A0]"
+                        : "text-white/40"
                     }`}
                   >
                     {slide.label}
@@ -242,7 +250,9 @@ export default function AnnouncementBanner({
                 {slides.map((s, idx) => (
                   <button
                     key={s.id}
-                    onClick={() => goTo(idx, idx > activeIndex ? "left" : "right")}
+                    onClick={() =>
+                      goTo(idx, idx > activeIndex ? "left" : "right")
+                    }
                     className={`transition-all duration-400 rounded-full ${
                       idx === activeIndex
                         ? "w-5 h-1.5 bg-[#D4C5A0]"

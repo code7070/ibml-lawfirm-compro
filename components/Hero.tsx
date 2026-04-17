@@ -47,7 +47,7 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 pl-6">
-            <Button variant="primary" href="/contact">
+            <Button variant="primary" href="/contact/engage">
               {t("cta_primary")}
             </Button>
             <Button variant="outline" icon={false} href="/practice-areas">

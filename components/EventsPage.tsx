@@ -194,7 +194,7 @@ const EventsPage: React.FC<EventsPageProps> = ({ events }) => {
 
                   <div className="relative flex flex-col sm:flex-row items-center justify-center gap-4">
                     <Link
-                      href="/contact"
+                      href="/contact/engage"
                       className="group inline-flex items-center gap-3 bg-[#D4C5A0] text-[#0B1B3B] px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition-colors"
                     >
                       {t("empty.cta")}

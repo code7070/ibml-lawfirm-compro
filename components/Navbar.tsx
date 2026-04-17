@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown, Check } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { LangLink } from "./LangLink";
 import Image from "next/image";
-import { useParams, usePathname, useRouter } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import { useTranslations } from "@/hooks/useTranslations";
 
 const Navbar = () => {
@@ -13,7 +13,7 @@ const Navbar = () => {
   const t = useTranslations("nav");
   const params = useParams();
   const locale = (params?.locale as "id" | "en") || "id";
-  const router = useRouter();
+  // const router = useRouter();
   const pathname = usePathname();
 
   useEffect(() => {
@@ -45,11 +45,11 @@ const Navbar = () => {
     { name: t("insights"), href: "/articles" },
   ];
 
-  const handleLanguageChange = (newLocale: string) => {
-    // Remove current locale from pathname and add new locale
-    const pathWithoutLocale = pathname.replace(/^\/(en|id)/, "");
-    router.push(`/${newLocale}${pathWithoutLocale || "/"}`);
-  };
+  // const handleLanguageChange = (newLocale: string) => {
+  //   // Remove current locale from pathname and add new locale
+  //   const pathWithoutLocale = pathname.replace(/^\/(en|id)/, "");
+  //   router.push(`/${newLocale}${pathWithoutLocale || "/"}`);
+  // };
 
   const isHome =
     pathname === "/" || pathname === `/${locale}` || pathname === `/${locale}/`;
@@ -142,7 +142,7 @@ const Navbar = () => {
             */}
 
             <LangLink
-              href="/contact"
+              href="/contact/consultation"
               className="px-6 py-3 text-xs font-bold tracking-widest text-[#0B1B3B] bg-[#D4C5A0] hover:bg-white transition-colors uppercase"
             >
               {t("contact")}
@@ -212,7 +212,7 @@ const Navbar = () => {
             */}
 
             <LangLink
-              href="/contact"
+              href="/contact/consultation"
               className="px-4 py-3 text-[0.65rem] font-bold tracking-widest text-[#0B1B3B] bg-[#D4C5A0] hover:bg-white transition-colors uppercase"
             >
               {t("contact")}
@@ -272,7 +272,7 @@ const Navbar = () => {
           */}
 
           <LangLink
-            href="/contact"
+            href="/contact/consultation"
             onClick={() => setIsMobileMenuOpen(false)}
             className="text-left text-2xl font-light text-[#D4C5A0] hover:text-white mt-6 block"
           >

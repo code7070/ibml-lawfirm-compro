@@ -9,6 +9,7 @@ import { LangLink } from "./LangLink";
 import { useTranslations } from "@/hooks/useTranslations";
 import ArticleSearchBar from "./ArticleSearchBar";
 import { getSupabase } from "@/lib/supabase";
+import ArticleEmptyState from "./ArticleEmptyState";
 
 const PAGE_SIZE = 9;
 
@@ -302,9 +303,11 @@ const ArticleListPage = ({
 
               {/* Empty State */}
               {articles.length === 0 && (
-                <div className="text-center py-20 text-gray-400">
-                  {t("noArticles")}
-                </div>
+                <ArticleEmptyState
+                  type="search"
+                  searchQuery={activeSearch}
+                  onClear={activeSearch ? clearSearch : undefined}
+                />
               )}
 
               {/* Load More */}

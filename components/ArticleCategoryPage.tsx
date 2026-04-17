@@ -8,6 +8,7 @@ import { LangLink } from "./LangLink";
 import { useTranslations } from "@/hooks/useTranslations";
 import ArticleSearchBar from "./ArticleSearchBar";
 import { getSupabase } from "@/lib/supabase";
+import ArticleEmptyState from "./ArticleEmptyState";
 
 const PAGE_SIZE = 9;
 
@@ -205,15 +206,7 @@ const ArticleCategoryPage = ({
 
           {/* Empty State */}
           {articles.length === 0 && (
-            <div className="text-center py-20">
-              <p className="text-gray-400 mb-6">{t("noArticles")}</p>
-              <LangLink
-                href="/articles"
-                className="inline-flex items-center gap-2 text-[#D4C5A0] text-sm font-bold uppercase tracking-widest hover:text-[#0B1B3B] transition-colors"
-              >
-                {t("backToAll")}
-              </LangLink>
-            </div>
+            <ArticleEmptyState type="category" />
           )}
 
           {/* Load More */}

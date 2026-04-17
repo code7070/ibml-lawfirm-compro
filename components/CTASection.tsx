@@ -19,7 +19,7 @@ const CTASection = ({ noBorderTop = false }: { noBorderTop?: boolean }) => {
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-light mb-10 text-white leading-relaxed">
           {t("title")}
         </h2>
-        <Button variant="primary" href="/contact">
+        <Button variant="primary" href="/contact/consultation">
           {t("button")}
         </Button>
       </div>

@@ -206,7 +206,7 @@ const Footer = async ({ dictionary }: FooterProps) => {
               </li>
               <li>
                 <Link
-                  href="/contact"
+                  href="/contact/engage"
                   className="hover:text-white transition-colors"
                 >
                   {t.firmLinks.contact}
