@@ -4,7 +4,9 @@ import { eventsService } from "@/services/events.service";
 import { articleCategoriesService } from "@/services/article-categories.service";
 import { practiceAreasService } from "@/services/practice-areas.service";
 import { jobsService } from "@/services/jobs.service";
-import { locales } from "@/lib/dictionary";
+import { localesA as locales } from "@/lib/dictionary";
+
+export const revalidate = 604800; // 1 week
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://iblmlaw.com";
 
@@ -13,7 +15,11 @@ const STATIC_ROUTES = [
   { path: "", priority: 1.0, changeFrequency: "weekly" as const },
   { path: "/about", priority: 0.9, changeFrequency: "monthly" as const },
   { path: "/lawyers", priority: 0.85, changeFrequency: "weekly" as const },
-  { path: "/practice-areas", priority: 0.85, changeFrequency: "monthly" as const },
+  {
+    path: "/practice-areas",
+    priority: 0.85,
+    changeFrequency: "monthly" as const,
+  },
   { path: "/services", priority: 0.8, changeFrequency: "monthly" as const },
   { path: "/articles", priority: 0.8, changeFrequency: "daily" as const },
   { path: "/events", priority: 0.75, changeFrequency: "weekly" as const },
@@ -23,6 +29,7 @@ const STATIC_ROUTES = [
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
+  const hasMultipleLocales = locales.length > 1;
 
   // ─── 1. Static routes (all locales) ────────────────────────────────────────
   const staticEntries: MetadataRoute.Sitemap = STATIC_ROUTES.flatMap(
@@ -32,12 +39,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: now,
         changeFrequency,
         priority,
-        alternates: {
-          languages: Object.fromEntries(
-            locales.map((l) => [l, `${BASE_URL}/${l}${path}`])
-          ),
-        },
-      }))
+        ...(hasMultipleLocales && {
+          alternates: {
+            languages: Object.fromEntries(
+              locales.map((l) => [l, `${BASE_URL}/${l}${path}`]),
+            ),
+          },
+        }),
+      })),
   );
 
   // ─── 2. Fetch all dynamic data in parallel ──────────────────────────────────
@@ -54,6 +63,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     practiceAreasService.getActive(),
     jobsService.getOpen(),
   ]);
+
+  // Kalau output: "Invalid Date" → ini biang keroknya
 
   // ─── 3. Articles — /[locale]/articles/[slug] ────────────────────────────────
   const articles =
@@ -74,11 +85,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: lastMod,
       changeFrequency: "weekly" as const,
       priority: 0.7,
-      alternates: {
-        languages: Object.fromEntries(
-          locales.map((l) => [l, `${BASE_URL}/${l}/articles/${identifier}`])
-        ),
-      },
+      ...(hasMultipleLocales && {
+        alternates: {
+          languages: Object.fromEntries(
+            locales.map((l) => [l, `${BASE_URL}/${l}/articles/${identifier}`]),
+          ),
+        },
+      }),
     }));
   });
 
@@ -96,11 +109,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: lastMod,
       changeFrequency: "weekly" as const,
       priority: 0.65,
-      alternates: {
-        languages: Object.fromEntries(
-          locales.map((l) => [l, `${BASE_URL}/${l}/events/${event.id}`])
-        ),
-      },
+      ...(hasMultipleLocales && {
+        alternates: {
+          languages: Object.fromEntries(
+            locales.map((l) => [l, `${BASE_URL}/${l}/events/${event.id}`]),
+          ),
+        },
+      }),
     }));
   });
 
@@ -119,16 +134,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: lastMod,
         changeFrequency: "monthly" as const,
         priority: 0.6,
-        alternates: {
-          languages: Object.fromEntries(
-            locales.map((l) => [
-              l,
-              `${BASE_URL}/${l}/articles/category/${category.slug}`,
-            ])
-          ),
-        },
+        ...(hasMultipleLocales && {
+          alternates: {
+            languages: Object.fromEntries(
+              locales.map((l) => [
+                l,
+                `${BASE_URL}/${l}/articles/category/${category.slug}`,
+              ]),
+            ),
+          },
+        }),
       }));
-    }
+    },
   );
 
   // ─── 6. Practice areas — /[locale]/practice-areas#[slug] ───────────────────
@@ -145,20 +162,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const lastMod = area.updated_at ? new Date(area.updated_at) : now;
 
       return locales.map((locale) => ({
-        url: `${BASE_URL}/${locale}/practice-areas#${area.slug}`,
+        url: `${BASE_URL}/${locale}/practice-areas/#${area.slug}`,
         lastModified: lastMod,
         changeFrequency: "monthly" as const,
         priority: 0.55,
-        alternates: {
-          languages: Object.fromEntries(
-            locales.map((l) => [
-              l,
-              `${BASE_URL}/${l}/practice-areas#${area.slug}`,
-            ])
-          ),
-        },
+        ...(hasMultipleLocales && {
+          alternates: {
+            languages: Object.fromEntries(
+              locales.map((l) => [
+                l,
+                `${BASE_URL}/${l}/practice-areas/#${area.slug}`,
+              ]),
+            ),
+          },
+        }),
       }));
-    }
+    },
   );
 
   // ─── 7. Job openings — /[locale]/careers#[slug] ────────────────────────────
@@ -177,16 +196,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: lastMod,
       changeFrequency: "weekly" as const,
       priority: 0.5,
-      alternates: {
-        languages: Object.fromEntries(
-          locales.map((l) => [l, `${BASE_URL}/${l}/careers#${identifier}`])
-        ),
-      },
+      ...(hasMultipleLocales && {
+        alternates: {
+          languages: Object.fromEntries(
+            locales.map((l) => [l, `${BASE_URL}/${l}/careers#${identifier}`]),
+          ),
+        },
+      }),
     }));
   });
 
   // ─── Combine all entries ────────────────────────────────────────────────────
-  return [
+  const res = [
     ...staticEntries,
     ...articleEntries,
     ...eventEntries,
@@ -194,4 +215,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...practiceAreaEntries,
     ...jobEntries,
   ];
+
+  return res;
 }
