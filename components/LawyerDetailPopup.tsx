@@ -51,7 +51,6 @@ const LawyerDetailPopup = ({
   onClose,
   translations,
 }: LawyerDetailPopupProps) => {
-  // Handle escape key press
   const handleEscapeKey = useCallback(
     (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -61,7 +60,6 @@ const LawyerDetailPopup = ({
     [onClose],
   );
 
-  // Prevent scrolling when modal is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -77,18 +75,15 @@ const LawyerDetailPopup = ({
 
   if (!isOpen || !lawyer) return null;
 
-  // Helper to get localized text
   const getLocalizedText = (en: string | null, id: string | null) => {
     if (locale === "id") return id || en || "";
     return en || id || "";
   };
 
-  // Get values
   const name = getLocalizedText(lawyer.name_en, lawyer.name_id);
   const bio = getLocalizedText(lawyer.bio_en, lawyer.bio_id);
   const photoUrl = lawyer.photo_url || "/images/placeholder-lawyer.jpg";
 
-  // Get position name
   const positionName = lawyer.lawyer_positions
     ? getLocalizedText(
         lawyer.lawyer_positions.name_en,
@@ -96,7 +91,6 @@ const LawyerDetailPopup = ({
       )
     : lawyer.position_en || "";
 
-  // Parse education JSON: [{"degree": "...", "institution": "..."}]
   const parseEducation = (json: unknown): string[] => {
     if (!json || !Array.isArray(json)) return [];
     return json
@@ -114,7 +108,6 @@ const LawyerDetailPopup = ({
       .filter(Boolean);
   };
 
-  // Parse experience JSON: [{"company": "...", "position": "...", "period": "..."}]
   const parseExperience = (json: unknown): string[] => {
     if (!json || !Array.isArray(json)) return [];
     return json
@@ -125,7 +118,6 @@ const LawyerDetailPopup = ({
           const company = obj.company ? String(obj.company) : "";
           const position = obj.position ? String(obj.position) : "";
           const period = obj.period ? String(obj.period) : "";
-          // Format: "Position at Company (Period)" or just "Company"
           let result = "";
           if (position && company) {
             result = `${position} at ${company}`;
@@ -140,7 +132,6 @@ const LawyerDetailPopup = ({
       .filter(Boolean);
   };
 
-  // Parse languages JSON: [{"language": "...", "proficiency": "..."}]
   const parseLanguages = (json: unknown): string[] => {
     if (!json || !Array.isArray(json)) return [];
     return json
@@ -160,7 +151,17 @@ const LawyerDetailPopup = ({
   const languages = parseLanguages(lawyer.languages);
   const certifications = lawyer.certifications || [];
 
-  // Use translations with fallbacks
+  const practiceAreas = (lawyer.practice_areas || [])
+    .map((pa) =>
+      pa.practice_areas
+        ? getLocalizedText(
+            pa.practice_areas.name_en,
+            pa.practice_areas.name_id,
+          )
+        : "",
+    )
+    .filter(Boolean);
+
   const labels = {
     overview:
       translations.overview || (locale === "id" ? "Profil" : "Overview"),
@@ -178,32 +179,74 @@ const LawyerDetailPopup = ({
         : "No biography available."),
   };
 
+  const hasExperience = experience.length > 0;
+  const hasEducation = education.length > 0;
+  const hasCertifications = certifications.length > 0;
+
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-[#0B1B3B]/80 backdrop-blur-sm transition-opacity duration-300"
+        className="absolute inset-0 bg-[#020814]/85 backdrop-blur-sm lawyer-popup-backdrop"
         onClick={onClose}
       />
 
-      {/* Modal Content */}
-      <div className="relative w-full max-w-5xl bg-white shadow-2xl overflow-hidden flex flex-col max-h-[90vh] animate-in fade-in zoom-in-95 duration-300">
+      {/* Modal */}
+      <div className="relative w-full max-w-4xl bg-white rounded-lg shadow-[0_0_0_1px_rgba(212,197,160,0.12),0_32px_64px_rgba(2,8,20,0.55)] overflow-hidden flex flex-col max-h-[92vh] lawyer-popup-enter">
+        {/* Left gold accent line */}
+        <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#D4C5A0] via-[#D4C5A0]/40 to-transparent z-10 pointer-events-none" />
+
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-20 p-2 bg-white/10 hover:bg-[#0B1B3B] text-[#0B1B3B] hover:text-[#D4C5A0] rounded-full transition-colors border border-[#0B1B3B]/10"
+          className="absolute top-4 right-4 z-20 w-10 h-10 flex items-center justify-center bg-[#0B1B3B]/80 backdrop-blur-sm text-white/80 hover:text-white hover:bg-[#0B1B3B] rounded-sm border border-[#D4C5A0]/15 transition-all duration-200"
           aria-label="Close"
         >
-          <X size={24} />
+          <X size={20} strokeWidth={1.5} />
         </button>
 
-        <div className="flex flex-col md:flex-row h-full overflow-y-auto md:overflow-hidden">
-          {/* LEFT COLUMN: Image & Quick Info */}
-          <div className="w-full md:w-1/3 bg-[#0B1B3B] text-white p-8 md:p-10 flex flex-col relative shrink-0">
-            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none" />
+        {/* Scrollable inner */}
+        <div className="overflow-y-auto">
+          {/* ===== HERO HEADER ===== */}
+          <div className="bg-[#0B1B3B] relative overflow-hidden">
+            {/* Geometric pattern */}
+            <div className="absolute inset-0 pointer-events-none opacity-[0.035]">
+              <svg
+                className="w-full h-full"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs>
+                  <pattern
+                    id="lawyer-hero-grid"
+                    x="0"
+                    y="0"
+                    width="32"
+                    height="32"
+                    patternUnits="userSpaceOnUse"
+                  >
+                    <path
+                      d="M 32 0 L 0 0 0 32"
+                      fill="none"
+                      stroke="#D4C5A0"
+                      strokeWidth="0.4"
+                    />
+                  </pattern>
+                </defs>
+                <rect
+                  width="100%"
+                  height="100%"
+                  fill="url(#lawyer-hero-grid)"
+                />
+              </svg>
+            </div>
 
-            <div className="relative z-10">
-              <div className="aspect-[3/4] overflow-hidden border border-[#D4C5A0]/30 mb-8 bg-[#1A2F5A]">
+            {/* Corner accents */}
+            <div className="absolute top-5 left-5 w-5 h-5 border-t border-l border-[#D4C5A0]/25 pointer-events-none z-10" />
+            <div className="absolute bottom-5 right-5 w-5 h-5 border-b border-r border-[#D4C5A0]/25 pointer-events-none z-10" />
+
+            <div className="relative z-[5] flex flex-col md:flex-row gap-6 md:gap-10 p-7 md:p-10">
+              {/* Photo */}
+              <div className="w-full max-w-[200px] mx-auto md:mx-0 md:w-48 lg:w-56 aspect-[3/4] rounded-sm overflow-hidden border border-[#D4C5A0]/25 shadow-2xl shrink-0">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={photoUrl}
@@ -212,141 +255,170 @@ const LawyerDetailPopup = ({
                 />
               </div>
 
-              <h2 className="text-3xl font-serif mb-2">{name}</h2>
-              <p className="text-[#D4C5A0] font-bold uppercase tracking-widest text-xs mb-6">
-                {positionName}
-              </p>
+              {/* Info */}
+              <div className="flex flex-col justify-center flex-1 min-w-0 text-center md:text-left">
+                <h2 className="text-white text-3xl md:text-[2.5rem] font-serif leading-[1.15] tracking-tight">
+                  {name}
+                </h2>
+                <p className="text-[#E8DBBF] text-[11px] font-semibold uppercase tracking-[0.25em] mt-2.5">
+                  {positionName}
+                </p>
 
-              <div className="space-y-4 text-sm font-light text-gray-300 mb-8">
-                {lawyer.email && (
-                  <a
-                    href={`mailto:${lawyer.email}`}
-                    className="flex items-center gap-3 hover:text-white transition-colors"
-                  >
-                    <Mail className="w-4 h-4 text-[#D4C5A0]" />
-                    <span>{lawyer.email}</span>
-                  </a>
-                )}
-                {lawyer.phone && (
-                  <div className="flex items-center gap-3">
-                    <Phone className="w-4 h-4 text-[#D4C5A0]" />
-                    <span>{lawyer.phone}</span>
-                  </div>
-                )}
-                {lawyer.linkedin_url && (
-                  <a
-                    href={lawyer.linkedin_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 hover:text-white transition-colors"
-                  >
-                    <Linkedin className="w-4 h-4 text-[#D4C5A0]" />
-                    <span>{labels.linkedinProfile}</span>
-                  </a>
-                )}
-              </div>
-
-              {languages.length > 0 && (
-                <div className="border-t border-white/10 pt-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Globe className="w-4 h-4 text-[#D4C5A0]" />
-                    <span className="text-xs font-bold uppercase tracking-wider text-[#D4C5A0]">
-                      {labels.languages}
-                    </span>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {languages.map((lang, idx) => (
+                {/* Practice Area Tags */}
+                {practiceAreas.length > 0 && (
+                  <div className="flex flex-wrap justify-center md:justify-start gap-1.5 mt-5">
+                    {practiceAreas.map((area, idx) => (
                       <span
                         key={idx}
-                        className="bg-[#1A2F5A] px-3 py-1 text-xs border border-white/10 rounded-sm"
+                        className="bg-white/[0.06] border border-[#D4C5A0]/25 text-[#E8DBBF] text-[11px] px-2.5 py-1 rounded-sm tracking-wide"
                       >
-                        {lang}
+                        {area}
                       </span>
                     ))}
                   </div>
-                </div>
-              )}
+                )}
+
+                {/* Contact Row */}
+                {(lawyer.email || lawyer.phone || lawyer.linkedin_url) && (
+                  <div className="flex items-center justify-center md:justify-start gap-2 mt-6">
+                    {lawyer.email && (
+                      <a
+                        href={`mailto:${lawyer.email}`}
+                        className="w-9 h-9 flex items-center justify-center bg-white/[0.06] border border-white/[0.08] text-white/70 hover:text-white hover:bg-white/[0.12] transition-colors duration-150 rounded-sm"
+                        title={lawyer.email}
+                      >
+                        <Mail className="w-[15px] h-[15px]" />
+                      </a>
+                    )}
+                    {lawyer.phone && (
+                      <a
+                        href={`tel:${lawyer.phone}`}
+                        className="w-9 h-9 flex items-center justify-center bg-white/[0.06] border border-white/[0.08] text-white/70 hover:text-white hover:bg-white/[0.12] transition-colors duration-150 rounded-sm"
+                        title={lawyer.phone}
+                      >
+                        <Phone className="w-[15px] h-[15px]" />
+                      </a>
+                    )}
+                    {lawyer.linkedin_url && (
+                      <a
+                        href={lawyer.linkedin_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-9 h-9 flex items-center justify-center bg-white/[0.06] border border-white/[0.08] text-white/70 hover:text-white hover:bg-white/[0.12] transition-colors duration-150 rounded-sm"
+                        title={labels.linkedinProfile}
+                      >
+                        <Linkedin className="w-[15px] h-[15px]" />
+                      </a>
+                    )}
+                  </div>
+                )}
+
+                {/* Languages */}
+                {languages.length > 0 && (
+                  <div className="flex items-center justify-center md:justify-start gap-2.5 mt-4 text-white/50 text-[13px] tracking-wide">
+                    <Globe className="w-3.5 h-3.5 shrink-0" />
+                    <span>{languages.join(" · ")}</span>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Detailed Bio & Experience */}
-          <div className="w-full md:w-2/3 bg-white p-8 md:p-12 overflow-y-auto">
-            <div className="max-w-2xl">
-              {/* Bio */}
-              <div className="mb-10">
-                <h3 className="text-[#0B1B3B] text-2xl font-serif mb-4 flex items-center gap-3">
+          {/* Gold divider */}
+          <div className="h-[1.5px] bg-gradient-to-r from-[#D4C5A0]/10 via-[#D4C5A0]/70 to-[#D4C5A0]/10" />
+
+          {/* ===== CONTENT AREA ===== */}
+          <div className="bg-white p-7 md:p-10">
+            {/* Overview / Bio */}
+            <div className="mb-10 lawyer-card-enter">
+              <div className="flex items-center gap-3 mb-1">
+                <h3 className="text-[#0B1B3B] text-xl md:text-2xl font-serif">
                   {labels.overview}
                 </h3>
-                <div className="w-12 h-1 bg-[#D4C5A0] mb-6"></div>
-                <div
-                  className={`rich-content max-w-none text-justify leading-relaxed ${
-                    !bio ? "text-[#1a2f5a]/50 italic" : "text-[#1a2f5a]"
-                  }`}
-                  dangerouslySetInnerHTML={{ __html: bio || labels.noBio }}
-                />
               </div>
+              <div className="w-8 h-[1.5px] bg-[#D4C5A0] mb-5" />
+              <div
+                className={`rich-content max-w-none text-justify leading-relaxed ${
+                  !bio ? "text-[#1a2f5a]/50 italic" : "text-[#1a2f5a]"
+                }`}
+                dangerouslySetInnerHTML={{ __html: bio || labels.noBio }}
+              />
+            </div>
 
-              {/* Experience */}
-              {experience.length > 0 && (
-                <div className="mb-10">
-                  <h3 className="text-[#0B1B3B] text-xl font-serif mb-6 flex items-center gap-3">
-                    <Briefcase className="w-5 h-5 text-[#D4C5A0]" />
+            {/* Experience */}
+            {hasExperience && (
+              <div className="mb-10 lawyer-card-enter" style={{ animationDelay: "100ms" }}>
+                <div className="flex items-center gap-2.5 mb-1">
+                  <Briefcase className="w-5 h-5 text-[#0B1B3B]" />
+                  <h3 className="text-[#0B1B3B] text-xl md:text-2xl font-serif">
                     {labels.experience}
                   </h3>
-                  <ul className="space-y-4 border-l-2 border-[#D4C5A0]/40 pl-7 ml-1">
-                    {experience.map((exp, idx) => (
-                      <li key={idx} className="relative pl-2">
-                        <span className="absolute -left-[30px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#D4C5A0]"></span>
-                        <p className="text-[#1a2f5a] font-light text-sm leading-relaxed">
-                          {exp}
-                        </p>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
-              )}
+                <div className="w-8 h-[1.5px] bg-[#D4C5A0] mb-5" />
+                <ul className="border-l border-[#C0B181]/50 pl-5 ml-1 space-y-3">
+                  {experience.map((exp, idx) => (
+                    <li key={idx} className="relative pl-1">
+                      <span className="absolute -left-[23px] top-[7px] w-[7px] h-[7px] rounded-full bg-[#C0B181]" />
+                      <p className="text-[#1a2f5a] text-sm leading-relaxed">
+                        {exp}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
-              {/* Education */}
-              {education.length > 0 && (
-                <div className="mb-10">
-                  <h3 className="text-[#0B1B3B] text-xl font-serif mb-6 flex items-center gap-3">
-                    <GraduationCap className="w-5 h-5 text-[#D4C5A0]" />
-                    {labels.education}
-                  </h3>
-                  <ul className="grid gap-3">
-                    {education.map((edu, idx) => (
-                      <li
-                        key={idx}
-                        className="bg-[#EEF2FA] p-4 border border-[#D4C5A0]/20 text-sm text-[#1a2f5a] leading-relaxed"
-                      >
-                        {edu}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+            {/* Education & Certifications side by side when both exist */}
+            {(hasEducation || hasCertifications) && (
+              <div className={`grid grid-cols-1 ${hasEducation && hasCertifications ? "md:grid-cols-2" : ""} gap-x-10 gap-y-10`}>
+                {/* Education */}
+                {hasEducation && (
+                  <div className="lawyer-card-enter" style={{ animationDelay: "200ms" }}>
+                    <div className="flex items-center gap-2.5 mb-1">
+                      <GraduationCap className="w-5 h-5 text-[#0B1B3B]" />
+                      <h3 className="text-[#0B1B3B] text-xl md:text-2xl font-serif">
+                        {labels.education}
+                      </h3>
+                    </div>
+                    <div className="w-8 h-[1.5px] bg-[#D4C5A0] mb-5" />
+                    <ul className="space-y-2.5">
+                      {education.map((edu, idx) => (
+                        <li
+                          key={idx}
+                          className="border-l-2 border-[#C0B181]/40 pl-3 py-1.5 text-sm text-[#1a2f5a] leading-relaxed"
+                        >
+                          {edu}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
-              {/* Certifications */}
-              {certifications.length > 0 && (
-                <div>
-                  <h3 className="text-[#0B1B3B] text-xl font-serif mb-6 flex items-center gap-3">
-                    <Award className="w-5 h-5 text-[#D4C5A0]" />
-                    {labels.certifications}
-                  </h3>
-                  <ul className="grid sm:grid-cols-2 gap-3">
-                    {certifications.map((cert, idx) => (
-                      <li
-                        key={idx}
-                        className="flex items-start gap-2 text-sm text-[#1a2f5a] font-light"
-                      >
-                        <CheckCircle2 className="w-4 h-4 text-[#D4C5A0] shrink-0 mt-0.5" />
-                        <span>{cert}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
+                {/* Certifications */}
+                {hasCertifications && (
+                  <div className="lawyer-card-enter" style={{ animationDelay: "300ms" }}>
+                    <div className="flex items-center gap-2.5 mb-1">
+                      <Award className="w-5 h-5 text-[#0B1B3B]" />
+                      <h3 className="text-[#0B1B3B] text-xl md:text-2xl font-serif">
+                        {labels.certifications}
+                      </h3>
+                    </div>
+                    <div className="w-8 h-[1.5px] bg-[#D4C5A0] mb-5" />
+                    <ul className="space-y-2.5">
+                      {certifications.map((cert, idx) => (
+                        <li
+                          key={idx}
+                          className="flex items-start gap-2.5 text-sm text-[#1a2f5a]"
+                        >
+                          <CheckCircle2 className="w-4 h-4 text-[#2E4472] shrink-0 mt-0.5" />
+                          <span>{cert}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>

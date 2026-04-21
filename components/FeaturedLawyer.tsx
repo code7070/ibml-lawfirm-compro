@@ -1,7 +1,8 @@
 "use client";
 
-import { LinkedinIcon, Mail } from "lucide-react";
+import { LinkedinIcon } from "lucide-react";
 import { LawyerWithPositionAndPracticeAreas } from "@/lib/types/database";
+import EmailTooltip from "@/components/EmailTooltip";
 
 interface FeaturedLawyerProps {
   member: LawyerWithPositionAndPracticeAreas;
@@ -99,21 +100,14 @@ const FeaturedLawyer: React.FC<FeaturedLawyerProps> = ({
           </h3>
 
           {member.email && (
-            <a
-              href={`mailto:${member.email}`}
-              onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center gap-2 text-[#2E4472] hover:text-[#D4C5A0] text-sm font-light tracking-wide mb-8 transition-colors"
-            >
-              <Mail className="w-3.5 h-3.5" />
-              <span className="border-b border-[#0B1B3B]/10 hover:border-[#D4C5A0] pb-0.5 transition-colors">
-                {member.email}
-              </span>
-            </a>
+            <div className="mb-8">
+              <EmailTooltip email={member.email} />
+            </div>
           )}
 
           {bio && (
             <div
-              className="text-[#2E4472]/85 font-serif italic font-light leading-relaxed text-base md:text-lg max-w-xl mb-8 line-clamp-5"
+              className="text-[#2E4472]/85 font-light leading-relaxed text-base md:text-lg max-w-xl mb-8 line-clamp-5"
               dangerouslySetInnerHTML={{ __html: bio }}
             ></div>
           )}
