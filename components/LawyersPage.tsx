@@ -13,16 +13,19 @@ import {
   LawyerPosition,
 } from "@/lib/types/database";
 
-const POSITION_TIERS: Record<string, "partnership" | "associates"> = {
+type PositionTier = "partnership" | "counsel" | "associates" | "others";
+
+const POSITION_TIERS: Record<string, Exclude<PositionTier, "others">> = {
   "managing-partner": "partnership",
   partner: "partnership",
-  counsel: "partnership",
+  counsel: "counsel",
   "senior-associate": "associates",
   associate: "associates",
 };
 
-const TIER_LABELS: Record<string, { en: string; id: string }> = {
+const TIER_LABELS: Record<PositionTier, { en: string; id: string }> = {
   partnership: { en: "Partnership", id: "Kemitraan" },
+  counsel: { en: "Counsel", id: "Counsel" },
   associates: { en: "Associates", id: "Asosiasi" },
   others: { en: "Legal Team", id: "Tim Hukum" },
 };
@@ -44,6 +47,22 @@ interface LawyersPageProps {
   locale: string;
   translations: LawyersPageTranslations;
 }
+
+const getSectionGridClassName = (sectionKey: PositionTier, count: number) => {
+  if (sectionKey === "associates") {
+    return "max-w-6xl mx-auto lg:grid-cols-3";
+  }
+
+  if (count === 2) {
+    return "max-w-5xl mx-auto gap-x-12";
+  }
+
+  if (count === 3) {
+    return "max-w-6xl mx-auto lg:grid-cols-3";
+  }
+
+  return "lg:grid-cols-4";
+};
 
 const LawyersPage = ({
   initialLawyers,
@@ -148,12 +167,12 @@ const LawyersPage = ({
     return { groups: result, otherLawyers };
   }, [initialLawyers, positions]);
 
-  // Bucket positions into tiers (partnership / associates / others).
-  // Merge only within the same tier so MP never gets mixed with associates.
+  // Bucket positions into tiers (partnership / counsel / associates / others).
+  // Merge only within the same tier so Counsel stays distinct from Partnership.
   // Per-card role badge still shows individual position — hierarchy preserved.
   const mergedSections = useMemo(() => {
     const tierMap = new Map<
-      string,
+      PositionTier,
       {
         positions: LawyerPosition[];
         lawyers: LawyerWithPositionAndPracticeAreas[];
@@ -202,7 +221,7 @@ const LawyersPage = ({
 
       {/* Dynamic Position Sections (thin groups merged so no one stands alone) */}
       {mergedSections.map((section, index) => {
-        // NEW: tier-based label ("Partnership" / "Associates")
+        // NEW: tier-based label ("Partnership" / "Counsel" / "Associates")
         // LEGACY: comment out block below and use this instead:
         // const tierLabel = section.positions.map((p) => locale === "id" ? p.name_id : p.name_en).join(" · ");
         const tierLabel =
@@ -220,25 +239,27 @@ const LawyersPage = ({
               ? section.positions[0].description_id
               : section.positions[0].description_en
             : null;
-        const count = section.lawyers.length;
+        const displayLawyers = section.lawyers.map((lawyer, index) => ({
+          lawyer,
+          renderKey: `${lawyer.id}-${index}`,
+        }));
+        const count = displayLawyers.length;
         const isAlternate = index % 2 === 1;
 
         return (
           <section
             key={section.key}
-            className={`py-24 px-6 ${isAlternate ? "bg-[#F5F5F7]" : ""}`}
+            className={`py-24 px-6 ${isAlternate ? "bg-[#F5F5F7]" : "bg-white"}`}
           >
             <div className="max-w-[1400px] mx-auto">
               <div className="flex items-end justify-between mb-16 border-b border-[#0B1B3B]/10 pb-8 gap-6 max-w-6xl mx-auto">
                 <div>
+                  <span aria-hidden className="mb-4 block h-px w-24 bg-[#D4C5A0]" />
                   <div className="flex items-baseline gap-4 mb-3">
                     <h2 className="text-4xl font-light text-[#0B1B3B]">
                       {tierLabel}
                     </h2>
-                    <span
-                      aria-hidden
-                      className="text-[#D4C5A0] font-serif text-xl tabular-nums"
-                    >
+                    <span aria-hidden className="text-[#D4C5A0] font-serif text-xl tabular-nums">
                       /{String(count).padStart(2, "0")}
                     </span>
                   </div>
@@ -247,7 +268,7 @@ const LawyersPage = ({
                       {positionChips.map((chip, i) => (
                         <span
                           key={i}
-                          className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#0B1B3B]/40 border border-[#0B1B3B]/15 px-2.5 py-1"
+                          className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#0B1B3B]/40 border border-[#0B1B3B]/15 bg-white/70 backdrop-blur-sm px-2.5 py-1 transition-transform duration-300 hover:-translate-y-0.5"
                         >
                           {chip}
                         </span>
@@ -263,24 +284,21 @@ const LawyersPage = ({
               </div>
               {count === 1 ? (
                 <FeaturedLawyer
-                  member={section.lawyers[0]}
+                  member={displayLawyers[0].lawyer}
                   locale={locale}
-                  onClick={() => handleLawyerClick(section.lawyers[0])}
+                  onClick={() => handleLawyerClick(displayLawyers[0].lawyer)}
                   ctaLabel={translations.detail.viewProfile}
                 />
               ) : (
                 <div
-                  className={`grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16 ${
-                    count === 2
-                      ? "max-w-5xl mx-auto gap-x-12"
-                      : count === 3
-                        ? "lg:grid-cols-3 max-w-6xl mx-auto"
-                        : "lg:grid-cols-4"
-                  }`}
+                  className={`grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16 ${getSectionGridClassName(
+                    section.key,
+                    count,
+                  )}`}
                 >
-                  {section.lawyers.map((member) => (
+                  {displayLawyers.map(({ lawyer: member, renderKey }) => (
                     <LawyerCard
-                      key={member.id}
+                      key={renderKey}
                       member={member}
                       locale={locale}
                       onClick={() => handleLawyerClick(member)}

@@ -33,13 +33,16 @@ const FeaturedLawyer: React.FC<FeaturedLawyerProps> = ({
         ? locale === "id"
           ? pa.practice_areas.name_id
           : pa.practice_areas.name_en
-        : null
+        : null,
     )
     .filter((n): n is string => Boolean(n))
     .slice(0, 4);
 
   return (
-    <div id={member.slug || member.id} className="group relative scroll-mt-24">
+    <div
+      id={member.slug || member.id}
+      className="group relative scroll-mt-24 max-w-6xl mx-auto"
+    >
       {/* Ornamental initial watermark */}
       <div
         aria-hidden
@@ -109,9 +112,10 @@ const FeaturedLawyer: React.FC<FeaturedLawyerProps> = ({
           )}
 
           {bio && (
-            <p className="text-[#2E4472]/85 font-serif italic font-light leading-relaxed text-base md:text-lg max-w-xl mb-8 line-clamp-5">
-              {bio}
-            </p>
+            <div
+              className="text-[#2E4472]/85 font-serif italic font-light leading-relaxed text-base md:text-lg max-w-xl mb-8 line-clamp-5"
+              dangerouslySetInnerHTML={{ __html: bio }}
+            ></div>
           )}
 
           {practiceAreaNames.length > 0 && (

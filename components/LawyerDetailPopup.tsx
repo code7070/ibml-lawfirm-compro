@@ -279,7 +279,9 @@ const LawyerDetailPopup = ({
                 </h3>
                 <div className="w-12 h-1 bg-[#D4C5A0] mb-6"></div>
                 <div
-                  className="rich-content max-w-none text-justify"
+                  className={`rich-content max-w-none text-justify leading-relaxed ${
+                    !bio ? "text-[#1a2f5a]/50 italic" : "text-[#1a2f5a]"
+                  }`}
                   dangerouslySetInnerHTML={{ __html: bio || labels.noBio }}
                 />
               </div>
@@ -291,11 +293,11 @@ const LawyerDetailPopup = ({
                     <Briefcase className="w-5 h-5 text-[#D4C5A0]" />
                     {labels.experience}
                   </h3>
-                  <ul className="space-y-4 border-l border-[#F5F5F7] pl-6 ml-2">
+                  <ul className="space-y-4 border-l-2 border-[#D4C5A0]/40 pl-7 ml-1">
                     {experience.map((exp, idx) => (
-                      <li key={idx} className="relative">
-                        <span className="absolute -left-[29px] top-2 w-3 h-3 rounded-full bg-[#D4C5A0] border-2 border-white"></span>
-                        <p className="text-[#2E4472] font-light text-sm">
+                      <li key={idx} className="relative pl-2">
+                        <span className="absolute -left-[30px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#D4C5A0]"></span>
+                        <p className="text-[#1a2f5a] font-light text-sm leading-relaxed">
                           {exp}
                         </p>
                       </li>
@@ -311,11 +313,11 @@ const LawyerDetailPopup = ({
                     <GraduationCap className="w-5 h-5 text-[#D4C5A0]" />
                     {labels.education}
                   </h3>
-                  <ul className="grid gap-4">
+                  <ul className="grid gap-3">
                     {education.map((edu, idx) => (
                       <li
                         key={idx}
-                        className="bg-[#F5F5F7] p-4 border border-[#0B1B3B]/5 text-sm text-[#2E4472]"
+                        className="bg-[#EEF2FA] p-4 border border-[#D4C5A0]/20 text-sm text-[#1a2f5a] leading-relaxed"
                       >
                         {edu}
                       </li>
@@ -335,7 +337,7 @@ const LawyerDetailPopup = ({
                     {certifications.map((cert, idx) => (
                       <li
                         key={idx}
-                        className="flex items-start gap-2 text-sm text-[#2E4472] font-light"
+                        className="flex items-start gap-2 text-sm text-[#1a2f5a] font-light"
                       >
                         <CheckCircle2 className="w-4 h-4 text-[#D4C5A0] shrink-0 mt-0.5" />
                         <span>{cert}</span>
