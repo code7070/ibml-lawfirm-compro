@@ -174,19 +174,31 @@ const ArticleListPage = ({
   return (
     <div className="min-h-screen bg-[#F5F5F7]">
       {/* Header */}
-      <section className="bg-[#0B1B3B] text-white py-24 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5" />
+      <section className="bg-[#0B1B3B] text-white py-28 md:py-32 px-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0F2347] via-[#0B1B3B] to-[#0B1B3B]" />
+        <div className="absolute inset-0 pattern-editorial" />
+        <div className="absolute inset-0 noise-grain mix-blend-soft-light" />
+        <div className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/4 w-[600px] h-[600px] bg-[#D4C5A0] rounded-full blur-[160px] opacity-[0.08]" />
+
         <div className="max-w-[1400px] mx-auto relative z-10">
+          <div className="w-16 h-px bg-[#D4C5A0] mb-6" />
+
           <span className="text-[#D4C5A0] font-bold tracking-[0.2em] text-xs uppercase mb-4 block">
             {t("hero.tags")}
           </span>
-          <h1 className="text-5xl md:text-7xl font-light mb-8">
-            {t("hero.title")}
+          <h1 className="text-5xl md:text-7xl font-light mb-6">
+            {t("hero.titleLead")}{" "}
+            <span className="font-serif italic text-[#D4C5A0]">
+              {t("hero.titleAccent")}
+            </span>
           </h1>
-          <p className="text-gray-400 max-w-2xl text-lg font-light leading-relaxed">
+
+          <p className="text-gray-400 max-w-2xl text-lg font-light leading-relaxed pl-6 border-l border-white/10">
             {t("hero.subtitle")}
           </p>
         </div>
+
+        <div className="hidden lg:block absolute right-16 top-[20%] h-[60%] w-px bg-gradient-to-b from-transparent via-[#D4C5A0]/15 to-transparent" />
       </section>
 
       {/* Filter & Grid */}

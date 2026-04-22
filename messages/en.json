@@ -111,6 +111,8 @@
     "hero": {
       "tags": "Our Legal Team",
       "title": "Our Team",
+      "titleLead": "Our",
+      "titleAccent": "Team",
       "subtitle": "Where brilliant minds come to work together"
     },
     "filters": {
@@ -392,6 +394,8 @@
     "hero": {
       "tags": "Connect & Converge",
       "title": "Events",
+      "titleLead": "Firm",
+      "titleAccent": "Events",
       "subtitle": "Join IBLM Law Group at the forefront of the legal industry. Workshops, summits, and networking events."
     },
     "upcoming": "Upcoming Events",
@@ -412,6 +416,8 @@
     "hero": {
       "tags": "IBLM Legal News Brief and Articles",
       "title": "Insights & Analysis",
+      "titleLead": "Insights &",
+      "titleAccent": "Analysis",
       "subtitle": "Navigating the intersection of law, technology, and business. Stay ahead of regulatory shifts and industry trends."
     },
     "readMore": "Read More",

@@ -199,6 +199,51 @@ h4 {
   opacity: 0.05;
 }
 
+/* ========== HERO PAGE PATTERNS ========== */
+
+.pattern-architect {
+  background-image:
+    linear-gradient(var(--color-gold-light) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-gold-light) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.03;
+}
+
+.pattern-crosshatch {
+  background-image:
+    linear-gradient(45deg, var(--color-gold-light) 1px, transparent 1px),
+    linear-gradient(-45deg, var(--color-gold-light) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.3;
+}
+
+.pattern-editorial {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 39px,
+    var(--color-gold-light) 39px,
+    var(--color-gold-light) 40px
+  );
+  opacity: 0.04;
+}
+
+.pattern-momentum {
+  background-image: repeating-linear-gradient(
+    -30deg,
+    transparent,
+    transparent 20px,
+    var(--color-gold-light) 20px,
+    var(--color-gold-light) 21px
+  );
+  opacity: 0.04;
+}
+
+.noise-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.03;
+}
+
 /* ========== LOGO TICKER ANIMATION ========== */
 @keyframes ticker {
   0% {
@@ -247,15 +292,14 @@ h4 {
   position: relative;
   height: 36px;
   background-color: #0b1b3b;
-  background-image:
-    linear-gradient(
-      105deg,
-      transparent 0%,
-      rgba(212, 197, 160, 0.03) 30%,
-      rgba(212, 197, 160, 0.06) 50%,
-      rgba(212, 197, 160, 0.03) 70%,
-      transparent 100%
-    );
+  background-image: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(212, 197, 160, 0.03) 30%,
+    rgba(212, 197, 160, 0.06) 50%,
+    rgba(212, 197, 160, 0.03) 70%,
+    transparent 100%
+  );
   font-family: var(--font-body);
   overflow: hidden;
   will-change: height, opacity;
@@ -279,8 +323,12 @@ h4 {
 }
 
 @keyframes shimmer-sweep {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 /* Banner open state */
@@ -323,8 +371,12 @@ h4 {
 }
 
 @keyframes progress-fill {
-  from { width: 0%; }
-  to { width: 100%; }
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 /* ========== RICH TEXT CONTENT (replaces @tailwindcss/typography) ========== */
@@ -515,8 +567,12 @@ h4 {
 }
 
 @keyframes tab-slide-in {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }
 
 /* Mobile TOC drawer */
@@ -525,14 +581,20 @@ h4 {
 }
 
 @keyframes toc-slide-in {
-  from { transform: translateX(100%); opacity: 0; }
-  to   { transform: translateX(0);    opacity: 1; }
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 /* Document body text */
 .privacy-document .privacy-body p {
   color: #2e4472;
-  font-size: 0.9375rem;   /* 15px */
+  font-size: 0.9375rem; /* 15px */
   line-height: 1.85;
   font-weight: 300;
   margin-bottom: 1rem;
@@ -585,8 +647,14 @@ h4 {
 }
 
 @keyframes section-fade-in {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Lawyer detail popup animations */
@@ -595,8 +663,12 @@ h4 {
 }
 
 @keyframes lawyer-backdrop-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .lawyer-popup-enter {
@@ -619,6 +691,12 @@ h4 {
 }
 
 @keyframes lawyer-card-in {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

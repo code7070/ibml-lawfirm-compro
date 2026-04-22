@@ -87,18 +87,35 @@ const PracticeAreaPage = ({
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-[#0B1B3B] text-white py-24 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5" />
+      <section className="bg-[#0B1B3B] text-white py-28 md:py-32 px-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0B1B3B] via-[#122448] to-[#020814]" />
+        <div className="absolute inset-0 pattern-architect" />
+        <div className="absolute inset-0 noise-grain mix-blend-soft-light" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/3 w-[600px] h-[600px] bg-[#D4C5A0] rounded-full blur-[160px] opacity-[0.08]" />
+
         <div className="max-w-[1400px] mx-auto relative z-10 text-center">
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <span className="h-px w-12 bg-gradient-to-r from-transparent to-[#D4C5A0]/40" />
+            <span className="w-2 h-2 rotate-45 border border-[#D4C5A0]/50" />
+            <span className="h-px w-12 bg-gradient-to-l from-transparent to-[#D4C5A0]/40" />
+          </div>
+
           <span className="text-[#D4C5A0] font-bold tracking-[0.2em] text-xs uppercase mb-6 block">
             {isEn ? "Practice Areas" : "Area Praktik"}
           </span>
-          <h1 className="text-5xl md:text-7xl font-light mb-8">
+          <h1 className="text-5xl md:text-7xl font-light mb-6">
             {isEn ? "Specialized" : "Spesialisasi"}{" "}
             <span className="font-serif italic text-[#D4C5A0]">
               {isEn ? "Legal Groups" : "Arsitektur Hukum"}
             </span>
           </h1>
+
+          <div className="flex items-center justify-center gap-4 my-8">
+            <span className="h-px w-16 md:w-24 bg-[#D4C5A0]/30" />
+            <span className="w-1.5 h-1.5 rotate-45 bg-[#D4C5A0]/40" />
+            <span className="h-px w-16 md:w-24 bg-[#D4C5A0]/30" />
+          </div>
+
           <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light leading-relaxed">
             {isEn
               ? "We structure our expertise into focused practice groups, ensuring deep industry knowledge tailored to specific sectors."

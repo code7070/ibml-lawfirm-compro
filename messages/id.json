@@ -111,6 +111,8 @@
     "hero": {
       "tags": "Tim Hukum Kami",
       "title": "Tim Kami",
+      "titleLead": "Tim",
+      "titleAccent": "Kami",
       "subtitle": "Tempat para pemikir brilian berkumpul untuk berkarya bersama"
     },
     "filters": {
@@ -392,6 +394,8 @@
     "hero": {
       "tags": "Terhubung & Berkumpul",
       "title": "Acara",
+      "titleLead": "",
+      "titleAccent": "Acara",
       "subtitle": "Bergabunglah dengan IBLM Law Group di garis depan industri hukum. Workshop, summit, dan acara networking."
     },
     "upcoming": "Acara Mendatang",
@@ -412,6 +416,8 @@
     "hero": {
       "tags": "Artikel dan Artikel Hukum IBLM",
       "title": "Wawasan & Analisis",
+      "titleLead": "Wawasan &",
+      "titleAccent": "Analisis",
       "subtitle": "Menavigasi persimpangan hukum, teknologi, dan bisnis. Tetap terdepan dalam perubahan regulasi dan tren industri."
     },
     "readMore": "Baca Selengkapnya",

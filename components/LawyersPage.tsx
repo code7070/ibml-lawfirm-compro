@@ -35,6 +35,8 @@ export interface LawyersPageTranslations {
   hero: {
     tags: string;
     title: string;
+    titleLead?: string;
+    titleAccent?: string;
     subtitle: string;
   };
   fallbackTeamTitle?: string;
@@ -204,19 +206,35 @@ const LawyersPage = ({
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-[#0B1B3B] text-white py-24 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5" />
-        <div className="max-w-[1400px] mx-auto relative z-10 text-center">
-          <span className="text-[#D4C5A0] font-bold tracking-[0.2em] text-xs uppercase mb-6 block">
-            {translations.hero.tags}
-          </span>
-          <h1 className="text-5xl md:text-7xl font-light mb-8">
-            {translations.hero.title}
-          </h1>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light leading-relaxed">
+      <section className="bg-[#0B1B3B] text-white py-28 md:py-32 px-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0F2347] via-[#0B1B3B] to-[#060E1F]" />
+        <div className="absolute inset-0 pattern-crosshatch" />
+        <div className="absolute inset-0 noise-grain mix-blend-soft-light" />
+        <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-[#D4C5A0] rounded-full blur-[180px] opacity-10 -translate-y-1/3 translate-x-1/4" />
+
+        <div className="max-w-[1400px] mx-auto relative z-10">
+          <div className="border-l-2 border-[#D4C5A0] pl-6 max-w-2xl">
+            <span className="text-[#D4C5A0] font-bold tracking-[0.2em] text-xs uppercase mb-4 block">
+              {translations.hero.tags}
+            </span>
+            <h1 className="text-5xl md:text-7xl font-light mb-6">
+              {translations.hero.titleLead || translations.hero.title}{" "}
+              {translations.hero.titleAccent && (
+                <span className="font-serif italic text-[#F5F5F7]">
+                  {translations.hero.titleAccent}
+                </span>
+              )}
+            </h1>
+          </div>
+
+          <p className="text-gray-400 max-w-xl text-lg font-light leading-relaxed pl-6 border-l border-white/10 mt-6">
             {translations.hero.subtitle}
           </p>
+
+          <div className="w-3 h-3 bg-[#D4C5A0] ml-6 mt-8" />
         </div>
+
+        <div className="hidden lg:block absolute right-12 top-[30%] h-[40%] w-px bg-gradient-to-b from-transparent via-[#D4C5A0]/20 to-transparent" />
       </section>
 
       {/* Dynamic Position Sections (thin groups merged so no one stands alone) */}

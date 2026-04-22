@@ -38,18 +38,36 @@ const EventsPage: React.FC<EventsPageProps> = ({ events }) => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-[#0B1B3B] text-white py-24 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5" />
+      <section className="bg-[#0B1B3B] text-white py-28 md:py-32 px-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-tr from-[#020814] via-[#0B1B3B] to-[#1A2F5A]" />
+        <div className="absolute inset-0 pattern-momentum" />
+        <div className="absolute inset-0 noise-grain mix-blend-soft-light" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#D4C5A0] rounded-full blur-[160px] opacity-[0.08] translate-y-1/3 -translate-x-1/4" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#D4C5A0] rounded-full blur-[140px] opacity-[0.06] -translate-y-1/3 translate-x-1/4" />
+
         <div className="max-w-[1400px] mx-auto relative z-10 text-center">
-          <span className="text-[#D4C5A0] font-bold tracking-[0.2em] text-xs uppercase mb-6 block">
-            {t("hero.tags")}
-          </span>
-          <h1 className="text-5xl md:text-7xl font-light mb-8">
-            {t("hero.title")}
-          </h1>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light leading-relaxed">
+          <div className="relative inline-block px-8 md:px-16 py-4">
+            <span className="absolute -top-2 -left-2 w-8 h-8 border-t border-l border-[#D4C5A0]/30" />
+            <span className="absolute -bottom-2 -right-2 w-8 h-8 border-b border-r border-[#D4C5A0]/30" />
+
+            <span className="text-[#D4C5A0] font-bold tracking-[0.2em] text-xs uppercase mb-6 block">
+              {t("hero.tags")}
+            </span>
+            <h1 className="text-5xl md:text-7xl font-light mb-6">
+              {t("hero.titleLead")}{" "}
+              <span className="font-serif italic text-[#D4C5A0]">
+                {t("hero.titleAccent")}
+              </span>
+            </h1>
+          </div>
+
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light leading-relaxed mt-4">
             {t("hero.subtitle")}
           </p>
+
+          <div className="flex justify-center mt-8">
+            <span className="w-2 h-2 rounded-full bg-[#D4C5A0] animate-pulse" />
+          </div>
         </div>
       </section>
 
