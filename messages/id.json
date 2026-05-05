@@ -39,8 +39,8 @@
     },
     "practice_section": {
       "label": "Grup Praktik",
-      "title_prefix": "Arsitektur",
-      "title_suffix": "Pertahanan Digital",
+      "title_prefix": "Penasihat Terpercaya,",
+      "title_suffix": "Solusi Terbaik",
       "description": "Strategi hukum yang disesuaikan untuk ekosistem game dan hiburan yang bergerak cepat."
     },
     "cta": {
@@ -52,11 +52,11 @@
   "about": {
     "hero": {
       "tags": "Tentang IBLM Law Group",
-      "title_1": "The Sophisticated",
-      "title_2": "Guardian"
+      "title_1": "Cerita",
+      "title_2": "Kami"
     },
     "story": {
-      "paragraph1": "IBLM Law Group didirikan atas keyakinan bahwa praktik hukum merupakan bagian integral dari pembangunan hukum. Dengan pendekatan modern terhadap industri hukum, IBLM Law Group berfokus pada 4 bidang (kelompok): Industri Hiburan/Kreatif, Teknologi, Kesehatan & Pendidikan, serta Ketenagakerjaan.",
+      "paragraph1": "IBLM Law Group didirikan atas keyakinan bahwa praktik hukum merupakan bagian integral dari pembangunan hukum. Dengan pendekatan modern terhadap industri hukum, IBLM Law Group berfokus pada bidang (kelompok): Teknologi, Industri Hiburan/Kreatif, Kesehatan & Pendidikan, serta Ketenagakerjaan.",
       "paragraph2": "Kami saat ini dipimpin oleh para mitra dengan pengalaman gabungan selama puluhan tahun di industri hukum. IBLM Law Group berkomitmen untuk menavigasi kompleksitas regulasi sambil bertujuan menciptakan solusi yang efektif dan berfokus pada industri. Dengan menyadari dinamika lanskap hukum Indonesia serta pesatnya perkembangan berbagai industri secara global, kami memperkuat kapabilitas kami melalui kolaborasi dengan berbagai ahli hukum. Hal ini memungkinkan kami untuk memanfaatkan perspektif kami dalam memberikan solusi hukum yang disesuaikan bagi klien kami. Misi kami adalah menjadi mitra terpercaya bagi bisnis dan individu yang menavigasi rezim regulasi yang kompleks. Melalui kolaborasi dan inovasi, IBLM Law Group berupaya memberikan solusi hukum yang disesuaikan untuk memberdayakan klien kami agar berkembang di dunia yang terus berevolusi.",
       "brandPromise": "Mengelola Kompleksitas, Memberikan Solusi",
       "brandPromiseLabel": "Janji Brand Kami"
@@ -92,7 +92,7 @@
       },
       "modern": {
         "title": "Pendekatan Modern",
-        "description": "Menggabungkan yurisprudensi klasik dengan strategi modern untuk memberikan solusi inovatif bagi tantangan hukum kompleks saat ini."
+        "description": "Anda akan didukung oleh ekosistem luas para ahli hukum kami untuk menghadirkan solusi inovatif bagi tantangan hukum kompleks saat ini."
       }
     },
     "clientTicker": "Dipercaya oleh Pemimpin Industri",
@@ -329,10 +329,10 @@
     "hero": {
       "tags": "Karir di IBLM",
       "title": "Bergabung dengan Tim Kami",
-      "subtitle": "Kami mencari talenta hukum yang brilian dan bersemangat tentang persimpangan teknologi, hiburan, dan hukum."
+      "subtitle": "Tempat para pemikir brilian berkumpul untuk berkarya bersama."
     },
     "code": {
-      "title": "Kode Kami",
+      "title": "Nilai-Nilai Kami",
       "precision": {
         "title": "Presisi & Keunggulan",
         "description": "Kami beroperasi pada tingkat tertinggi praktik hukum. 'Cukup baik' bukan dalam kosakata kami ketika hal-hal kritis dipertaruhkan."

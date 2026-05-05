@@ -31,9 +31,11 @@ const Hero = () => {
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 w-full grid lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-7 space-y-10">
           <div className="inline-block border-l-2 border-[#D4C5A0] pl-6">
-            <p className="text-[#D4C5A0] uppercase tracking-[0.2em] text-sm font-bold mb-4">
-              {t("tags")}
-            </p>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="size-2 rotate-45 bg-[#D4C5A0]" />
+              <span className="size-2 rotate-45 bg-[#D4C5A0]" />
+              <span className="size-2 rotate-45 bg-[#D4C5A0]" />
+            </div>
             <h1 className="text-4xl md:text-7xl font-light leading-[1.1] text-white">
               {t("title_1")} <br />
               <span className="font-serif italic text-[#F5F5F7]">

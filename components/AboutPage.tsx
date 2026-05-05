@@ -113,7 +113,7 @@ const AboutPage = ({
                 {t("hero.tags")}
               </span>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-light text-[#0B1B3B] leading-[1.1]">
-                {t("hero.title_1")} <br />
+                {t("hero.title_1")}{" "}
                 <span className="font-serif italic text-[#2E4472]">
                   {t("hero.title_2")}
                 </span>

@@ -39,8 +39,8 @@
     },
     "practice_section": {
       "label": "Practice Groups",
-      "title_prefix": "Architecture of",
-      "title_suffix": "Digital Defense",
+      "title_prefix": "Trusted Counsel,",
+      "title_suffix": "Tailored Solutions",
       "description": "Tailored legal strategies for the fast-paced ecosystem of gaming and entertainment."
     },
     "cta": {
@@ -52,11 +52,11 @@
   "about": {
     "hero": {
       "tags": "About IBLM Law Group",
-      "title_1": "The Sophisticated",
-      "title_2": "Guardian"
+      "title_1": "Our",
+      "title_2": "Story"
     },
     "story": {
-      "paragraph1": "IBLM Law Group is established on the belief that legal practice is an integral part of legal development. With modern takes on the legal industries, IBLM Law Group focuses on 4 fields (groups): Entertainment/Creative Industry, Technology, Health & Education, and People & Labor.",
+      "paragraph1": "IBLM Law Group is established on the belief that legal practice is an integral part of legal development. With modern takes on the legal industries, IBLM Law Group focuses on fields (groups): Technology, Entertainment/Creative Industry, Health & Education, and People & Labor.",
       "paragraph2": "We are currently led by partners with combined decades of experience in the legal industry. IBLM Law Group is committed to navigate the complexity of regulations while aiming to create effective industry focused solutions. By realizing the dynamic Indonesian legal landscape as well as the fast paced development of various industries globally, we strengthen our capabilities by collaborating with various legal experts. This enables us to leverage our perspective in delivering tailored legal solutions for our clients. Our mission is to stand as a trusted partner for businesses and individuals navigating complex regulatory regimes. Through collaboration and innovation, IBLM Law Group strives to provide tailored legal solutions that empower our clients to thrive in a rapidly evolving world.",
       "brandPromise": "Navigating Complexity, Delivering Solutions",
       "brandPromiseLabel": "Our Brand Promise"
@@ -92,7 +92,7 @@
       },
       "modern": {
         "title": "Modern Approach",
-        "description": "Combining classical jurisprudence with modern strategy to deliver innovative solutions for today's complex legal challenges."
+        "description": "You will be supported by our vast ecosystem of legal experts to deliver innovative solutions for today's complex legal challenges."
       }
     },
     "clientTicker": "Trusted By Industry Leaders",
@@ -221,7 +221,7 @@
       "tags": "Contact Us",
       "titleLead": "Consult",
       "titleAccent": "Now",
-      "subtitle": "All communications are protected by client-attorney priv"
+      "subtitle": "All communications are protected by client-attorney privilege"
     },
     "form": {
       "title": "Get in Touch",
@@ -329,10 +329,10 @@
     "hero": {
       "tags": "Careers at IBLM",
       "title": "Join Our Team",
-      "subtitle": "We are looking for brilliant legal minds who are passionate about the intersection of technology, entertainment, and law."
+      "subtitle": "Where brilliant minds come to work together."
     },
     "code": {
-      "title": "Our Code",
+      "title": "Our Values",
       "precision": {
         "title": "Precision & Excellence",
         "description": "We operate at the highest level of legal practice. 'Good enough' is not in our vocabulary when critical matters are at stake."

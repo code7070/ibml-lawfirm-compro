@@ -169,7 +169,7 @@ const CareerPage = ({ jobs = [], locale = "en" }: CareerPageProps) => {
               <p className="text-gray-300 font-light leading-relaxed mb-8">
                 {t("culture.description")}
               </p>
-              <div className="grid grid-cols-2 gap-6">
+              {/*<div className="grid grid-cols-2 gap-6">
                 {benefits.map((b, i) => (
                   <div key={i} className="flex items-center gap-3">
                     <b.icon className="text-[#D4C5A0] w-5 h-5" />
@@ -178,7 +178,7 @@ const CareerPage = ({ jobs = [], locale = "en" }: CareerPageProps) => {
                     </span>
                   </div>
                 ))}
-              </div>
+              </div>*/}
             </div>
             <div className="hidden md:block">
               <div className="border border-[#D4C5A0] p-8 bg-[#0B1B3B]/50 backdrop-blur-sm">

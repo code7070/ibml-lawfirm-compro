@@ -76,33 +76,33 @@ const Achievements = () => {
 
             <div className="grid grid-cols-2 gap-10">
               <div>
-                <span className="text-[#D4C5A0] text-xs font-bold uppercase tracking-widest block mb-2">
+                {/*<span className="text-[#D4C5A0] text-xs font-bold uppercase tracking-widest block mb-2">
                   LEG-1
-                </span>
+                </span>*/}
                 <span className="block text-2xl md:text-3xl font-light text-white leading-tight">
                   Entertainment &amp; Creative
                 </span>
               </div>
               <div>
-                <span className="text-[#D4C5A0] text-xs font-bold uppercase tracking-widest block mb-2">
+                {/*<span className="text-[#D4C5A0] text-xs font-bold uppercase tracking-widest block mb-2">
                   LEG-2
-                </span>
+                </span>*/}
                 <span className="block text-2xl md:text-3xl font-light text-white leading-tight">
                   People &amp; Labor
                 </span>
               </div>
               <div>
-                <span className="text-[#D4C5A0] text-xs font-bold uppercase tracking-widest block mb-2">
+                {/*<span className="text-[#D4C5A0] text-xs font-bold uppercase tracking-widest block mb-2">
                   LEG-3
-                </span>
+                </span>*/}
                 <span className="block text-2xl md:text-3xl font-light text-white leading-tight">
                   Technology
                 </span>
               </div>
               <div>
-                <span className="text-[#D4C5A0] text-xs font-bold uppercase tracking-widest block mb-2">
+                {/*<span className="text-[#D4C5A0] text-xs font-bold uppercase tracking-widest block mb-2">
                   LEG-4
-                </span>
+                </span>*/}
                 <span className="block text-2xl md:text-3xl font-light text-white leading-tight">
                   Education &amp; Health
                 </span>
