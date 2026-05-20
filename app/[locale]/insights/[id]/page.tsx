@@ -3,6 +3,7 @@ import { articlesService } from "@/services";
 import { notFound } from "next/navigation";
 import { Article as ViewArticle } from "@/types";
 import { Metadata } from "next";
+import { formatArticleDate } from "@/lib/date-utils";
 
 export const revalidate = 3600; // one hour
 
@@ -16,7 +17,7 @@ const META_IMAGE_PATH = "/images/meta-image-iblm.jpg";
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id, locale } = await params;
   const isId = locale === "id";
-  const { data: article } = await articlesService.getBySlugWithDetails(id);
+  const { data: article } = await articlesService.getByIdentifier(id);
 
   if (!article) return { title: "Article Not Found" };
 
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ? article.meta_description_id || article.excerpt_id
     : article.meta_description_en || article.excerpt_en;
 
-  const url = `${BASE_URL}/${locale}/articles/${id}`;
+  const url = `${BASE_URL}/${locale}/insights/${id}`;
   const imageUrl = article.cover_url || `${BASE_URL}${META_IMAGE_PATH}`;
 
   return {
@@ -35,8 +36,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: url,
       languages: {
-        en: `/en/articles/${id}`,
-        id: `/id/articles/${id}`,
+        en: `/en/insights/${id}`,
+        id: `/id/insights/${id}`,
       },
     },
     openGraph: {
@@ -70,8 +71,8 @@ export default async function ArticleDetailPage({ params }: Props) {
   const { id, locale } = await params;
   const isId = locale === "id";
 
-  // Fetch article
-  const { data: article } = await articlesService.getBySlugWithDetails(id);
+  // Fetch article by slug or ID (prevents 404 when links use UUID instead of slug)
+  const { data: article } = await articlesService.getByIdentifier(id);
 
   if (!article) {
     notFound();
@@ -84,13 +85,7 @@ export default async function ArticleDetailPage({ params }: Props) {
   const viewArticle: ViewArticle = {
     id: article.slug || article.id,
     title: isId ? article.title_id : article.title_en,
-    date: new Date(
-      article.published_at || article.created_at || Date.now(),
-    ).toLocaleDateString(isId ? "id-ID" : "en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    }),
+    date: formatArticleDate(article.published_at, article.created_at, locale) || '',
     category:
       (isId ? article.category?.name_id : article.category?.name_en) ||
       "Uncategorized",
@@ -111,13 +106,7 @@ export default async function ArticleDetailPage({ params }: Props) {
   const viewRelated: ViewArticle[] = (relatedData || []).map((a) => ({
     id: a.slug || a.id,
     title: isId ? a.title_id : a.title_en,
-    date: new Date(
-      a.published_at || a.created_at || Date.now(),
-    ).toLocaleDateString(isId ? "id-ID" : "en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    }),
+    date: formatArticleDate(a.published_at, a.created_at, locale) || '',
     category:
       (isId ? a.category?.name_id : a.category?.name_en) || "Uncategorized",
     image:

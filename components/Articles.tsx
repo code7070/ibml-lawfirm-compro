@@ -5,6 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 import { ArticleWithCategory } from "@/lib/types/database";
 import Link from "next/link";
 import { useTranslations } from "@/hooks/useTranslations";
+import { formatArticleDate } from "@/lib/date-utils";
 
 interface ArticlesProps {
   articles: ArticleWithCategory[];
@@ -37,7 +38,7 @@ const Articles = ({ articles, locale = "en" }: ArticlesProps) => {
           <Button
             variant="secondary"
             className="hidden md:inline-flex"
-            href="/articles"
+            href="/insights"
           >
             View Library
           </Button>
@@ -56,17 +57,12 @@ const Articles = ({ articles, locale = "en" }: ArticlesProps) => {
                 ? article.author.name_id
                 : article.author.name_en
               : null;
-            const publishedDate = article.published_at
-              ? new Date(article.published_at).toLocaleDateString(
-                  locale === "id" ? "id-ID" : "en-US",
-                  { year: "numeric", month: "long", day: "numeric" },
-                )
-              : null;
+            const publishedDate = formatArticleDate(article.published_at, article.created_at, locale);
 
             return (
               <Link
                 key={article.id}
-                href={`/${locale}/articles/${article.slug}`}
+                href={`/${locale}/insights/${article.slug}`}
                 className="group cursor-pointer block"
               >
                 <div className="relative h-64 overflow-hidden mb-8 border border-[#0B1B3B]/10">
@@ -109,7 +105,7 @@ const Articles = ({ articles, locale = "en" }: ArticlesProps) => {
         </div>
 
         <div className="mt-12 md:hidden text-center">
-          <Button variant="secondary" href="/articles">
+          <Button variant="secondary" href="/insights">
             View Library
           </Button>
         </div>

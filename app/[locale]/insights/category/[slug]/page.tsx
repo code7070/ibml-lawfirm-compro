@@ -4,6 +4,7 @@ import { Article as ViewArticle } from "@/types";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { Locale } from "@/lib/dictionary";
+import { formatArticleDate } from "@/lib/date-utils";
 
 export const revalidate = 3600; // one hour
 
@@ -33,16 +34,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description,
     metadataBase: new URL(BASE_URL),
     alternates: {
-      canonical: `${BASE_URL}/${locale}/articles/category/${slug}`,
+      canonical: `${BASE_URL}/${locale}/insights/category/${slug}`,
       languages: {
-        en: `/en/articles/category/${slug}`,
-        id: `/id/articles/category/${slug}`,
+        en: `/en/insights/category/${slug}`,
+        id: `/id/insights/category/${slug}`,
       },
     },
     openGraph: {
       type: "website",
       locale: isId ? "id_ID" : "en_US",
-      url: `${BASE_URL}/${locale}/articles/category/${slug}`,
+      url: `${BASE_URL}/${locale}/insights/category/${slug}`,
       title,
       description,
       siteName: "IBLM Law Group",
@@ -89,13 +90,7 @@ export default async function ArticleCategoryPage({ params }: Props) {
   const viewArticles: ViewArticle[] = articlesResult.data.map((article) => ({
     id: article.slug || article.id,
     title: isId ? article.title_id : article.title_en,
-    date: new Date(
-      article.published_at || article.created_at || "2024-01-01",
-    ).toLocaleDateString(isId ? "id-ID" : "en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    }),
+    date: formatArticleDate(article.published_at, article.created_at, locale) || '',
     category:
       (isId ? article.category?.name_id : article.category?.name_en) ||
       "Uncategorized",

@@ -262,7 +262,7 @@ const AboutPage = ({
       />*/}
 
       {/* 5. BRAND PROMISE SECTION */}
-      <section className="w-full h-[600px] relative overflow-hidden">
+      {/*<section className="w-full h-[600px] relative overflow-hidden">
         <Image
           src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000"
           alt="IBLM Law Group"
@@ -283,7 +283,7 @@ const AboutPage = ({
             </p>
           </div>
         </div>
-      </section>
+      </section>*/}
 
       {/* 6. TEAM SUMMARY — rendered as Server Component from parent */}
       {/*<div id="team">{teamSection}</div>*/}

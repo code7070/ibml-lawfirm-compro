@@ -221,6 +221,55 @@ class ArticlesService extends BaseService<Article, ArticleInsert, ArticleUpdate>
   }
 
   /**
+   * Get article by slug OR id with category and author
+   * Tries slug first, falls back to ID lookup
+   * This prevents 404 when links use ID instead of slug (or vice versa)
+   */
+  async getByIdentifier(
+    identifier: string
+  ): Promise<ApiResponse<ArticleWithCategory>> {
+    try {
+      // First try: lookup by slug
+      const { data: slugResult } = await this.supabase
+        .from(this.tableName)
+        .select(`
+          *,
+          category:article_categories(*),
+          author:lawyers(*)
+        `)
+        .eq('slug', identifier)
+        .maybeSingle();
+
+      if (slugResult) {
+        await this.incrementViews(slugResult.id);
+        return { data: slugResult as ArticleWithCategory, error: null };
+      }
+
+      // Second try: lookup by id (UUID)
+      const { data: idResult, error } = await this.supabase
+        .from(this.tableName)
+        .select(`
+          *,
+          category:article_categories(*),
+          author:lawyers(*)
+        `)
+        .eq('id', identifier)
+        .single();
+
+      if (error) throw error;
+
+      await this.incrementViews(idResult.id);
+      return { data: idResult as ArticleWithCategory, error: null };
+    } catch (error) {
+      console.error('Error fetching article by identifier (slug/id):', error);
+      return {
+        data: null,
+        error: error instanceof Error ? error.message : 'Unknown error',
+      };
+    }
+  }
+
+  /**
    * Get articles by category
    */
   async getByCategory(

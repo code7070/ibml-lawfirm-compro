@@ -127,6 +127,7 @@ export type Database = {
           content_en: string;
           content_id: string;
           cover_url: string | null;
+          cover_alt: string | null;
           created_at: string | null;
           created_by: string | null;
           excerpt_en: string | null;
@@ -149,6 +150,7 @@ export type Database = {
           content_en: string;
           content_id: string;
           cover_url?: string | null;
+          cover_alt?: string | null;
           created_at?: string | null;
           created_by?: string | null;
           excerpt_en?: string | null;
@@ -171,6 +173,7 @@ export type Database = {
           content_en?: string;
           content_id?: string;
           cover_url?: string | null;
+          cover_alt?: string | null;
           created_at?: string | null;
           created_by?: string | null;
           excerpt_en?: string | null;

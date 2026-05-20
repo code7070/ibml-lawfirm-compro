@@ -20,15 +20,15 @@ const ArticleSearchBar = ({ defaultValue = "" }: ArticleSearchBarProps) => {
     e.preventDefault();
     const trimmed = value.trim();
     if (trimmed) {
-      router.push(`/${locale}/articles?search=${encodeURIComponent(trimmed)}`);
+      router.push(`/${locale}/insights?search=${encodeURIComponent(trimmed)}`);
     } else {
-      router.push(`/${locale}/articles`);
+      router.push(`/${locale}/insights`);
     }
   };
 
   const handleClear = () => {
     setValue("");
-    router.push(`/${locale}/articles`);
+    router.push(`/${locale}/insights`);
   };
 
   return (

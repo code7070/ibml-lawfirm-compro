@@ -3,6 +3,7 @@ import { articlesService, articleCategoriesService } from "@/services";
 import { Article as ViewArticle } from "@/types";
 import { generatePageMetadata } from "@/lib/metadata";
 import { Locale } from "@/lib/dictionary";
+import { formatArticleDate } from "@/lib/date-utils";
 
 export const revalidate = 3600; // one hour
 
@@ -17,7 +18,7 @@ export async function generateMetadata({
   return generatePageMetadata({
     locale: locale as Locale,
     page: "articles",
-    path: "/articles",
+    path: "/insights",
   });
 }
 
@@ -56,13 +57,7 @@ export default async function ArticlesPage({
   const viewArticles: ViewArticle[] = articlesResult.data.map((article) => ({
     id: article.slug || article.id,
     title: isId ? article.title_id : article.title_en,
-    date: new Date(
-      article.published_at || article.created_at || "2024-01-01",
-    ).toLocaleDateString(isId ? "id-ID" : "en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    }),
+    date: formatArticleDate(article.published_at, article.created_at, locale) || '',
     category:
       (isId ? article.category?.name_id : article.category?.name_en) ||
       "Uncategorized",

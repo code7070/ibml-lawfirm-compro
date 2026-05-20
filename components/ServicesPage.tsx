@@ -228,7 +228,7 @@ const ServicesPage = ({
                 return (
                   <LangLink
                     key={article.id}
-                    href={`/articles/${article.slug}`}
+                    href={`/insights/${article.slug}`}
                     className="group bg-white flex flex-col h-full shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer"
                   >
                     <div className="relative h-48 overflow-hidden">
@@ -334,7 +334,7 @@ const ServicesPage = ({
               {t("values.description")}
             </p>
             <LangLink
-              href="/articles"
+              href="/insights"
               className="flex items-center gap-3 text-sm font-bold uppercase tracking-[0.2em] text-[#0B1B3B] hover:text-[#D4C5A0] transition-colors"
             >
               {t("values.exploreLibrary")} <ArrowRight size={16} />

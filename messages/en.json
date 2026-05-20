@@ -64,18 +64,18 @@
     "values": {
       "title": "Our",
       "titleHighlight": "Values",
-      "subtitle": "Built on three pillars that define our approach to legal practice and client relationships.",
+      "subtitle": "Three core principles that define our approach to legal practice and client relationships.",
       "professionalism": {
-        "title": "Professionalism",
-        "description": "Excellence and integrity in every engagement. We uphold the highest standards of legal practice and ethical conduct."
+        "title": "Professional Standards, Meaningful Impact",
+        "description": "At IBLM Law Group, professionalism is more than a benchmark\u2014it is the foundation of every decision we make. We uphold rigorous standards of practice, ensuring precision, accountability, and clarity in our counsel. By combining technical excellence with strategic foresight, we deliver outcomes that create meaningful impact for clients, institutions, and society at large."
       },
       "empathy": {
-        "title": "Empathy",
-        "description": "Understanding client needs deeply. We listen first, then provide tailored solutions that address your unique challenges."
+        "title": "Guiding with Care, Serving with Integrity",
+        "description": "Empathy shapes the way we advise and represent. We listen closely, understand deeply, and respond with solutions that respect both human needs and legal frameworks. Integrity anchors this process, ensuring that every recommendation is honest, transparent, and aligned with the best interests of those we serve. Our guidance is not only legal\u2014it is care in action."
       },
       "loyalty": {
-        "title": "Devotion",
-        "description": "Long-term partnership commitment. Your success is our priority, and we stand by you through every challenge."
+        "title": "Loyal Partnerships, Lasting Trust",
+        "description": "We believe that true success in law is built on enduring relationships. Loyalty to our clients, colleagues, and communities defines our approach, fostering collaboration that stands the test of time. Through consistent dedication and an unwavering focus on our clients\u2019 long-term goals, we build partnerships that transcend individual engagements and become the bedrock of lasting trust and shared success."
       }
     },
     "whyChoose": {
@@ -113,7 +113,7 @@
       "title": "Our Team",
       "titleLead": "Our",
       "titleAccent": "Team",
-      "subtitle": "Where brilliant minds come to work together"
+      "subtitle": "We are looking for brilliant legal minds to join our team"
     },
     "filters": {
       "all": "All",
@@ -329,7 +329,7 @@
     "hero": {
       "tags": "Careers at IBLM",
       "title": "Join Our Team",
-      "subtitle": "Where brilliant minds come to work together."
+      "subtitle": "We are looking for brilliant legal minds to join our team."
     },
     "code": {
       "title": "Our Values",

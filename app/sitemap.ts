@@ -18,7 +18,7 @@ const STATIC_ROUTES = [
     changeFrequency: "monthly" as const,
   },
   { path: "/services", priority: 0.8, changeFrequency: "monthly" as const },
-  { path: "/articles", priority: 0.8, changeFrequency: "daily" as const },
+  { path: "/insights", priority: 0.8, changeFrequency: "daily" as const },
   { path: "/events", priority: 0.75, changeFrequency: "weekly" as const },
   { path: "/careers", priority: 0.7, changeFrequency: "weekly" as const },
   { path: "/contact", priority: 0.7, changeFrequency: "monthly" as const },
@@ -79,14 +79,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         : now;
 
     return locales.map((locale) => ({
-      url: `${BASE_URL}/${locale}/articles/${identifier}`,
+      url: `${BASE_URL}/${locale}/insights/${identifier}`,
       lastModified: lastMod,
       changeFrequency: "weekly" as const,
       priority: 0.7,
       ...(hasMultipleLocales && {
         alternates: {
           languages: Object.fromEntries(
-            locales.map((l) => [l, `${BASE_URL}/${l}/articles/${identifier}`]),
+            locales.map((l) => [l, `${BASE_URL}/${l}/insights/${identifier}`]),
           ),
         },
       }),
@@ -128,7 +128,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const lastMod = category.updated_at ? new Date(category.updated_at) : now;
 
       return locales.map((locale) => ({
-        url: `${BASE_URL}/${locale}/articles/category/${category.slug}`,
+        url: `${BASE_URL}/${locale}/insights/category/${category.slug}`,
         lastModified: lastMod,
         changeFrequency: "monthly" as const,
         priority: 0.6,
@@ -137,7 +137,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             languages: Object.fromEntries(
               locales.map((l) => [
                 l,
-                `${BASE_URL}/${l}/articles/category/${category.slug}`,
+                `${BASE_URL}/${l}/insights/category/${category.slug}`,
               ]),
             ),
           },

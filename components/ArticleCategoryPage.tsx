@@ -9,6 +9,7 @@ import { useTranslations } from "@/hooks/useTranslations";
 import ArticleSearchBar from "./ArticleSearchBar";
 import { getSupabase } from "@/lib/supabase";
 import ArticleEmptyState from "./ArticleEmptyState";
+import { formatArticleDate } from "@/lib/date-utils";
 
 const PAGE_SIZE = 9;
 
@@ -74,13 +75,7 @@ const ArticleCategoryPage = ({
         const newArticles: Article[] = data.map((article) => ({
           id: article.slug || article.id,
           title: isId ? article.title_id : article.title_en,
-          date: new Date(
-            article.published_at || article.created_at || "2024-01-01",
-          ).toLocaleDateString(isId ? "id-ID" : "en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          }),
+          date: formatArticleDate(article.published_at, article.created_at, locale) || '',
           category:
             (isId
               ? (article.category as { name_id?: string })?.name_id
@@ -135,7 +130,7 @@ const ArticleCategoryPage = ({
               <div className="flex gap-2 md:gap-4 md:flex-wrap px-[calc(50vw-50%)] md:px-0 w-max md:w-auto">
                 {/* "All" tab */}
                 <LangLink
-                  href="/articles"
+                  href="/insights"
                   className="px-6 py-2 text-xs font-bold uppercase tracking-widest transition-all rounded-full border bg-transparent text-[#2E4472] border-transparent hover:border-[#2E4472]/30"
                 >
                   {t("all")}
@@ -144,7 +139,7 @@ const ArticleCategoryPage = ({
                 {categories.map((cat) => (
                   <LangLink
                     key={cat.id}
-                    href={`/articles/category/${cat.slug}`}
+                    href={`/insights/category/${cat.slug}`}
                     className={`px-6 py-2 text-xs font-bold uppercase tracking-widest transition-all rounded-full border ${
                       cat.slug === category.slug
                         ? "bg-[#0B1B3B] text-white border-[#0B1B3B]"
@@ -166,7 +161,7 @@ const ArticleCategoryPage = ({
             {articles.map((article) => (
               <LangLink
                 key={article.id}
-                href={`/articles/${article.id}`}
+                href={`/insights/${article.id}`}
                 className="group cursor-pointer flex flex-col h-full"
               >
                 <div className="relative h-64 overflow-hidden mb-8 border border-[#0B1B3B]/10">
@@ -205,9 +200,7 @@ const ArticleCategoryPage = ({
           </div>
 
           {/* Empty State */}
-          {articles.length === 0 && (
-            <ArticleEmptyState type="category" />
-          )}
+          {articles.length === 0 && <ArticleEmptyState type="category" />}
 
           {/* Load More */}
           {hasMore && (

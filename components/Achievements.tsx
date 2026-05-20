@@ -14,7 +14,7 @@ const Achievements = () => {
               </span>
             </h2>
             <p className="text-gray-400 text-lg leading-relaxed mb-12 font-light">
-              IBLM Law Group is anchored on three core values and operates
+              IBLM Law Group is anchored on three core principles and operates
               through four interlocking Legal Expertise Groups. We tailor every
               engagement to the client&apos;s world — never to a template —
               because sophisticated matters demand sophisticated guardianship.
@@ -29,10 +29,17 @@ const Achievements = () => {
                   />
                 </div>
                 <div className="flex-1">
-                  <h4 className="text-xl font-normal mb-2">Professionalism</h4>
+                  <h4 className="text-xl font-normal mb-2">
+                    Professional Standards, Meaningful Impact
+                  </h4>
                   <p className="text-sm text-gray-500">
-                    Tailored legal strategy grounded in deep doctrinal knowledge
-                    and industry-native insight.
+                    At IBLM Law Group, professionalism is more than a
+                    benchmark&mdash;it is the foundation of every decision we
+                    make. We uphold rigorous standards of practice, ensuring
+                    precision, accountability, and clarity in our counsel. By
+                    combining technical excellence with strategic foresight, we
+                    deliver outcomes that create meaningful impact for clients,
+                    institutions, and society at large.
                   </p>
                 </div>
               </div>
@@ -44,10 +51,17 @@ const Achievements = () => {
                   />
                 </div>
                 <div className="flex-1">
-                  <h4 className="text-xl font-normal mb-2">Empathy</h4>
+                  <h4 className="text-xl font-normal mb-2">
+                    Guiding with Care, Serving with Integrity
+                  </h4>
                   <p className="text-sm text-gray-500">
-                    We listen first. Every engagement starts from understanding
-                    the client&apos;s world, not the firm&apos;s template.
+                    Empathy shapes the way we advise and represent. We listen
+                    closely, understand deeply, and respond with solutions that
+                    respect both human needs and legal frameworks. Integrity
+                    anchors this process, ensuring that every recommendation is
+                    honest, transparent, and aligned with the best interests of
+                    those we serve. Our guidance is not only legal&mdash;it is
+                    care in action.
                   </p>
                 </div>
               </div>
@@ -59,10 +73,17 @@ const Achievements = () => {
                   />
                 </div>
                 <div className="flex-1">
-                  <h4 className="text-xl font-normal mb-2">Loyalty</h4>
+                  <h4 className="text-xl font-normal mb-2">
+                    Loyal Partnerships, Lasting Trust
+                  </h4>
                   <p className="text-sm text-gray-500">
-                    A long-term partnership built to protect your dignity,
-                    security, and legacy.
+                    We believe that true success in law is built on enduring
+                    relationships. Loyalty to our clients, colleagues, and
+                    communities defines our approach, fostering collaboration
+                    that stands the test of time. Through consistent dedication
+                    and an unwavering focus on our clients&apos; long-term goals,
+                    we build partnerships that transcend individual engagements
+                    and become the bedrock of lasting trust and shared success.
                   </p>
                 </div>
               </div>
@@ -111,8 +132,8 @@ const Achievements = () => {
               <div className="col-span-2 border-t border-white/10 pt-10 mt-2">
                 <p className="font-serif italic text-xl text-gray-300">
                   &quot;We anchor our specially tailored services for our
-                  clients on our core values that revolve on Professionalism,
-                  Empathy, and Loyalty.&quot;
+                  clients on our core values of professional standards,
+                  compassionate guidance, and enduring partnerships.&quot;
                 </p>
                 <div className="mt-6">
                   <p className="text-sm font-bold text-white uppercase tracking-wider">

@@ -30,7 +30,7 @@ const Navbar = () => {
     { name: t("practiceAreas"), href: "/practice-areas" },
     { name: t("lawyers"), href: "/lawyers" },
     { name: t("events"), href: "/events" },
-    { name: t("insights"), href: "/articles" },
+    { name: t("insights"), href: "/insights" },
   ];
 
   // Compact Links (Tablet/Small Laptop)
@@ -42,7 +42,7 @@ const Navbar = () => {
 
   const compactDirectLinks = [
     { name: t("events"), href: "/events" },
-    { name: t("insights"), href: "/articles" },
+    { name: t("insights"), href: "/insights" },
   ];
 
   // const handleLanguageChange = (newLocale: string) => {

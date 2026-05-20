@@ -42,7 +42,7 @@ const ArticleDetailPage = ({
         {/* Back navigation — floating pill over image */}
         <div className="absolute top-6 left-6 z-10">
           <LangLink
-            href="/articles"
+            href="/insights"
             className="
               inline-flex items-center gap-2 px-4 py-2
               bg-[#0B1B3B]/60 backdrop-blur-md
@@ -152,7 +152,7 @@ const ArticleDetailPage = ({
                 </h3>
               </div>
               <LangLink
-                href="/articles"
+                href="/insights"
                 className="hidden md:inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-[#D4C5A0]/70 hover:text-[#D4C5A0] transition-colors duration-300"
               >
                 {t("relatedIntelligence.viewAll")}{" "}
@@ -165,7 +165,7 @@ const ArticleDetailPage = ({
               {/* Featured card (first article — large) */}
               {finalRelated[0] && (
                 <LangLink
-                  href={`/articles/${finalRelated[0].id}`}
+                  href={`/insights/${finalRelated[0].id}`}
                   className="group lg:col-span-6 flex flex-col cursor-pointer"
                 >
                   {/* Thumbnail */}
@@ -212,7 +212,7 @@ const ArticleDetailPage = ({
                 {finalRelated.slice(1, 3).map((item) => (
                   <LangLink
                     key={item.id}
-                    href={`/articles/${item.id}`}
+                    href={`/insights/${item.id}`}
                     className="group flex flex-col sm:flex-row gap-5 cursor-pointer"
                   >
                     {/* Thumbnail */}
@@ -258,7 +258,7 @@ const ArticleDetailPage = ({
             {/* Mobile view-all link */}
             <div className="mt-12 text-center md:hidden">
               <LangLink
-                href="/articles"
+                href="/insights"
                 className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-[#D4C5A0]/70 hover:text-[#D4C5A0] transition-colors duration-300 border border-[#D4C5A0]/20 px-6 py-3 hover:border-[#D4C5A0]/50"
               >
                 {t("relatedIntelligence.viewAll")}{" "}

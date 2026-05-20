@@ -64,18 +64,18 @@
     "values": {
       "title": "Nilai-Nilai",
       "titleHighlight": "Kami",
-      "subtitle": "Dibangun di atas tiga pilar yang mendefinisikan pendekatan kami terhadap praktik hukum dan hubungan klien.",
+      "subtitle": "Tiga prinsip inti yang mendefinisikan pendekatan kami terhadap praktik hukum dan hubungan klien.",
       "professionalism": {
-        "title": "Profesionalisme",
-        "description": "Keunggulan dan integritas dalam setiap keterlibatan. Kami menegakkan standar tertinggi dalam praktik hukum dan perilaku etis."
+        "title": "Standar Profesional, Dampak Bermakna",
+        "description": "Di IBLM Law Group, profesionalisme lebih dari sekadar tolok ukur\u2014ini adalah fondasi dari setiap keputusan yang kami buat. Kami menjunjung standar praktik yang ketat, memastikan ketepatan, akuntabilitas, dan kejelasan dalam setiap nasihat hukum kami. Dengan menggabungkan keunggulan teknis dan pandangan strategis, kami memberikan hasil yang menciptakan dampak bermakna bagi klien, institusi, dan masyarakat luas."
       },
       "empathy": {
-        "title": "Empati",
-        "description": "Memahami kebutuhan klien secara mendalam. Kami mendengarkan terlebih dahulu, kemudian memberikan solusi yang disesuaikan untuk mengatasi tantangan unik Anda."
+        "title": "Membimbing dengan Kepedulian, Melayani dengan Integritas",
+        "description": "Empati membentuk cara kami memberi nasihat dan mewakili klien. Kami mendengarkan dengan saksama, memahami secara mendalam, dan merespons dengan solusi yang menghormati kebutuhan manusia dan kerangka hukum. Integritas menjadi jangkar proses ini, memastikan bahwa setiap rekomendasi jujur, transparan, dan selaras dengan kepentingan terbaik mereka yang kami layani. Bimbingan kami bukan hanya hukum\u2014ini adalah kepedulian dalam tindakan."
       },
       "loyalty": {
-        "title": "Pengabdian",
-        "description": "Komitmen kemitraan jangka panjang. Kesuksesan Anda adalah prioritas kami, dan kami mendampingi Anda melalui setiap tantangan."
+        "title": "Kemitraan Setia, Kepercayaan Abadi",
+        "description": "Kami percaya bahwa kesuksesan sejati dalam hukum dibangun di atas hubungan yang langgeng. Kesetiaan kepada klien, kolega, dan komunitas kami mendefinisikan pendekatan kami, mendorong kolaborasi yang bertahan lama. Melalui dedikasi yang konsisten dan fokus yang teguh pada tujuan jangka panjang klien kami, kami membangun kemitraan yang melampaui setiap penugasan individu dan menjadi landasan kepercayaan abadi serta kesuksesan bersama."
       }
     },
     "whyChoose": {
@@ -113,7 +113,7 @@
       "title": "Tim Kami",
       "titleLead": "Tim",
       "titleAccent": "Kami",
-      "subtitle": "Tempat para pemikir brilian berkumpul untuk berkarya bersama"
+      "subtitle": "Kami mencari praktisi hukum yang brilian untuk bergabung dengan tim kami"
     },
     "filters": {
       "all": "Semua",
@@ -329,7 +329,7 @@
     "hero": {
       "tags": "Karir di IBLM",
       "title": "Bergabung dengan Tim Kami",
-      "subtitle": "Tempat para pemikir brilian berkumpul untuk berkarya bersama."
+      "subtitle": "Kami mencari praktisi hukum yang brilian untuk bergabung dengan tim kami."
     },
     "code": {
       "title": "Nilai-Nilai Kami",
