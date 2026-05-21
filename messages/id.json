@@ -113,7 +113,7 @@
       "title": "Tim Kami",
       "titleLead": "Tim",
       "titleAccent": "Kami",
-      "subtitle": "Kami mencari praktisi hukum yang brilian untuk bergabung dengan tim kami"
+      "subtitle": "Profesional berpengalaman yang berdedikasi pada kebutuhan hukum Anda"
     },
     "filters": {
       "all": "Semua",
@@ -331,21 +331,6 @@
       "title": "Bergabung dengan Tim Kami",
       "subtitle": "Kami mencari praktisi hukum yang brilian untuk bergabung dengan tim kami."
     },
-    "code": {
-      "title": "Nilai-Nilai Kami",
-      "precision": {
-        "title": "Presisi & Keunggulan",
-        "description": "Kami beroperasi pada tingkat tertinggi praktik hukum. 'Cukup baik' bukan dalam kosakata kami ketika hal-hal kritis dipertaruhkan."
-      },
-      "digital": {
-        "title": "Digital Native",
-        "description": "Kami tidak hanya mempelajari industri; kami menghidupinya. Tim kami memahami lanskap teknologi dan bisnis digital yang terus berkembang."
-      },
-      "collaborative": {
-        "title": "Kecerdasan Kolaboratif",
-        "description": "Kami percaya pada pikiran kolektif. Partner, associate, dan staf bekerja sebagai unit terpadu untuk menyelesaikan tantangan kompleks."
-      }
-    },
     "culture": {
       "title": "Firma yang Memadukan Tradisi dan Inovasi",
       "description": "Di IBLM, Anda tidak hanya menyusun kontrak; Anda akan membentuk kerangka hukum untuk teknologi baru, bisnis digital, dan industri modern. Kami menawarkan lingkungan yang menghargai ketelitian intelektual dan pemecahan masalah kreatif secara setara.",
@@ -373,21 +358,6 @@
       "internship": "Program Magang",
       "internshipDesc": "Associate musim panas dan clerkship hukum.",
       "finalQuote": "Kami tidak merekrut latar belakang. Kami merekrut potensi dan passion untuk keahlian."
-    },
-    "values": {
-      "title": "Nilai-Nilai Kami",
-      "professionalism": {
-        "title": "Profesionalisme",
-        "description": "Kami menjaga standar tertinggi dalam praktik dan etika hukum"
-      },
-      "empathy": {
-        "title": "Empati",
-        "description": "Kami menghargai pemahaman dan kasih sayang di tempat kerja"
-      },
-      "loyalty": {
-        "title": "Loyalitas",
-        "description": "Kami membangun hubungan jangka panjang dengan anggota tim kami"
-      }
     }
   },
   "events": {

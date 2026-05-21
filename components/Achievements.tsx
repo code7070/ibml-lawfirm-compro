@@ -81,9 +81,10 @@ const Achievements = () => {
                     relationships. Loyalty to our clients, colleagues, and
                     communities defines our approach, fostering collaboration
                     that stands the test of time. Through consistent dedication
-                    and an unwavering focus on our clients&apos; long-term goals,
-                    we build partnerships that transcend individual engagements
-                    and become the bedrock of lasting trust and shared success.
+                    and an unwavering focus on our clients&apos; long-term
+                    goals, we build partnerships that transcend individual
+                    engagements and become the bedrock of lasting trust and
+                    shared success.
                   </p>
                 </div>
               </div>
@@ -96,40 +97,7 @@ const Achievements = () => {
             <div className="absolute top-0 right-0 w-32 h-32 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
 
             <div className="grid grid-cols-2 gap-10">
-              <div>
-                {/*<span className="text-[#D4C5A0] text-xs font-bold uppercase tracking-widest block mb-2">
-                  LEG-1
-                </span>*/}
-                <span className="block text-2xl md:text-3xl font-light text-white leading-tight">
-                  Entertainment &amp; Creative
-                </span>
-              </div>
-              <div>
-                {/*<span className="text-[#D4C5A0] text-xs font-bold uppercase tracking-widest block mb-2">
-                  LEG-2
-                </span>*/}
-                <span className="block text-2xl md:text-3xl font-light text-white leading-tight">
-                  People &amp; Labor
-                </span>
-              </div>
-              <div>
-                {/*<span className="text-[#D4C5A0] text-xs font-bold uppercase tracking-widest block mb-2">
-                  LEG-3
-                </span>*/}
-                <span className="block text-2xl md:text-3xl font-light text-white leading-tight">
-                  Technology
-                </span>
-              </div>
-              <div>
-                {/*<span className="text-[#D4C5A0] text-xs font-bold uppercase tracking-widest block mb-2">
-                  LEG-4
-                </span>*/}
-                <span className="block text-2xl md:text-3xl font-light text-white leading-tight">
-                  Education &amp; Health
-                </span>
-              </div>
-
-              <div className="col-span-2 border-t border-white/10 pt-10 mt-2">
+              <div className="col-span-2">
                 <p className="font-serif italic text-xl text-gray-300">
                   &quot;We anchor our specially tailored services for our
                   clients on our core values of professional standards,

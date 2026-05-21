@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from "react";
 import {
-  Target,
   Users,
-  Zap,
   Briefcase,
   Brain,
   Globe,
   Shield,
+  Heart,
+  Handshake,
   Mail,
   Copy,
   Check,
@@ -47,22 +47,20 @@ interface CareerPageProps {
 
 const CareerPage = ({ jobs = [], locale = "en" }: CareerPageProps) => {
   const t = useTranslations("career");
+  const ta = useTranslations("about");
 
   const values = [
     {
-      icon: Target,
-      titleKey: "code.precision.title",
-      descriptionKey: "code.precision.description",
+      icon: Shield,
+      titleKey: "values.professionalism.title",
     },
     {
-      icon: Zap,
-      titleKey: "code.digital.title",
-      descriptionKey: "code.digital.description",
+      icon: Heart,
+      titleKey: "values.empathy.title",
     },
     {
-      icon: Users,
-      titleKey: "code.collaborative.title",
-      descriptionKey: "code.collaborative.description",
+      icon: Handshake,
+      titleKey: "values.loyalty.title",
     },
   ];
 
@@ -122,12 +120,15 @@ const CareerPage = ({ jobs = [], locale = "en" }: CareerPageProps) => {
         </div>
       </section>
 
-      {/* Values Section */}
+      {/* Our Values (brand values, same as /about) */}
       <section className="py-24 px-6 bg-white">
         <div className="max-w-[1400px] mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-4xl font-light text-[#0B1B3B] mb-4">
-              {t("code.title")}
+              {ta("values.title")}{" "}
+              <span className="font-serif italic text-[#2E4472]">
+                {ta("values.titleHighlight")}
+              </span>
             </h2>
             <div className="w-16 h-1 bg-[#D4C5A0] mx-auto"></div>
           </div>
@@ -136,17 +137,14 @@ const CareerPage = ({ jobs = [], locale = "en" }: CareerPageProps) => {
             {values.map((v) => (
               <div
                 key={v.titleKey}
-                className="group p-8 border border-[#F5F5F7] hover:border-[#D4C5A0]/30 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+                className="group p-8 border border-[#F5F5F7] hover:border-[#D4C5A0]/30 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 text-center"
               >
-                <div className="w-14 h-14 bg-[#F5F5F7] flex items-center justify-center text-[#0B1B3B] mb-8 group-hover:bg-[#0B1B3B] group-hover:text-[#D4C5A0] transition-colors duration-300">
+                <div className="w-14 h-14 bg-[#F5F5F7] flex items-center justify-center text-[#0B1B3B] mb-8 mx-auto group-hover:bg-[#0B1B3B] group-hover:text-[#D4C5A0] transition-colors duration-300">
                   <v.icon strokeWidth={1.5} size={28} />
                 </div>
-                <h3 className="text-2xl font-serif text-[#0B1B3B] mb-4">
-                  {t(v.titleKey)}
+                <h3 className="text-2xl font-serif text-[#0B1B3B]">
+                  {ta(v.titleKey)}
                 </h3>
-                <p className="text-[#2E4472] font-light leading-relaxed">
-                  {t(v.descriptionKey)}
-                </p>
               </div>
             ))}
           </div>
@@ -186,14 +184,18 @@ const CareerPage = ({ jobs = [], locale = "en" }: CareerPageProps) => {
                   &quot;{t("culture.quote")}&quot;
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-[#D4C5A0] rounded-full flex items-center justify-center text-[#0B1B3B] font-bold">
-                    S
+                  <div className="size-14 bg-[#D4C5A0] rounded-full overflow-hidden flex items-center justify-center text-[#0B1B3B] font-bold">
+                    <img
+                      alt="Elena Daniela Sine"
+                      className="w-full aspect-[1/2] object-cover translate-y-6"
+                      src="https://assets.iblmlaw.group/media/IBLM - PHOTO - ED-1776756007761.jpg"
+                    />
                   </div>
                   <div>
                     <p className="text-sm font-bold text-white uppercase">
                       {t("culture.quoteAuthor")}
                     </p>
-                    <p className="text-xs text-[#D4C5A0]">
+                    <p className="text-sm text-[#D4C5A0]">
                       {t("culture.quoteRole")}
                     </p>
                   </div>

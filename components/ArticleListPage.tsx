@@ -11,6 +11,7 @@ import ArticleSearchBar from "./ArticleSearchBar";
 import { getSupabase } from "@/lib/supabase";
 import ArticleEmptyState from "./ArticleEmptyState";
 import { formatArticleDate } from "@/lib/date-utils";
+import Link from "next/link";
 
 const PAGE_SIZE = 9;
 
@@ -55,7 +56,9 @@ const ArticleListPage = ({
     (article: any): Article => ({
       id: article.slug || article.id,
       title: isId ? article.title_id : article.title_en,
-      date: formatArticleDate(article.published_at, article.created_at, locale) || '',
+      date:
+        formatArticleDate(article.published_at, article.created_at, locale) ||
+        "",
       category:
         (isId
           ? (article.category as { name_id?: string })?.name_id
@@ -346,15 +349,21 @@ const ArticleListPage = ({
         <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-16 items-center">
           <div className="relative lg:flex justify-end">
             <div className="relative max-w-[600px]">
-              <div className="aspect-[1/1.5] overflow-hidden">
+              <Link
+                href="https://iblam.ac.id"
+                className="block aspect-[1/1.5] overflow-hidden group"
+              >
                 <Image
-                  src="https://iblam.ac.id/wp-content/uploads/2025/09/IBLAM-Justice-House.webp"
+                  src="https://assets.iblmlaw.group/media/Kampus-Iblam-Poltangan-1779339338093.jpg"
                   alt="Academic excellence"
                   width={1200}
                   height={800}
                   className="size-full object-cover grayscale"
                 />
-              </div>
+                <div className="absolute top-4 right-4 p-4 bg-navy-primary text-white pointer-events-none">
+                  <ArrowUpRight className="group-hover:-translate-x-2 group-hover:-translate-y-2 " />
+                </div>
+              </Link>
               <div className="absolute size-full left-0 top-0 bg-gradient-to-br from-[#0b1b3b]/60 via-[#0b1b3b]/30 to-transparent mix-blend-multiply z-10" />
             </div>
             {/*<div className="absolute -bottom-8 -right-8 w-48 h-48 bg-[#D4C5A0] p-8 hidden md:block">

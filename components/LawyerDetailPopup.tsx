@@ -154,10 +154,7 @@ const LawyerDetailPopup = ({
   const practiceAreas = (lawyer.practice_areas || [])
     .map((pa) =>
       pa.practice_areas
-        ? getLocalizedText(
-            pa.practice_areas.name_en,
-            pa.practice_areas.name_id,
-          )
+        ? getLocalizedText(pa.practice_areas.name_en, pa.practice_areas.name_id)
         : "",
     )
     .filter(Boolean);
@@ -211,10 +208,7 @@ const LawyerDetailPopup = ({
           <div className="bg-[#0B1B3B] relative overflow-hidden">
             {/* Geometric pattern */}
             <div className="absolute inset-0 pointer-events-none opacity-[0.035]">
-              <svg
-                className="w-full h-full"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+              <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <pattern
                     id="lawyer-hero-grid"
@@ -347,7 +341,10 @@ const LawyerDetailPopup = ({
 
             {/* Experience */}
             {hasExperience && (
-              <div className="mb-10 lawyer-card-enter" style={{ animationDelay: "100ms" }}>
+              <div
+                className="mb-10 lawyer-card-enter"
+                style={{ animationDelay: "100ms" }}
+              >
                 <div className="flex items-center gap-2.5 mb-1">
                   <Briefcase className="w-5 h-5 text-[#0B1B3B]" />
                   <h3 className="text-[#0B1B3B] text-xl md:text-2xl font-serif">
@@ -358,7 +355,7 @@ const LawyerDetailPopup = ({
                 <ul className="border-l border-[#C0B181]/50 pl-5 ml-1 space-y-3">
                   {experience.map((exp, idx) => (
                     <li key={idx} className="relative pl-1">
-                      <span className="absolute -left-[23px] top-[7px] w-[7px] h-[7px] rounded-full bg-[#C0B181]" />
+                      <span className="absolute -left-[24px] top-[7px] w-[7px] h-[7px] rounded-full bg-[#C0B181]" />
                       <p className="text-[#1a2f5a] text-sm leading-relaxed">
                         {exp}
                       </p>
@@ -370,10 +367,15 @@ const LawyerDetailPopup = ({
 
             {/* Education & Certifications side by side when both exist */}
             {(hasEducation || hasCertifications) && (
-              <div className={`grid grid-cols-1 ${hasEducation && hasCertifications ? "md:grid-cols-2" : ""} gap-x-10 gap-y-10`}>
+              <div
+                className={`grid grid-cols-1 ${hasEducation && hasCertifications ? "md:grid-cols-2" : ""} gap-x-10 gap-y-10`}
+              >
                 {/* Education */}
                 {hasEducation && (
-                  <div className="lawyer-card-enter" style={{ animationDelay: "200ms" }}>
+                  <div
+                    className="lawyer-card-enter"
+                    style={{ animationDelay: "200ms" }}
+                  >
                     <div className="flex items-center gap-2.5 mb-1">
                       <GraduationCap className="w-5 h-5 text-[#0B1B3B]" />
                       <h3 className="text-[#0B1B3B] text-xl md:text-2xl font-serif">
@@ -396,7 +398,10 @@ const LawyerDetailPopup = ({
 
                 {/* Certifications */}
                 {hasCertifications && (
-                  <div className="lawyer-card-enter" style={{ animationDelay: "300ms" }}>
+                  <div
+                    className="lawyer-card-enter"
+                    style={{ animationDelay: "300ms" }}
+                  >
                     <div className="flex items-center gap-2.5 mb-1">
                       <Award className="w-5 h-5 text-[#0B1B3B]" />
                       <h3 className="text-[#0B1B3B] text-xl md:text-2xl font-serif">

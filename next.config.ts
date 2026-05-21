@@ -12,6 +12,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "iblam.ac.id",
       },
+      {
+        protocol: "https",
+        hostname: "assets.iblmlaw.group",
+      },
     ],
   },
 };

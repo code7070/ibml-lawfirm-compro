@@ -75,7 +75,7 @@ const EventsPage: React.FC<EventsPageProps> = ({ events }) => {
       <section className="py-24 px-6">
         <div className="max-w-[1400px] mx-auto space-y-24">
           {sortedYears.map((year) => (
-            <div key={year} className="border-t border-[#0B1B3B]/10 pt-12">
+            <div key={year} className="">
               {/* Year Header */}
               <div className="flex items-center gap-6 mb-12">
                 <h2 className="text-6xl md:text-7xl font-light text-[#0B1B3B]/10 font-serif">

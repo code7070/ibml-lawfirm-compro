@@ -113,7 +113,7 @@
       "title": "Our Team",
       "titleLead": "Our",
       "titleAccent": "Team",
-      "subtitle": "We are looking for brilliant legal minds to join our team"
+      "subtitle": "Experienced professionals dedicated to your legal needs"
     },
     "filters": {
       "all": "All",
@@ -331,27 +331,12 @@
       "title": "Join Our Team",
       "subtitle": "We are looking for brilliant legal minds to join our team."
     },
-    "code": {
-      "title": "Our Values",
-      "precision": {
-        "title": "Precision & Excellence",
-        "description": "We operate at the highest level of legal practice. 'Good enough' is not in our vocabulary when critical matters are at stake."
-      },
-      "digital": {
-        "title": "Digital Native",
-        "description": "We don't just learn the industry; we live it. Our team understands the evolving landscape of technology and digital business."
-      },
-      "collaborative": {
-        "title": "Collaborative Intelligence",
-        "description": "We believe in the collective mind. Partners, associates, and staff work as a unified unit to solve complex challenges."
-      }
-    },
     "culture": {
       "title": "A Firm Where Tradition Meets Innovation",
       "description": "At IBLM, you won't just draft contracts; you'll shape legal frameworks for emerging technologies, digital businesses, and modern industries. We offer an environment that values intellectual rigor and creative problem-solving equally.",
-      "quote": "The pace here is electric. We are dealing with legal questions that didn't exist six months ago.",
-      "quoteAuthor": "Senior Associate",
-      "quoteRole": "IBLM Law Group"
+      "quote": "We are trained to have strategic minds, to strive as lawyers",
+      "quoteAuthor": "Elena Daniela Sine",
+      "quoteRole": "Associate"
     },
     "benefits": {
       "mentorship": "Advanced Mentorship",
@@ -373,21 +358,6 @@
       "internship": "Internship Program",
       "internshipDesc": "Summer associates and legal clerkships.",
       "finalQuote": "We don't hire backgrounds. We hire potential and passion for the craft."
-    },
-    "values": {
-      "title": "Our Values",
-      "professionalism": {
-        "title": "Professionalism",
-        "description": "We maintain the highest standards of legal practice and ethics"
-      },
-      "empathy": {
-        "title": "Empathy",
-        "description": "We value understanding and compassion in our workplace"
-      },
-      "loyalty": {
-        "title": "Loyalty",
-        "description": "We build lasting relationships with our team members"
-      }
     }
   },
   "events": {

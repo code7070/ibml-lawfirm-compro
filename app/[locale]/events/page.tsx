@@ -25,7 +25,7 @@ export default async function Page({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const { data: dbEvents } = await eventsService.getUpcoming();
+  const { data: dbEvents } = await eventsService.getAllActive();
 
   const events: FrontendEvent[] =
     dbEvents?.map((event) => {

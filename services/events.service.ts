@@ -19,6 +19,29 @@ class EventsService extends BaseService<Event, EventInsert, EventUpdate> {
   }
 
   /**
+   * Get all active events (past & upcoming), excluding soft-deleted
+   */
+  async getAllActive(): Promise<ApiResponse<Event[]>> {
+    try {
+      const { data, error } = await this.supabase
+        .from(this.tableName)
+        .select("*")
+        .eq("is_active", true)
+        .order("event_date", { ascending: false });
+
+      if (error) throw error;
+
+      return { data: data as Event[], error: null };
+    } catch (error) {
+      console.error("Error fetching all active events:", error);
+      return {
+        data: null,
+        error: error instanceof Error ? error.message : "Unknown error",
+      };
+    }
+  }
+
+  /**
    * Get all upcoming events
    */
   async getUpcoming(): Promise<ApiResponse<Event[]>> {
